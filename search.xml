@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[冒泡排序,选择排序]]></title>
+    <url>%2Ffanfan999.github.io%2F2019%2F04%2F29%2F%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%2C%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>排序算法</category>
+      </categories>
+      <tags>
+        <tag>冒泡排序,选择排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于时间复杂度和空间复杂度]]></title>
+    <url>%2Ffanfan999.github.io%2F2019%2F04%2F29%2F%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间. 常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例如加减乘除,位运算操作,数组寻址(就是根据下标获取数组中的元素,比如a[1])等. 时间复杂度为一个算法流程中,常数操作数量的指标.常用O表示(读作big O),具体来说,在常数操作数量的表达式中,不要低阶项,只要高阶项,并且忽略掉高阶项的系数,剩下的部分如果记作f(N),那么时间复杂度为O(f(N)). 几个简单的理解时间复杂度的例子: 一个有序数组A,另一个无序数组B,请打印B中的所有不在A中的数,A数组长度为N,B数组长度为M. 算法流程1: 对于数组B中的每一个数,都在A中通过遍历的方式找一下. 很明显该算法的时间复杂度特别大,遍历一次代价为O(N),一共M个数,所以总的代价为O(M*N). 算法流程2: 对于数组B中的每一个数,都在A中通过二分的方式找一下. 二分搜索,比如针对一个有序(假定是从小到大)的数组,假设我要找2有没有在这个数组里. 我先找到中间位置的数,看比2大还是小. 比2大,因为是从小到大排序的,所以中间右边的数字一定比2大,我们就在左边继续划分一半一半地找,直到没有了或者找到了为止. 比2小,说明中间左边的数字一定比2小,我们就在右边继续划分一半一半地找,直到没有了或者找到了为止. 等于2,就直接返回 在这个过程中,我们数组寻址和两个数比较的过程都是常数操作时间的O(1),每次砍一半,这样下来,常数操作次数为logN(以2为底),即一个数组长度为8,最多砍3次. 由此可见,二分查找的时间复杂度为O(logN),以2为底 因此我们也可以推出,查找一次的时间复杂度为O(logN),一共有M个数,时间复杂度则为(MlogN). 算法流程3: 先把B数组排序,然后用类似外排的方式打印所有在A中出现的数. 思路就是,B排序后,两个数组同时从0位置开始,即A[i]和B[i]互相比较. 若A[i] &gt; B[i],则B[i]肯定不在A数组中,打印B[i],然后B数组下标++. 若A[i] &lt; B[i],B数组下标不动,A数组下标++. 若A[i] == B[i],A数组下标不动,B数组下标++. 针对这个流程 第1步:排序的时间复杂度,可以达到NlogN. 第2步:快排,时间复杂度为O(N + M)(N,M为A和B数组长度). 由此可见,该流程的时间复杂度为NlogN + O(N + M). 三个流程,三种时间复杂的表达…我们应该如何分析其好坏? 给长度为N的数组排序(其中寻址,比较操作都是常数级别的). 第一次从0-(N-1)中找出最小值min放在第0个位置,过N个数. 第二次从1-(N-1)中找出最小值min放在第1个位置,过N-1个数. ……以此类推. 一共需要找的次数为(N + (N-1) + ... + 2 + 1),这是一个等差数列,其和为n(n + 1) / 2(这个就可以理解为常数操作数量的表达式),再乘以一个O(1)(它是单次操作所需要的时间),即(n(n + 1) / 2) O(1). 估算其时间复杂度是这样子的: 不要低阶项,只要高阶项,并且忽略掉高阶项的系数. 由此推出上述排序算法时间复杂度为O(n^2). 空间复杂度 emm,今天就先到这里.]]></content>
+      <categories>
+        <category>算法基础</category>
+      </categories>
+      <tags>
+        <tag>时间复杂度,空间复杂度</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[基础加强_注解]]></title>
     <url>%2Ffanfan999.github.io%2F2019%2F04%2F29%2F%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%BC%BA-%E6%B3%A8%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[本篇文章主要讲注解(Annotation)注解的基本知识 概念:和注释一样,是来说明程序的,但是这个是给计算机看的; 注释: 用文字描述程序的一段话,比如//这是一个方法,这个就是给我们程序猿看的; 关于注解的几个注意的点: JDK1.5之后的新特性 用来说明程序的 注解的格式:@注解名称 注解的作用分类: 编写文档(生成doc文档) 生成api帮助文档,也就是(doc文档),只需要文件夹中用cmd打开dos窗口,输入javadoc 类名.java就可以生成了,然后再打开index.html就可以看到我们写的注解了 直接用dos命令可能会报错或者API有乱码,因为我用的是utf-8但是系统不认识的,所以你这时候只需要用notepad++将该类的编码改成ANSI(即本地默认编码)就可以了(先复制,再粘贴,再保存后就是ANSI编码的了) 代码分析(使用反射) 编译检查(如果你重写方法改名了就会报错) JDK中预定义的一些注解: @Override : 用于检测被该注解标注的方法是否是继承自父类(接口)的,不是会报错; 例子: 1234@Overridepublic String toString()&#123; return super.toString(); &#125; @Deprecated[ˈdeprəkeɪtɪd] : 说明被该注解标注的内容已过时 @SupperessWarnings : 压制警告(黄色警告线) 一般情况下我们会写在类上,使得类中的左右黄色警告线都会没有而且参数一般传递的参数都是&quot;all&quot;; 例子: 1234@SupperessWarnings("all")public void show()&#123; System.out.println("abc");&#125; 此时比如show方法未使用这些黄色警告线都没有了 自定义注解: 格式(包括两部分): 元注解 : 用于描述注解的注解(放在注解类上面) @target : 描述注解能够作用的位置 例子 : @Target(value = {ElementType.TYPE, ElementType.METHOD, ElementType.FIELD}), 其中value还可以省略,因为只有他一个属性 ElementType(这是target的属性)取值 : TYPE : 表示只能作用在类上 METHOD : 表示只能作用于方法上 FIELD : 表示只能作用于成员变量上 @Retention : 描述注解被保留的阶段 @Retention(RetentionPolicy.RUNTIME) : 表示当前被描述的注解,会保留到class字节码文件中,并被jvm读取到(可以直接RetentionPolicy.RUNTIME这样子使用是因为RetentionPolicy是一个枚举类) @Documented : 描述注解是否被抽取到api文档中(生成api文档可以在dos窗口下使用如下命令 : javadoc Hello.java) @inherited : 描述注解是否被子类继承,使用后子类会自动继承这个注解 public @interface 注解名称(){} 例如这样子 : public @interface MyAnno{} 本质 : 注解本质就是一个接口,该接口默认继承Annotation接口(自己写一个接口MyAnno,再反编译一下就知道了) 反编译后就像这样子 : public interface MyAnnotation.MyAnno extends java.lang.annotation.Annotation { } 反编译有一个小技巧,你可以通过软件反编译,也可以通过javap HelloWorld.class这样的命令在dos窗口下反编译 注解的属性 : 即接口中定义的抽象成员方法,常量没啥用不用管 要求 属性的返回值类型(只有下列取值) : 基本数据类型 String(注意只有String,没有其它引用类型) 枚举 注解 以上类型的数组类型 例子如下 : 1234567891011121314public @interface MyAnno&#123; public abstract int show1(); public abstract String show2(); //Student为枚举类 public abstract Student show3(); //MyAnno2为注解类 public abstract MyAnno2 show4(); String[] strs();&#125; 定义了属性,在使用时需要给属性赋值,格式为 : @注解名(方法名 = 返回值类型的值)(其中返回值类型为int就是int类型,String就是String类型,当有多个值时,中间用,隔开就可以了) 例如这样 : @MyAnno(show1 = 10, show2 = &quot;fan&quot;) 但是有一个技巧,就是我们在定义属性的时候就可以给一个默认值(在属性名后面＋default＋默认初始化值),这样在使用时候就可以不给值了 例如 : String name() default &quot;fan&quot; 如果只有一个属性需要赋值,并且属性的名称为value,则value可以省略，多个参数时就必须写上属性 就像这样 : @MyAnno(10) 注意数组赋值时候,用{}包裹,如果只有一个元素的话{}可以不写 注解赋值的例子: @MyAnno(show1 = 10, show2 = &quot;fan&quot;, strs = {&quot;fan1&quot;, &quot;fan2&quot;, show3 = Student.P1}) 在程序中使用(解析)注解 即获取注解中定义的属性值,可以替代配置文件,这里用到了反射 获取注解定义的位置的对象(Class, Method, Field对象) 获取指定的注解 getAnnotation(类类型) 调用注解中的抽象方法来获取配置的属性值其实我觉得这个暂时意义不大,就懒得写了哈哈 小结 以后大多数时候,我们会使用注解,而不会自定义注解 注解给谁用? 编译器 解析程序 注解不是程序的一部分,可有可无,也可以理解为注解就是一个标签]]></content>
