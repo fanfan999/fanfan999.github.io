@@ -103,15 +103,18 @@
 
 
 
-  <meta name="keywords" content="冒泡排序,选择排序">
+  <meta name="description" content="冒泡排序 理解:在水里小泡泡往上面浮,大泡泡往水下沉,所以冒泡排序其实就是前一个和后一个比较,小的放前面,大的放后面. 原理:以int[] arr = {2,3,4,1,9,7,5}为例. 第一圈: 先数组中第一个元素(下标为0)和数组中第二个元素(下标为1)比较大小. arr[0] &amp;gt; arr[1],两者交换. arr[0] &amp;lt;= arr[1],两者不交换   然后比较数组第一个元素">
+<meta name="keywords" content="冒泡排序,选择排序,插入排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="冒泡排序,选择排序">
+<meta property="og:title" content="冒泡排序,选择排序,插入排序">
 <meta property="og:url" content="https://fanfan999.github.io/2019/04/29/冒泡排序,选择排序/index.html">
 <meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="冒泡排序 理解:在水里小泡泡往上面浮,大泡泡往水下沉,所以冒泡排序其实就是前一个和后一个比较,小的放前面,大的放后面. 原理:以int[] arr = {2,3,4,1,9,7,5}为例. 第一圈: 先数组中第一个元素(下标为0)和数组中第二个元素(下标为1)比较大小. arr[0] &amp;gt; arr[1],两者交换. arr[0] &amp;lt;= arr[1],两者不交换   然后比较数组第一个元素">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-29T13:03:04.491Z">
+<meta property="og:updated_time" content="2019-05-02T05:31:48.374Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="冒泡排序,选择排序">
+<meta name="twitter:title" content="冒泡排序,选择排序,插入排序">
+<meta name="twitter:description" content="冒泡排序 理解:在水里小泡泡往上面浮,大泡泡往水下沉,所以冒泡排序其实就是前一个和后一个比较,小的放前面,大的放后面. 原理:以int[] arr = {2,3,4,1,9,7,5}为例. 第一圈: 先数组中第一个元素(下标为0)和数组中第二个元素(下标为1)比较大小. arr[0] &amp;gt; arr[1],两者交换. arr[0] &amp;lt;= arr[1],两者不交换   然后比较数组第一个元素">
 
 
 
@@ -129,7 +132,7 @@
   };
 </script>
 
-  <title>冒泡排序,选择排序 | A Kid</title>
+  <title>冒泡排序,选择排序,插入排序 | A Kid</title>
   
 
 
@@ -391,7 +394,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">冒泡排序,选择排序
+          <h1 class="post-title" itemprop="name headline">冒泡排序,选择排序,插入排序
 
               
             
@@ -417,12 +420,24 @@
                 
               
 
-              <time title="Created: 2019-04-29 20:56:29 / Modified: 21:03:04" itemprop="dateCreated datePublished" datetime="2019-04-29T20:56:29+08:00">2019-04-29</time>
+              <time title="Created: 2019-04-29 20:56:29" itemprop="dateCreated datePublished" datetime="2019-04-29T20:56:29+08:00">2019-04-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-02 13:31:48" itemprop="dateModified" datetime="2019-05-02T13:31:48+08:00">2019-05-02</time>
               
             
           </span>
@@ -439,7 +454,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/排序算法/" itemprop="url" rel="index"><span itemprop="name">排序算法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -474,7 +489,114 @@
       
 
       
-        
+        <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><ul>
+<li>理解:在水里小泡泡往上面浮,大泡泡往水下沉,所以冒泡排序其实就是前一个和后一个比较,小的放前面,大的放后面.</li>
+<li>原理:以<code>int[] arr = {2,3,4,1,9,7,5}</code>为例.<ul>
+<li>第一圈:<ul>
+<li>先数组中第一个元素(下标为0)和数组中第二个元素(下标为1)比较大小.<ul>
+<li>arr[0] &gt; arr[1],两者交换.</li>
+<li>arr[0] &lt;= arr[1],两者不交换</li>
+</ul>
+</li>
+<li>然后比较数组第一个元素(下标为1)和数组第二个元素(下标为2)的大小.<ul>
+<li>arr[1] &gt; arr[2],两者交换.</li>
+<li>arr[1] &lt;= arr[2],两者不交换</li>
+</ul>
+</li>
+<li>……以此类推</li>
+<li>第一圈结束后,数组中最后一个元素为当前数组最大值.</li>
+</ul>
+</li>
+<li>第二圈(不管第N-1个数):<ul>
+<li>先数组中第一个元素(下标为0)和数组中第二个元素(下标为1)比较大小.<ul>
+<li>arr[0] &gt; arr[1],两者交换.</li>
+<li>arr[0] &lt;= arr[1],两者不交换</li>
+</ul>
+</li>
+<li>然后比较数组第一个元素(下标为1)和数组第二个元素(下标为2)的大小.<ul>
+<li>arr[1] &gt; arr[2],两者交换.</li>
+<li>arr[1] &lt;= arr[2],两者不交换</li>
+</ul>
+</li>
+<li>……以此类推</li>
+<li>第二圈结束后,数组中倒数第二个为当前数组第二个最大值.</li>
+</ul>
+</li>
+<li>……以此类推,共执行N次</li>
+</ul>
+</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">13</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</span><br><span class="line">        System.out.println(array.length);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//排序前</span></span><br><span class="line">        System.out.println(Arrays.toString(array));</span><br><span class="line"></span><br><span class="line">        bubbleSort(array);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//排序后</span></span><br><span class="line">        System.out.println(Arrays.toString(array));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//首先判断array对象是否为空</span></span><br><span class="line">        <span class="comment">//然后判断array是否是单个元素数组</span></span><br><span class="line">        <span class="keyword">if</span> (array == <span class="keyword">null</span> || array.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="comment">//是就直接退出</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//控制次数(第一个~最后一个--第一个~倒数第二个--以此类推)</span></span><br><span class="line">        <span class="comment">//array.length - 1才是最后一个元素的下标,因为下标是从0开始的</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> end = array.length - <span class="number">1</span>; end &gt; <span class="number">0</span>; end--) &#123;</span><br><span class="line">            <span class="comment">//j只能指向倒数第二个元素,防止越界</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; end; j++) &#123;</span><br><span class="line">                <span class="comment">//前一个比后一个元素值大,交换位置</span></span><br><span class="line">                <span class="keyword">if</span> (array[j] &gt; array[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                    swap(j, j + <span class="number">1</span>, array);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//交换位置</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = array[i];</span><br><span class="line">            array[i] = array[j];</span><br><span class="line">            array[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分析:<ul>
+<li>数组中两两交换和数组寻址都是常数时间O(1)的.</li>
+<li>第一个for一共执行<code>N</code>次,第二个for一共执行<code>N-1</code>次,所以一共要执行<code>N^2 + N</code>次.</li>
+<li>不要高阶项系数,不要低阶项,所以我们就可以评估冒泡排序的时间复杂度为<code>O(N^2)</code>.</li>
+<li>其空间复杂度为O(1),因为只用了一个变量没有开辟多余空间.</li>
+</ul>
+</li>
+</ul>
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><ul>
+<li>理解:和冒泡排序相反,选择排序是第一个元素依次和后面的每一个元素相比,比后面的小就交换,所以结束第一圈后最小的数就放在了最前面…以此类推,就可以将数组从小到大排序好.</li>
+</ul>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class SelectionSort &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] array = new int[]&#123;7, 6, 8, 9, 1, 2, 7, 6, 4&#125;;</span><br><span class="line"></span><br><span class="line">        //排序前</span><br><span class="line">        System.out.println(Arrays.toString(array));</span><br><span class="line"></span><br><span class="line">        selectionSort(array);</span><br><span class="line"></span><br><span class="line">        //排序后</span><br><span class="line">        System.out.println(Arrays.toString(array));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //选择排序代码</span><br><span class="line">    private static void selectionSort(int[] array) &#123;</span><br><span class="line"></span><br><span class="line">        //首先判断数组对象是否为空以及是否为单个元素数组</span><br><span class="line">        if (array == null || array.length &lt; 2)&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        //控制循环次数</span><br><span class="line">        for (int start = 0; start &lt; array.length; start++) &#123;</span><br><span class="line">            //注意这里的i只能取到倒数第二个数,防止i+1越界</span><br><span class="line">            for (int i = star t; i &lt; array.length - 1; i++) &#123;</span><br><span class="line">                //如果前一个比后面的大,就交换</span><br><span class="line">                if (array[start] &gt; array[i + 1]) &#123;</span><br><span class="line">                    swap(start,i + 1, array);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void swap(int start, int i, int[] array) &#123;</span><br><span class="line">        int temp = array[i];</span><br><span class="line">        array[i] = array[start];</span><br><span class="line">        array[start] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分析:<ul>
+<li>数组中两两交换和数组寻址都是常数时间O(1)的.</li>
+<li>第一个for一共执行<code>N</code>次,第二个for一共执行<code>N-1</code>次,所以一共要执行<code>N^2 + N</code>次.</li>
+<li>不要高阶项系数,不要低阶项,所以我们就可以评估选择排序的时间复杂度为<code>O(N^2)</code>.</li>
+<li>其空间复杂度为O(1),因为只用了一个变量没有开辟多余空间.</li>
+</ul>
+</li>
+</ul>
+<h1 id="插入排序-重点"><a href="#插入排序-重点" class="headerlink" title="插入排序(重点)"></a>插入排序(重点)</h1><ul>
+<li>理解:以<code>int[] arr = {3,1,4,1,6}</code>为例,可以理解为斗地主嘛,你手上的牌都从小到大排好序了,拿到一张新的牌可不就得和前面已经拿了的牌一个一个对比嘛,小的放前面,大的放后面,对吧?<ul>
+<li>首先,第一个位置的数(下标为0)不动,去和第二个位置的数(下标为1)比较(即拿<code>3</code>和<code>1</code>比较).<ul>
+<li>此时发现<code>3&gt;1</code>,所以arr[0]和arr[1]的值交换.</li>
+<li>此时数组为[1,3,4,1,6].</li>
+</ul>
+</li>
+<li>然后用第二个位置的数(下标为1)去和第三个位置的数(下标为2)比较,(即拿<code>3</code>和<code>4</code>比较)<ul>
+<li>此时发现<code>3 &lt; 4</code>,所以不交换.</li>
+<li>此时数组为[1,3,4,1,6].</li>
+</ul>
+</li>
+<li>然后用第三个位置的数(下标为2)去和第四个位置的数(下标为3)比较,(即拿<code>4</code>和<code>1</code>比较)<ul>
+<li>此时发现<code>4 &gt; 1</code>,所以<code>4</code>和<code>1</code>交换位置,得到[1,3,1,4,6].<ul>
+<li>再将<code>3</code>和<code>1</code>比较,发现<code>3 &gt; 1</code>,两者交换,得到[1,1,3,4,6].</li>
+<li>再将<code>1</code>和<code>1</code>比较,发现<code>1 == 1</code>,所以不交换.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>…以此类推</li>
+<li>当到数组末尾时结束,得到排序好的数组[1,1,3,4,6].</li>
+</ul>
+</li>
+</ul>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 排序前</span></span><br><span class="line">        System.out.println(Arrays.toString(array));</span><br><span class="line"></span><br><span class="line">        insertionSort(array);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 排序后</span></span><br><span class="line">        System.out.println(Arrays.toString(array));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//插入排序</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//判断数组对象是否为空和是否为单个元素数组</span></span><br><span class="line">        <span class="keyword">if</span> (array == <span class="keyword">null</span> || array.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//控制开始和结束,到数组末尾就停,i表示右边第一个未排序的元素下标</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 让左边已经排好序的和右边未排序的依次比较,同时和已排序的进行比较,j表示左边已排序的最后一个元素下标</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                <span class="comment">//大就交换</span></span><br><span class="line">                <span class="keyword">if</span> (array[j] &gt; array[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                    swap(array, j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//交换</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = array[j];</span><br><span class="line">        array[j] = array[j + <span class="number">1</span>];</span><br><span class="line">        array[j + <span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分析:<ul>
+<li>首先数组寻址,交换位置这些时间复杂度都是<code>O(1)</code>这是没有问题的.</li>
+<li>和选择排序和冒泡排序不同的点是:前两个时间复杂度一定是<code>O(N^2)</code>,因为不管你数组有序或者无序,你都是要按照流程一个一个比较的,跟数据状况没关系的,但是插入排序不一样,插入排序和数据状况有关系,要分情况.<ul>
+<li>最好情况下的时间复杂度:<ul>
+<li>当数组本来就有序时,时间复杂度为<code>O(N)</code>,因为没有交换,就和遍历一次数组一样.</li>
+</ul>
+</li>
+<li>最差情况下的时间复杂度<ul>
+<li>当数组是逆序,而我要的是正序时(比如我要的是[1,2,3,4,5],但是你给的是[5,4,3,2,1]),时间复杂度为<code>O(N^2)</code>,每一次都要和前面所有的交换,(例如<code>5</code>要交换<code>4</code>次,<code>4</code>要交换<code>3</code>次这样子),这就形成了一个等差数列(联想到冒泡排序怎么形成等差数列的),所以评估其时间复杂度为<code>O(N^2)</code>.</li>
+</ul>
+</li>
+<li>一般情况下的时间复杂度:<ul>
+<li>一般情况我们一律按照最差情况估计,所以我们一般说插入排序的时间复杂度为<code>O(N^2)</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
@@ -497,7 +619,7 @@
       
         <div class="post-tags">
           
-            <a href="/fanfan999.github.io/tags/冒泡排序-选择排序/" rel="tag"># 冒泡排序,选择排序</a>
+            <a href="/fanfan999.github.io/tags/冒泡排序-选择排序-插入排序/" rel="tag"># 冒泡排序,选择排序,插入排序</a>
           
         </div>
       
@@ -562,8 +684,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -683,6 +814,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择排序"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-1"><span class="nav-number">2.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插入排序-重点"><span class="nav-number">3.</span> <span class="nav-text">插入排序(重点)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-2"><span class="nav-number">3.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
