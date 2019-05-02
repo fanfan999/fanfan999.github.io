@@ -104,16 +104,16 @@
 
 
   <meta name="description" content="写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间.   常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例">
-<meta name="keywords" content="时间复杂度,空间复杂度">
+<meta name="keywords" content="时间复杂度,额外空间复杂度">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于时间复杂度和空间复杂度">
+<meta property="og:title" content="关于时间复杂度和额外空间复杂度">
 <meta property="og:url" content="https://fanfan999.github.io/2019/04/29/关于时间复杂度和空间复杂度/index.html">
 <meta property="og:site_name" content="A Kid">
 <meta property="og:description" content="写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间.   常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-02T05:37:47.151Z">
+<meta property="og:updated_time" content="2019-05-02T09:28:46.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于时间复杂度和空间复杂度">
+<meta name="twitter:title" content="关于时间复杂度和额外空间复杂度">
 <meta name="twitter:description" content="写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间.   常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例">
 
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>关于时间复杂度和空间复杂度 | A Kid</title>
+  <title>关于时间复杂度和额外空间复杂度 | A Kid</title>
   
 
 
@@ -394,7 +394,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于时间复杂度和空间复杂度
+          <h1 class="post-title" itemprop="name headline">关于时间复杂度和额外空间复杂度
 
               
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-02 13:37:47" itemprop="dateModified" datetime="2019-05-02T13:37:47+08:00">2019-05-02</time>
+                <time title="Modified: 2019-05-02 17:28:46" itemprop="dateModified" datetime="2019-05-02T17:28:46+08:00">2019-05-02</time>
               
             
           </span>
@@ -454,7 +454,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/算法基础/" itemprop="url" rel="index"><span itemprop="name">算法基础</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -558,8 +558,12 @@
 </ol>
 </li>
 </ul>
-<h1 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h1><ul>
-<li>空间复杂度其实很好想,开辟了几个新的空间,那就是几,比如我一个循环,循环过程中我新开辟了一个长度为10的数组来存储数据,那么空间复杂度就是O(10),以冒泡排序为例,当两个数需要交换时,我们就会定义一个中间变量<code>temp</code>,这就是我们唯一新开辟空间的地方,这时我们就说冒泡排序的空间复杂度为O(1).</li>
+<h1 id="额外空间复杂度"><a href="#额外空间复杂度" class="headerlink" title="额外空间复杂度"></a>额外空间复杂度</h1><ul>
+<li>额外空间复杂度其实很好想,完成这个功能,我们额外开辟了几个新的空间,那就是几.<ol>
+<li>比如我一个循环,循环过程中我新开辟了一个长度为10的数组来存储数据,那么额外空间复杂度就是O(10)</li>
+<li>再以冒泡排序为例,当两个数需要交换时,我们就会定义一个中间变量<code>temp</code>,这就是我们唯一新开辟空间的地方,这时我们就说冒泡排序的额外空间复杂度为O(1),<strong><em>其实,有限的几个变量(单个变量,不是数组这样子的哈)能跑完流程的话,额外空间复杂度都是O(1),不一定是一个</em></strong>.</li>
+</ol>
+</li>
 </ul>
 
       
@@ -584,7 +588,7 @@
       
         <div class="post-tags">
           
-            <a href="/fanfan999.github.io/tags/时间复杂度-空间复杂度/" rel="tag"># 时间复杂度,空间复杂度</a>
+            <a href="/fanfan999.github.io/tags/时间复杂度-额外空间复杂度/" rel="tag"># 时间复杂度,额外空间复杂度</a>
           
         </div>
       
@@ -678,7 +682,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -701,9 +705,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -796,7 +798,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间复杂度"><span class="nav-number">1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#空间复杂度"><span class="nav-number">2.</span> <span class="nav-text">空间复杂度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间复杂度"><span class="nav-number">1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#额外空间复杂度"><span class="nav-number">2.</span> <span class="nav-text">额外空间复杂度</span></a></li></ol></div>
             
 
           </div>
