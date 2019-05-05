@@ -103,13 +103,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="A Kid">
-<meta property="og:url" content="https://fanfan999.github.io/tags/时间复杂度-额外空间复杂度/index.html">
+  <meta name="description" content="归并排序 写在前面的话: 归并排序的时间复杂度为O(N*logN),额外空间复杂度为O(N). 什么是归并排序呢? 举例:以[2,5,7,1,6,4]为例 首先将其一分为二,划分成两个部分,分别为[2,5,7]和[1,6,4]. 然后分别对左右两部分进行排序,得到[2,5,7]和[1,4,6]. 申请一个辅助数组,长度和原来的数组相同. 左右两个部分分别从左到右进行比较,谁小就放到辅助数组中去,例">
+<meta name="keywords" content="归并排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="归并排序">
+<meta property="og:url" content="https://fanfan999.github.io/2019/05/03/归并排序/index.html">
 <meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="归并排序 写在前面的话: 归并排序的时间复杂度为O(N*logN),额外空间复杂度为O(N). 什么是归并排序呢? 举例:以[2,5,7,1,6,4]为例 首先将其一分为二,划分成两个部分,分别为[2,5,7]和[1,6,4]. 然后分别对左右两部分进行排序,得到[2,5,7]和[1,4,6]. 申请一个辅助数组,长度和原来的数组相同. 左右两个部分分别从左到右进行比较,谁小就放到辅助数组中去,例">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-03T14:19:46.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A Kid">
+<meta name="twitter:title" content="归并排序">
+<meta name="twitter:description" content="归并排序 写在前面的话: 归并排序的时间复杂度为O(N*logN),额外空间复杂度为O(N). 什么是归并排序呢? 举例:以[2,5,7,1,6,4]为例 首先将其一分为二,划分成两个部分,分别为[2,5,7]和[1,6,4]. 然后分别对左右两部分进行排序,得到[2,5,7]和[1,4,6]. 申请一个辅助数组,长度和原来的数组相同. 左右两个部分分别从左到右进行比较,谁小就放到辅助数组中去,例">
 
 
 
@@ -117,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="https://fanfan999.github.io/tags/时间复杂度-额外空间复杂度/">
+  <link rel="canonical" href="https://fanfan999.github.io/2019/05/03/归并排序/">
 
 
 
@@ -127,7 +132,7 @@
   };
 </script>
 
-  <title>Tag: 时间复杂度,额外空间复杂度 | A Kid</title>
+  <title>归并排序 | A Kid</title>
   
 
 
@@ -175,7 +180,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,7 +252,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -352,83 +357,250 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>时间复杂度,额外空间复杂度<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/03/归并排序/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/fanfan999.github.io/2019/04/29/关于时间复杂度和空间复杂度/" itemprop="url">
-            
-              <span itemprop="name">关于时间复杂度和额外空间复杂度</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">归并排序
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-29T19:27:15+08:00" content="2019-04-29">
-          04-29
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-03 14:22:30 / Modified: 22:19:46" itemprop="dateCreated datePublished" datetime="2019-05-03T14:22:30+08:00">2019-05-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p><strong> 写在前面的话: 归并排序的时间复杂度为<code>O(N*logN)</code>,额外空间复杂度为<code>O(N)</code></strong>.</p>
+<h2 id="什么是归并排序呢"><a href="#什么是归并排序呢" class="headerlink" title="什么是归并排序呢?"></a>什么是归并排序呢?</h2><ul>
+<li>举例:以[2,5,7,1,6,4]为例<ul>
+<li>首先将其一分为二,划分成两个部分,分别为<code>[2,5,7]</code>和<code>[1,6,4]</code>.</li>
+<li>然后分别对左右两部分进行排序,得到<code>[2,5,7]</code>和<code>[1,4,6]</code>.</li>
+<li>申请一个辅助数组,长度和原来的数组相同.</li>
+<li>左右两个部分分别从左到右进行比较,谁小就放到辅助数组中去,例如此例中,执行顺序是这样的<ol>
+<li>先<code>2</code>和<code>1</code>比较,<code>2</code>大,就把<code>1</code>放在辅助空间中,然后左边数组下标不动,右边下标＋1.</li>
+<li>再<code>2</code>和<code>4</code>比较,<code>4</code>大,就把<code>2</code>放进辅助空间,然后左边数组下标＋1,右边数组下标不变.</li>
+<li>……以此类推,当一个到了末尾之后,比较停止,剩下的直接全部放到辅助数组中.</li>
+<li>最后得到有序数组<code>[1,2,4,5,6,7]</code>,再将其复制回原数组即可.<h2 id="分析其时间复杂度"><a href="#分析其时间复杂度" class="headerlink" title="分析其时间复杂度"></a>分析其时间复杂度</h2></li>
+</ol>
+</li>
+<li>这是一个递归的过程,我们可以用<code>master公式(): T(N) = a * T(N / b) + O(N^d)</code>来套一下.</li>
+<li>假设数组样本量为<code>N</code>,划分成了两部分,所以两边的样本量是<code>(N/2)</code>,有因为有两部分,所以为<code>2*T(N/2)</code>.</li>
+<li>额外空间复杂度为<code>O(N)</code>,因为要申请一个长度为N的辅助数组.</li>
+<li>用<code>master</code>公式套,可得<code>T(N) = 2 * T(N / 2) + O(N)</code>,即<code>a=2,b=2,d=1</code>.</li>
+<li>由此可知,<code>(log(b,a)) =&gt; 1</code>,而<code>d == 1</code>,所以可得归并排序的时间复杂度为<strong><em>`O(N^d </em> logN) == O(N<em>log(N))`</em></strong>.</li>
+<li>对于额外空间复杂度,就把它当作只生成了一个最大的数组(就是初始化数组的长度),不考虑中间的就好了,所以是<code>O(N)</code>.<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2></li>
+</ul>
+</li>
+<li>行数有点多,我就直接放github上了,需要的话就自己看下: <a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/SortingCodes/MergeSort.java" target="_blank" rel="noopener">归并排序</a></li>
+</ul>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例:"></a>举例:</h2><ol>
+<li>小和问题<code>(以[1,3,4,2,5]为例)</code><ol>
+<li>什么是小和问题: 就是在一个数组中,每一个数左边比当前数小的数累加起来,叫做这个数组的小和,求一个数组的小和的和.</li>
+<li>分析:<ol>
+<li>1左边比1小的数: 没得.</li>
+<li>3左边比3小的数: 1.</li>
+<li>4左边比4小的数: 1,3.</li>
+<li>2左边比2小的数: 1.</li>
+<li>5左边比5小的数: 1,3,4,2.</li>
+<li>所以总的小和为:1+1+3+1+1+3+4+2 = 16.</li>
+</ol>
+</li>
+<li>解决办法<ol>
+<li>每个数都遍历一下左边,小的数就相加,其时间复杂度为<code>O(N^2)</code>,我们对数器就可以这么写.</li>
+<li>用归并思想,产生小和就在合并过程中产生,但是其中有一个要注意的点:<ol>
+<li>在合并的时候,假如左边为<code>[1,3,4]</code>,右边为<code>[2,5]</code>.</li>
+<li>先<code>1</code>和<code>2</code>进行比较,发现<code>2 &gt; 1</code>,<strong><em>而此时,<code>2</code>右边包含<code>2</code>本身一共有<code>两个</code>元素,所以此时需要将<code>1×2</code></em></strong>,然后在将右边的<code>1</code>放到辅助数组中.</li>
+<li>再将<code>3</code>和<code>2</code>比较,发现<code>3 &gt; 2</code>,此时不产生小和,直接将<code>2</code>放入辅助数组.</li>
+<li>……以此类推.</li>
+<li>其实就是,合并的时候左边比右边大,就产生小和,左边比右边小就不产生小和,同时要注意右边的数比左边大的时候,要看<code>右边较大的这个数的右边还有几个数</code>,此时<code>左边较小的数就要乘以几</code>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>逆序对问题</li>
+</ol>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/归并排序/" rel="tag"># 归并排序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/02/关于递归和递归时间复杂度的估算/" rel="next" title="关于递归和递归时间复杂度的估算">
+                <i class="fa fa-chevron-left"></i> 关于递归和递归时间复杂度的估算
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/05/MySQL学习笔记-day01/" rel="prev" title="MySQL学习笔记_day01">
+                MySQL学习笔记_day01 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -448,8 +620,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -582,6 +763,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#归并排序"><span class="nav-number">1.</span> <span class="nav-text">归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是归并排序呢"><span class="nav-number">1.1.</span> <span class="nav-text">什么是归并排序呢?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析其时间复杂度"><span class="nav-number">1.2.</span> <span class="nav-text">分析其时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例"><span class="nav-number">1.4.</span> <span class="nav-text">举例:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -711,6 +909,10 @@
 
 
   
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -726,6 +928,8 @@
 
   
 
+
+  
 
 
   

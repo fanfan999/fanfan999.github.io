@@ -112,7 +112,7 @@
 <meta property="og:description" content="递归两个小例子: 举例1: 在一个数组中找到最大值  我先找左边最大值和右边最大值(以下标中间为界),两者相比较,较大的就是全局最大值 我直接贴代码了哈: 12345678910111213141516//结束条件        if (L &amp;gt;= R) &amp;#123;            return array[L];        &amp;#125;        //找到中间位置,划分为左右">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92%E5%92%8C%E9%80%92%E5%BD%92%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E4%BC%B0%E7%AE%97/%E9%80%92%E5%BD%92%E5%8E%9F%E7%90%86%E5%9B%BE.png">
-<meta property="og:updated_time" content="2019-05-03T03:00:29.607Z">
+<meta property="og:updated_time" content="2019-05-03T07:55:36.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于递归和递归时间复杂度的估算">
 <meta name="twitter:description" content="递归两个小例子: 举例1: 在一个数组中找到最大值  我先找左边最大值和右边最大值(以下标中间为界),两者相比较,较大的就是全局最大值 我直接贴代码了哈: 12345678910111213141516//结束条件        if (L &amp;gt;= R) &amp;#123;            return array[L];        &amp;#125;        //找到中间位置,划分为左右">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-03 11:00:29" itemprop="dateModified" datetime="2019-05-03T11:00:29+08:00">2019-05-03</time>
+                <time title="Modified: 2019-05-03 15:55:36" itemprop="dateModified" datetime="2019-05-03T15:55:36+08:00">2019-05-03</time>
               
             
           </span>
@@ -544,7 +544,7 @@
 <li><strong><em>从这里我们可以看出,上述求最大值的时间复杂度为</em></strong>T(N) = 2<em>T(N/2) + O(1),就相当于<code>a=2,b=2,d=0</code>**</em>.</li>
 </ul>
 </li>
-<li>master的公式是有适用范围的:那就是<em>划分子过程的时候,划分的<code>子过程的规模</code>必须是一样的,才可以用master公式</em>.</li>
+<li>master的公式是有适用范围的:那就是<em>划分子过程的时候,划分的<code>子过程的规模</code>必须是一样(或者差不多,多一个两个有限个的都无所谓)的,才可以用master公式</em>.</li>
 </ul>
 </li>
 <li>对满足这个公式的算法有几个快捷使用公式:<ol>
@@ -609,6 +609,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/03/归并排序/" rel="prev" title="归并排序">
+                归并排序 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -677,7 +681,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -700,7 +704,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -731,7 +739,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
