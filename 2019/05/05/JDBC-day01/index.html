@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="A Kid">
 <meta property="og:description" content="JDBC-day01JDBC基本概念 概念: Java DataBase Connectivity 即Java数据库连接, 用java语言操作数据库. JDBC本质: 我们期望使用统一的一套java代码可以操作所有的数据库,为此,sun公司就定义了医药操作所有关系型数据库的规则(也就是接口),而其每个数据库对这个接口的实现类由该数据库公司自己实现.所以, 我们可以说JDBC的本质就是:官方(sun">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-05T13:31:19.497Z">
+<meta property="og:updated_time" content="2019-05-06T00:27:43.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC-day01">
 <meta name="twitter:description" content="JDBC-day01JDBC基本概念 概念: Java DataBase Connectivity 即Java数据库连接, 用java语言操作数据库. JDBC本质: 我们期望使用统一的一套java代码可以操作所有的数据库,为此,sun公司就定义了医药操作所有关系型数据库的规则(也就是接口),而其每个数据库对这个接口的实现类由该数据库公司自己实现.所以, 我们可以说JDBC的本质就是:官方(sun">
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="Created: 2019-05-05 09:55:00 / Modified: 21:31:19" itemprop="dateCreated datePublished" datetime="2019-05-05T09:55:00+08:00">2019-05-05</time>
+              <time title="Created: 2019-05-05 09:55:00" itemprop="dateCreated datePublished" datetime="2019-05-05T09:55:00+08:00">2019-05-05</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-06 08:27:43" itemprop="dateModified" datetime="2019-05-06T08:27:43+08:00">2019-05-06</time>
               
             
           </span>
@@ -515,90 +527,115 @@
 </ul>
 <h2 id="对JDBC中各个接口和类详解"><a href="#对JDBC中各个接口和类详解" class="headerlink" title="对JDBC中各个接口和类详解"></a>对JDBC中各个接口和类详解</h2><ol>
 <li><p>详解各个对象</p>
-<ol>
+<ul>
 <li><p>DriverManager(类): 驱动管理对象.</p>
 <ul>
-<li><p>功能:</p>
+<li><p>功能</p>
 <ol>
 <li><p>注册驱动,告诉我们的程序该使用哪个数据库的jar包.</p>
 <ul>
-<li>使用的方法: <code>public static void registerDriver​(Driver driver) throws SQLException</code>.</li>
+<li><p>使用的方法: <code>public static void registerDriver​(Driver driver) throws SQLException</code>.</p>
+</li>
 <li><p>写代码使用该方法:<code>Class.forName(&quot;com.mysql.jdbc.Driver&quot;)</code>,通过查看Driver的源码,我们发现,在Driver类中存在静态代码块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">			static &#123;</span><br><span class="line">			        try &#123;</span><br><span class="line">			            DriverManager.registerDriver(new Driver());</span><br><span class="line">			        &#125; catch (SQLException var1) &#123;</span><br><span class="line">			            throw new RuntimeException(&quot;Can&apos;t register driver!&quot;);</span><br><span class="line">			        &#125;</span><br><span class="line">			    &#125;</span><br><span class="line">			```	</span><br><span class="line">			* 注意:在导入mysql5的jar包以后,我们注册驱动的语句可以不用写,因为在jar包下的`META-INF`文件夹中的`services`中帮我们写了,不过我们还是建议写上,我们不知道驱动咋写的时候也可以去`META-INF`文件夹中的`services`中复制.		</span><br><span class="line">		2. 获取数据库连接.</span><br><span class="line">			* 使用的方法: `public static Connection getConnection​(String url, String user, String password)`.</span><br><span class="line">			* 参数:</span><br><span class="line">				* url:指定连接的路径</span><br><span class="line">					* 语法: jdbc:mysql://ip地址(或者域名,用于找到计算机):端口号(用于找到mysql软件)/数据库名称</span><br><span class="line">					* 例子:jdbc:mysql://localhost:3306/cart</span><br><span class="line">					* 细节:如果连接的是本机的mysql服务器,并且mysql的默认端口是3306,则url中的`ip和端口`可以省略,所以url可以简写为:***jdbc:mysql:///数据库名称***</span><br><span class="line">				* user:用户名</span><br><span class="line">				* password:密码</span><br><span class="line">2. Connection(接口): 数据库连接对象</span><br><span class="line">	* 功能:</span><br><span class="line">		1. 获取执行sql语句的对象</span><br><span class="line">			* 方法1: `Statement createStatement()`.</span><br><span class="line">			* 方法2: `PreparedStatement prepareStatement​(String sql)`.</span><br><span class="line">		2. 管理事务:</span><br><span class="line">			* 开启事务: `void setAutoCommit​(boolean autoCommit)`,调用该方法设置参数为`false`则开启事务.</span><br><span class="line">			* 提交事务: `void commit()`.</span><br><span class="line">			* 回滚事务: `void rollback()`.</span><br><span class="line">3. Statement(接口,重要): 执行静态sql语句对象</span><br><span class="line">	* 方法1(了解): `boolean execute​(String sql)`,返回true表示执行的是DQL语句,返回false表示执行的是	DML语句.</span><br><span class="line">	* 方法2: `int executeUpdate​(String sql)`,执行`DML语句(数据操作语言,增删改,insert,update,delete)`,`DDL语句(数据定义语言,创建/删除表和库,create,alter,drop)`.</span><br><span class="line">		* 返回值: 表示影响的行数(针对DML语句,而对DDL永远返回0,因为它不返回任何内容).</span><br><span class="line">		* 返回值作用: 可以通过影响的行数来判断DML语句是否执行成功,返回值&gt;0则执行成功,反之则执行失败.</span><br><span class="line">	* 方法3: `ResultSet  executeQuery（String  sql）`,执行DQL语句(数据查询语言查询语句,select).</span><br><span class="line">	* 练习,针对product表:</span><br><span class="line">		1. 添加一条记录:`String sql = &quot;insert into product(id,name,price) value(null , &apos;平板2&apos; , 500)&quot;,其中`product(id,name,price)`中的括号里的参数表示增加哪一个字段内容,不写就表示增加所有字段`.</span><br><span class="line">			* 注意:这里`value`可以写成`values`,在插入一条数据时,用`values`较快,插入多行数据时,用`value`较快.</span><br><span class="line">		2. 删除一条记录: `String sql = &quot;delete from product where id = 2&quot;;`.</span><br><span class="line">		3. 修改一条记录: `String sql = &quot;update product set name = &apos;平板&apos; where id = 1&quot;;`.</span><br><span class="line">		4. 创建一张表: `String sql = &quot;create table student (id int, name varchar(20))&quot;;`.</span><br><span class="line">		5. 删除一张表: `String sql = &quot;drop table student&quot;;`.</span><br><span class="line">4. ResultSet(接口): 结果集对象,封装查询结果.</span><br><span class="line">	* next(): 游标向下移动一行(默认光标指向位置是表头,此时是没有数据的,向下移动一行后就有数据了),同时可以通过该方法判断是否到达最后一行末尾(即是否有数据),如果有数据,则返回true,反之则返回false.</span><br><span class="line">	* getXxx(参数): 获取数据.</span><br><span class="line">		* Xxx代表`数据类型`,因为它是一次获取一行当中某一列的值,不是一次获取一整行的,例如: int getInt().</span><br><span class="line">		* 参数有两种情况:</span><br><span class="line">			1. int类型: 代表列的编号,从`1`开始,不是从0开始,如:getInt(1).</span><br><span class="line">			2. String类型: 代表列的名称,如:getString(&quot;id&quot;).</span><br><span class="line">	* 注意:</span><br><span class="line">		* ResultSet的使用步骤:</span><br><span class="line">			1. 游标向下移动一行.</span><br><span class="line">			2. 判断是否有数据.</span><br><span class="line">			3. 获取数据.</span><br></pre></td></tr></table></figure>
-<p>while (rs.next()) {</p>
-<pre><code>    int id = rs.getInt(1);
-    String name = rs.getString(&quot;name&quot;);
-    double price = rs.getDouble(&quot;price&quot;);
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>                static {
+                        try {
+                            DriverManager.registerDriver(new Driver());
+                        } catch (SQLException var1) {
+                            throw new RuntimeException(&quot;Can&apos;t register driver!&quot;);
+                        }
+                    }
 
-    String data = &quot;id = &quot; + id + &quot;name = &quot; + name + &quot;price = &quot; + price;
-    System.out.println(data);
-}
-</code></pre><p><code>`</code></p>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>练习:<ul>
-<li>定义一个方法,查询<code>db_student</code>数据库中<code>studentinfo</code>中的数据,并将其封装为对象,然后打印.</li>
-<li>思路:表其实和类的定义很类似,定义字段名,字段类型等,而表中每一行数据和一个对象类似,有表中每个字段的内容,所以我们可以把表映射成一个类,把查询的每一行数据封装成该类对象,然后用集合将所有对象都装载在一起返回.<ol>
-<li>定义一个<code>Studentinfo</code>类,封装数据库中表的各个字段.</li>
-<li>定义方法 public List<studentinfo> finaAll(),实现对数据库中所有数据的查询并将数据添加到list集合中.</studentinfo></li>
-<li>调用方法.</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>PreparedStatement(statement的子接口): 执行动态sql语句<ol>
-<li><strong>SQL注入问题</strong>: 在拼接sql语句时,有一些sql的特殊关键字参与字符串的拼接,会造成一些安全性问题<ul>
-<li>例如: <code>select * from usertable where username = &#39;abc&#39; and password = &#39;a&#39; or &#39;a&#39; = &#39;a&#39;</code>,前面的账号密码是错的,但是这个sql语句是恒成立的,因为后面有个<code>or &#39;a&#39; = &#39;a&#39;</code>,这就会把数据库中所有数据都查出来,同时导致程序出问题.</li>
-</ul>
-</li>
-<li>解决sql注入问题: 使用PreparedStatement对象来解决.</li>
-<li>预编译sql语句:参数使用<code>?</code>作为占位符,在执行的时候,给<code>?</code>赋值就行了,这个虽然步骤麻烦一点,但是安全一些.</li>
-<li>使用步骤:<ol>
-<li>导入对应数据库的驱动jar包,要用mysql就导入mysql的.即复制jar包,到项目下(可以新建一个目录libs,jar包都放在该目录下).</li>
-<li>将libs目录–&gt;右键–&gt;添加为库.</li>
-<li>注册驱动,让程序知道是用哪个数据库.<ul>
-<li><code>Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</code>.</li>
-</ul>
-</li>
-<li>获取数据库连接对象Connection.<ul>
-<li><code>Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/cart&quot;, &quot;root&quot;, &quot;root&quot;);</code>.</li>
-</ul>
-</li>
-<li>定义sql语句.<ul>
-<li><strong>注意</strong>: sql的参数使用<code>?</code>作为占位符.如<code>String sql = &quot;update product set name = ? where id = ?&quot;;</code>. </li>
-</ul>
-</li>
-<li>获取执行sql语句的对象 PreparedStatement: 方法为<code>PreparedStatement prepareStatement​(String sql)</code>.<ul>
-<li><code>PreparedStatement ps = conn.prepareStatement(sql);</code>.</li>
-</ul>
-</li>
-<li>给<code>?</code>赋值<ul>
-<li>用到PreparedStatement中的setXxx(参数1, 参数2)方法.</li>
-<li>其中,<strong>参数1</strong>表示?的位置编号,从1开始,<strong>参数2</strong>表示?的值.</li>
-</ul>
-</li>
-<li>执行sql语句,接收返回的结果,在这里就不需要传递sql语句了,因为在步骤6中已经传递过了.</li>
-<li>处理结果.</li>
-<li>释放资源. </li>
-</ol>
-</li>
-<li>改造登录例子代码:<strong><em><a href="https://github.com/fanfan999/WebCodes/blob/master/JdbcDemo/fan/LoginUser_PrepareStatement.java" target="_blank" rel="noopener">PrepareStatement改进登录代码</a></em></strong></li>
-<li>注意:我们以后使用PrepareStatement来完成增删查改的所有操作<ol>
-<li>可以防止SQL注入.</li>
-<li>效率比Statement高.</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="抽取JDBC工具类-JDBCUtils类"><a href="#抽取JDBC工具类-JDBCUtils类" class="headerlink" title="抽取JDBC工具类: JDBCUtils类"></a>抽取JDBC工具类: JDBCUtils类</h2><ul>
+
+            * 注意:在导入mysql5的jar包以后,我们注册驱动的语句可以不用写,因为在jar包下的`META-INF`文件夹中的`services`中帮我们写了,不过我们还是建议写上,我们不知道驱动咋写的时候也可以去`META-INF`文件夹中的`services`中复制.
+
+        2. 获取数据库连接.
+
+            * 使用的方法: `public static Connection getConnection​(String url, String user, String password)`.
+            * 参数:
+                * url:指定连接的路径
+                    * 语法: jdbc:mysql://ip地址(或者域名,用于找到计算机):端口号(用于找到mysql软件)/数据库名称
+                    * 例子:jdbc:mysql://localhost:3306/cart
+                    * 细节:如果连接的是本机的mysql服务器,并且mysql的默认端口是3306,则url中的`ip和端口`可以省略,所以url可以简写为:***jdbc:mysql:///数据库名称***
+                * user:用户名
+                * password:密码
+* Connection(接口): 数据库连接对象
+    * 功能:
+        1. 获取执行sql语句的对象
+            * 方法1: `Statement createStatement()`.
+            * 方法2: `PreparedStatement prepareStatement​(String sql)`.
+        2. 管理事务:
+            * 开启事务: `void setAutoCommit​(boolean autoCommit)`,调用该方法设置参数为`false`则开启事务.
+            * 提交事务: `void commit()`.
+            * 回滚事务: `void rollback()`.
+* Statement(接口,重要): 执行静态sql语句对象
+    * 方法1(了解): `boolean execute​(String sql)`,返回true表示执行的是DQL语句,返回false表示执行的是    DML语句.
+    * 方法2: `int executeUpdate​(String sql)`,执行`DML语句(数据操作语言,增删改,insert,update,delete)`,`DDL语句(数据定义语言,创建/删除表和库,create,alter,drop)`.
+        * 返回值: 表示影响的行数(针对DML语句,而对DDL永远返回0,因为它不返回任何内容).
+        * 返回值作用: 可以通过影响的行数来判断DML语句是否执行成功,返回值&gt;0则执行成功,反之则执行失败.
+    * 方法3: `ResultSet  executeQuery（String  sql）`,执行DQL语句(数据查询语言查询语句,select).
+    * 练习,针对product表:
+        1. 添加一条记录:`String sql = &quot;insert into product(id,name,price) value(null , &apos;平板2&apos; , 500)&quot;,其中`product(id,name,price)`中的括号里的参数表示增加哪一个字段内容,不写就表示增加所有字段`.
+            * 注意:这里`value`可以写成`values`,在插入一条数据时,用`values`较快,插入多行数据时,用`value`较快.
+        2. 删除一条记录: `String sql = &quot;delete from product where id = 2&quot;;`.
+        3. 修改一条记录: `String sql = &quot;update product set name = &apos;平板&apos; where id = 1&quot;;`.
+        4. 创建一张表: `String sql = &quot;create table student (id int, name varchar(20))&quot;;`.
+        5. 删除一张表: `String sql = &quot;drop table student&quot;;`.
+* ResultSet(接口): 结果集对象,封装查询结果.
+    * next(): 游标向下移动一行(默认光标指向位置是表头,此时是没有数据的,向下移动一行后就有数据了),同时可以通过该方法判断是否到达最后一行末尾(即是否有数据),如果有数据,则返回true,反之则返回false.
+    * getXxx(参数): 获取数据.
+        * Xxx代表`数据类型`,因为它是一次获取一行当中某一列的值,不是一次获取一整行的,例如: int getInt().
+        * 参数有两种情况:
+            1. int类型: 代表列的编号,从`1`开始,不是从0开始,如:getInt(1).
+            2. String类型: 代表列的名称,如:getString(&quot;id&quot;).
+    * 注意:
+        * ResultSet的使用步骤:
+            1. 游标向下移动一行.
+            2. 判断是否有数据.
+            3. 获取数据.
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">	<span class="keyword">int</span> id = rs.getInt(<span class="number">1</span>);</span><br><span class="line">	String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">	<span class="keyword">double</span> price = rs.getDouble(<span class="string">"price"</span>);</span><br><span class="line">	String data = <span class="string">"id = "</span> + id + <span class="string">"name = "</span> + name + <span class="string">"price = "</span> + price;</span><br><span class="line">	System.out.println(data);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>    * 练习:
+        * 定义一个方法,查询`db_student`数据库中`studentinfo`中的数据,并将其封装为对象,然后打印.
+        * 思路:表其实和类的定义很类似,定义字段名,字段类型等,而表中每一行数据和一个对象类似,有表中每个字段的内容,所以我们可以把表映射成一个类,把查询的每一行数据封装成该类对象,然后用集合将所有对象都装载在一起返回.
+            1. 定义一个`Studentinfo`类,封装数据库中表的各个字段.
+            2. 定义方法 public List&lt;Studentinfo&gt; finaAll(),实现对数据库中所有数据的查询并将数据添加到list集合中.
+            3. 调用方法.
+*  PreparedStatement(statement的子接口): 执行动态sql语句
+    1. **SQL注入问题**: 在拼接sql语句时,有一些sql的特殊关键字参与字符串的拼接,会造成一些安全性问题
+        * 例如: `select * from usertable where username = &apos;abc&apos; and password = &apos;a&apos; or &apos;a&apos; = &apos;a&apos;`,前面的账号密码是错的,但是这个sql语句是恒成立的,因为后面有个`or &apos;a&apos; = &apos;a&apos;`,这就会把数据库中所有数据都查出来,同时导致程序出问题.
+    2. 解决sql注入问题: 使用PreparedStatement对象来解决.
+    3. 预编译sql语句:参数使用`?`作为占位符,在执行的时候,给`?`赋值就行了,这个虽然步骤麻烦一点,但是安全一些.
+    4. 使用步骤:
+        1. 导入对应数据库的驱动jar包,要用mysql就导入mysql的.即复制jar包,到项目下(可以新建一个目录libs,jar包都放在该目录下).
+        2. 将libs目录--&gt;右键--&gt;添加为库.
+        3. 注册驱动,让程序知道是用哪个数据库.
+            * `Class.forName(&quot;com.mysql.jdbc.Driver&quot;);`.
+        4. 获取数据库连接对象Connection.
+            * `Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/cart&quot;, &quot;root&quot;, &quot;root&quot;);`.
+        5. 定义sql语句.
+            * **注意**: sql的参数使用`?`作为占位符.如`String sql = &quot;update product set name = ? where id = ?&quot;;`. 
+        6. 获取执行sql语句的对象 PreparedStatement: 方法为`PreparedStatement prepareStatement​(String sql)`.
+            * `PreparedStatement ps = conn.prepareStatement(sql);`.
+        7. 给`?`赋值
+            * 用到PreparedStatement中的setXxx(参数1, 参数2)方法.
+            * 其中,**参数1**表示?的位置编号,从1开始,**参数2**表示?的值.
+        7. 执行sql语句,接收返回的结果,在这里就不需要传递sql语句了,因为在步骤6中已经传递过了.
+        8. 处理结果.
+        9. 释放资源. 
+    5. 改造登录例子代码:***[PrepareStatement改进登录代码](https://github.com/fanfan999/WebCodes/blob/master/JdbcDemo/fan/LoginUser_PrepareStatement.java)***
+    6. 注意:我们以后使用PrepareStatement来完成增删查改的所有操作
+        1. 可以防止SQL注入.
+        2. 效率比Statement高.
+</code></pre><h2 id="抽取JDBC工具类-JDBCUtils类"><a href="#抽取JDBC工具类-JDBCUtils类" class="headerlink" title="抽取JDBC工具类: JDBCUtils类"></a>抽取JDBC工具类: JDBCUtils类</h2><ul>
 <li>目的: 简化书写</li>
 <li>分析:<ol>
 <li>抽取注册驱动.</li>
@@ -630,11 +667,15 @@
 </ul>
 </li>
 </ul>
-<h2 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点:"></a>需要注意的点:</h2><pre><code>1. JAVA中两个`基1`的点:
-    1. 在查询语句`ResultSet`中,参数是从`1`开始的.
-    2. 在预编译接口`PreparedStatement`对象中,参数也是从`1`开始的.
-2. 上面提到的对象中,只有`DriverManager`是类,其它的都是接口.
-</code></pre>
+<h2 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点:"></a>需要注意的点:</h2><ol>
+<li>JAVA中两个<code>基1</code>的点:<ol>
+<li>在查询语句<code>ResultSet</code>中,参数是从<code>1</code>开始的.</li>
+<li>在预编译接口<code>PreparedStatement</code>对象中,参数也是从<code>1</code>开始的.</li>
+</ol>
+</li>
+<li>上面提到的对象中,只有<code>DriverManager</code>是类,其它的都是接口.</li>
+</ol>
+
       
     </div>
 
