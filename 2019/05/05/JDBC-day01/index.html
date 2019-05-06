@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="A Kid">
 <meta property="og:description" content="JDBC-day01JDBC基本概念 概念: Java DataBase Connectivity 即Java数据库连接, 用java语言操作数据库. JDBC本质: 我们期望使用统一的一套java代码可以操作所有的数据库,为此,sun公司就定义了医药操作所有关系型数据库的规则(也就是接口),而其每个数据库对这个接口的实现类由该数据库公司自己实现.所以, 我们可以说JDBC的本质就是:官方(sun">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-06T00:27:43.725Z">
+<meta property="og:updated_time" content="2019-05-06T01:30:06.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC-day01">
 <meta name="twitter:description" content="JDBC-day01JDBC基本概念 概念: Java DataBase Connectivity 即Java数据库连接, 用java语言操作数据库. JDBC本质: 我们期望使用统一的一套java代码可以操作所有的数据库,为此,sun公司就定义了医药操作所有关系型数据库的规则(也就是接口),而其每个数据库对这个接口的实现类由该数据库公司自己实现.所以, 我们可以说JDBC的本质就是:官方(sun">
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-06 08:27:43" itemprop="dateModified" datetime="2019-05-06T08:27:43+08:00">2019-05-06</time>
+                <time title="Modified: 2019-05-06 09:30:06" itemprop="dateModified" datetime="2019-05-06T09:30:06+08:00">2019-05-06</time>
               
             
           </span>
@@ -578,7 +578,7 @@
             * 提交事务: `void commit()`.
             * 回滚事务: `void rollback()`.
 * Statement(接口,重要): 执行静态sql语句对象
-    * 方法1(了解): `boolean execute​(String sql)`,返回true表示执行的是DQL语句,返回false表示执行的是    DML语句.
+    * 方法1(了解): `boolean execute​(String sql)`,返回true表示执行的是DQL语句,返回false表示执行的是DML语句.
     * 方法2: `int executeUpdate​(String sql)`,执行`DML语句(数据操作语言,增删改,insert,update,delete)`,`DDL语句(数据定义语言,创建/删除表和库,create,alter,drop)`.
         * 返回值: 表示影响的行数(针对DML语句,而对DDL永远返回0,因为它不返回任何内容).
         * 返回值作用: 可以通过影响的行数来判断DML语句是否执行成功,返回值&gt;0则执行成功,反之则执行失败.
@@ -671,6 +671,7 @@
 <li>JAVA中两个<code>基1</code>的点:<ol>
 <li>在查询语句<code>ResultSet</code>中,参数是从<code>1</code>开始的.</li>
 <li>在预编译接口<code>PreparedStatement</code>对象中,参数也是从<code>1</code>开始的.</li>
+<li>当然,<code>id</code>这些<code>基1</code>的就不用说了,那是肯定的</li>
 </ol>
 </li>
 <li>上面提到的对象中,只有<code>DriverManager</code>是类,其它的都是接口.</li>
@@ -720,6 +721,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/06/JDBC-day02/" rel="prev" title="JDBC-day01">
+                JDBC-day01 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -788,7 +793,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

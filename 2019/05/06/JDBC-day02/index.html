@@ -103,13 +103,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="A Kid">
-<meta property="og:url" content="https://fanfan999.github.io/tags/递归/index.html">
+  <meta name="description" content="JDBC-day02JDBC控制事务(重要): 事务: 其实是一个包含多个步骤的业务操作,如果这个业务操作被事务管理,则这多个步骤要么同时成功,要么同时失败. 事务操作: 开启事务 提交事务 回滚事务   使用Connection对象来管理事务 方法: 开启事务: setAutoCommit(boolean autoCommit): 调用该方法设置参数为false,则表示开启事务. 在执行sql前">
+<meta name="keywords" content="JDBC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDBC-day01">
+<meta property="og:url" content="https://fanfan999.github.io/2019/05/06/JDBC-day02/index.html">
 <meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="JDBC-day02JDBC控制事务(重要): 事务: 其实是一个包含多个步骤的业务操作,如果这个业务操作被事务管理,则这多个步骤要么同时成功,要么同时失败. 事务操作: 开启事务 提交事务 回滚事务   使用Connection对象来管理事务 方法: 开启事务: setAutoCommit(boolean autoCommit): 调用该方法设置参数为false,则表示开启事务. 在执行sql前">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-06T12:09:10.192Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A Kid">
+<meta name="twitter:title" content="JDBC-day01">
+<meta name="twitter:description" content="JDBC-day02JDBC控制事务(重要): 事务: 其实是一个包含多个步骤的业务操作,如果这个业务操作被事务管理,则这多个步骤要么同时成功,要么同时失败. 事务操作: 开启事务 提交事务 回滚事务   使用Connection对象来管理事务 方法: 开启事务: setAutoCommit(boolean autoCommit): 调用该方法设置参数为false,则表示开启事务. 在执行sql前">
 
 
 
@@ -117,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="https://fanfan999.github.io/tags/递归/">
+  <link rel="canonical" href="https://fanfan999.github.io/2019/05/06/JDBC-day02/">
 
 
 
@@ -127,7 +132,7 @@
   };
 </script>
 
-  <title>Tag: 递归 | A Kid</title>
+  <title>JDBC-day01 | A Kid</title>
   
 
 
@@ -175,7 +180,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,7 +252,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -352,83 +357,364 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>递归<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/06/JDBC-day02/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/fanfan999.github.io/2019/05/02/关于递归和递归时间复杂度的估算/" itemprop="url">
-            
-              <span itemprop="name">关于递归和递归时间复杂度的估算</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">JDBC-day01
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-02T17:29:30+08:00" content="2019-05-02">
-          05-02
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-06 08:31:50 / Modified: 20:09:10" itemprop="dateCreated datePublished" datetime="2019-05-06T08:31:50+08:00">2019-05-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/JDBC/" itemprop="url" rel="index"><span itemprop="name">JDBC</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JDBC-day02"><a href="#JDBC-day02" class="headerlink" title="JDBC-day02"></a>JDBC-day02</h1><h2 id="JDBC控制事务-重要"><a href="#JDBC控制事务-重要" class="headerlink" title="JDBC控制事务(重要):"></a>JDBC控制事务(重要):</h2><ol>
+<li>事务: 其实是一个包含多个步骤的业务操作,如果这个业务操作被事务管理,则这多个步骤要么同时成功,要么同时失败.</li>
+<li>事务操作:<ol>
+<li>开启事务</li>
+<li>提交事务</li>
+<li>回滚事务</li>
+</ol>
+</li>
+<li>使用Connection对象来管理事务<ol>
+<li>方法:<ol>
+<li>开启事务: setAutoCommit(boolean autoCommit): 调用该方法设置参数为false,则表示开启事务.<ul>
+<li>在执行sql前开启事务</li>
+</ul>
+</li>
+<li>提交事务: commit().<ul>
+<li>当所有sql执行完成后提交事务</li>
+</ul>
+</li>
+<li>回滚事务: rollback().<ul>
+<li>在catch中回滚事务,保证任何地方出现问题后都可以回滚,而且catch中抛出的异常要是<code>Exception</code>,保证可以捕捉所有异常.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>案例-JDBC管理事务的实现:<ol>
+<li>代码: <strong><em><a href="https://github.com/fanfan999/WebCodes/blob/master/JdbcDemo/jdbc/JdbcDemo3.java" target="_blank" rel="noopener">JDBC事务管理代码JDBCDemo3</a></em></strong></li>
+</ol>
+</li>
+</ol>
+<h2 id="数据库连接池-重要"><a href="#数据库连接池-重要" class="headerlink" title="数据库连接池(重要):"></a>数据库连接池(重要):</h2><ul>
+<li>我们之前写的代码都是运行一次申请一次资源,资源一用完就释放,就相当于你招聘了一个服务员来给顾客服务,顾客吃完走了你就把这个服务员开除了,下次有顾客来吃饭你就再招聘一个,吃完又把这个服务员开除了,循环往复…</li>
+<li>显然这样是不合理的,正常的情况应该是,多招聘几个服务员,当这个服务员服务完这个顾客以后,应该等着给下一位顾客服务,这个就和数据库连接池的定义是类似的.</li>
+<li>概念: 其实就是一个容器(集合),存放数据库连接.<ul>
+<li>当系统初始化结束后,容器就被创建,容器中会申请<code>多个数据库连接对象</code>,当用户来访问数据库时,从容器中获取连接对象,用户访问结束后,就将数据库连接对象还给容器.</li>
+</ul>
+</li>
+<li>好处: <ol>
+<li>节约资源,使得资源循环利用.</li>
+<li>用户访问高效,因为可以节省掉申请资源这些时间.</li>
+</ol>
+</li>
+<li>实现:<ol>
+<li>使用标准接口: javax.sql包下的DataSource接口.<ol>
+<li>方法: <ul>
+<li>获取连接: <code>Connection getConnection()</code>.</li>
+<li>归还连接: <code>Connection.close()</code>,如果连接对象Connection是从连接池中获取的,那么调用<code>Connection.close()</code>方法,则不会再关闭连接了,而是去归还连接.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>一般我们不去实现它,由数据库厂商实现,例如:<ol>
+<li>C3P0: 数据库连接池技术(较老).</li>
+<li>Druid(德鲁伊): 数据库连接池技术(较新),由阿里巴巴提供的,用的更多.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>C3P0: 数据库连接池技术<ol>
+<li>使用步骤:<ol>
+<li>导入jar包(两个,还有一个是依赖包),如<code>c3p0-0.9.5.2.jar</code>和<code>mchange-commons-java-0.2.12.jar</code>,注意不要忘记导入数据库的驱动jar包,因为这个说到底还是对数据库的操作.</li>
+<li>定义配置文件:<ol>
+<li>名称: <code>c3p0.properties</code>或者 <code>c3p0-config.xml</code>等,在<strong><a href="https://www.mchange.com/projects/c3p0/#using_combopooleddatasource" target="_blank" rel="noopener">c3p0 - JDBC3 Connection and Statement Pooling</a></strong>中能看到.</li>
+<li>路径: 直接将文件放在src目录下即可,它会自动加载,我们一般用<code>c3p0-config.xml</code>这种文件.</li>
+</ol>
+</li>
+<li>创建核心对象: 数据库连接池对象: <code>ComboPooledDataSource对</code>象.</li>
+<li>获取连接: <code>getConnection()</code>.</li>
+<li>例子代码我放github了: <ol>
+<li><a href="https://github.com/fanfan999/tools" target="_blank" rel="noopener">c3p0工具jar包</a>.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/tree/master/ConnectionPool/C3P0" target="_blank" rel="noopener">c3p0测试代码</a>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Druid(德鲁伊): 数据库连接池技术<ol>
+<li>使用步骤:<ol>
+<li>导入jar包<code>druid-1.0.9.jar</code>,同时也不要忘了导入数据库驱动包.</li>
+<li>定义并加载配置文件:<ol>
+<li>是<code>Properties</code>形式的文件,如: <code>druid.properties</code>.</li>
+<li>可以叫任意名称,可以放在任意目录下,同时也不会自动加载了.</li>
+<li>加载配置文件,<code>ProPerties</code>.</li>
+</ol>
+</li>
+<li>获取数据库连接池对象: 通过一个工厂类来获取: <code>DruidDataSourceFactory</code>.</li>
+<li>获取连接: <code>getConnection()</code>.</li>
+<li>代码,超链接如下 : <ol>
+<li><a href="https://github.com/fanfan999/tools/tree/master/druid-1.0.9" target="_blank" rel="noopener">druid工具jar包</a>.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/ConnectionPool/druid/DruidDemo.java" target="_blank" rel="noopener">druid测试代码</a>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>定义druid工具类:<ol>
+<li>定义一个类: JDBCUtils</li>
+<li>提供静态代码块加载配置文件,初始化连接池对象.</li>
+<li>提供方法:<ol>
+<li>获取连接方`: 通过数据库连接池获取连接.</li>
+<li>释放资源.</li>
+<li>获取连接池的方法.</li>
+</ol>
+</li>
+<li>代码超链接如下:<ol>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/ConnectionPool/druid/DruidUtils.java" target="_blank" rel="noopener">druid工具类</a>.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/ConnectionPool/druid/DruidDemo2.java" target="_blank" rel="noopener">druid工具类测试代码</a>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Spring-JDBC-JDBC-Template-重要"><a href="#Spring-JDBC-JDBC-Template-重要" class="headerlink" title="Spring JDBC: JDBC Template(重要):"></a>Spring JDBC: JDBC Template(重要):</h2><ul>
+<li>Spring框架提供的对JDBC的简单封装,提供了JDBC Template 对象来简化JDBC的开发.<ul>
+<li>步骤:<ol>
+<li>导入jar包,还要导入数据库连接池的包和数据库驱动包.<ul>
+<li><a href="https://github.com/fanfan999/tools/tree/master/JdbcTemplate" target="_blank" rel="noopener">JDBC Template的jar包</a>.</li>
+</ul>
+</li>
+<li>创建JDBC Template对象,但是这个对象创建的时候要依赖于数据源DataSource<ul>
+<li>JdbcTemplate template = new JdbcTemplate(dataSource).</li>
+</ul>
+</li>
+<li>调用JDBC Template的方法来完成CRUD的操作.<ul>
+<li>update()方法: 执行DML语句(增删改).</li>
+<li>queryForMap()方法: 查询结果将结果集封装为Map集合.<ul>
+<li>注意: 这个方法查询的结果集长度只能是一,也就是说只能查询一条数据,查询多条会报错,它会将字段名作为key,字段值作为value.</li>
+</ul>
+</li>
+<li>queryForList()方法: 查询结果将结果集封装为List集合.<ul>
+<li>注意: 该方法是将每一条记录封装为一个Map对象,再将Map对象添加到List对象中.</li>
+</ul>
+</li>
+<li>query()方法: 查询结果将结果集封装为JavaBean对象.<ul>
+<li>query的参数: <code>RowMapper</code><ul>
+<li>一般我们使用<code>BeanPropertyRowMapper</code>实现类,可以完成数据到JavaBean的自动封装,使用的时候,要这样用:<code>new BeanPropertyRowMapper&lt;泛型&gt;(泛型类的字节码文件对象即类型.class)</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>queryForObject()方法: 查询结果将结果集封装对象.<ul>
+<li>一般用于聚合函数的查询,如练习7,用法是这样的: <code>Long count = template.queryForObject(sql, long.class);</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>例子: <a href="https://github.com/fanfan999/WebCodes/blob/master/jdbctemplate/JdbcTemplateDemo.java" target="_blank" rel="noopener">JDBCTemplate快速入门</a>.</li>
+<li>练习: 针对cart数据库中的<code>product</code>表(只有<code>name</code>和<code>product</code>两个字段).<ul>
+<li>需求<ol>
+<li>将<code>平板1</code>的价格<code>price</code>修改为<code>1000</code>元.</li>
+<li>添加一条记录.</li>
+<li>删除刚才添加的记录.</li>
+<li>查询<code>id为1</code>的记录,将其封装为Map集合.</li>
+<li>查询所有的记录,将其封装为List集合.</li>
+<li>查询所有的记录,将其封装为product对象的List集合.</li>
+<li>查询总记录数.</li>
+</ol>
+</li>
+<li>代码: <a href="https://github.com/fanfan999/WebCodes/blob/master/jdbctemplate/JdbcTemplateDemo2.java" target="_blank" rel="noopener">练习代码合集</a>.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/JDBC/" rel="tag"># JDBC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/05/JDBC-day01/" rel="next" title="JDBC-day01">
+                <i class="fa fa-chevron-left"></i> JDBC-day01
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -448,8 +734,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -582,6 +877,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-day02"><span class="nav-number">1.</span> <span class="nav-text">JDBC-day02</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC控制事务-重要"><span class="nav-number">1.1.</span> <span class="nav-text">JDBC控制事务(重要):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库连接池-重要"><span class="nav-number">1.2.</span> <span class="nav-text">数据库连接池(重要):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-JDBC-JDBC-Template-重要"><span class="nav-number">1.3.</span> <span class="nav-text">Spring JDBC: JDBC Template(重要):</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -711,6 +1023,10 @@
 
 
   
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -726,6 +1042,8 @@
 
   
 
+
+  
 
 
   
