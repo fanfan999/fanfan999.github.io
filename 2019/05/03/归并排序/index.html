@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="归并排序 写在前面的话: 归并排序的时间复杂度为O(N*logN),额外空间复杂度为O(N). 什么是归并排序呢? 举例:以[2,5,7,1,6,4]为例 首先将其一分为二,划分成两个部分,分别为[2,5,7]和[1,6,4]. 然后分别对左右两部分进行排序,得到[2,5,7]和[1,4,6]. 申请一个辅助数组,长度和原来的数组相同. 左右两个部分分别从左到右进行比较,谁小就放到辅助数组中去,例">
+  <meta name="description" content="归并排序 写在前面的话: 归并排序的时间复杂度为O(N*logN),额外空间复杂度为O(N). 什么是归并排序呢? 一点点专业叫法: 迭代就理解为递归,分治就理解为一分为二的过程. 举例:以[2,5,7,1,6,4]为例 首先将其一分为二,划分成两个部分,分别为[2,5,7]和[1,6,4]. 然后分别对左右两部分进行排序,得到[2,5,7]和[1,4,6]. 申请一个辅助数组,长度和原来的数组相">
 <meta name="keywords" content="归并排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="归并排序">
 <meta property="og:url" content="https://fanfan999.github.io/2019/05/03/归并排序/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="归并排序 写在前面的话: 归并排序的时间复杂度为O(N*logN),额外空间复杂度为O(N). 什么是归并排序呢? 举例:以[2,5,7,1,6,4]为例 首先将其一分为二,划分成两个部分,分别为[2,5,7]和[1,6,4]. 然后分别对左右两部分进行排序,得到[2,5,7]和[1,4,6]. 申请一个辅助数组,长度和原来的数组相同. 左右两个部分分别从左到右进行比较,谁小就放到辅助数组中去,例">
+<meta property="og:description" content="归并排序 写在前面的话: 归并排序的时间复杂度为O(N*logN),额外空间复杂度为O(N). 什么是归并排序呢? 一点点专业叫法: 迭代就理解为递归,分治就理解为一分为二的过程. 举例:以[2,5,7,1,6,4]为例 首先将其一分为二,划分成两个部分,分别为[2,5,7]和[1,6,4]. 然后分别对左右两部分进行排序,得到[2,5,7]和[1,4,6]. 申请一个辅助数组,长度和原来的数组相">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-03T14:19:46.534Z">
+<meta property="og:updated_time" content="2019-05-07T02:46:20.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="归并排序">
-<meta name="twitter:description" content="归并排序 写在前面的话: 归并排序的时间复杂度为O(N*logN),额外空间复杂度为O(N). 什么是归并排序呢? 举例:以[2,5,7,1,6,4]为例 首先将其一分为二,划分成两个部分,分别为[2,5,7]和[1,6,4]. 然后分别对左右两部分进行排序,得到[2,5,7]和[1,4,6]. 申请一个辅助数组,长度和原来的数组相同. 左右两个部分分别从左到右进行比较,谁小就放到辅助数组中去,例">
+<meta name="twitter:description" content="归并排序 写在前面的话: 归并排序的时间复杂度为O(N*logN),额外空间复杂度为O(N). 什么是归并排序呢? 一点点专业叫法: 迭代就理解为递归,分治就理解为一分为二的过程. 举例:以[2,5,7,1,6,4]为例 首先将其一分为二,划分成两个部分,分别为[2,5,7]和[1,6,4]. 然后分别对左右两部分进行排序,得到[2,5,7]和[1,4,6]. 申请一个辅助数组,长度和原来的数组相">
 
 
 
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="Created: 2019-05-03 14:22:30 / Modified: 22:19:46" itemprop="dateCreated datePublished" datetime="2019-05-03T14:22:30+08:00">2019-05-03</time>
+              <time title="Created: 2019-05-03 14:22:30" itemprop="dateCreated datePublished" datetime="2019-05-03T14:22:30+08:00">2019-05-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-07 10:46:20" itemprop="dateModified" datetime="2019-05-07T10:46:20+08:00">2019-05-07</time>
               
             
           </span>
@@ -479,6 +491,7 @@
       
         <h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p><strong> 写在前面的话: 归并排序的时间复杂度为<code>O(N*logN)</code>,额外空间复杂度为<code>O(N)</code></strong>.</p>
 <h2 id="什么是归并排序呢"><a href="#什么是归并排序呢" class="headerlink" title="什么是归并排序呢?"></a>什么是归并排序呢?</h2><ul>
+<li>一点点专业叫法: 迭代就理解为递归,分治就理解为一分为二的过程.</li>
 <li>举例:以[2,5,7,1,6,4]为例<ul>
 <li>首先将其一分为二,划分成两个部分,分别为<code>[2,5,7]</code>和<code>[1,6,4]</code>.</li>
 <li>然后分别对左右两部分进行排序,得到<code>[2,5,7]</code>和<code>[1,4,6]</code>.</li>
@@ -520,10 +533,12 @@
 <li>再将<code>3</code>和<code>2</code>比较,发现<code>3 &gt; 2</code>,此时不产生小和,直接将<code>2</code>放入辅助数组.</li>
 <li>……以此类推.</li>
 <li>其实就是,合并的时候左边比右边大,就产生小和,左边比右边小就不产生小和,同时要注意右边的数比左边大的时候,要看<code>右边较大的这个数的右边还有几个数</code>,此时<code>左边较小的数就要乘以几</code>.</li>
+<li>时间复杂度和归并排序一致,为<code>O(N*log(N))</code>.</li>
 </ol>
 </li>
 </ol>
 </li>
+<li>代码超链接: </li>
 </ol>
 </li>
 <li>逆序对问题</li>
@@ -645,7 +660,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -672,7 +687,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -709,7 +726,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
