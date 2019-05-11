@@ -103,27 +103,18 @@
 
 
 
-  <meta name="description" content="备注: 在网上找了半天,一堆不靠谱的试了以后,终于被我试出来了哈哈哈,我可真是个小天才 步骤是这样子的 在自己的github上新建一个仓库, 怎么新建仓库大家应该都会吧,我这里就不赘述了,就像下面这样:    点开自己新建的仓库,在右边有个clone or download,复制下来地址,如图所示:    打开hexo所在文件夹,右键鼠标然后点击    Git Bash Here,然后在本机将gi">
-<meta name="keywords" content="Markdown">
+  <meta name="description" content="堆排序(重要)前言: 时间复杂度为O(N*logN),额外空间复杂度为O(1). 二叉树: 二叉树就是一棵特殊的树,即每一个节点只有两个子节点. 满二叉树: 首先它是一个二叉树，如果这个二叉树的每一个层的结点数都达到最大值(或者理解为除了最下面一层没有任何子节点以外,其它所有层都是满满当当的二叉树)，则这个二叉树就是满二叉树。也就是说，如果一个二叉树的层数为K(K从1开始)，且结点总数是(2^k)">
+<meta name="keywords" content="堆排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于Markdown图片无法显示的问题解决方法">
-<meta property="og:url" content="https://fanfan999.github.io/2019/04/28/关于Markdown图片无法显示的问题解决方法/index.html">
+<meta property="og:title" content="堆排序">
+<meta property="og:url" content="https://fanfan999.github.io/2019/05/10/堆排序/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="备注: 在网上找了半天,一堆不靠谱的试了以后,终于被我试出来了哈哈哈,我可真是个小天才 步骤是这样子的 在自己的github上新建一个仓库, 怎么新建仓库大家应该都会吧,我这里就不赘述了,就像下面这样:    点开自己新建的仓库,在右边有个clone or download,复制下来地址,如图所示:    打开hexo所在文件夹,右键鼠标然后点击    Git Bash Here,然后在本机将gi">
+<meta property="og:description" content="堆排序(重要)前言: 时间复杂度为O(N*logN),额外空间复杂度为O(1). 二叉树: 二叉树就是一棵特殊的树,即每一个节点只有两个子节点. 满二叉树: 首先它是一个二叉树，如果这个二叉树的每一个层的结点数都达到最大值(或者理解为除了最下面一层没有任何子节点以外,其它所有层都是满满当当的二叉树)，则这个二叉树就是满二叉树。也就是说，如果一个二叉树的层数为K(K从1开始)，且结点总数是(2^k)">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/createNewResponsitory.png">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/cloneResponsitorySite.png">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/cloneResponsitory.png">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/successUploadImg.png">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/copyImageSite.png">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/PreviewImage.png">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/modifySite.png">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/timg.jpg">
-<meta property="og:updated_time" content="2019-04-29T05:02:04.805Z">
+<meta property="og:updated_time" content="2019-05-10T13:30:35.915Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于Markdown图片无法显示的问题解决方法">
-<meta name="twitter:description" content="备注: 在网上找了半天,一堆不靠谱的试了以后,终于被我试出来了哈哈哈,我可真是个小天才 步骤是这样子的 在自己的github上新建一个仓库, 怎么新建仓库大家应该都会吧,我这里就不赘述了,就像下面这样:    点开自己新建的仓库,在右边有个clone or download,复制下来地址,如图所示:    打开hexo所在文件夹,右键鼠标然后点击    Git Bash Here,然后在本机将gi">
-<meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/createNewResponsitory.png">
+<meta name="twitter:title" content="堆排序">
+<meta name="twitter:description" content="堆排序(重要)前言: 时间复杂度为O(N*logN),额外空间复杂度为O(1). 二叉树: 二叉树就是一棵特殊的树,即每一个节点只有两个子节点. 满二叉树: 首先它是一个二叉树，如果这个二叉树的每一个层的结点数都达到最大值(或者理解为除了最下面一层没有任何子节点以外,其它所有层都是满满当当的二叉树)，则这个二叉树就是满二叉树。也就是说，如果一个二叉树的层数为K(K从1开始)，且结点总数是(2^k)">
 
 
 
@@ -131,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="https://fanfan999.github.io/2019/04/28/关于Markdown图片无法显示的问题解决方法/">
+  <link rel="canonical" href="https://fanfan999.github.io/2019/05/10/堆排序/">
 
 
 
@@ -141,7 +132,7 @@
   };
 </script>
 
-  <title>关于Markdown图片无法显示的问题解决方法 | A Kid</title>
+  <title>堆排序 | A Kid</title>
   
 
 
@@ -386,7 +377,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/04/28/关于Markdown图片无法显示的问题解决方法/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/10/堆排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -403,7 +394,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于Markdown图片无法显示的问题解决方法
+          <h1 class="post-title" itemprop="name headline">堆排序
 
               
             
@@ -429,24 +420,12 @@
                 
               
 
-              <time title="Created: 2019-04-28 20:50:49" itemprop="dateCreated datePublished" datetime="2019-04-28T20:50:49+08:00">2019-04-28</time>
+              <time title="Created: 2019-05-10 20:49:27 / Modified: 21:30:35" itemprop="dateCreated datePublished" datetime="2019-05-10T20:49:27+08:00">2019-05-10</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-29 13:02:04" itemprop="dateModified" datetime="2019-04-29T13:02:04+08:00">2019-04-29</time>
               
             
           </span>
@@ -463,7 +442,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -498,47 +477,18 @@
       
 
       
-        <p><strong><em>备注: 在网上找了半天,一堆不靠谱的试了以后,终于被我试出来了哈哈哈,我可真是个小天才</em></strong></p>
-<h1 id="步骤是这样子的"><a href="#步骤是这样子的" class="headerlink" title="步骤是这样子的"></a>步骤是这样子的</h1><ol>
-<li><p>在自己的github上新建一个仓库, 怎么新建仓库大家应该都会吧,我这里就不赘述了,就像下面这样:</p>
-<p> <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/createNewResponsitory.png" alt="新建仓库"></p>
-</li>
-<li><p>点开自己新建的仓库,在右边有个<code>clone or download</code>,复制下来地址,如图所示:</p>
-<p> <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/cloneResponsitorySite.png" alt="复制地址"></p>
-</li>
-<li><p>打开hexo所在文件夹,右键鼠标然后点击    <code>Git Bash Here</code>,然后在本机将github中的仓库克隆下来,命令是: <code>git clone 仓库地址(地址就是你复制下来的地址)</code>,不懂就看图吧:</p>
-<p> <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/cloneResponsitory.png" alt="复制仓库"></p>
-</li>
-<li><p>克隆成功后在hexo文件夹中会有一个以你的仓库名命名的文件夹,例如我的是<code>MyPostImage</code>,然后将图片放在该文件夹下就行;</p>
-<ol>
-<li>注意:<ol>
-<li>这里有个小技巧:你可以每次要在一篇博客中添加图片时候,新建一个和本篇博客名字相同的文件夹放在<code>MyPostImage</code>下面,这样就比较容易整理;</li>
-<li>你要是怕自己新建的文件夹和博客名字不一致,你可以这样子新建一篇博客文章:在<code>bash</code>窗口下输入命令<code>hexo n &quot;博客名字&quot;</code>,这样子系统就会自动在<code>hexo &gt; source &gt; _posts</code>路径下生成一个和本篇博客名相同的文件夹,然后将文件夹复制到<code>MyPostImage</code>下面就可以了.</li>
+        <h1 id="堆排序-重要"><a href="#堆排序-重要" class="headerlink" title="堆排序(重要)"></a>堆排序(重要)</h1><h2 id="前言-时间复杂度为O-N-logN-额外空间复杂度为O-1"><a href="#前言-时间复杂度为O-N-logN-额外空间复杂度为O-1" class="headerlink" title="前言: 时间复杂度为O(N*logN),额外空间复杂度为O(1)."></a>前言: 时间复杂度为<code>O(N*logN)</code>,额外空间复杂度为<code>O(1)</code>.</h2><ol>
+<li>二叉树: 二叉树就是一棵特殊的树,即每一个节点只有两个子节点.</li>
+<li>满二叉树: 首先它是一个二叉树，如果这个二叉树的每一个层的结点数都达到最大值(或者理解为除了最下面一层没有任何子节点以外,其它所有层都是满满当当的二叉树)，则这个二叉树就是满二叉树。也就是说，如果一个二叉树的层数为K(K从1开始)，且结点总数是(2^k) -1 ，则它就是满二叉树,从形状上看,满二叉树就是一个完整的三角形.<ol>
+<li>叶结点: 当一个节点没有左节点和右节点的时候,这个节点就叫<code>叶子节点</code>.</li>
 </ol>
 </li>
+<li>完全二叉树: 若设二叉树的深度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第 h 层所有的结点都连续集中在最左边，这就是完全二叉树。还有一种理解就是,如果除了最后一层和倒数第二层不满,其它层都是满的,并且最后这两层的节点都是从左到右依次补齐的,这个这个….大家画个例子就容易理解了,我也说不清楚了,大家百度一下哈哈哈.</li>
+<li>二叉树其实是可以和数组对应起来的,我们可以通过数组在脑子里脑补出来它对应的完全二叉树结构,如图所示.<br><img src alt="二叉树与数组对应的图">.</li>
+<li>堆(就是完全二叉树)<ol>
+<li>大根堆: 在这棵完全二叉树中,整棵树的最大值就是这棵树的根节点(也可以理解为它的头,反正就是最上面那一个节点),这个规则对于它的左右子树也同样成立,如<code>[6,5,4,3,4]</code>,根据我上面画的自己脑补一下子哈.</li>
+<li>小根堆: 同理,任何一颗子树(包括整个树)的最小值都是根节点,如<code>[1,2,3,4,5]</code>.</li>
 </ol>
-</li>
-<li>进入<code>MyPostImage</code>文件夹<code>(注意不是和博客名字相同的那个文件夹,是名字和仓库名相同的的文件夹)</code>,右键鼠标然后点击    <code>Git Bash Here</code>,打开<code>Bash</code>窗口然后输入<code>git add .</code>,(注意这里有一个点),然后输入命令<code>git commit -m &quot;文件名&quot;</code>,最后将内容推送上仓库就可以了,命令是:<code>git push origin master</code>;</li>
-<li><p>上传成功后去自己的github仓库看看,你就会发现,产生了一个<code>git commit -m &quot;文件名&quot;</code>中以<code>文件名</code>为名字的文件夹,图片就在该文件夹中,就像这样子:</p>
-<p> <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/successUploadImg.png" alt="上传成功"></p>
-</li>
-<li><p>点击图片,当你看到图片以后,复制该图片的路径.就像这样:</p>
-<p> <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/copyImageSite.png" alt="复制图片路径"></p>
-</li>
-<li><p>然后打开我的新建的md文件,并且插入图片,代码是:<code>![图片名](图片路径 &quot;图片无法显示或鼠标移上去的时候显示的文字&quot;)</code>,例子如下(这个图片是我在网上偷的啊哈哈):</p>
-<p> <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/PreviewImage.png" alt="预览操作"></p>
-</li>
-<li><p>但是我们预览的时候会出现一个问题,就是预览的时候图片还是显示不出来,这个时候我们改路径的一个文件名就可以了,因为github和md文件关联的图片地址是有一定格式的,格式如下:</p>
-<ol>
-<li><code>https://github.com/用户名/repository仓库名/raw/分支名master/图片文件夹名称/***.png or***.jpg</code></li>
-<li><p>看不懂吧,其实就是将<code>blob</code>改成<code>raw</code>就行,万一还看不懂就看图:</p>
-<p> <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/modifySite.png" alt="修改文件名"></p>
-</li>
-</ol>
-</li>
-<li>在<code>bash</code>下运行博客,你会发现图片这时候就可以看到了,大功告成哈哈!</li>
-<li><p>其实这里面可能还有很多技巧啥的,我暂时还不会,暂时会这个就可以了吧哈哈哈,因为反正图片不是太多,要是有啥不清楚的,随时可以通过博客联系我,在<code>about</code>里面可以找到我哈哈哈,最后附上一张我很喜欢的图片吧,希望各位和它一样每天都开心!</p>
-<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%85%B3%E4%BA%8EMarkdown%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/timg.jpg" alt="哆啦A梦"></p>
 </li>
 </ol>
 
@@ -564,7 +514,7 @@
       
         <div class="post-tags">
           
-            <a href="/fanfan999.github.io/tags/Markdown/" rel="tag"># Markdown</a>
+            <a href="/fanfan999.github.io/tags/堆排序/" rel="tag"># 堆排序</a>
           
         </div>
       
@@ -577,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/fanfan999.github.io/2019/04/28/Markdown语法/" rel="next" title="Markdown的基本语法<br>">
-                <i class="fa fa-chevron-left"></i> Markdown的基本语法<br>
+              <a href="/fanfan999.github.io/2019/05/10/Request和Response/" rel="next" title="Request和Response">
+                <i class="fa fa-chevron-left"></i> Request和Response
               </a>
             
           </div>
@@ -586,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/fanfan999.github.io/2019/04/29/基础加强-注解/" rel="prev" title="基础加强_注解">
-                基础加强_注解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -806,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤是这样子的"><span class="nav-number">1.</span> <span class="nav-text">步骤是这样子的</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#堆排序-重要"><span class="nav-number">1.</span> <span class="nav-text">堆排序(重要)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言-时间复杂度为O-N-logN-额外空间复杂度为O-1"><span class="nav-number">1.1.</span> <span class="nav-text">前言: 时间复杂度为O(N*logN),额外空间复杂度为O(1).</span></a></li></ol></li></ol></div>
             
 
           </div>
