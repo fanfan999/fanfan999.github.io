@@ -103,18 +103,21 @@
 
 
 
-  <meta name="description" content="JDBC-day02JDBC控制事务(重要): 事务: 其实是一个包含多个步骤的业务操作,如果这个业务操作被事务管理,则这多个步骤要么同时成功,要么同时失败. 事务操作: 开启事务 提交事务 回滚事务   使用Connection对象来管理事务 方法: 开启事务: setAutoCommit(boolean autoCommit): 调用该方法设置参数为false,则表示开启事务. 在执行sql前">
-<meta name="keywords" content="JDBC">
+  <meta name="description" content="HTTP响应协议: 响应消息 请求消息: 客户端发送给服务器端的数据. 数据格式: 请求行: 请求方式 url信息 请求协议/版本号. 请求头 请求空行 请求体: 针对post请求方式的,get请求方式没有请求体.     响应消息: 服务器端发送给客户端的数据.  数据格式 响应空行 响应头 响应行 响应体: 真实传输的数据,也就是我们传输的html这些文本文件,图片,音频等,这些浏览器都会解析">
+<meta name="keywords" content="reponse">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JDBC-day02">
-<meta property="og:url" content="https://fanfan999.github.io/2019/05/06/JDBC-day02/index.html">
+<meta property="og:title" content="HTTP响应协议和Response">
+<meta property="og:url" content="https://fanfan999.github.io/2019/05/12/HTTP响应协议和response/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="JDBC-day02JDBC控制事务(重要): 事务: 其实是一个包含多个步骤的业务操作,如果这个业务操作被事务管理,则这多个步骤要么同时成功,要么同时失败. 事务操作: 开启事务 提交事务 回滚事务   使用Connection对象来管理事务 方法: 开启事务: setAutoCommit(boolean autoCommit): 调用该方法设置参数为false,则表示开启事务. 在执行sql前">
+<meta property="og:description" content="HTTP响应协议: 响应消息 请求消息: 客户端发送给服务器端的数据. 数据格式: 请求行: 请求方式 url信息 请求协议/版本号. 请求头 请求空行 请求体: 针对post请求方式的,get请求方式没有请求体.     响应消息: 服务器端发送给客户端的数据.  数据格式 响应空行 响应头 响应行 响应体: 真实传输的数据,也就是我们传输的html这些文本文件,图片,音频等,这些浏览器都会解析">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-10T10:23:41.847Z">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/HTTP%E5%93%8D%E5%BA%94%E5%8D%8F%E8%AE%AE%E5%92%8Cresponse/%E9%87%8D%E5%AE%9A%E5%90%91%E5%8A%A0%E8%BD%BD%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/HTTP%E5%93%8D%E5%BA%94%E5%8D%8F%E8%AE%AE%E5%92%8Cresponse/%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E5%85%B6%E5%AE%83%E8%B7%AF%E5%BE%84%E7%A4%BA%E4%BE%8B.png">
+<meta property="og:updated_time" content="2019-05-14T10:40:25.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JDBC-day02">
-<meta name="twitter:description" content="JDBC-day02JDBC控制事务(重要): 事务: 其实是一个包含多个步骤的业务操作,如果这个业务操作被事务管理,则这多个步骤要么同时成功,要么同时失败. 事务操作: 开启事务 提交事务 回滚事务   使用Connection对象来管理事务 方法: 开启事务: setAutoCommit(boolean autoCommit): 调用该方法设置参数为false,则表示开启事务. 在执行sql前">
+<meta name="twitter:title" content="HTTP响应协议和Response">
+<meta name="twitter:description" content="HTTP响应协议: 响应消息 请求消息: 客户端发送给服务器端的数据. 数据格式: 请求行: 请求方式 url信息 请求协议/版本号. 请求头 请求空行 请求体: 针对post请求方式的,get请求方式没有请求体.     响应消息: 服务器端发送给客户端的数据.  数据格式 响应空行 响应头 响应行 响应体: 真实传输的数据,也就是我们传输的html这些文本文件,图片,音频等,这些浏览器都会解析">
+<meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/HTTP%E5%93%8D%E5%BA%94%E5%8D%8F%E8%AE%AE%E5%92%8Cresponse/%E9%87%8D%E5%AE%9A%E5%90%91%E5%8A%A0%E8%BD%BD%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8.png">
 
 
 
@@ -122,7 +125,7 @@
 
   
   
-  <link rel="canonical" href="https://fanfan999.github.io/2019/05/06/JDBC-day02/">
+  <link rel="canonical" href="https://fanfan999.github.io/2019/05/12/HTTP响应协议和response/">
 
 
 
@@ -132,7 +135,7 @@
   };
 </script>
 
-  <title>JDBC-day02 | A Kid</title>
+  <title>HTTP响应协议和Response | A Kid</title>
   
 
 
@@ -377,7 +380,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/06/JDBC-day02/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/12/HTTP响应协议和response/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -394,7 +397,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JDBC-day02
+          <h1 class="post-title" itemprop="name headline">HTTP响应协议和Response
 
               
             
@@ -420,7 +423,7 @@
                 
               
 
-              <time title="Created: 2019-05-06 08:31:50" itemprop="dateCreated datePublished" datetime="2019-05-06T08:31:50+08:00">2019-05-06</time>
+              <time title="Created: 2019-05-12 08:16:00" itemprop="dateCreated datePublished" datetime="2019-05-12T08:16:00+08:00">2019-05-12</time>
             
 
             
@@ -437,7 +440,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-10 18:23:41" itemprop="dateModified" datetime="2019-05-10T18:23:41+08:00">2019-05-10</time>
+                <time title="Modified: 2019-05-14 18:40:25" itemprop="dateModified" datetime="2019-05-14T18:40:25+08:00">2019-05-14</time>
               
             
           </span>
@@ -454,7 +457,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/JDBC/" itemprop="url" rel="index"><span itemprop="name">JDBC</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/javaee/" itemprop="url" rel="index"><span itemprop="name">javaee</span></a></span>
 
                 
                 
@@ -489,175 +492,274 @@
       
 
       
-        <h1 id="JDBC-day02"><a href="#JDBC-day02" class="headerlink" title="JDBC-day02"></a>JDBC-day02</h1><h2 id="JDBC控制事务-重要"><a href="#JDBC控制事务-重要" class="headerlink" title="JDBC控制事务(重要):"></a>JDBC控制事务(重要):</h2><ol>
-<li>事务: 其实是一个包含多个步骤的业务操作,如果这个业务操作被事务管理,则这多个步骤要么同时成功,要么同时失败.</li>
-<li>事务操作:<ol>
-<li>开启事务</li>
-<li>提交事务</li>
-<li>回滚事务</li>
+        <h1 id="HTTP响应协议-响应消息"><a href="#HTTP响应协议-响应消息" class="headerlink" title="HTTP响应协议: 响应消息"></a>HTTP响应协议: 响应消息</h1><ol>
+<li>请求消息: 客户端发送给服务器端的数据.<ol>
+<li>数据格式:<ol>
+<li>请求行: 请求方式 url信息 请求协议/版本号.</li>
+<li>请求头</li>
+<li>请求空行</li>
+<li>请求体: 针对post请求方式的,get请求方式没有请求体.</li>
 </ol>
 </li>
-<li>使用Connection对象来管理事务<ol>
-<li>方法:<ol>
-<li>开启事务: setAutoCommit(boolean autoCommit): 调用该方法设置参数为false,则表示开启事务.<ul>
-<li>在执行sql前开启事务</li>
+</ol>
+</li>
+<li><p>响应消息: 服务器端发送给客户端的数据.</p>
+<ol>
+<li>数据格式<ol>
+<li>响应空行</li>
+<li>响应头</li>
+<li>响应行</li>
+<li>响应体: 真实传输的数据,也就是我们传输的html这些文本文件,图片,音频等,这些浏览器都会解析出来.</li>
+</ol>
+</li>
+<li><p>响应字符串的格式</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Bdpagetype: 1</span><br><span class="line">Bdqid: 0xeaa47fdd0001895f</span><br><span class="line">Cache-Control: private</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Type: text/html;charset=utf-8</span><br><span class="line">Cxy_all: baidu+42cf0987fef07e22ea09fde2f722a2b8</span><br><span class="line">Date: Sun, 12 May 2019 00:31:06 GMT</span><br><span class="line">Expires: Sun, 12 May 2019 00:31:06 GMT</span><br><span class="line">Server: BWS/1.1</span><br><span class="line">Set-Cookie: delPer=0; path=/; domain=.baidu.com</span><br><span class="line">Set-Cookie: BDSVRTM=13; path=/</span><br><span class="line">Set-Cookie: BD_HOME=0; path=/</span><br><span class="line">Set-Cookie: H_PS_PSSID=28883_1449_28981_21108_28518_28775_28721_28964_28830_28585_22160; path=/; domain=.baidu.com</span><br><span class="line">Strict-Transport-Security: max-age=172800</span><br><span class="line">Vary: Accept-Encoding</span><br><span class="line">X-Ua-Compatible: IE=Edge,chrome=1</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">空行</span><br><span class="line">写响应体,即页面展示的html内容.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>响应行</p>
+<ol>
+<li>组成: 请求协议/版本号 http响应状态码 状态码描述,如: <code>HTTP/1.1 200 OK</code>.</li>
+<li>响应状态码(<code>都是三位数字</code>): 服务器告诉客户端浏览器本次请求和响应的状态,其大概分类有五种.<ol>
+<li><code>1xx</code>: 可以理解为客户端给服务器发送消息,服务器只接收到了一半就没有数据了,然后服务器就在那里等着,等待一段时间后,就向客户端发送<code>1xx</code>的状态码,问客户端你到底还有没有东西这样子, 这个出现不多.</li>
+<li><code>2xx</code>: 表示本次请求和响应成功.代表状态码:200.</li>
+<li><code>3xx</code>: 表示重定向,就是说客户端浏览器访问到了服务器,说我要干这个事,这个servlet说,我干不了,但是我知道servlet2可以干,它就给浏览器返回一个响应说我干不了,同时给浏览器了一个小纸条,让它去找servlet2.<ul>
+<li>例如: <code>302(重定向)</code>,和request通过forward方法请求装发类似,都是敲一次回车,访问两个地方,不过这个是客户端去访问,而不是和forward方法一样服务器内部跳转.</li>
+<li>例如: <code>304缓存</code>,这么理解吧,就是客户端向服务器请求图片这些二进制数据,只能用字节流,每次请求都要从服务器下载就会很慢,它就想了个办法,当客户端第一次请求时候,就把这张图片缓存到浏览器客户端本地,下次客户端访问同一图片(图片未更改)时,服务器就返回304状态码,让客户端去自己本地找就好了.</li>
 </ul>
 </li>
-<li>提交事务: commit().<ul>
-<li>当所有sql执行完成后提交事务</li>
+<li><code>4xx</code>: 客户端错误<ul>
+<li>代表状态码: <ul>
+<li><code>404</code>,表示浏览器所请求的url路径在服务器中没有对应的资源,一般都是由于浏览器url写错了或者servlet中资源路径错了的原因.</li>
+<li><code>405</code>,表示请求方式没有对应的doxxx方法对应响应,例如,我们在浏览器直接输入url地址时都是通过get方法访问的,但是我们不小心在servlet中把doget()方法删除了,就会出现这个状态码.</li>
 </ul>
 </li>
-<li>回滚事务: rollback().<ul>
-<li>在catch中回滚事务,保证任何地方出现问题后都可以回滚,而且catch中抛出的异常要是<code>Exception</code>,保证可以捕捉所有异常.</li>
 </ul>
 </li>
+<li><code>5xx</code>: 服务器端错误,代表服务器内部出现异常了,代表状态码<code>500</code>,例如,我在dopost()方法中写了一个语句<code>int i = 5/0</code>,这个会抛出下标不能为0异常,此时我们在浏览器通过url访问该servlet路径,就会报错<code>500</code>.</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>案例-JDBC管理事务的实现:<ol>
-<li>代码: <strong><em><a href="https://github.com/fanfan999/WebCodes/blob/master/JdbcDemo/jdbc/JdbcDemo3.java" target="_blank" rel="noopener">JDBC事务管理代码JDBCDemo3</a></em></strong></li>
-</ol>
-</li>
-</ol>
-<h2 id="数据库连接池-重要"><a href="#数据库连接池-重要" class="headerlink" title="数据库连接池(重要):"></a>数据库连接池(重要):</h2><ul>
-<li>我们之前写的代码都是运行一次申请一次资源,资源一用完就释放,就相当于你招聘了一个服务员来给顾客服务,顾客吃完走了你就把这个服务员开除了,下次有顾客来吃饭你就再招聘一个,吃完又把这个服务员开除了,循环往复…</li>
-<li>显然这样是不合理的,正常的情况应该是,多招聘几个服务员,当这个服务员服务完这个顾客以后,应该等着给下一位顾客服务,这个就和数据库连接池的定义是类似的.</li>
-<li>概念: 其实就是一个容器(集合),存放数据库连接.<ul>
-<li>当系统初始化结束后,容器就被创建,容器中会申请<code>多个数据库连接对象</code>,当用户来访问数据库时,从容器中获取连接对象,用户访问结束后,就将数据库连接对象还给容器.</li>
-</ul>
-</li>
-<li>好处: <ol>
-<li>节约资源,使得资源循环利用.</li>
-<li>用户访问高效,因为可以节省掉申请资源这些时间.</li>
-</ol>
-</li>
-<li>实现:<ol>
-<li>使用标准接口: javax.sql包下的DataSource接口.<ol>
-<li>方法: <ul>
-<li>获取连接: <code>Connection getConnection()</code>.</li>
-<li>归还连接: <code>Connection.close()</code>,如果连接对象Connection是从连接池中获取的,那么调用<code>Connection.close()</code>方法,则不会再关闭连接了,而是去归还连接.</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>一般我们不去实现它,由数据库厂商实现,例如:<ol>
-<li>C3P0: 数据库连接池技术(较老).</li>
-<li>Druid(德鲁伊): 数据库连接池技术(较新),由阿里巴巴提供的,用的更多.</li>
+<li>响应头:<ol>
+<li>格式: 头名称: 值,和请求头一样,也是键值对.</li>
+<li>常见的响应头<ol>
+<li>Content-Type: 服务器告诉客户端本次响应体数据格式以及编码格式,然后浏览器改变接收编码格式等保证接收正常不出现乱码,例如: <code>Content-Type: text/html(表示文本格式);charset=utf-8</code>.</li>
+<li>Content-disposition: 服务器告诉客户端以什么格式打开我的响应体数据.<ol>
+<li>默认值: in-line,表示在当前页面内打开.</li>
+<li>attachment;filename=xxx: 以附件形式打开响应体,比如说我们点一个超链接,它不会直接跳转到另一个页面,它会直接下载一个文件.</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>C3P0: 数据库连接池技术<ol>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h1><ol>
+<li><p>功能: 设置响应消息</p>
+<ol>
+<li>设置响应行.<ol>
+<li>格式: 例如: <code>HTTP/1.1 200 OK</code>.</li>
+<li>设置状态码: setStatus(int sc).</li>
+</ol>
+</li>
+<li>设置响应头.<ol>
+<li>方法: setHeader(String name ,String value).</li>
+</ol>
+</li>
+<li>设置响应体.<ol>
 <li>使用步骤:<ol>
-<li>导入jar包(两个,还有一个是依赖包),如<code>c3p0-0.9.5.2.jar</code>和<code>mchange-commons-java-0.2.12.jar</code>,注意不要忘记导入数据库的驱动jar包,因为这个说到底还是对数据库的操作.</li>
-<li>定义配置文件:<ol>
-<li>名称: <code>c3p0.properties</code>或者 <code>c3p0-config.xml</code>等,在<strong><a href="https://www.mchange.com/projects/c3p0/#using_combopooleddatasource" target="_blank" rel="noopener">c3p0 - JDBC3 Connection and Statement Pooling</a></strong>中能看到.</li>
-<li>路径: 直接将文件放在src目录下即可,它会自动加载,我们一般用<code>c3p0-config.xml</code>这种文件.</li>
+<li>获取输出流<ol>
+<li>字符输出流: <code>ServletOutputStream getOutputStream()</code>.</li>
+<li>字节输出流: <code>PrintWriter getWriter()</code>.</li>
 </ol>
 </li>
-<li>创建核心对象: 数据库连接池对象: <code>ComboPooledDataSource对</code>象.</li>
-<li>获取连接: <code>getConnection()</code>.</li>
-<li>例子代码我放github了: <ol>
-<li><a href="https://github.com/fanfan999/tools" target="_blank" rel="noopener">c3p0工具jar包</a>.</li>
-<li><a href="https://github.com/fanfan999/WebCodes/tree/master/ConnectionPool/C3P0" target="_blank" rel="noopener">c3p0测试代码</a>.</li>
+<li>使用输出流,将数据输出到客户端浏览器中</li>
 </ol>
 </li>
 </ol>
 </li>
-</ol>
-</li>
-<li>Druid(德鲁伊): 数据库连接池技术<ol>
-<li>使用步骤:<ol>
-<li>导入jar包<code>druid-1.0.9.jar</code>,同时也不要忘了导入数据库驱动包.</li>
-<li>定义并加载配置文件:<ol>
-<li>是<code>Properties</code>形式的文件,如: <code>druid.properties</code>.</li>
-<li>可以叫任意名称,可以放在任意目录下,同时也不会自动加载了(<strong>我们都放在src文件夹下面,因为放在其他地方怎么搞都加载失败</strong>).</li>
-<li>加载配置文件,<code>ProPerties</code>.</li>
-</ol>
-</li>
-<li>获取数据库连接池对象: 通过一个工厂类来获取: <code>DruidDataSourceFactory</code>.</li>
-<li>获取连接: <code>getConnection()</code>.</li>
-<li>代码,超链接如下 : <ol>
-<li><a href="https://github.com/fanfan999/tools/tree/master/druid-1.0.9" target="_blank" rel="noopener">druid工具jar包</a>.</li>
-<li><a href="https://github.com/fanfan999/WebCodes/blob/master/ConnectionPool/druid/DruidDemo.java" target="_blank" rel="noopener">druid测试代码</a>.</li>
+<li>案例(代码):<ol>
+<li>重定向: 也是资源转发的方式. <a href="https://github.com/fanfan999/WebCodes/blob/master/response/src/demos/ResponseServlet1.java" target="_blank" rel="noopener">完成重定向代码</a>.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/response/src/demos/ResponseServlet3.java" target="_blank" rel="noopener">服务器输出字符数据到浏览器代码</a>.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/response/src/demos/ResponseServlet4.java" target="_blank" rel="noopener">服务器输出字符数据到浏览器代码</a>.</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>定义druid工具类:<ol>
-<li>定义一个类: JDBCUtils</li>
-<li>提供静态代码块加载配置文件,初始化连接池对象.</li>
-<li>提供方法:<ol>
-<li>获取连接方`: 通过数据库连接池获取连接.</li>
-<li>释放资源.</li>
-<li>获取连接池的方法.</li>
+<li><p>几个注意的点:</p>
+<ol>
+<li>重定向的特点<ul>
+<li>转发特点<ol>
+<li>转发后浏览器地址栏路径不变.</li>
+<li>转发只能访问当前服务器下的资源,就是同一个src下的资源.</li>
+<li>转发是一次请求,两次跳转,不过是只按一次回车就可以了,可以通过request对象来共享数据.</li>
 </ol>
 </li>
-<li>代码超链接如下:<ol>
-<li><a href="https://github.com/fanfan999/WebCodes/blob/master/ConnectionPool/druid/DruidUtils.java" target="_blank" rel="noopener">druid工具类</a>.</li>
-<li><a href="https://github.com/fanfan999/WebCodes/blob/master/ConnectionPool/druid/DruidDemo2.java" target="_blank" rel="noopener">druid工具类测试代码</a>.</li>
+<li>重定向特点<ol>
+<li>重定向后地址栏发生变化,request的forword()方法跳转到另一个servlet,浏览器中url路径是不会变的,是跳转前的一个servlet路径;而response的重定向,浏览器中的url路径会直接变成最终的servlet路径..</li>
+<li>重定向可以访问到其它地方(服务器)的资源,就是在idea中不是一个项目中的资源,但是这个项目要部署到tomcat中哈,不然不知道虚拟路径的,以idea为例<ol>
+<li>首先两个项目都要加载到服务器<br><img src="https://github.com/fanfan999/MyPostImage/raw/master/HTTP%E5%93%8D%E5%BA%94%E5%8D%8F%E8%AE%AE%E5%92%8Cresponse/%E9%87%8D%E5%AE%9A%E5%90%91%E5%8A%A0%E8%BD%BD%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8.png" alt="重定向项目加载到服务器">.</li>
+<li>然后在servlet中调用sendRediect(string url)方法跳转到目标servlet中就可以了,但是这里注意<code>url必须是**/虚拟路径/资源路径**</code>.<br><img src="https://github.com/fanfan999/MyPostImage/raw/master/HTTP%E5%93%8D%E5%BA%94%E5%8D%8F%E8%AE%AE%E5%92%8Cresponse/%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E5%85%B6%E5%AE%83%E8%B7%AF%E5%BE%84%E7%A4%BA%E4%BE%8B.png" alt="重定向到其它路径示例">.</li>
 </ol>
 </li>
-</ol>
-</li>
+<li>当然也可以重定向到其它网站中去,例如: <code>response.sendRedirect(&quot;https://www.baidu.com&quot;);</code>,运行后就会直接跳转到百度页面去了,而request请求转发也是不可以的.</li>
+<li>重定向是两次请求,访问两个页面,不过也是只敲一次回车,这个可以在浏览器中通过快捷键<code>F12</code>,然后在<code>网络</code>中查看到变化,这里我就不多赘述了哈,同时这里就不能用request对象来共享数据了.</li>
 </ol>
 </li>
 </ul>
-<h2 id="Spring-JDBC-JDBC-Template-重要"><a href="#Spring-JDBC-JDBC-Template-重要" class="headerlink" title="Spring JDBC: JDBC Template(重要):"></a>Spring JDBC: JDBC Template(重要):</h2><ul>
-<li>Spring框架提供的对JDBC的简单封装,提供了JDBC Template 对象来简化JDBC的开发.<ul>
+</li>
+<li><p>路径写法</p>
+<ol>
+<li>路径的分类<ol>
+<li>相对路径(不推荐使用): 通过相对路径不可以确定唯一资源,如: <code>./index.html</code>,表示<code>当前目录</code>下,有一个index.html页面,<strong>你可以认为它不以<code>/</code>开头,以<code>.</code>开头</strong>.<ul>
+<li>规则: 要使用相对路径,就必须先找到当前资源和目标资源之间的相对位置关系.</li>
+<li><code>./xx</code>,代表当前目录.</li>
+<li><code>../xx</code>,代表后退一级目录.</li>
+</ul>
+</li>
+<li>绝对路径: 通过绝对路径可以确定唯一资源,如: <code>http://localhost:8080/response/ResponseDemo1</code>, 其也可以简化写成<code>/response/ResponseDemo1</code>,<strong>我们 可以认为以<code>/</code>开头的路径是绝对路径</strong>.<ul>
+<li>规则: 判断定义的路径是给谁用的, 通过这个请求将来从哪儿发出,从服务器发出就是给服务器使用的,从浏览器页面发出就是给客户端浏览器用的.<ul>
+<li>给客户端浏览器使用: 需要加虚拟目录,我们建议对虚拟目录动态获取.</li>
+<li>给服务器使用: 不需要加虚拟目录.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基本上哈,就是除了<code>@WebServlet(urlPatterns=&quot;/xx&quot;)</code>中的url和request的请求转发中的路径为资源路径以外,其它所有地方填的url路径都是<strong>/虚拟路径/资源路径</strong>这个格式,例如重定向的时候(<code>这个是从浏览器发出去的要注意啊</code>),form表单中等.</li>
+<li>还有一个要注意的点,就是重定向的到其它项目的时候,那个url也要带虚拟路径,这个其实就理解为是从浏览器发出的数据就完事了.</li>
+<li>例子: <a href="https://github.com/fanfan999/WebCodes/blob/master/response/web/htmls/location2.html" target="_blank" rel="noopener">相对绝对路径举例</a>.</li>
+</ol>
+</li>
+<li><p>注意</p>
+<ul>
+<li>由于虚拟目录可能随时都需要改变,所以虚拟目录不能一次写死,要动态获取,这里就需要用到request对象中的<code>String getContextPath()</code>方法,当然这个只能用在类方法里面哈,html里面用不了的.</li>
+<li><p>举例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String contextPath = request.getContextPath();</span><br><span class="line">response.sendRedirect(contextPath+&quot;/responseDemo2&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>所以说,你要是还不知道虚拟目录是啥,你就打印一些context再去tomcat-&gt;编辑结构下面找一下就晓得了.</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>重定向方式:</p>
+<ol>
+<li>告诉浏览器要重定向,通过setStatus()设置状态码302实现;然后告诉浏览器重定向servlet的路径,通过setHeader()方法设置响应头location:告诉浏览器重定向servlet的资源路径实现</li>
+<li>这也是最常用的方法<code>重点掌握</code>: 通过<strong>sendRedirect(String url)</strong>实现,其中url表示重定向资源路径,格式和form表单中action的路径一致,都是<code>/虚拟路径/资源路径</code>,这两个东西不清楚就去看<code>Request博客下request案例第5点的注意事项</code>.</li>
+</ol>
+</li>
+<li><p>服务器输出字符数据到浏览器</p>
+<ol>
 <li>步骤:<ol>
-<li>导入jar包,还要导入数据库连接池的包和数据库驱动包.<ul>
-<li><a href="https://github.com/fanfan999/tools/tree/master/JdbcTemplate" target="_blank" rel="noopener">JDBC Template的jar包</a>.</li>
-</ul>
-</li>
-<li>创建JDBC Template对象,但是这个对象创建的时候要依赖于数据源DataSource<ul>
-<li>JdbcTemplate template = new JdbcTemplate(dataSource).</li>
-</ul>
-</li>
-<li>调用JDBC Template的方法来完成CRUD的操作.<ul>
-<li>update()方法: 执行DML语句(增删改).</li>
-<li>queryForMap()方法: 查询结果将结果集封装为Map集合.<ul>
-<li>注意: 这个方法查询的结果集长度只能是一,也就是说只能查询一条数据,查询多条会报错,它会将字段名作为key,字段值作为value.</li>
-</ul>
-</li>
-<li>queryForList()方法: 查询结果将结果集封装为List集合.<ul>
-<li>注意: 该方法是将每一条记录封装为一个Map对象,再将Map对象添加到List对象中.</li>
-</ul>
-</li>
-<li>query()方法: 查询结果将结果集封装为JavaBean对象.<ul>
-<li>query的参数: <code>RowMapper</code><ul>
-<li>一般我们使用<code>BeanPropertyRowMapper</code>实现类,可以完成数据到JavaBean的自动封装,使用的时候,要这样用:<code>new BeanPropertyRowMapper&lt;泛型&gt;(泛型类的字节码文件对象即类型.class)</code>.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>queryForObject()方法: 查询结果将结果集封装对象.<ul>
-<li>一般用于聚合函数的查询,如练习7,用法是这样的: <code>Long count = template.queryForObject(sql, long.class);</code>.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>例子: <a href="https://github.com/fanfan999/WebCodes/blob/master/jdbctemplate/JdbcTemplateDemo.java" target="_blank" rel="noopener">JDBCTemplate快速入门</a>.</li>
-<li>练习: 针对cart数据库中的<code>product</code>表(只有<code>name</code>和<code>product</code>两个字段).<ul>
-<li>需求<ol>
-<li>将<code>平板1</code>的价格<code>price</code>修改为<code>1000</code>元.</li>
-<li>添加一条记录.</li>
-<li>删除刚才添加的记录.</li>
-<li>查询<code>id为1</code>的记录,将其封装为Map集合.</li>
-<li>查询所有的记录,将其封装为List集合.</li>
-<li>查询所有的记录,将其封装为product对象的List集合.</li>
-<li>查询总记录数.</li>
+<li>获取字符输出流.</li>
+<li>输出数据.</li>
 </ol>
 </li>
-<li>代码: <a href="https://github.com/fanfan999/WebCodes/blob/master/jdbctemplate/JdbcTemplateDemo2.java" target="_blank" rel="noopener">练习代码合集</a>.</li>
+<li>产生乱码<ol>
+<li>乱码原因: 编码和解码使用的码表,即字符集不一致<ul>
+<li>浏览器使用的字符集可以通过IE浏览器点击右键查看编码知道,我电脑是<code>Unicode编码</code>.</li>
+<li>而服务端的编码表由于是response调方法产生的,不是new出来的(new出来的那就和系统保持一致),而response对象又是tomcat产生的,tomcat又不是中国人写的,所以用的字符集不是Unicode,一般来说是ISO-8859-1的拉丁编码.</li>
 </ul>
+</li>
+<li>乱码解决办法: <strong>在获取流之前</strong>,设置流的编码,通过一条语句设置: <code>response.setContentType(&quot;text/html;charset=utf-8&quot;);</code>,通过这句话可以告诉浏览器我的响应信息是文本类型的同时字符集是utf-8类型的.</li>
+</ol>
 </li>
 </ol>
 </li>
+<li><p>服务器输出字节数据到浏览器</p>
+<ol>
+<li>步骤:<ol>
+<li>获取字节输出流.</li>
+<li>输出数据.<br>注意: 这里为了防止出现乱码,在用response对象设置编码前,把request的编码设置为相同,同时设置字节流输出时byte数组的编码</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>案例: 简单的验证码<ol>
+<li>本质是一张图片</li>
+<li>验证码的目的: 防止恶意表单注册,就是比如说没有验证码,我可以写个程序,生成不重复的你表单需要填的东西然后无限注册,你数据库迟早崩溃.</li>
+<li>这个前端的js我就不会了,然后那个点击验证码换图片我不晓得咋整,暂时也不想去想那个东西.</li>
+<li>前端代码: <a href="https://github.com/fanfan999/WebCodes/blob/master/response/web/login.html" target="_blank" rel="noopener">验证码案例前端代码</a>. 其余部分代码如下: <a href="https://github.com/fanfan999/WebCodes/blob/master/response/src/demos/ResponseServlet5.java" target="_blank" rel="noopener">验证码案例代码</a>.<h1 id="ServletContext-接口"><a href="#ServletContext-接口" class="headerlink" title="ServletContext(接口)"></a>ServletContext(接口)</h1></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>概念: 代表整个web应用,即整个web工程,可以和程序容器(服务器)例如tomcat进行通信.</li>
+<li>功能:<ol>
+<li>获取MIME类型: <ul>
+<li>MIME类型: 在互联网通信过程中定义的一种文件数据类型.</li>
+<li>格式: 大类型/小类型, 例如: text/html,表示纯文本/html类型.</li>
+<li>方法: String getMimeType(String file);</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/response/src/servletcontext/ServletContext2.java" target="_blank" rel="noopener">获取MIME类型案例代码</a>.</li>
+</ul>
+</li>
+<li>域对象: 域对象主要是用来共享数据的,如request对象通过调用getAttribute()来共享数据.<ul>
+<li>域对象都有的几个方法:<ul>
+<li>void setAttribute(String name, Object value)给name赋值;</li>
+<li>Object getAttribute(String name)通过名称获取值;</li>
+<li>void removeAttribute(String name);</li>
+<li>servletContext范围: 能共享所有用户所有请求的数据,就是只要你是在这个服务器运行的,在哪里运行都可以获取到,而且只要存储数据的类运行一次,它就会一直存在知道类被销毁.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/response/src/servletcontext/ServletContext3.java" target="_blank" rel="noopener">共享数据示例代码_设置数据代码</a>.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/response/src/servletcontext/ServletContext4.java" target="_blank" rel="noopener">共享数据示例代码_获取数据代码</a>.</li>
 </ul>
 </li>
 </ul>
+</li>
+<li>获取文件的真实路径(服务器路径).<ul>
+<li>方法: String getRealPath(String path);</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/response/src/servletcontext/ServletContext5.java" target="_blank" rel="noopener">获取文件的服务器路径代码</a>.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>获取ServletContext对象<ol>
+<li>通过request对象获取: <code>request.getServletContext()</code>.</li>
+<li>通过HttpServlet类获取: 这是该类的父类<code>GenericServlet</code>中的一个方法,由于我们的servlet都是继承子httpServlet,所以通过httpservlet获取也行,反正子类具有父类属性,即: <code>this.getServletContext()</code>.</li>
+</ol>
+</li>
+</ol>
+<h1 id="文件下载案例"><a href="#文件下载案例" class="headerlink" title="文件下载案例"></a>文件下载案例</h1><p><strong>用谷歌浏览器会直接下载,没有提示框,建议用ie</strong></p>
+<ol>
+<li><p>需求:</p>
+<ol>
+<li>页面显示超链接</li>
+<li>点击超链接后弹出下载提示框</li>
+<li>完成图片文件下载</li>
+</ol>
+</li>
+<li><p>分析:</p>
+<ol>
+<li>超链接指向的资源(比如图片)如果能够被浏览器解析,则该资源会在浏览器中展示,如果不能解析(比如视频),才会弹出下载提示框,这是不满足需求的.我们的需求应该是任何时候都要弹出提示框,这就需要<code>response</code>的响应头<code>Content-disposition</code>了.</li>
+<li>使用响应头来设置资源的打开方式为附件形式: <code>Content-disposition: attachment;filename=xxx</code>.</li>
+</ol>
+</li>
+<li><p>步骤:</p>
+<ol>
+<li>定义页面,编辑器超链接属性,让其指向servlet,但是这里就需要想到,我们有多个文件,每次弹出的提示框是不一样的,但是指向的都是同一个servlet,这时我们就需要在超链接中用到响应头<code>Content-disposition</code>中的<code>filename=xxx</code>来设置参数了!!!</li>
+<li>定义servlet<ol>
+<li>获取文件的名称.</li>
+<li>使用字节输入流加载文件进内存.</li>
+<li>指定response的响应头<code>Content-disposition</code>.</li>
+<li>将数据写出到response的输出流即可.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><a href="https://github.com/fanfan999/WebCodes/tree/master/download_demo" target="_blank" rel="noopener">案例代码</a>.</p>
+</li>
+<li>问题:    <ol>
+<li>中文文件名问题(注意这个是不能用response.setCOntentType解决的),比如我的图片名字是<code>哆啦A梦.jpg</code>,在谷歌浏览器里面,它依旧会下载,但是下载名是空白或者下划线,那当然下载下来的东西自然也是看不了的;在ie里面直接会报错400.<ul>
+<li>解决思路:<ul>
+<li>获取客户端使用的浏览器版本信息.</li>
+<li>根据不同的版本信息响应不同的数据,即设置filaname的编码方式不同,这里需要用到一个工具类.<br><strong><em>今天用git推送资源的时候报了个错: <code>unable to access &#39;https://github.com/fanfan999/WebCodes.git/&#39;: SSL certificate problem: self signed certificate</code>,百度了一下,解决方案是: 输入这行命令 <code>git config --global http.sslVerify false</code>就可以了.</em></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
 
       
     </div>
@@ -681,7 +783,7 @@
       
         <div class="post-tags">
           
-            <a href="/fanfan999.github.io/tags/JDBC/" rel="tag"># JDBC</a>
+            <a href="/fanfan999.github.io/tags/reponse/" rel="tag"># reponse</a>
           
         </div>
       
@@ -694,8 +796,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/fanfan999.github.io/2019/05/05/JDBC-day01/" rel="next" title="JDBC-day01">
-                <i class="fa fa-chevron-left"></i> JDBC-day01
+              <a href="/fanfan999.github.io/2019/05/10/堆排序/" rel="next" title="堆排序">
+                <i class="fa fa-chevron-left"></i> 堆排序
               </a>
             
           </div>
@@ -703,10 +805,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/fanfan999.github.io/2019/05/07/xml基础/" rel="prev" title="xml基础">
-                xml基础 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -925,7 +1023,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-day02"><span class="nav-number">1.</span> <span class="nav-text">JDBC-day02</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC控制事务-重要"><span class="nav-number">1.1.</span> <span class="nav-text">JDBC控制事务(重要):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库连接池-重要"><span class="nav-number">1.2.</span> <span class="nav-text">数据库连接池(重要):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-JDBC-JDBC-Template-重要"><span class="nav-number">1.3.</span> <span class="nav-text">Spring JDBC: JDBC Template(重要):</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP响应协议-响应消息"><span class="nav-number">1.</span> <span class="nav-text">HTTP响应协议: 响应消息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Response"><span class="nav-number">2.</span> <span class="nav-text">Response</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ServletContext-接口"><span class="nav-number">3.</span> <span class="nav-text">ServletContext(接口)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件下载案例"><span class="nav-number">4.</span> <span class="nav-text">文件下载案例</span></a></li></ol></div>
             
 
           </div>

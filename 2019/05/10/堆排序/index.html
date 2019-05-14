@@ -111,10 +111,12 @@
 <meta property="og:site_name" content="A Kid">
 <meta property="og:description" content="堆排序(重要)前言: 时间复杂度为O(N*logN),额外空间复杂度为O(1). 二叉树: 二叉树就是一棵特殊的树,即每一个节点只有两个子节点. 满二叉树: 首先它是一个二叉树，如果这个二叉树的每一个层的结点数都达到最大值(或者理解为除了最下面一层没有任何子节点以外,其它所有层都是满满当当的二叉树)，则这个二叉树就是满二叉树。也就是说，如果一个二叉树的层数为K(K从1开始)，且结点总数是(2^k)">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-10T13:30:35.915Z">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%A0%86%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F%E5%9B%BE%E8%A7%A3.jpg">
+<meta property="og:updated_time" content="2019-05-14T12:18:12.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="堆排序">
 <meta name="twitter:description" content="堆排序(重要)前言: 时间复杂度为O(N*logN),额外空间复杂度为O(1). 二叉树: 二叉树就是一棵特殊的树,即每一个节点只有两个子节点. 满二叉树: 首先它是一个二叉树，如果这个二叉树的每一个层的结点数都达到最大值(或者理解为除了最下面一层没有任何子节点以外,其它所有层都是满满当当的二叉树)，则这个二叉树就是满二叉树。也就是说，如果一个二叉树的层数为K(K从1开始)，且结点总数是(2^k)">
+<meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%A0%86%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F%E5%9B%BE%E8%A7%A3.jpg">
 
 
 
@@ -420,12 +422,24 @@
                 
               
 
-              <time title="Created: 2019-05-10 20:49:27 / Modified: 21:30:35" itemprop="dateCreated datePublished" datetime="2019-05-10T20:49:27+08:00">2019-05-10</time>
+              <time title="Created: 2019-05-10 20:49:27" itemprop="dateCreated datePublished" datetime="2019-05-10T20:49:27+08:00">2019-05-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-14 20:18:12" itemprop="dateModified" datetime="2019-05-14T20:18:12+08:00">2019-05-14</time>
               
             
           </span>
@@ -484,10 +498,22 @@
 </ol>
 </li>
 <li>完全二叉树: 若设二叉树的深度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第 h 层所有的结点都连续集中在最左边，这就是完全二叉树。还有一种理解就是,如果除了最后一层和倒数第二层不满,其它层都是满的,并且最后这两层的节点都是从左到右依次补齐的,这个这个….大家画个例子就容易理解了,我也说不清楚了,大家百度一下哈哈哈.</li>
-<li>二叉树其实是可以和数组对应起来的,我们可以通过数组在脑子里脑补出来它对应的完全二叉树结构,如图所示.<br><img src alt="二叉树与数组对应的图">.</li>
-<li>堆(就是完全二叉树)<ol>
+<li>二叉树其实是可以和数组对应起来的,我们可以通过数组在脑子里脑补出来它对应的完全二叉树结构,如图所示.<br><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%A0%86%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F%E5%9B%BE%E8%A7%A3.jpg" alt="二叉树与数组对应的图">.</li>
+<li><p>堆(就是完全二叉树)</p>
+<ol>
 <li>大根堆: 在这棵完全二叉树中,整棵树的最大值就是这棵树的根节点(也可以理解为它的头,反正就是最上面那一个节点),这个规则对于它的左右子树也同样成立,如<code>[6,5,4,3,4]</code>,根据我上面画的自己脑补一下子哈.</li>
 <li>小根堆: 同理,任何一颗子树(包括整个树)的最小值都是根节点,如<code>[1,2,3,4,5]</code>.</li>
+<li>建立一个大根堆的时间复杂度是O(N),因为比如来说第一个数和根节点,也就是自己比较,时间复杂度为log1,第四个数,需要和自己的父节点和父节点的父节点比较,也就是要比较两次,即log(4),所以N个数的时间复杂度为: log(1) + log(2) +……+log(N) = O(N).</li>
+</ol>
+</li>
+<li><p>堆排序过程(<strong>以[3,5,4,5,6]为例</strong>)</p>
+<ol>
+<li>让数组变成大根堆,即<code>[6,5,4,5,3]</code>.</li>
+<li>把大根堆的最后一个位置和堆顶位置做交换,同时让堆的大小减一,此时,大根堆的根节点,也就是本数组中的最大值<code>6</code>就固定在数组最后一个数不动了.</li>
+<li>让数组从<code>0</code>到<code>array.length - 2(也就是大根堆的长度,本来是减1,但是因为刚才6放下来又减1了)</code>重新建立大根堆,就变成了<code>[5,5,4,3,6]</code>.</li>
+<li>然后又把大根堆第一个位置<code>5</code>的数和最后一个位置的数<code>3,注意是3,不是6</code>交换,再重复步骤3……循环往复.</li>
+<li>当最后大根堆中只有一个元素就停止,此时数组就有序了,即<code>[3,4,5,5,6]</code>.</li>
+<li><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/SortingCodes/HeapSort_1.java" target="_blank" rel="noopener">堆排序代码</a>.</li>
 </ol>
 </li>
 </ol>
@@ -527,8 +553,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/fanfan999.github.io/2019/05/10/Request和Response/" rel="next" title="Request和Response">
-                <i class="fa fa-chevron-left"></i> Request和Response
+              <a href="/fanfan999.github.io/2019/05/10/Request/" rel="next" title="Request">
+                <i class="fa fa-chevron-left"></i> Request
               </a>
             
           </div>
@@ -536,6 +562,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/12/HTTP响应协议和response/" rel="prev" title="HTTP响应协议和Response">
+                HTTP响应协议和Response <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -604,7 +634,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -688,7 +718,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
