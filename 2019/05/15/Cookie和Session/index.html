@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="会话这些会话里的东西都是针对http协议而言的,而且,对于一个类,如果想被外界访问到,那这个类必须是servlet,因为只有servlet能被外界访问  会话: 一次会话中包括多次请求和响应,比如说两个人之间交谈,肯定不只有一句话,然后以其中一个人不说话了离开了为结束. 什么是一次会话呢: 浏览器第一次给服务器资源发送请求,会话建立,直到有一方断开请求连接为止. 会话的功能: 在一次会话的范围内的">
+<meta name="keywords" content="Cookie和Session">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cookie和Session">
+<meta property="og:url" content="https://fanfan999.github.io/2019/05/15/Cookie和Session/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="会话这些会话里的东西都是针对http协议而言的,而且,对于一个类,如果想被外界访问到,那这个类必须是servlet,因为只有servlet能被外界访问  会话: 一次会话中包括多次请求和响应,比如说两个人之间交谈,肯定不只有一句话,然后以其中一个人不说话了离开了为结束. 什么是一次会话呢: 浏览器第一次给服务器资源发送请求,会话建立,直到有一方断开请求连接为止. 会话的功能: 在一次会话的范围内的">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/cookie%E5%8E%9F%E7%90%86%E5%9B%BE.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/servlet%E6%A8%A1%E6%9D%BF%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/session%E5%8E%9F%E7%90%86%E5%9B%BE.png">
+<meta property="og:updated_time" content="2019-05-17T05:37:02.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cookie和Session">
+<meta name="twitter:description" content="会话这些会话里的东西都是针对http协议而言的,而且,对于一个类,如果想被外界访问到,那这个类必须是servlet,因为只有servlet能被外界访问  会话: 一次会话中包括多次请求和响应,比如说两个人之间交谈,肯定不只有一句话,然后以其中一个人不说话了离开了为结束. 什么是一次会话呢: 浏览器第一次给服务器资源发送请求,会话建立,直到有一方断开请求连接为止. 会话的功能: 在一次会话的范围内的">
+<meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/cookie%E5%8E%9F%E7%90%86%E5%9B%BE.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/05/15/Cookie和Session/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Cookie和Session | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/15/Cookie和Session/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Cookie和Session
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-15 08:04:01" itemprop="dateCreated datePublished" datetime="2019-05-15T08:04:01+08:00">2019-05-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-17 13:37:02" itemprop="dateModified" datetime="2019-05-17T13:37:02+08:00">2019-05-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/javaee/" itemprop="url" rel="index"><span itemprop="name">javaee</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h2><p><strong>这些会话里的东西都是针对http协议而言的,而且,对于一个类,如果想被外界访问到,那这个类必须是servlet,因为只有servlet能被外界访问</strong></p>
+<ol>
+<li>会话: 一次会话中包括多次请求和响应,比如说两个人之间交谈,肯定不只有一句话,然后以其中一个人不说话了离开了为结束.<ol>
+<li>什么是一次会话呢: 浏览器第一次给服务器资源发送请求,会话建立,直到有一方断开请求连接为止.</li>
+<li>会话的功能: 在一次会话的范围内的多次请求之间来实现共享数据.</li>
+<li>java中共享数据的两种方式:<ul>
+<li>客户端会话技术: cookie</li>
+<li>服务器端会话技术: session<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>概念: 它是客户端会话技术,它将数据保存在客户端.</li>
+<li><p>cookie快速入门</p>
+<ol>
+<li><p>使用步骤:</p>
+<ol>
+<li>服务器端创建cookie对象,其中cookie是一个类,绑定数据.<ul>
+<li>通过javax.servlet.http包下的Cookie实体类中的构造方法: <code>public Cookie(String name,
+String value)</code>.</li>
+</ul>
+</li>
+<li>服务器端发送cookie对象.<ul>
+<li>通过javax.servlet.http包下的HttpServletResponse接口中的方法: <code>void addCookie(Cookie cookie)</code>.</li>
+</ul>
+</li>
+<li>服务器端获取cookie,拿到数据.<ul>
+<li>通过javax.servlet.http包下的HttpServletRequest接口中的方法: <code>Cookie[] getCookies()</code>.</li>
+</ul>
+</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/cookie/src/cookie/CookieServlet1.java" target="_blank" rel="noopener">cookie发送数据代码</a>.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/cookie/src/cookie/CookieServlet2.java" target="_blank" rel="noopener">cookie接收数据代码</a>.</li>
+<li>注意,当这个servlet在同一个浏览器运行时,response能够正常获取数据,但是如果不在同一个浏览器运行,就不会获取到数据.</li>
+</ol>
+</li>
+<li><p>cookie实现原理</p>
+<ul>
+<li>基于响应头set-cookie和请求头cookie来实现,这个可以在浏览器运行servlet的时候通过F12查看网络中响应头和请求头的变化知道.</li>
+<li>如图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/cookie%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="cookie实现原理">.</li>
+<li>我们要知道不论是发送cookie还是接收,都是以http协议的响应和请求形式来实现交互的.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>一个小技巧:</p>
+<ul>
+<li>每次我们在idea中创建servlet时每次都要自己去写urlPattern还要在get方法里面调用post方法,这个就有点麻烦,这个过程是可以省略的,我们可以在idea中设置servlet的模板来解决这个问题.</li>
+<li>如图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/servlet%E6%A8%A1%E6%9D%BF%E8%AE%BE%E7%BD%AE.png" alt="设置servlet模板">.</li>
+</ul>
+</li>
+<li><p>cookie的细节内容</p>
+<ol>
+<li>一次可不可以发送多个cookie?<ul>
+<li>可以</li>
+<li>如何做到: 可以创建多个cookie对象,使用response调用多次addCookie()方法即可.</li>
+<li>如果,多个servlet发送的cookie的键是相同的,虽然发送会都发送,但是接收的时候只会接收最后一个发送的,</li>
+<li>假如两个甚至多个servlet中如果键都是”msg”,最后得到的值只有最后发送的一个msg的值.</li>
+<li>默认情况下,在浏览器没有关闭前,运行同一个src文件夹下面的某个servlet之后,然后运行其它servlet,我们都会发现前面运行过的servlet中cookie对象中的的键值对也会带过去,而且是在请求头中带过去,哪怕你重启了服务器,只要没有关闭浏览器,下次运行前面的值都还在.</li>
+<li>在浏览器中,每个cookie对象只会有一个备份,怎么理解呢,就是说你不管调用多少次某个servlet,在请求头中都只会有一个该servlet中的键值对信息,不会因为你刷新了多次就有多个,这也就侧面验证了假如多个servlet有相同键的cookie,只会保留最后一个的结论.</li>
+</ul>
+</li>
+<li>cookie在浏览器中保存多长时间呢?<ul>
+<li>默认情况下: 当浏览器关闭后,cookie数据被销毁,说明cookie是存在于浏览器的内存中,也就是说重新打开浏览器就需要重新请求重新响应cookie数据.</li>
+<li>设置cookie的生命周期让cookie实现持久化存储<ul>
+<li>使用cookie对象中的方法<code>setMaxAge(int seconds)</code>其中参数有三种取值:<ul>
+<li>当参数为正数时: 表示将cookie数据写到硬盘数据中,也就是实现了持久化存储,其中这个参数的大小就表示了cookies对象的存活时间,例如参数为30,表示30秒以后cookie文件就会被自动删除,在30秒内关闭浏览器重新打开再次获取该cookie对象依旧存在.</li>
+<li>当参数为负数时: 表示使用默认值.</li>
+<li>当参数为0时: 表示删除cookie信息.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/cookie/src/cookie/CookieServlet4.java" target="_blank" rel="noopener">cookie持久化存储示例案例</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>能不能存中文呢?<ul>
+<li>在tomcat8之前,cookie中不能直接存储中文数据,在tomcat8之后,cookie支持中文数据存储,但是还是不支持特殊字符.</li>
+<li>在cookie中不要使用符号,会报错的.</li>
+<li>那么,如果要在tomcat7及之前存储中文数据或者现在在cookie中带特殊符号,如空格,逗号等,就需要将它们进行转码—一般采用URL编码.</li>
+<li>怎么实现URL编码呢?下面的记住上一次访问时间案例中有,通过URLEncoder类中的静态方法encode(String s, String enc).</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/cookie/src/cookie/CookieServlet5.java" target="_blank" rel="noopener">cookie存储中文示例代码</a>.</li>
+</ul>
+</li>
+<li><p>cookie获取的范围是多大呢,即共享问题.</p>
+<ul>
+<li>假设在一个tomcat服务器中部署了多个web项目,那么在这些web项目中的cookie能不能共享?</li>
+<li>默认情况下是cookie是不能共享的</li>
+<li>但是可以通过方法: <code>setPath(String path)</code>来设置cookie获取的范围,默认该方法的参数设置为当前的虚拟目录.<ul>
+<li>即不调用该方法等同于<code>cookie.setPath(&quot;/虚拟目录&quot;)</code>,表示只有在该虚拟目录下的资源,才能获取该cookie下的信息.</li>
+<li>当我们将方法写成这样的时候: <code>cookie.setPath(&quot;/&quot;)</code>,这表示在服务器根目录下的所有文件都可以访问该cookie下的信息,其中<code>/</code>表示服务器根路径,即<code>localhost/</code>,后面跟什么都行,例如<code>localhost:8080/cookie/cookieServlet1</code>和<code>localhost:8080/cookie1/cookieServlet1</code>都可以访问上面的cookie对象中的信息.</li>
+</ul>
+</li>
+<li>不同的tomcat服务器间cookie共享问题(有印象就行)<ul>
+<li>通过cookie的方法: <code>setDomain(String path)</code>, 如果设置其一级域名相同(如<code>news.baidu.com</code>和<code>tieba.baidu.com</code>中的<code>.baidu.com</code>为他们的一级域名,所以他们的cookie数据可以共享),那么多个服务器之间cookie信息就可以共享了.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>cookie的特点和作用</p>
+<ol>
+<li><p>特点</p>
+<ol>
+<li>cookie存储数据在客户端浏览器,没有存储在服务器那么安全.</li>
+<li>浏览器对于单个cookie的大小由限制(4KB左右,据浏览器而定),以及对同一个域名下的总cookie数量也有限制.</li>
+</ol>
+</li>
+<li><p>作用</p>
+<ol>
+<li>cookie一般用于存储少量的不太敏感,不太重要的数据.</li>
+<li>在<strong>不登录</strong>的情况下(登录之后我们的信息都是存储在数据库中)完成服务器对客户端的身份识别,例如我们对百度这个网页设置了<strong>不在首页显示天气</strong>,当我关闭浏览器下次再打开百度页面的时候,是不会显示天气的,这就是因为我们在设置了不显示天气以后,百度服务器就把这个设置用cookie对象响应给了浏览器并保存到硬盘中,下次我们再打开的时候,就是带着cookie数据打开的,此时该页面会自动读取我所带着的cookie中的数据并进行相应的设置.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>cookie案例(记住上一次访问时间)</p>
+<ol>
+<li><p>需求:</p>
+<ol>
+<li>访问一个servlet,如果是第一次访问,则提示: 您好,欢迎您首次访问.</li>
+<li>如果不是第一次访问,则提示: 欢迎回来,您上次的访问时间为: xxxxxxxxx.</li>
+</ol>
+</li>
+<li><p>分析:</p>
+<ol>
+<li>可以采用cookie来完成.</li>
+<li>在服务器中的servlet判断是否有一个名为time的cookie<ol>
+<li>有,说明不是第一次访问<ol>
+<li>提示: 欢迎回来,您上次的访问时间为: 2019/05/15 16:30:55.</li>
+<li>写回cookie: time=2019/05/15 16:31:00.</li>
+</ol>
+</li>
+<li>没有,说明是第一次访问<ol>
+<li>没有就去响应数据: 您好,欢迎您首次访问.</li>
+<li>写回cookie:time=2019/05/15 16:30:55.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/cookie/src/demo/RememberTimeServlet2.java" target="_blank" rel="noopener">记住上一次访问时间代码实现</a>.</li>
+</ol>
+</li>
+<li><p>一点小问题</p>
+<ol>
+<li>我由于自己不小心在<strong>设置response编码格式</strong>的时候,把<code>response.setContentType(&quot;text/html;charset=Unicode&quot;);</code>写成了<code>response.setContentType(&quot;content-type:text/html;charset=Unicode&quot;);</code>,这样会导致什么问题呢?<strong>会导致直接把你要输出的内容下载下来,切记切记!</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="JSP入门"><a href="#JSP入门" class="headerlink" title="JSP入门"></a>JSP入门</h2><ol>
+<li>概念: Java Server Pages 即java服务器端页面,可以理解为一个特殊的页面,其中既可以直接定义html标签,又可以定义java代码.</li>
+<li>用于简化书写!!!!!</li>
+<li><p>原理</p>
+<ul>
+<li>jsp本质上就是一个servlet,浏览器通过页面访问服务器的时候,服务器会将jsp转换为java文件,然后编译成.class字节码文件,最后通过字节码文件做出响应.</li>
+</ul>
+</li>
+<li><p>jsp脚本:jsp定义java代码的方式</p>
+<ol>
+<li>&lt;% java代码 %&gt;: 定义的java代码放在jsp文件转换为java文件后中的service方法中.该脚本中可以写所有在servlet的service方法中语句,在方法里面的输出语句是<code>out.print()</code>.</li>
+<li>&lt;%! java代码%&gt;: 定义的java代码,在jsp转换为java类后的成员位置,可以是成员变量,也可以是成员方法,这种用的不多.</li>
+<li>&lt;%= java代码%&gt;: 这就相当于一个输出语句,输出语句中可以定义什么,该脚本中就可以定义什么,如果成员位置和局部位置都有同一个变量,会输出成员变量的值.</li>
+</ol>
+</li>
+<li><p>jsp内置对象: 指在jsp页面中不需要获取和创建就可以直接使用的对象,比如request对象,一共有9个内置对象,包括request,response,out(字符输出流对象,将数据输出到页面上和response.getWriter()类似)等,具体的后面再写.</p>
+<ul>
+<li>response.getWriter()和out.write()的区别: out对象定义在哪个位置就在哪个位置输出,而response.getWriter()对象不论定义在哪里,都会先于out对象输出,因为tomcat在给客户端做出响应前,会先找response缓冲区数据,再找out缓冲区数据.</li>
+<li>我们用的时候尽量都要out就可以了.</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/fanfan999/WebCodes/blob/master/cookie/web/RememberTime.jsp" target="_blank" rel="noopener">jsp改造记住上一次访问时间代码</a>.</p>
+</li>
+</ol>
+<h2 id="Session-接口"><a href="#Session-接口" class="headerlink" title="Session(接口)"></a>Session(接口)</h2><ol>
+<li>概念: 服务器会话技术,在<strong>一次会话(表示session的范围)</strong>的多次请求间共享数据,将数据保存在服务器端的对象中—HttpSession,session也是域对象.<ul>
+<li>什么是一次会话呢,就比如我现在有两个servlet,通过session共享数据,当我把浏览器关闭后,这次会话就结束了,再打开浏览器就是一个新的会话,如果此时访问获取数据的servlet就会报错,就说明session的作用范围是一次会话.</li>
+</ul>
+</li>
+<li><p>快速入门</p>
+<ol>
+<li>获取session对象: <code>HttpSession session = request.getSession()</code>.</li>
+<li>使用session对象: 即HttpSession对象<ol>
+<li><code>Object getAttribute(String name)</code>.</li>
+<li><code>void setAttribute(String name,Object value)</code>.</li>
+<li><code>void removeAttribute(String name)</code>.</li>
+<li>域对象都有这几个方法..</li>
+</ol>
+</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/cookie/src/session/SessionServlet1.java" target="_blank" rel="noopener">session快速入门发送数据代码</a>.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/cookie/src/session/SessionServlet2.java" target="_blank" rel="noopener">session快速入门接收数据代码</a>.</li>
+</ol>
+</li>
+<li><p>原理: session的实现是依赖于cookie的</p>
+<ol>
+<li>当我们第一次请求,服务器创建了session对象后,只有本次会话没有结束,后面一直都不会再创建新的session对象了,也就是说,你没有关闭浏览器之前,虽然多次运行发送请求的servlet网址,响应头也不会再有带session的id的键值对了.</li>
+<li>原理图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/session%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="session原理图">.</li>
+</ol>
+</li>
+<li><p>session的细节</p>
+<ol>
+<li><p>当客户端关闭,服务器不关闭后,两次获取的session是否是同一个?</p>
+<ul>
+<li>默认情况下,不是同一个.</li>
+<li>那么我希望客户端关闭重新打开后后,session也能相同,而且可以直接获取session的数据,应该怎么做呢?<ul>
+<li>在获取session的servlet中创建一个cookie,键为<code>JSESSIONID</code>,值为session的id值,通过response的响应头set-cookie将其发送给浏览器,同时让cookie实现持久化存储.<br>Cookie cookie = new Cookie(“JSESSIONID”, session.getId());<br>cookie.setMaxAge(60*60);<br>response.addCookie(cookie);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>客户端不关闭,服务器关闭后,两次获取的session是同一个吗?</p>
+<ul>
+<li>服务器关闭了,session对象就被销毁了,因为内存被释放了,所以说不是同一个.</li>
+<li>因为对象不是同一个,所以说,原来的session对象中的数据我们是访问不到的,这就产生了数据丢失,这肯定是不希望看到的,所以这里需要提到两个点.<ol>
+<li>session的钝化: 即在服务器正常关闭之前,将session对象序列化到硬盘上.</li>
+<li>session的活化: 即在服务器启动后,就session文件转化为内存中的session对象.</li>
+<li>上面的两个功能tomcat已经为我们实现了,找到上述项目<code>编译后的保存位置</code>,放在<code>tomcat保存目录</code>下的<code>webapps</code>目录下,然后通过<code>tomcat的lib目录</code>启动tomcat,可以正常访问servlet,然后通过<code>tomcat的lib目录</code>正常关闭tomcat,我们会发现在<code>tomcat的work目录会多一个session.ser的文件</code>,里面就保存着session的id,重新正常启动tomcat之后,那个文件就会自动被删除,我们再次读取session的值的时候,它会自动把session的id通过请求头传递给服务器,所以我们可以正常读取session中的值.</li>
+<li>idea可以实现钝化,但是不可以实现活化的操作,重新启动服务器它会直接删除work目录然后新建一个,所以读取不到原session的数据.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>session的失效时间,即session什么时候被销毁</p>
+<ol>
+<li>服务器关闭,session被销毁.</li>
+<li>session对象调用invalidate()方法自己销毁自己.</li>
+<li>session默认失效时间为30分钟,可以在<code>apache-tomcat-9.0.19\conf\web.xml</code>中查看到.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>session的特点:</p>
+<ol>
+<li>session用于存储一次会话的多次请求的数据,存储在服务器端.</li>
+<li>session可以存储任意类型,任意大小的数据.</li>
+</ol>
+</li>
+<li><p>session与cookie的区别</p>
+<ol>
+<li>session存储数据在服务器端,而cookie在客户端.</li>
+<li>session没有数据大小限制,而cookie有.</li>
+<li>session数据安全,cookie相对不安全.</li>
+<li>session可以存储任意类型的数据,而cookie只能存储string类型的,通过session.setAttribute()和新建cookie对象时可以知道.</li>
+</ol>
+</li>
+</ol>
+<h2 id="案例-验证码"><a href="#案例-验证码" class="headerlink" title="案例:验证码"></a>案例:验证码</h2><ol>
+<li><p>需求:</p>
+<ol>
+<li>访问一个带有验证码的登录页面login.jsp.</li>
+<li>用户输入用户名,密码以及验证码.<ul>
+<li>如果用户名和密码输入有误,跳转登录页面,提示: 用户名或密码错误.</li>
+<li>如果验证码输入有误,跳转登录页面,提示: 验证码错误.</li>
+<li>如果全部输入正确,则跳转到主页success.jsp,显示:用户名,欢迎您!</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong><a href="https://github.com/fanfan999/WebCodes/tree/master/logindemo_complete" target="_blank" rel="noopener">验证码案例代码</a></strong>.</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/Cookie和Session/" rel="tag"># Cookie和Session</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/14/排序算法的稳定性及其汇总/" rel="next" title="排序算法的稳定性及其汇总">
+                <i class="fa fa-chevron-left"></i> 排序算法的稳定性及其汇总
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/15/桶排序/" rel="prev" title="桶排序">
+                桶排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#会话"><span class="nav-number">1.</span> <span class="nav-text">会话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie"><span class="nav-number">2.</span> <span class="nav-text">Cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP入门"><span class="nav-number">3.</span> <span class="nav-text">JSP入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session-接口"><span class="nav-number">4.</span> <span class="nav-text">Session(接口)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例-验证码"><span class="nav-number">5.</span> <span class="nav-text">案例:验证码</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
