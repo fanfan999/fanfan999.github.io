@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="桶排序,计数排序,基数排序都不是基于比较的排序,也就是说他们与样本的实际数据情况有很大关系,实际中不经常使用,其时间复杂度都为O(N),额外空间复杂度都为O(N),而且都是稳定的排序">
+  <meta name="description" content="桶排序,计数排序,基数排序都不是基于比较的排序,也就是说他们与样本的实际数据情况有很大关系,实际中不经常使用,其时间复杂度都为O(N),额外空间复杂度都为O(N),而且都是稳定的排序 桶排序 桶排序就是一个概念,不是具体的一种排序方法,其中的基数排序和计数排序才是桶排序的具体实现. 举例: 现在有一个数组arr,里面存放着从0-60的共计61个元素,我们可以拿一个同样长度为61的新数组countA">
 <meta name="keywords" content="桶排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="桶排序">
 <meta property="og:url" content="https://fanfan999.github.io/2019/05/15/桶排序/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="桶排序,计数排序,基数排序都不是基于比较的排序,也就是说他们与样本的实际数据情况有很大关系,实际中不经常使用,其时间复杂度都为O(N),额外空间复杂度都为O(N),而且都是稳定的排序">
+<meta property="og:description" content="桶排序,计数排序,基数排序都不是基于比较的排序,也就是说他们与样本的实际数据情况有很大关系,实际中不经常使用,其时间复杂度都为O(N),额外空间复杂度都为O(N),而且都是稳定的排序 桶排序 桶排序就是一个概念,不是具体的一种排序方法,其中的基数排序和计数排序才是桶排序的具体实现. 举例: 现在有一个数组arr,里面存放着从0-60的共计61个元素,我们可以拿一个同样长度为61的新数组countA">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-15T13:08:07.353Z">
+<meta property="og:updated_time" content="2019-05-22T15:27:00.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="桶排序">
-<meta name="twitter:description" content="桶排序,计数排序,基数排序都不是基于比较的排序,也就是说他们与样本的实际数据情况有很大关系,实际中不经常使用,其时间复杂度都为O(N),额外空间复杂度都为O(N),而且都是稳定的排序">
+<meta name="twitter:description" content="桶排序,计数排序,基数排序都不是基于比较的排序,也就是说他们与样本的实际数据情况有很大关系,实际中不经常使用,其时间复杂度都为O(N),额外空间复杂度都为O(N),而且都是稳定的排序 桶排序 桶排序就是一个概念,不是具体的一种排序方法,其中的基数排序和计数排序才是桶排序的具体实现. 举例: 现在有一个数组arr,里面存放着从0-60的共计61个元素,我们可以拿一个同样长度为61的新数组countA">
 
 
 
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="Created: 2019-05-15 21:06:05 / Modified: 21:08:07" itemprop="dateCreated datePublished" datetime="2019-05-15T21:06:05+08:00">2019-05-15</time>
+              <time title="Created: 2019-05-15 21:06:05" itemprop="dateCreated datePublished" datetime="2019-05-15T21:06:05+08:00">2019-05-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-22 23:27:00" itemprop="dateModified" datetime="2019-05-22T23:27:00+08:00">2019-05-22</time>
               
             
           </span>
@@ -478,7 +490,33 @@
 
       
         <p><strong>桶排序,计数排序,基数排序都不是基于比较的排序,也就是说他们与样本的实际数据情况有很大关系,实际中不经常使用,其时间复杂度都为O(N),额外空间复杂度都为O(N),而且都是稳定的排序</strong></p>
-
+<h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><ol>
+<li>桶排序就是一个概念,不是具体的一种排序方法,其中的<strong><code>基数排序</code></strong>和<strong><code>计数排序</code></strong>才是桶排序的具体实现.</li>
+<li>举例: 现在有一个数组<code>arr</code>,里面存放着从<code>0-60</code>的共计<code>61</code>个元素,我们可以拿一个同样长度为61的新数组<code>countArr</code>,用来记录<code>arr</code>数组中每个数字出现的次数,最后遍历数组<code>countArr</code>就可以知道每个数出现了几次,就从<code>0</code>开始输出几次就好了,比如说<code>1出现了3次</code>,就输出<code>111</code>就可以了.<h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1></li>
+<li>计数排序就是有多少个数对应放多少个桶,然后统计对应数出现的个数,最后遍历输出,不过这个很不实用,要是数据量太大了,就贼慢,所以一般桶的数量不会很多,就是这么个意思,理解理解就好了.<h1 id="基数排序-后面再说"><a href="#基数排序-后面再说" class="headerlink" title="基数排序(后面再说)"></a>基数排序(后面再说)</h1></li>
+</ol>
+<h1 id="补充问题"><a href="#补充问题" class="headerlink" title="补充问题"></a>补充问题</h1><pre><code>1. 案例(很重要): 给定一个无序数组,求如果排序之后,相邻两数的最大差值,要求时间复杂度为**O(N)**,且要求**不能用非基于比较**的排序.
+    * 举例: 
+        数组array:   [3,1,6,2,7]
+        排序后:      [1,2,3,6,7]
+        返回最大差值:      3
+        则本题解为 :       3
+    * 解法: 借用桶概念,但是没用桶排序
+    ![案例图解思路]().
+    * 代码: **[案例代码](https://github.com/fanfan999/AlgorithmsCodes/blob/master/SortingCodes/Max_Gap.java).**
+2. 在这里要注意一个问题: 
+    int i = 0;
+    int j = 0;
+    i = i++;
+    此时的i是为0的.
+    i = i + 1;
+    j = ++j;
+    此时i和j都是等于1的,一定要想清楚啊!!!
+3. 用数组实现固定大小的栈,越界就报错: 实现添加功能`push`,取出栈顶元素但是不删除功能`peek`,取出栈顶元素并删除`pop`这三个功能
+    * **[数组实现固定大小的栈代码](https://github.com/fanfan999/AlgorithmsCodes/blob/master/SortingCodes/MakeArrayAsStack.java).**
+4. 用数组实现固定大小的队列,越界就报错: 实现添加功能`push`,取出队列首元素但是不删除功能`peek`,取出队列首元素并删除`poll`这三个功能
+    * **[数组实现固定大小的队列代码](https://github.com/fanfan999/AlgorithmsCodes/blob/master/SortingCodes/MakeArrayAsQueue.java).**
+</code></pre>
       
     </div>
 
@@ -524,6 +562,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/fanfan999.github.io/2019/05/17/JSP-EL和JST/" rel="prev" title="JSP,EL和JST">
+                JSP,EL和JST <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -566,8 +608,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -582,7 +633,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -617,7 +668,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -674,7 +727,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -727,6 +786,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#桶排序"><span class="nav-number">1.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计数排序"><span class="nav-number">2.</span> <span class="nav-text">计数排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基数排序-后面再说"><span class="nav-number">3.</span> <span class="nav-text">基数排序(后面再说)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补充问题"><span class="nav-number">4.</span> <span class="nav-text">补充问题</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

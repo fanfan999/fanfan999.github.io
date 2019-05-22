@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="servlet+filter+listener被称为javaweb的三大组件 Filter(重要) Filter: 过滤器  生活中的过滤器: 如生活中的净水器,空气净化器等都是过滤器. web中的过滤器: 当浏览器通过请求访问服务器资源时,过滤器可以将请求拦截下来,来完成一些特殊的功能.   过滤器的作用  一般用于完成通用的操作. 登录验证(类似淘宝要加入购物车必须先登录这样子). 统一编码处">
+<meta name="keywords" content="Filter和Listener">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Filter和Listener">
+<meta property="og:url" content="https://fanfan999.github.io/2019/05/22/Filter和Listener/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="servlet+filter+listener被称为javaweb的三大组件 Filter(重要) Filter: 过滤器  生活中的过滤器: 如生活中的净水器,空气净化器等都是过滤器. web中的过滤器: 当浏览器通过请求访问服务器资源时,过滤器可以将请求拦截下来,来完成一些特殊的功能.   过滤器的作用  一般用于完成通用的操作. 登录验证(类似淘宝要加入购物车必须先登录这样子). 统一编码处">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-22T15:41:31.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Filter和Listener">
+<meta name="twitter:description" content="servlet+filter+listener被称为javaweb的三大组件 Filter(重要) Filter: 过滤器  生活中的过滤器: 如生活中的净水器,空气净化器等都是过滤器. web中的过滤器: 当浏览器通过请求访问服务器资源时,过滤器可以将请求拦截下来,来完成一些特殊的功能.   过滤器的作用  一般用于完成通用的操作. 登录验证(类似淘宝要加入购物车必须先登录这样子). 统一编码处">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/05/22/Filter和Listener/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Filter和Listener | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/22/Filter和Listener/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Filter和Listener
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-22 09:22:30 / Modified: 23:41:31" itemprop="dateCreated datePublished" datetime="2019-05-22T09:22:30+08:00">2019-05-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/javaee/" itemprop="url" rel="index"><span itemprop="name">javaee</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>servlet+filter+listener被称为javaweb的三大组件</strong></p>
+<h1 id="Filter-重要"><a href="#Filter-重要" class="headerlink" title="Filter(重要)"></a>Filter(重要)</h1><ol>
+<li><p>Filter: 过滤器</p>
+<ul>
+<li>生活中的过滤器: 如生活中的净水器,空气净化器等都是过滤器.</li>
+<li>web中的过滤器: 当浏览器通过请求访问服务器资源时,过滤器可以将请求拦截下来,来完成一些特殊的功能.</li>
+</ul>
+</li>
+<li><p>过滤器的作用</p>
+<ul>
+<li>一般用于完成<strong>通用</strong>的操作.<ul>
+<li>登录验证(类似淘宝要加入购物车必须先登录这样子).</li>
+<li>统一编码处理,我们当提交表单的方式为post的时候,我们都要设置request的编码防止乱码.</li>
+<li>敏感字符过滤.</li>
+<li>…….</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>filter快速入门</p>
+<ol>
+<li>步骤<ol>
+<li>定义一个类,实现接口Filter,和servlet类似的.</li>
+<li>复写接口中的方法.</li>
+<li>配置拦截路径(即访问什么样的资源过滤器会生效),servlet配置的是访问路径.<ol>
+<li>第一种配置方式: web.xml.</li>
+<li>第二种配置方式: 注解(常用),和servlet一样,写在<code>urlPattern</code>后面,且<code>urlPattern</code>几个字可以省略,一般后面写<code>/*</code>,表示访问所有资源之前都要先执行过滤器,写<code>/demo.jsp</code>则表示只有访问demo.jsp的时候才会执行过滤器.</li>
+</ol>
+</li>
+<li>放行,即让访问的资源中的内容显示出来<ul>
+<li><code>chain.doFilter(req, resp);</code>, 其中的<code>chain</code>, <code>req</code>, <code>resp</code>这都是<code>doFilter</code>中的参数.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/filter_listener/src/filters/IntroductionOfFilter.java" target="_blank" rel="noopener">过滤器快速入门代码</a>.</li>
+<li><a href="https://github.com/fanfan999/WebCodes/blob/master/filter_listener/web/index.jsp" target="_blank" rel="noopener">过滤器快速入门index.jsp页面</a>.</li>
+<li><strong>这里有一个点要注意一下,就是如果你配置过滤器为<code>/*</code>的时候,就表示访问所有资源都要先执行过滤器,此时运行服务器,通过上面的代码,访问index.jsp,会发现index.jsp中的内容不会被显示出来,这个就可以理解为这样子: 假设我要回家.路上有土匪,这个土匪就相当于那个过滤器,我能不能过去,就要看土匪能不能放我过去,这就相当于上面的我访问index.jsp前执行了过滤器,我能不能显示index.jsp的内容,要看过滤器让不让我看这样子.</strong></li>
+</ol>
+</li>
+<li><p>过滤器的细节</p>
+<ol>
+<li><p>web.xml配置(反正我一般不用hhh,知道就行)</p>
+<pre><code>&lt;filter&gt;
+    &lt;filter-name&gt;demo1&lt;/filter-name&gt;
+    &lt;filter-class&gt;这里填的是src下(不包括src)到资源文件的路径(就是包名.包名...类名)如`filters.IntroductionOfFilter`&lt;/filter-class&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;demo1&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*(注意这个是拦截路径,不是访问路径)&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre></li>
+<li>过滤器执行流程<ul>
+<li>大体来说就是,先通过对应的url访问资源,然后途中经过过滤器,过滤器经过处理后放行,放行后执行url对应资源的内容,结束之后又回到过滤器中,执行放行语句后面的操作.</li>
+</ul>
+<ol>
+<li>放行语句前,会收到浏览器传来的请求,如果有操作request的语句,它会先执行操作request的语句.</li>
+<li>执行放行语句,回到资源文件中执行相应操作.</li>
+<li>资源文件执行结束后,回到过滤器中,执行放行语句下面的操作,即对相应消息的操作.</li>
+</ol>
+</li>
+<li>过滤器生命周期方法(三个)<ol>
+<li>服务器启动时创建Filter对象,然后由该对象执行<strong>init()</strong>方法去<strong>加载资源</strong>,而且只执行一次 —&gt; 每一次浏览器访问服务器经过过滤器时,由Filter对象去执行<strong>doFilter()</strong>方法,可以执行多次 —&gt;服务器停止时,Filter对象被销毁,如果服务器正常关闭(就是点红色的点,不是直接关闭之前说的tomcat窗口,反正我们在集成开发环境中点击关闭都是正常关闭的),此时执行<strong>destroy()</strong>去<strong>释放资源</strong>,只执行一次.</li>
+</ol>
+</li>
+<li>过滤器配置详解<ol>
+<li>拦截路径配置(有4种)<ol>
+<li>拦截具体的资源路径: <code>/index.jsp</code>, 表示只有访问index.jsp资源时,过滤器才会被执行.<ul>
+<li>注意,这里是不存在一个项目中有两个同名的index.jsp的,不管你在什么地方,都会报错的.</li>
+</ul>
+</li>
+<li>拦截具体目录: <code>/user/*</code>, 表示访问<code>/user</code>下的所有资源时,过滤器都会被执行<ul>
+<li><strong>这里的<code>/user/*</code>不一定非得是一定存在user这个目录,也就是说<code>/user/servlet</code>并不一定表示servlet就放在真正存在的user包下,它只是表示所有前面有<code>/user</code>的url都会被user这个东西限制,也就是会经过过滤器.</strong></li>
+<li><strong>如果真的是有这个目录,那么就要把东西放在目录下,同时在idea中要注意这里拦截的是具体目录不是模块包哈,目录和模块包有区别的,目录是自己新建的,模块包是idea生成的,如src,web模块包等,同时这样设置以后,访问的url也要变了,要加上目录了就要</strong>.</li>
+</ul>
+</li>
+<li>后缀名拦截的方式: <code>*.jsp</code>, 表示访问所有后缀名为.jsp资源时,过滤器都会被执行,<strong>注意前面没有斜杠</strong>.</li>
+<li>拦截所有资源: <code>/*</code>, 表示访问所有资源时,过滤器都会被执行.</li>
+<li><strong><a href="https://github.com/fanfan999/WebCodes/blob/master/filter_listener/src/filters/FilterDemo2.java" target="_blank" rel="noopener">拦截路径设置代码</a></strong>.</li>
+</ol>
+</li>
+<li>拦截方式配置(两种方式): 指的是资源被访问的方式, 也就是说,比如我设置了浏览器直接访问资源的过滤器,当我从服务器内部转发的时候,就不会被拦截,但是重定向这种两次请求的就也会被拦截.<ol>
+<li>注解配置: 在注解filter注解中设置dispatcherTypes属性(有5种取值)<ul>
+<li>REQUEST: 默认值.表示浏览器直接请求资源url,即直接在地址栏输入url路径访问.</li>
+<li>FORWEAD: 服务器内部转发访问资源.</li>
+<li>INCLUDE: 包含访问资源(了解)</li>
+<li>ERROR: 错误跳转资源(了解)</li>
+<li>ASYNC: 异步访问资源(了解)</li>
+<li>当我既要在直接访问时能被过滤器加强,还要在内部转发时也被过滤器加强怎么办呢?<ul>
+<li>其实很简单,我们通过看webfilter的源码知道,它的dispatcherTypes属性是一个数组,所以我们直接这样写: <strong><code>dispatcherTypes = {DispatcherType.FORWARD,DispatcherType.REQUEST}</code></strong>.</li>
+</ul>
+</li>
+<li>当这样写的时候: <code>urlPatterns = &quot;/*&quot;, dispatcherTypes = {DispatcherType.FORWARD,DispatcherType.REQUEST}</code>, 表示转发和直接请求访问所有类型资源都会被过滤器加强,但是这样子的话,假如是以请求转发的方式访问index.jsp,过滤器就会被执行两次.</li>
+</ul>
+</li>
+<li>web.xml配置:<ol>
+<li>配置资源路径的时候多设置<dispatcher></dispatcher>这样一个标签即可,也有上述五个取值,一样的.</li>
+</ol>
+</li>
+<li><strong><a href="https://github.com/fanfan999/WebCodes/blob/master/filter_listener/src/filters/FilterDemo3.java" target="_blank" rel="noopener">注解配置拦截方式代码</a>.</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>过滤器链(配置多个过滤器)</p>
+<ol>
+<li><p>执行顺序: 如果有两个过滤器(过滤器1,过滤器2)</p>
+<ul>
+<li>过滤器1先执行</li>
+<li>过滤器2再执行</li>
+<li>资源执行</li>
+<li>过滤器2回来执行</li>
+<li>过滤器1回来执行</li>
+</ul>
+</li>
+<li><p>这个怎么测试呢?其实很简单,你就直接写两个过滤器,采用注解配置,其中过滤的url写成<code>/*</code>,然后随便访问一个路径,比如index.jsp的路径,然后你就会发现它两个都执行了(在注解配置中只要两个的<code>filterName</code>不一样,就会都执行,两个名字一样就只会执行前一个).</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	@WebFilter(filterName = &quot;FilterDemo4&quot;, urlPatterns = &quot;/*&quot;)</span><br><span class="line">	public class FilterDemo4 implements Filter &#123;</span><br><span class="line">    public void destroy() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException &#123;</span><br><span class="line">        System.out.println(&quot;FilterDemo4执行了&quot;);</span><br><span class="line"></span><br><span class="line">        chain.doFilter(req, resp);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;FilterDemo4回来了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void init(FilterConfig config) throws ServletException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>过滤器的先后顺序问题(两种):<ol>
+<li>注解配置的过滤器: 根据类名,按照字符串比较规则去比较,值小的先执行.<ul>
+<li>例如: AFilter和BFilter,它会先第一个字符比较,然后第二个字符比较…一次类推,在这里,第一个字符<code>A</code>&lt;<code>B</code>,就比较出来了,所以先执行AFilter.</li>
+<li>又比如: <code>Filter6</code>和<code>Filter17</code>,它依次比较,比较到<code>6</code> &gt; <code>1</code>,所以Filter17会先执行.</li>
+</ul>
+</li>
+<li>web.xml配置: 谁定义在上面谁先执行,就是谁写在前面就先执行谁,知道就好了.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Filter案例"><a href="#Filter案例" class="headerlink" title="Filter案例"></a>Filter案例</h2><ol>
+<li>案例1_登录验证<ul>
+<li>需求<ul>
+<li>访问之前的用户增删查改的案例的资源。验证其是否登录,即权限控制.<ul>
+<li>如果登录了，则直接放行。</li>
+<li>如果没有登录，则跳转到登录页面，提示”您尚未登录，请先登录”.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href>结合登录验证完整代码</a>.<h1 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h1></li>
+</ul>
+</li>
+<li>Listener: 监听器</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/Filter和Listener/" rel="tag"># Filter和Listener</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/20/面试题之java基础知识/" rel="next" title="面试题之java基础知识">
+                <i class="fa fa-chevron-left"></i> 面试题之java基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-重要"><span class="nav-number">1.</span> <span class="nav-text">Filter(重要)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter案例"><span class="nav-number">1.1.</span> <span class="nav-text">Filter案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Listener"><span class="nav-number">2.</span> <span class="nav-text">Listener</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="JSPJSP基础语法jsp中既可以写java代码,也可以写html等静态代码,其本质就是一个servlet  指令 作用: 用于配置jsp页面, 以及导入一些资源文件. 格式: &amp;lt;%@ 指令名称 属性名1=属性值1 属性名1=属性值1 …%&amp;gt; 分类: page: 配置jsp页面. contentType: 等同于response.setContentType()这个方法. 可以用于设置">
+<meta name="keywords" content="JSP,EL和JST">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP,EL和JST">
+<meta property="og:url" content="https://fanfan999.github.io/2019/05/17/JSP-EL和JST/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="JSPJSP基础语法jsp中既可以写java代码,也可以写html等静态代码,其本质就是一个servlet  指令 作用: 用于配置jsp页面, 以及导入一些资源文件. 格式: &amp;lt;%@ 指令名称 属性名1=属性值1 属性名1=属性值1 …%&amp;gt; 分类: page: 配置jsp页面. contentType: 等同于response.setContentType()这个方法. 可以用于设置">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/JSP-EL%E5%92%8CJST/mvc%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.png">
+<meta property="og:updated_time" content="2019-05-22T15:35:08.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSP,EL和JST">
+<meta name="twitter:description" content="JSPJSP基础语法jsp中既可以写java代码,也可以写html等静态代码,其本质就是一个servlet  指令 作用: 用于配置jsp页面, 以及导入一些资源文件. 格式: &amp;lt;%@ 指令名称 属性名1=属性值1 属性名1=属性值1 …%&amp;gt; 分类: page: 配置jsp页面. contentType: 等同于response.setContentType()这个方法. 可以用于设置">
+<meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/JSP-EL%E5%92%8CJST/mvc%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/05/17/JSP-EL和JST/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JSP,EL和JST | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/17/JSP-EL和JST/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JSP,EL和JST
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-17 13:44:07" itemprop="dateCreated datePublished" datetime="2019-05-17T13:44:07+08:00">2019-05-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-22 23:35:08" itemprop="dateModified" datetime="2019-05-22T23:35:08+08:00">2019-05-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/javaee/" itemprop="url" rel="index"><span itemprop="name">javaee</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="JSP基础语法"><a href="#JSP基础语法" class="headerlink" title="JSP基础语法"></a>JSP基础语法</h2><p><strong>jsp中既可以写java代码,也可以写html等静态代码,其本质就是一个servlet</strong></p>
+<ol>
+<li>指令<ol>
+<li>作用: 用于配置jsp页面, 以及导入一些资源文件.</li>
+<li>格式: &lt;%@ 指令名称 属性名1=属性值1 属性名1=属性值1 …%&gt;</li>
+<li>分类:<ol>
+<li>page: 配置jsp页面.<ul>
+<li>contentType: 等同于response.setContentType()这个方法.<ul>
+<li>可以用于设置响应体的mime类型和字符集.</li>
+<li>设置当前jsp页面的编码(只能是高级的ide才能生效,如果使用记事本这样的低级开发工具,那就需要使用pageEncoding()来设置).</li>
+</ul>
+</li>
+<li>import: 用来导java包,和java中导包一样.</li>
+<li>errorPage: 当前页面发生异常后,会自动跳转到指定的错误页面,<ul>
+<li>例如: <code>&lt;%@page errorPage=&quot;index.jsp&quot; %&gt;</code>,注意这个errorPage不能是当前页面,必须是其它的jsp页面.</li>
+</ul>
+</li>
+<li>isErrorPage: 标示当前页面是否是错误页面,默认为false,但是,标示当前页面的isErrorPage为true之后,就可以使用内置对象exception了.</li>
+<li><strong><a href>isErrorPage示例代码</a></strong></li>
+</ul>
+</li>
+<li>include: 页面包含的,导入页面的资源文件,比如我这个页面值写头部,其它页面要这个头部的时候直接包含进去就可以了.<ul>
+<li>&lt;%@include file=”top.jsp”%&gt; </li>
+</ul>
+</li>
+<li>taglib: 导入资源,一般用于导入标签库,相当于导包.<ul>
+<li>&lt;%@taglib prefix=”a” uri=”<a href="http://java.sun.com/jsp/jstl/core&quot;%&gt;" target="_blank" rel="noopener">http://java.sun.com/jsp/jstl/core&quot;%&gt;</a></li>
+<li>prefix: 前缀,自定义的名字这个标签的名字.</li>
+<li>uri: 标签库的url.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>注释<ol>
+<li>html注释:<br> <!-- -->: 只能注释html代码片段,注释的东西你再浏览器中查看源码还是可以看到.</li>
+<li>jsp特有的注释<br> &lt;%– –%&gt;: 可以注释所有(推荐使用,注释的东西就不会发送到浏览器,相当于删除了)</li>
+</ol>
+</li>
+<li><p>内置对象</p>
+<ol>
+<li>在jsp页面中不需要创建可以直接使用的对象,一共有9个.</li>
+<li><p>pageContext(jsp中的域对象),真实类型为PageContext,其作用范围为: 当前页面,可以在当前页面共享数据,还可以获取其它八个内置对象(通过get方法).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line"> 	request.setAttribute(&quot;msg&quot;, &quot;hello&quot;);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%= request.getAttribute(&quot;msg&quot;)%&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>request(jsp中的域对象),真实类型为HttpServletRequest,,其作用范围为: 一次请求访问的多个资源(通过转发实现).</p>
+</li>
+<li>session(jsp中的域对象),真实类型为HttpSession,其作用范围为: 一次会话的多个请求间.</li>
+<li>application(jsp中的域对象),真实类型为ServletContext,其作用范围为: 所有用户间共享数据,服务器开启被创建,服务器关闭被销毁.</li>
+<li>response,真实类型为HttpServletResponse,其作用为: 作为一个响应对象.</li>
+<li>page,代表当前对象,等于this,真实类型为Object,其作用为: 表示当前页面(servlet)的对象 this.</li>
+<li>out,真实类型为JspWriter,其作用为: 输出对象,将数据输出到页面上.</li>
+<li>config,真实类型为ServletConfig,其作用为: 作为servlet的配置对象.</li>
+<li>exception(要声明该页面为isErrorPage=true才能使用),真实类型为Throwable,,其作用为: 作为一个异常对象.</li>
+</ol>
+</li>
+</ol>
+<h1 id="MVC开发模式-知道什么代码往哪儿写-很重要"><a href="#MVC开发模式-知道什么代码往哪儿写-很重要" class="headerlink" title="MVC开发模式(知道什么代码往哪儿写,很重要)"></a>MVC开发模式(知道什么代码往哪儿写,很重要)</h1><ol>
+<li><p>jsp的演变历史</p>
+<ol>
+<li>早期只有servlet,没有jsp,只能使用response输出标签数据,非常麻烦.</li>
+<li>后来就有了jsp,简化了servlet的开发,但是如果过度使用jsp,在jsp中既写大量代码,又写一堆html标签,后期很难维护,别人也看不懂.</li>
+<li>再后来,Java的web开发就借鉴了mvc的开发模式,使得程序的设计更加合理.</li>
+</ol>
+</li>
+<li><p>MVC详解</p>
+<ol>
+<li>M: Model, 模型.JavaBean<ul>
+<li>完成具体的业务操作,如: 查询数据库(对数据库的操作都放在Dao包下),封装对象.</li>
+</ul>
+</li>
+<li>V: View, 视图. JSP<ul>
+<li>仅展示数据,就不写java代码了尽量.</li>
+</ul>
+</li>
+<li>C: Controller, 控制器. Servlet<ul>
+<li>获取用户输入.</li>
+<li>调用模型.</li>
+<li>将数据(包括用户输入的和模型返回的)交给视图进行展示.</li>
+</ul>
+</li>
+<li>优点<ol>
+<li>耦合性低,所以方便维护,有利于分工协作.</li>
+<li>重用性高.</li>
+</ol>
+</li>
+<li>缺点: 使项目架构变得复杂,对程序猿的要求更高,要有一个很完整的构思.</li>
+<li>如图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/JSP-EL%E5%92%8CJST/mvc%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.png" alt="MVC详解">.</li>
+</ol>
+</li>
+</ol>
+<h1 id="EL表达式-简化JSP中java开发代码"><a href="#EL表达式-简化JSP中java开发代码" class="headerlink" title="EL表达式(简化JSP中java开发代码)"></a>EL表达式(简化JSP中java开发代码)</h1><ol>
+<li>概念: Expression Language 表达式语言.</li>
+<li>作用: 替换和简化jsp页面中java代码的编写,<strong>注意它只能获取域中的数据,所以所有要使用el表达式的都需要先存到域对象中</strong>.</li>
+<li>语法: ${表达式}.</li>
+<li>注意:<ol>
+<li>jsp默认支持EL表达式.</li>
+<li>如果要忽略EL表达式,即将EL表达式当作普通字符串输出,有两种方法:<ol>
+<li>设置jsp中的page指令中的isELIgnored属性为true,即 <strong><code>&lt;%@page isELIgnored=&quot;true&quot; %&gt;</code></strong>,表示忽略当前jsp页面中所有的EL表达式,这样整个页面的EL表达式都会被当作字符串处理.</li>
+<li>在EL表示式前加一个反斜杠<code>\</code>就可以了,例如 <strong><code>\${3 &gt; 4}</code></strong>,表示忽略当前这个EL表达式.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>作用:</p>
+<ol>
+<li>运算<ol>
+<li>运算符<ol>
+<li>算术运算法: + - * /(div) %(mod),注意除法后默认是double类型.</li>
+<li>比较运算符: &gt; &lt; &gt;= &lt;= ==.</li>
+<li>逻辑运算符: &amp;&amp;(and) ||(or) !(not).</li>
+<li>空运算符: empty,用于判断字符串,集合,数组对象是否为null并且长度是否为0.<ul>
+<li>例如: <strong>${empty list}</strong>,判断list对应的字符串,集合,数组对象是否为空<strong>或者</strong>长度为0,满足一个就返回true.</li>
+<li><strong>${not empty list}</strong>,判断字符串,集合,数组对象是否不为null<strong>并且</strong>长度&gt;0,满足则返回true.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>案例代码: <strong><a href="https://github.com/fanfan999/WebCodes/blob/master/jsp_el_jst/web/calculateDemo.jsp" target="_blank" rel="noopener">运算符示例代码</a></strong>.</li>
+</ol>
+</li>
+<li><p>获取值(<strong>通过属性获取值,越界时候输出都是空字符串,不会报错</strong>)</p>
+<p> <strong>注意这里的属性就是get和set方法去掉get和set,剩下的部分再将首字母小写,即getAge()–&gt;age属性</strong>.</p>
+<ol>
+<li><strong>EL表达式只能从域对象中获取值</strong>.</li>
+<li>语法: <ol>
+<li>${域名称.键名称}: 从指定域中获取指定键的值.<ul>
+<li>域(4个):<ul>
+<li>pageScope —&gt; pageContext.</li>
+<li>requestScope —&gt; rquest.</li>
+<li>sessionScope —&gt; session.</li>
+<li>applicationScope —&gt; application(即java中的servletContext).</li>
+</ul>
+</li>
+<li>举例: 在request中存储了name=饭饭,通过<code>${requestScope.name}</code>就可以得到张三.</li>
+</ul>
+</li>
+<li>${键名}: 表示依次从最小的域<code>pageContext</code>开始查找是否有该键对应的值,知道找到为止.</li>
+</ol>
+</li>
+<li>获取对象, List集合, Map集合的值<ol>
+<li>获取对象: <strong>${域名称.键名.属性名}</strong>.<ul>
+<li>本质上是用对象去调用对应的get方法.</li>
+</ul>
+</li>
+<li>List集合: ${域名称.键名称[索引]}.<ul>
+<li>比如说当索引为0,表示获取该集合中的第一个元素.</li>
+<li>没有索引就输就所有值.</li>
+<li>下标越界就输出空字符串,不会报错.</li>
+</ul>
+</li>
+<li>Map集合: ${域名.键名.key名}或者${域名.键名[key名]}.</li>
+<li><strong><a href="https://github.com/fanfan999/WebCodes/blob/master/jsp_el_jst/web/getBeanDemo.jsp" target="_blank" rel="noopener">获取对象中的数据案例代码</a></strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>隐式对象: 可以直接拿来用,类似于jsp的内置对象,el表达式中有11个隐式对象.<ul>
+<li>这里注意一下pageContext就可以了:<ol>
+<li>可以获取jsp其它八个内置对象.</li>
+<li>可以动态获取虚拟目录: ${pageContext.request.contextPath},可以用在jsp页面的form表单中,例如: action=”${pageContext.request.contextPath}/loginServlet”.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="JSTL标签-简化JSP中java开发代码"><a href="#JSTL标签-简化JSP中java开发代码" class="headerlink" title="JSTL标签(简化JSP中java开发代码)"></a>JSTL标签(简化JSP中java开发代码)</h1><ol>
+<li><p>概念: Java Server Pages Tag Library 即JSP标准标签库</p>
+<ul>
+<li>是由Apache阿帕奇组织提供的开源的免费的jsp标签库 &lt;标签&gt;.</li>
+</ul>
+</li>
+<li><p>用于简化和替换jsp页面上的java代码.</p>
+</li>
+<li>使用步骤:<ol>
+<li>导入jstl相关的jar包.</li>
+<li>引入标签库: taglib指令 &lt;%@ taglib %&gt;</li>
+<li>使用标签.</li>
+</ol>
+</li>
+</ol>
+<p><strong>这里在运行的时候我遇到了一个错<code>The absolute uri: [http://java.sun.com/jsp/jstl/core] cannot be resolved in either web.xml or the jar files deployed with this application</code>,这个错就是项目在部署的时候jstl的jar包在tomcat下的WEB-INF的lib中没得,将jar包复制到目录下就行了</strong></p>
+<ol start="4">
+<li><p>常用的jstl标签</p>
+<ol>
+<li>if,相当于java中的if,但是没有else.<ol>
+<li>属性<ul>
+<li>test, 必须属性,接收boolean表达式,<ul>
+<li>如果表达式为true,则显示if标签体内容</li>
+<li>如果表达式为false,则不显示if标签体内容</li>
+<li>如果表达式什么都不是也不会显示if标签体内容</li>
+<li>一般情况下,test属性值会结合el表达式的empty运算符,比较运算符,逻辑运算符等一起使用.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注意: c:if标签没有else情况,想要else情况,就要重写一遍c:if标签.</li>
+</ol>
+</li>
+<li>choose,相当于java中的switch.<ol>
+<li>choose标签写一个星期几小案例<ol>
+<li>在域中存储一个数字.</li>
+<li>使用choose标签取出数字 相当于switch的声明.</li>
+<li>使用when标签做数字的判断,相当于case, <code>&lt;c:when test=&quot;${number == 1}&quot;&gt;</code>.</li>
+<li>otherwise标签做其它情况的声明,相当于default, <code>&lt;c:otherwise&gt;</code>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>foreach,相当于java中的for循环.</p>
+<ol>
+<li>属性:<ul>
+<li>items: 容器对象</li>
+<li>var: 容器中的临时变量</li>
+<li>varStatus: 循环状态对象<ul>
+<li>index: 容器中元素的索引,从0开始</li>
+<li>count: 循环次数,从1开始</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong><a href="https://github.com/fanfan999/WebCodes/blob/master/jsp_el_jst/web/jstl/jstlDemo.jsp" target="_blank" rel="noopener">jstl入门案例代码</a></strong>.</p>
+</li>
+<li>练习:<ol>
+<li>需求: 在request域中有一个存有user对象的list集合,需要使用jstl+el将list集合数据展示到jsp页面的表格中.</li>
+<li><strong><a href="https://github.com/fanfan999/WebCodes/blob/master/jsp_el_jst/web/jstl/jstlPractice.jsp" target="_blank" rel="noopener">练习代码</a></strong>.<h1 id="三层架构-针对服务器而言-软件设计架构"><a href="#三层架构-针对服务器而言-软件设计架构" class="headerlink" title="三层架构(针对服务器而言): 软件设计架构"></a>三层架构(针对服务器而言): 软件设计架构</h1></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>界面层(表示层): 即用户看到的界面,用户可以通过界面上的组件和服务器进行交互例如将数据封装提交.</li>
+<li>业务逻辑层: 处理业务逻辑的.</li>
+<li>数据访问层: 操作数据存储文件,如数据库,txt文件等.</li>
+<li>针对web服务器而言,上述三层架构又叫web层, service层, dao(data access object)层.</li>
+<li>其关系如图: <strong><img src alt></strong>.</li>
+</ol>
+<h1 id="案例-用户信息列表展示"><a href="#案例-用户信息列表展示" class="headerlink" title="案例: 用户信息列表展示"></a>案例: 用户信息列表展示</h1><pre><code>1. 需求: 用户信息的查询操作
+2. **[用户信息展示_查询代码]()**.
+</code></pre><h1 id="综合案例练习"><a href="#综合案例练习" class="headerlink" title="综合案例练习"></a>综合案例练习</h1><pre><code>1. 简单功能
+    1. 列表查询(就是上面的,我是直接复制过来的).
+    2. 登录.
+    3. 列表添加.
+    4. 列表删除.
+    5. 列表修改.
+2. 复杂功能
+    1. 删除选中的多条信息.
+    2. 数据分页查询.
+    3. 复杂条件查询.
+3. [案例完整代码](https://github.com/fanfan999/WebCodes/tree/master/user_crud_complete).
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/JSP-EL和JST/" rel="tag"># JSP,EL和JST</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/15/桶排序/" rel="next" title="桶排序">
+                <i class="fa fa-chevron-left"></i> 桶排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/20/面试题之java基础知识/" rel="prev" title="面试题之java基础知识">
+                面试题之java基础知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP"><span class="nav-number">1.</span> <span class="nav-text">JSP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP基础语法"><span class="nav-number">1.1.</span> <span class="nav-text">JSP基础语法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC开发模式-知道什么代码往哪儿写-很重要"><span class="nav-number">2.</span> <span class="nav-text">MVC开发模式(知道什么代码往哪儿写,很重要)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EL表达式-简化JSP中java开发代码"><span class="nav-number">3.</span> <span class="nav-text">EL表达式(简化JSP中java开发代码)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSTL标签-简化JSP中java开发代码"><span class="nav-number">4.</span> <span class="nav-text">JSTL标签(简化JSP中java开发代码)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三层架构-针对服务器而言-软件设计架构"><span class="nav-number">5.</span> <span class="nav-text">三层架构(针对服务器而言): 软件设计架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例-用户信息列表展示"><span class="nav-number">6.</span> <span class="nav-text">案例: 用户信息列表展示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#综合案例练习"><span class="nav-number">7.</span> <span class="nav-text">综合案例练习</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

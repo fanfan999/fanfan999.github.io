@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/cookie%E5%8E%9F%E7%90%86%E5%9B%BE.png">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/servlet%E6%A8%A1%E6%9D%BF%E8%AE%BE%E7%BD%AE.png">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/session%E5%8E%9F%E7%90%86%E5%9B%BE.png">
-<meta property="og:updated_time" content="2019-05-17T05:37:02.641Z">
+<meta property="og:updated_time" content="2019-05-17T07:49:49.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cookie和Session">
 <meta name="twitter:description" content="会话这些会话里的东西都是针对http协议而言的,而且,对于一个类,如果想被外界访问到,那这个类必须是servlet,因为只有servlet能被外界访问  会话: 一次会话中包括多次请求和响应,比如说两个人之间交谈,肯定不只有一句话,然后以其中一个人不说话了离开了为结束. 什么是一次会话呢: 浏览器第一次给服务器资源发送请求,会话建立,直到有一方断开请求连接为止. 会话的功能: 在一次会话的范围内的">
@@ -441,7 +441,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-17 13:37:02" itemprop="dateModified" datetime="2019-05-17T13:37:02+08:00">2019-05-17</time>
+                <time title="Modified: 2019-05-17 15:49:49" itemprop="dateModified" datetime="2019-05-17T15:49:49+08:00">2019-05-17</time>
               
             
           </span>
@@ -541,6 +541,7 @@ String value)</code>.</li>
 <ul>
 <li>每次我们在idea中创建servlet时每次都要自己去写urlPattern还要在get方法里面调用post方法,这个就有点麻烦,这个过程是可以省略的,我们可以在idea中设置servlet的模板来解决这个问题.</li>
 <li>如图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/Cookie%E5%92%8CSession/servlet%E6%A8%A1%E6%9D%BF%E8%AE%BE%E7%BD%AE.png" alt="设置servlet模板">.</li>
+<li>idea中out目录中存放的是部署到tomcat中的文件,javase项目存放的就是编译后的文件,反正就是所有编译后的东西都在里面.</li>
 </ul>
 </li>
 <li><p>cookie的细节内容</p>
@@ -654,7 +655,7 @@ String value)</code>.</li>
 </li>
 <li><p>jsp脚本:jsp定义java代码的方式</p>
 <ol>
-<li>&lt;% java代码 %&gt;: 定义的java代码放在jsp文件转换为java文件后中的service方法中.该脚本中可以写所有在servlet的service方法中语句,在方法里面的输出语句是<code>out.print()</code>.</li>
+<li>&lt;% java代码 %&gt;: 定义的java代码放在jsp文件转换为java文件后中的service方法中.该脚本中可以写所有在servlet的service方法中语句.</li>
 <li>&lt;%! java代码%&gt;: 定义的java代码,在jsp转换为java类后的成员位置,可以是成员变量,也可以是成员方法,这种用的不多.</li>
 <li>&lt;%= java代码%&gt;: 这就相当于一个输出语句,输出语句中可以定义什么,该脚本中就可以定义什么,如果成员位置和局部位置都有同一个变量,会输出成员变量的值.</li>
 </ol>
@@ -662,7 +663,7 @@ String value)</code>.</li>
 <li><p>jsp内置对象: 指在jsp页面中不需要获取和创建就可以直接使用的对象,比如request对象,一共有9个内置对象,包括request,response,out(字符输出流对象,将数据输出到页面上和response.getWriter()类似)等,具体的后面再写.</p>
 <ul>
 <li>response.getWriter()和out.write()的区别: out对象定义在哪个位置就在哪个位置输出,而response.getWriter()对象不论定义在哪里,都会先于out对象输出,因为tomcat在给客户端做出响应前,会先找response缓冲区数据,再找out缓冲区数据.</li>
-<li>我们用的时候尽量都要out就可以了.</li>
+<li>我们用的时候尽量都要其中一个就可以了.</li>
 </ul>
 </li>
 <li><p><a href="https://github.com/fanfan999/WebCodes/blob/master/cookie/web/RememberTime.jsp" target="_blank" rel="noopener">jsp改造记住上一次访问时间代码</a>.</p>
@@ -872,7 +873,7 @@ String value)</code>.</li>
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -907,7 +908,9 @@ String value)</code>.</li>
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -964,7 +967,13 @@ String value)</code>.</li>
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
