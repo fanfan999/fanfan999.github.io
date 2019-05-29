@@ -103,18 +103,28 @@
 
 
 
-  <meta name="description" content="写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间.   常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例">
-<meta name="keywords" content="时间复杂度,额外空间复杂度">
+  <meta name="description" content="猫狗队列问题 题目描述如图: . 猫狗队列代码.  转圈打印矩阵(matrix) 题目: 给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:  如下: 1   2  3  4 5   6  7  8 9  10 11 12 13 14 15 16         打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10.   这类似的题目不能去想如何由第一个下">
+<meta name="keywords" content="算法_初级4">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于时间复杂度和额外空间复杂度">
-<meta property="og:url" content="https://fanfan999.github.io/2019/04/29/关于时间复杂度和空间复杂度/index.html">
+<meta property="og:title" content="算法_初级4">
+<meta property="og:url" content="https://fanfan999.github.io/2019/05/25/算法-初级4/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间.   常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例">
+<meta property="og:description" content="猫狗队列问题 题目描述如图: . 猫狗队列代码.  转圈打印矩阵(matrix) 题目: 给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:  如下: 1   2  3  4 5   6  7  8 9  10 11 12 13 14 15 16         打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10.   这类似的题目不能去想如何由第一个下">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-02T09:28:46.534Z">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E7%8C%AB%E7%8B%97%E9%98%9F%E5%88%97.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E8%BD%AC%E5%9C%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E8%BD%AC%E5%9C%88%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF%E5%9B%BE.jpg">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E4%BE%8B%E5%AD%90.jpg">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E6%80%9D%E8%B7%AF.jpg">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%9C%A8%E8%A1%8C%E8%B7%9F%E5%88%97%E9%83%BD%E6%8E%92%E5%A5%BD%E5%BA%8F%E7%9A%84%E7%9F%A9%E9%98%B5%E4%B8%AD%E6%89%BE%E6%95%B0%E9%A2%98%E7%9B%AE.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84.png">
+<meta property="og:updated_time" content="2019-05-29T05:18:21.439Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于时间复杂度和额外空间复杂度">
-<meta name="twitter:description" content="写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间.   常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例">
+<meta name="twitter:title" content="算法_初级4">
+<meta name="twitter:description" content="猫狗队列问题 题目描述如图: . 猫狗队列代码.  转圈打印矩阵(matrix) 题目: 给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:  如下: 1   2  3  4 5   6  7  8 9  10 11 12 13 14 15 16         打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10.   这类似的题目不能去想如何由第一个下">
+<meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E7%8C%AB%E7%8B%97%E9%98%9F%E5%88%97.png">
 
 
 
@@ -122,7 +132,7 @@
 
   
   
-  <link rel="canonical" href="https://fanfan999.github.io/2019/04/29/关于时间复杂度和空间复杂度/">
+  <link rel="canonical" href="https://fanfan999.github.io/2019/05/25/算法-初级4/">
 
 
 
@@ -132,7 +142,7 @@
   };
 </script>
 
-  <title>关于时间复杂度和额外空间复杂度 | A Kid</title>
+  <title>算法_初级4 | A Kid</title>
   
 
 
@@ -377,7 +387,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/04/29/关于时间复杂度和空间复杂度/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/25/算法-初级4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -394,7 +404,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于时间复杂度和额外空间复杂度
+          <h1 class="post-title" itemprop="name headline">算法_初级4
 
               
             
@@ -420,7 +430,7 @@
                 
               
 
-              <time title="Created: 2019-04-29 19:27:15" itemprop="dateCreated datePublished" datetime="2019-04-29T19:27:15+08:00">2019-04-29</time>
+              <time title="Created: 2019-05-25 14:06:05" itemprop="dateCreated datePublished" datetime="2019-05-25T14:06:05+08:00">2019-05-25</time>
             
 
             
@@ -437,7 +447,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-02 17:28:46" itemprop="dateModified" datetime="2019-05-02T17:28:46+08:00">2019-05-02</time>
+                <time title="Modified: 2019-05-29 13:18:21" itemprop="dateModified" datetime="2019-05-29T13:18:21+08:00">2019-05-29</time>
               
             
           </span>
@@ -489,82 +499,76 @@
       
 
       
-        <p><strong><em>写在前面的话: 这里写<code>logN</code>就表示<code>以2为底数</code>,因为2为底数打不出来哈哈哈</em></strong></p>
-<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><ul>
-<li>用于评价一个算法流程的好坏.<ul>
-<li>先看时间复杂度的指标(再看常数项),即<code>(N^2)/100 + 10N + 1</code>我们也看成时间复杂度是<code>O(N^2)</code>,其中N就是样本量 .</li>
-<li>然后再分析不同数据样本下的实际运行时间.</li>
-</ul>
+        <h1 id="猫狗队列问题"><a href="#猫狗队列问题" class="headerlink" title="猫狗队列问题"></a>猫狗队列问题</h1><ol>
+<li>题目描述如图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E7%8C%AB%E7%8B%97%E9%98%9F%E5%88%97.png" alt="猫狗队列题目">.</li>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/DogCatQueue.java" target="_blank" rel="noopener">猫狗队列代码</a>.</strong></li>
+</ol>
+<h1 id="转圈打印矩阵-matrix"><a href="#转圈打印矩阵-matrix" class="headerlink" title="转圈打印矩阵(matrix)"></a>转圈打印矩阵(matrix)</h1><ol>
+<li>题目: 给定一个矩阵,请你按照顺时针转圈的方式打印它,如图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E8%BD%AC%E5%9C%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png" alt="转圈打印题目"></li>
+<li><p>如下:</p>
+<pre><code>1   2  3  4
+5   6  7  8
+9  10 11 12
+13 14 15 16        
+打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10. 
+</code></pre></li>
+<li>这类似的题目不能去想如何由第一个下标变成第二个下标,然后第二个下标如何变成第三个下标这样子,这样子会贼难写,而且边界还很容易出错.</li>
+<li><p>正确思路:用一种宏观的感觉,找到矩阵的左上角位置(a,b),和右下角下标(c,d),我们通过a,b,c,d四个点可以确定一个框,这个框正是我们要打印的一圈, 如图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E8%BD%AC%E5%9C%88%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF%E5%9B%BE.jpg" alt="思路图">.</p>
 </li>
-<li>常数时间的操作:<ul>
-<li>概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例如加减乘除,位运算操作,数组寻址(就是根据下标获取数组中的元素,比如a[1])等.</li>
-</ul>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/CirclePrintMatrix.java" target="_blank" rel="noopener">转圈打印矩阵代码</a>.</strong></p>
 </li>
-<li><strong><em>时间复杂度为一个算法流程中,<code>最差情况下</code>常数操作数量的指标.常用<code>O</code>表示(读作big O),具体来说,在常数操作数量的表达式中,不要低阶项,只要高阶项,并且忽略掉高阶项的系数,剩下的部分如果记作<code>f(N)</code>,那么时间复杂度为<code>O(f(N))</code></em></strong>.</li>
-<li>几个简单的理解时间复杂度的例子:<ol>
-<li>一个有序数组A,另一个无序数组B,请打印B中的所有不在A中的数,A数组长度为N,B数组长度为M.<ul>
-<li>算法流程1:<ul>
-<li>对于数组B中的每一个数,都在A中通过<strong><em>遍历</em></strong>的方式找一下.</li>
-<li>很明显该算法的时间复杂度特别大,遍历一次代价为<code>O(N)</code>,一共M个数,所以总的代价为<code>O(M*N)</code>.</li>
-</ul>
+</ol>
+<h1 id="将二维数组旋转90°然后输出"><a href="#将二维数组旋转90°然后输出" class="headerlink" title="将二维数组旋转90°然后输出"></a>将二维数组旋转90°然后输出</h1><ol>
+<li><p>例子:</p>
+<pre><code>原数组:
+    1 2 3
+    4 5 6
+    7 8 9
+转换后的数组:
+    7 4 1
+    8 5 2
+    9 6 3
+</code></pre></li>
+<li>思路:和上面一样,用一种宏观的思路,给定左上角和右下角的坐标位置,先转外面一圈,然后转里面一圈,直到左上角元素坐标大于右下角坐标为止,不过这种题就有点扣边界,反正我做这种题就很难受,可能因为我逻辑思维太差了吧.</li>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/RotateArray.java" target="_blank" rel="noopener">旋转二维数组代码</a>.</strong></li>
+</ol>
+<h1 id="之字形打印矩阵"><a href="#之字形打印矩阵" class="headerlink" title="之字形打印矩阵"></a>之字形打印矩阵</h1><ol>
+<li>题目: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png" alt="之字形打印矩阵">.</li>
+<li>示例: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E4%BE%8B%E5%AD%90.jpg" alt="之字形打印矩阵示例">.</li>
+<li>思路: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E6%80%9D%E8%B7%AF.jpg" alt="之字形打印矩阵思路">.</li>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/ZhiPrintMatrix.java" target="_blank" rel="noopener">之字形打印矩阵代码</a>.</strong></li>
+<li>注意: 暂时不变的放在前面,免得暂时变化的会影响,比如这题中的左上角的行要放在列的后面!!!!不然会搞死人的.</li>
+</ol>
+<h1 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a>反转链表</h1><p><strong><strong>这个博客的图画的巨好,巨容易懂,也算是夏天的一丝清凉,真的是要热死了: <a href="https://www.cnblogs.com/keeya/p/9218352.html" target="_blank" rel="noopener">理解反转链表</a></strong></strong></p>
+<ol>
+<li><p>题目: 输入一个链表，反转链表后，输出新链表的表头, <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.png" alt="链表倒序题目"></p>
 </li>
-<li>算法流程2:<ul>
-<li>对于数组B中的每一个数,都在A中通过<strong><em>二分</em></strong>的方式找一下.</li>
-<li>二分搜索,比如针对一个<strong><em>有序(假定是从小到大)</em></strong>的数组,假设我要找<code>2</code>有没有在这个数组里.<ul>
-<li>我先找到<code>中间位置</code>的数,看比2大还是小.<ul>
-<li>比2大,因为是从小到大排序的,所以中间右边的数字一定比2大,我们就在左边继续划分一半一半地找,直到没有了或者找到了为止.</li>
-<li>比2小,说明中间左边的数字一定比2小,我们就在右边继续划分一半一半地找,直到没有了或者找到了为止.</li>
-<li>等于2,就直接返回</li>
-</ul>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/ReverseList.java" target="_blank" rel="noopener">反转链表代码</a>.</strong></p>
 </li>
-</ul>
-</li>
-<li>在这个过程中,我们<code>数组寻址和两个数比较</code>的过程都是常数操作时间的O(1),每次砍一半,这样下来,常数操作次数为<code>logN(以2为底)</code>,即一个数组长度为8,最多砍3次.</li>
-<li><strong><em>由此可见,二分查找的时间复杂度为O(logN),以2为底</em></strong></li>
-<li>因此我们也可以推出,查找一次的时间复杂度为<code>O(logN)</code>,一共有M个数,时间复杂度则为<code>(MlogN)</code>.</li>
-</ul>
-</li>
-<li>算法流程3:<ul>
-<li>先把B数组排序,然后用类似<strong><em>外排</em></strong>的方式打印所有在A中出现的数.</li>
-<li>思路就是,B排序后,两个数组同时从0位置开始,即<code>A[i]</code>和<code>B[i]</code>互相比较.<ul>
-<li>若A[i] &gt; B[i],则B[i]肯定不在A数组中,打印B[i],然后B数组下标++.</li>
-<li>若A[i] &lt; B[i],B数组下标不动,A数组下标++.</li>
-<li>若A[i] == B[i],A数组下标不动,B数组下标++.</li>
-</ul>
-</li>
-<li>针对这个流程<ul>
-<li>第1步:排序的时间复杂度,可以达到<code>NlogN</code>.</li>
-<li>第2步:快排,时间复杂度为<code>O(N + M)</code>(N,M为A和B数组长度).</li>
-</ul>
-</li>
-<li>由此可见,该流程的时间复杂度为<code>NlogN + O(N + M)</code>.</li>
-</ul>
-</li>
-<li>三个流程,三种时间复杂的表达…我们应该如何分析其好坏?</li>
-</ul>
-</li>
-<li>给长度为N的数组排序(<strong>其中寻址,比较操作都是常数级别的</strong>).<ul>
-<li>第一次从<code>0-(N-1)</code>中找出最小值min放在第0个位置,过N个数.</li>
-<li>第二次从<code>1-(N-1)</code>中找出最小值min放在第1个位置,过N-1个数.</li>
-<li>……以此类推.</li>
-<li>一共需要找的次数为<code>(N + (N-1) + ... + 2 + 1)</code>,这是一个等差数列,其和为<code>n(n + 1) / 2</code>(这个就可以理解为常数操作数量的表达式),再乘以一个<code>O(1)</code>(它是单次操作所需要的时间),即<code>(n(n + 1) / 2) O(1)</code>.</li>
-<li>估算其时间复杂度是这样子的:<ul>
-<li>不要低阶项,只要高阶项,并且忽略掉高阶项的系数.</li>
-<li>由此推出上述排序算法时间复杂度为<code>O(n^2)</code>.</li>
-</ul>
-</li>
-</ul>
+</ol>
+<h1 id="在行列都排好序的矩阵中找数"><a href="#在行列都排好序的矩阵中找数" class="headerlink" title="在行列都排好序的矩阵中找数"></a>在行列都排好序的矩阵中找数</h1><ol>
+<li>题目: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%9C%A8%E8%A1%8C%E8%B7%9F%E5%88%97%E9%83%BD%E6%8E%92%E5%A5%BD%E5%BA%8F%E7%9A%84%E7%9F%A9%E9%98%B5%E4%B8%AD%E6%89%BE%E6%95%B0%E9%A2%98%E7%9B%AE.png" alt="在行列都排好序的矩阵中找数">.</li>
+<li>思路:<ol>
+<li>注意这里的行和列都是从小到大有序的. </li>
+<li>先确定右上角<code>A</code>的坐标(左下角也行,其实四个角都行,看你自己,这里以右上角为例),然后判断和要找的元素的大小.<ol>
+<li><code>A</code>比目标元素大,就左移.</li>
+<li><code>A</code>比目标元素小,说明<code>A</code>这个元素左边的都比目标元素小,就往下走.</li>
+<li>总的来说,就是大就往左移,小就往下移,最后还没有就返回false.</li>
+</ol>
 </li>
 </ol>
 </li>
-</ul>
-<h1 id="额外空间复杂度"><a href="#额外空间复杂度" class="headerlink" title="额外空间复杂度"></a>额外空间复杂度</h1><ul>
-<li>额外空间复杂度其实很好想,完成这个功能,我们额外开辟了几个新的空间,那就是几.<ol>
-<li>比如我一个循环,循环过程中我新开辟了一个长度为10的数组来存储数据,那么额外空间复杂度就是O(10)</li>
-<li>再以冒泡排序为例,当两个数需要交换时,我们就会定义一个中间变量<code>temp</code>,这就是我们唯一新开辟空间的地方,这时我们就说冒泡排序的额外空间复杂度为O(1),<strong><em>其实,有限的几个变量(单个变量,不是数组这样子的哈)能跑完流程的话,额外空间复杂度都是O(1),不一定是一个</em></strong>.</li>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/FindEleInMatrix.java" target="_blank" rel="noopener">在行列都有序的矩阵中找目标值代码</a>.</strong></li>
 </ol>
-</li>
-</ul>
+<h1 id="打印两个有序链表的公共部分"><a href="#打印两个有序链表的公共部分" class="headerlink" title="打印两个有序链表的公共部分"></a>打印两个有序链表的公共部分</h1><ol>
+<li>思路: 可以理解为归并排序的归并部分执行的行为.</li>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/PalindromeSequence.java" target="_blank" rel="noopener">打印有序链表公共部分代码</a>.</strong></li>
+</ol>
+<h1 id="判断一个链表是否为回文结构"><a href="#判断一个链表是否为回文结构" class="headerlink" title="判断一个链表是否为回文结构"></a>判断一个链表是否为回文结构</h1><ol>
+<li>题目: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84.png" alt="判断一个链表是否为回文结构代码">.</li>
+<li>最难理解的就是两个逆序的过程,多想想画一画,我反正这个题搞了我一上午.</li>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/PalindromeSequence.java" target="_blank" rel="noopener">判断一个链表是否为回文结构代码</a>.</strong></li>
+</ol>
 
       
     </div>
@@ -588,7 +592,7 @@
       
         <div class="post-tags">
           
-            <a href="/fanfan999.github.io/tags/时间复杂度-额外空间复杂度/" rel="tag"># 时间复杂度,额外空间复杂度</a>
+            <a href="/fanfan999.github.io/tags/算法-初级4/" rel="tag"># 算法_初级4</a>
           
         </div>
       
@@ -601,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/fanfan999.github.io/2019/04/29/基础加强-注解/" rel="next" title="基础加强_注解">
-                <i class="fa fa-chevron-left"></i> 基础加强_注解
+              <a href="/fanfan999.github.io/2019/05/23/算法-初级3/" rel="next" title="算法_初级3">
+                <i class="fa fa-chevron-left"></i> 算法_初级3
               </a>
             
           </div>
@@ -610,10 +614,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/fanfan999.github.io/2019/04/29/冒泡排序,选择排序/" rel="prev" title="冒泡排序,选择排序,插入排序">
-                冒泡排序,选择排序,插入排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -850,7 +850,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间复杂度"><span class="nav-number">1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#额外空间复杂度"><span class="nav-number">2.</span> <span class="nav-text">额外空间复杂度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#猫狗队列问题"><span class="nav-number">1.</span> <span class="nav-text">猫狗队列问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转圈打印矩阵-matrix"><span class="nav-number">2.</span> <span class="nav-text">转圈打印矩阵(matrix)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将二维数组旋转90°然后输出"><span class="nav-number">3.</span> <span class="nav-text">将二维数组旋转90°然后输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#之字形打印矩阵"><span class="nav-number">4.</span> <span class="nav-text">之字形打印矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反转链表"><span class="nav-number">5.</span> <span class="nav-text">反转链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在行列都排好序的矩阵中找数"><span class="nav-number">6.</span> <span class="nav-text">在行列都排好序的矩阵中找数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印两个有序链表的公共部分"><span class="nav-number">7.</span> <span class="nav-text">打印两个有序链表的公共部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断一个链表是否为回文结构"><span class="nav-number">8.</span> <span class="nav-text">判断一个链表是否为回文结构</span></a></li></ol></div>
             
 
           </div>

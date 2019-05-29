@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间.   常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例">
-<meta name="keywords" content="时间复杂度,额外空间复杂度">
+  <meta name="description" content="1.注意:     * 栈中: push是压栈,peek是返回栈顶元素,pop是弹栈.     * 队列中: offer是进队列,poll是出队列,peek是返回队列首元素.         * linkedlist实现了queue接口,所以我们可以把linkedlist当作队列来使用.其中queue接口和list,set接口一样都是继承自collection接口.  实现一个特殊的栈,在实现栈的">
+<meta name="keywords" content="算法题目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于时间复杂度和额外空间复杂度">
-<meta property="og:url" content="https://fanfan999.github.io/2019/04/29/关于时间复杂度和空间复杂度/index.html">
+<meta property="og:title" content="算法_初级3">
+<meta property="og:url" content="https://fanfan999.github.io/2019/05/23/算法-初级3/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间.   常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例">
+<meta property="og:description" content="1.注意:     * 栈中: push是压栈,peek是返回栈顶元素,pop是弹栈.     * 队列中: offer是进队列,poll是出队列,peek是返回队列首元素.         * linkedlist实现了queue接口,所以我们可以把linkedlist当作队列来使用.其中queue接口和list,set接口一样都是继承自collection接口.  实现一个特殊的栈,在实现栈的">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-02T09:28:46.534Z">
+<meta property="og:updated_time" content="2019-05-25T15:12:15.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于时间复杂度和额外空间复杂度">
-<meta name="twitter:description" content="写在前面的话: 这里写logN就表示以2为底数,因为2为底数打不出来哈哈哈 时间复杂度 用于评价一个算法流程的好坏. 先看时间复杂度的指标(再看常数项),即(N^2)/100 + 10N + 1我们也看成时间复杂度是O(N^2),其中N就是样本量 . 然后再分析不同数据样本下的实际运行时间.   常数时间的操作: 概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例">
+<meta name="twitter:title" content="算法_初级3">
+<meta name="twitter:description" content="1.注意:     * 栈中: push是压栈,peek是返回栈顶元素,pop是弹栈.     * 队列中: offer是进队列,poll是出队列,peek是返回队列首元素.         * linkedlist实现了queue接口,所以我们可以把linkedlist当作队列来使用.其中queue接口和list,set接口一样都是继承自collection接口.  实现一个特殊的栈,在实现栈的">
 
 
 
@@ -122,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="https://fanfan999.github.io/2019/04/29/关于时间复杂度和空间复杂度/">
+  <link rel="canonical" href="https://fanfan999.github.io/2019/05/23/算法-初级3/">
 
 
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>关于时间复杂度和额外空间复杂度 | A Kid</title>
+  <title>算法_初级3 | A Kid</title>
   
 
 
@@ -377,7 +377,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/04/29/关于时间复杂度和空间复杂度/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/05/23/算法-初级3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -394,7 +394,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于时间复杂度和额外空间复杂度
+          <h1 class="post-title" itemprop="name headline">算法_初级3
 
               
             
@@ -420,7 +420,7 @@
                 
               
 
-              <time title="Created: 2019-04-29 19:27:15" itemprop="dateCreated datePublished" datetime="2019-04-29T19:27:15+08:00">2019-04-29</time>
+              <time title="Created: 2019-05-23 19:19:30" itemprop="dateCreated datePublished" datetime="2019-05-23T19:19:30+08:00">2019-05-23</time>
             
 
             
@@ -437,7 +437,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-02 17:28:46" itemprop="dateModified" datetime="2019-05-02T17:28:46+08:00">2019-05-02</time>
+                <time title="Modified: 2019-05-25 23:12:15" itemprop="dateModified" datetime="2019-05-25T23:12:15+08:00">2019-05-25</time>
               
             
           </span>
@@ -489,82 +489,62 @@
       
 
       
-        <p><strong><em>写在前面的话: 这里写<code>logN</code>就表示<code>以2为底数</code>,因为2为底数打不出来哈哈哈</em></strong></p>
-<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><ul>
-<li>用于评价一个算法流程的好坏.<ul>
-<li>先看时间复杂度的指标(再看常数项),即<code>(N^2)/100 + 10N + 1</code>我们也看成时间复杂度是<code>O(N^2)</code>,其中N就是样本量 .</li>
-<li>然后再分析不同数据样本下的实际运行时间.</li>
+        <pre><code>1.注意:
+    * 栈中: push是压栈,peek是返回栈顶元素,pop是弹栈.
+    * 队列中: offer是进队列,poll是出队列,peek是返回队列首元素.
+        * linkedlist实现了queue接口,所以我们可以把linkedlist当作队列来使用.其中queue接口和list,set接口一样都是继承自collection接口.
+</code></pre><ol>
+<li><p>实现一个特殊的栈,在实现栈的基础功能的基础上,再实现返回栈中最小元素的操作.</p>
+<ol>
+<li><p>要求:</p>
+<ol>
+<li>pop, push, getMin操作的时间复杂度都是O(1).</li>
+<li>设计的栈类型可以使用现成的栈结构.</li>
+</ol>
+</li>
+<li><p>思路: 设计两个栈,一个和正常栈一样放数据,另一个用来放最小值</p>
+<ul>
+<li>每次数据栈中有数进来的时候,就和最小值栈中的栈顶元素比较,当数据栈栈顶元素&gt;最小值栈栈顶元素的时候,最小值栈再存入一个当前栈顶元素,反之存入数据栈栈顶元素.</li>
+<li>如图: <a href="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A73/%E6%89%BE%E6%9C%80%E5%B0%8F%E5%85%83%E7%B4%A0%E7%89%B9%E6%AE%8A%E6%A0%88%E5%9B%BE%E8%A7%A3.jpg" target="_blank" rel="noopener">特殊栈找最小元素图解</a>.</li>
 </ul>
 </li>
-<li>常数时间的操作:<ul>
-<li>概念:一个操作如果和数据量没有关系,每次都是固定时间内完成的操作,就叫做常数操作,例如加减乘除,位运算操作,数组寻址(就是根据下标获取数组中的元素,比如a[1])等.</li>
-</ul>
-</li>
-<li><strong><em>时间复杂度为一个算法流程中,<code>最差情况下</code>常数操作数量的指标.常用<code>O</code>表示(读作big O),具体来说,在常数操作数量的表达式中,不要低阶项,只要高阶项,并且忽略掉高阶项的系数,剩下的部分如果记作<code>f(N)</code>,那么时间复杂度为<code>O(f(N))</code></em></strong>.</li>
-<li>几个简单的理解时间复杂度的例子:<ol>
-<li>一个有序数组A,另一个无序数组B,请打印B中的所有不在A中的数,A数组长度为N,B数组长度为M.<ul>
-<li>算法流程1:<ul>
-<li>对于数组B中的每一个数,都在A中通过<strong><em>遍历</em></strong>的方式找一下.</li>
-<li>很明显该算法的时间复杂度特别大,遍历一次代价为<code>O(N)</code>,一共M个数,所以总的代价为<code>O(M*N)</code>.</li>
-</ul>
-</li>
-<li>算法流程2:<ul>
-<li>对于数组B中的每一个数,都在A中通过<strong><em>二分</em></strong>的方式找一下.</li>
-<li>二分搜索,比如针对一个<strong><em>有序(假定是从小到大)</em></strong>的数组,假设我要找<code>2</code>有没有在这个数组里.<ul>
-<li>我先找到<code>中间位置</code>的数,看比2大还是小.<ul>
-<li>比2大,因为是从小到大排序的,所以中间右边的数字一定比2大,我们就在左边继续划分一半一半地找,直到没有了或者找到了为止.</li>
-<li>比2小,说明中间左边的数字一定比2小,我们就在右边继续划分一半一半地找,直到没有了或者找到了为止.</li>
-<li>等于2,就直接返回</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>在这个过程中,我们<code>数组寻址和两个数比较</code>的过程都是常数操作时间的O(1),每次砍一半,这样下来,常数操作次数为<code>logN(以2为底)</code>,即一个数组长度为8,最多砍3次.</li>
-<li><strong><em>由此可见,二分查找的时间复杂度为O(logN),以2为底</em></strong></li>
-<li>因此我们也可以推出,查找一次的时间复杂度为<code>O(logN)</code>,一共有M个数,时间复杂度则为<code>(MlogN)</code>.</li>
-</ul>
-</li>
-<li>算法流程3:<ul>
-<li>先把B数组排序,然后用类似<strong><em>外排</em></strong>的方式打印所有在A中出现的数.</li>
-<li>思路就是,B排序后,两个数组同时从0位置开始,即<code>A[i]</code>和<code>B[i]</code>互相比较.<ul>
-<li>若A[i] &gt; B[i],则B[i]肯定不在A数组中,打印B[i],然后B数组下标++.</li>
-<li>若A[i] &lt; B[i],B数组下标不动,A数组下标++.</li>
-<li>若A[i] == B[i],A数组下标不动,B数组下标++.</li>
-</ul>
-</li>
-<li>针对这个流程<ul>
-<li>第1步:排序的时间复杂度,可以达到<code>NlogN</code>.</li>
-<li>第2步:快排,时间复杂度为<code>O(N + M)</code>(N,M为A和B数组长度).</li>
-</ul>
-</li>
-<li>由此可见,该流程的时间复杂度为<code>NlogN + O(N + M)</code>.</li>
-</ul>
-</li>
-<li>三个流程,三种时间复杂的表达…我们应该如何分析其好坏?</li>
-</ul>
-</li>
-<li>给长度为N的数组排序(<strong>其中寻址,比较操作都是常数级别的</strong>).<ul>
-<li>第一次从<code>0-(N-1)</code>中找出最小值min放在第0个位置,过N个数.</li>
-<li>第二次从<code>1-(N-1)</code>中找出最小值min放在第1个位置,过N-1个数.</li>
-<li>……以此类推.</li>
-<li>一共需要找的次数为<code>(N + (N-1) + ... + 2 + 1)</code>,这是一个等差数列,其和为<code>n(n + 1) / 2</code>(这个就可以理解为常数操作数量的表达式),再乘以一个<code>O(1)</code>(它是单次操作所需要的时间),即<code>(n(n + 1) / 2) O(1)</code>.</li>
-<li>估算其时间复杂度是这样子的:<ul>
-<li>不要低阶项,只要高阶项,并且忽略掉高阶项的系数.</li>
-<li>由此推出上述排序算法时间复杂度为<code>O(n^2)</code>.</li>
-</ul>
-</li>
-</ul>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day03/SpecialStack.java" target="_blank" rel="noopener">代码</a>.</strong></p>
 </li>
 </ol>
 </li>
+<li><p>如何用队列结构实现栈结构?</p>
+<ol>
+<li><p>思路:</p>
+<ul>
+<li>用两个队列,当push的时候,就放在其中一个队列中,然后要弹栈和返回栈顶元素的时候,将除了最后一个元素的其它元素倒入另一个队列中,然后返回队列中剩余的最后一个元素.</li>
 </ul>
-<h1 id="额外空间复杂度"><a href="#额外空间复杂度" class="headerlink" title="额外空间复杂度"></a>额外空间复杂度</h1><ul>
-<li>额外空间复杂度其实很好想,完成这个功能,我们额外开辟了几个新的空间,那就是几.<ol>
-<li>比如我一个循环,循环过程中我新开辟了一个长度为10的数组来存储数据,那么额外空间复杂度就是O(10)</li>
-<li>再以冒泡排序为例,当两个数需要交换时,我们就会定义一个中间变量<code>temp</code>,这就是我们唯一新开辟空间的地方,这时我们就说冒泡排序的额外空间复杂度为O(1),<strong><em>其实,有限的几个变量(单个变量,不是数组这样子的哈)能跑完流程的话,额外空间复杂度都是O(1),不一定是一个</em></strong>.</li>
+</li>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day03/QueueAsStack.java" target="_blank" rel="noopener">队列实现栈结构代码</a>.</strong></p>
+</li>
+<li>看了代码以后要注意的地方:<ol>
+<li>交换的函数swap不能带参数,带参数之后,它改变的就只是参数,而不是成员变量,就相当于swap没发挥作用,因为变量有就近原则,找离自己进的,有参数的时候找参数哈哈哈.</li>
+<li>只能将数据队列最后一个参数赋值给一个局部变量然后返回,不能直接返回数据队列的最后一个元素,因为在返回前,数据队列和辅助队列引用交换了</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>如何用栈结构实现队列结构?<ol>
+<li>思路:<ul>
+<li>用两个栈,一个栈专门给offer方法用,另一个栈专门给poll和peek方法用,当需要出队列或者返回队列首元素的时候,就把offer方法专用的栈中的数据全部倒入另一个栈中,然后返回和出队列.</li>
+</ul>
+</li>
+<li>注意事项:<ul>
+<li>专门给poll和peek用的栈有两个注意事项:<ol>
+<li>倒就要一次性全部倒完.</li>
+<li>倒的时候要保证该队列为空.</li>
 </ol>
 </li>
 </ul>
+</li>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day03/StackAsQueue.java" target="_blank" rel="noopener">栈结构实现队列代码</a>.</strong></li>
+</ol>
+</li>
+</ol>
 
       
     </div>
@@ -588,7 +568,7 @@
       
         <div class="post-tags">
           
-            <a href="/fanfan999.github.io/tags/时间复杂度-额外空间复杂度/" rel="tag"># 时间复杂度,额外空间复杂度</a>
+            <a href="/fanfan999.github.io/tags/算法题目/" rel="tag"># 算法题目</a>
           
         </div>
       
@@ -601,8 +581,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/fanfan999.github.io/2019/04/29/基础加强-注解/" rel="next" title="基础加强_注解">
-                <i class="fa fa-chevron-left"></i> 基础加强_注解
+              <a href="/fanfan999.github.io/2019/05/22/Filter和Listener/" rel="next" title="Filter和Listener">
+                <i class="fa fa-chevron-left"></i> Filter和Listener
               </a>
             
           </div>
@@ -611,8 +591,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/fanfan999.github.io/2019/04/29/冒泡排序,选择排序/" rel="prev" title="冒泡排序,选择排序,插入排序">
-                冒泡排序,选择排序,插入排序 <i class="fa fa-chevron-right"></i>
+              <a href="/fanfan999.github.io/2019/05/25/算法-初级4/" rel="prev" title="算法_初级4">
+                算法_初级4 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -657,17 +637,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -839,23 +810,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间复杂度"><span class="nav-number">1.</span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#额外空间复杂度"><span class="nav-number">2.</span> <span class="nav-text">额外空间复杂度</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

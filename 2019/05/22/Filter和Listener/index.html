@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="A Kid">
 <meta property="og:description" content="servlet+filter+listener被称为javaweb的三大组件 Filter(重要) Filter: 过滤器  生活中的过滤器: 如生活中的净水器,空气净化器等都是过滤器. web中的过滤器: 当浏览器通过请求访问服务器资源时,过滤器可以将请求拦截下来,来完成一些特殊的功能.   过滤器的作用  一般用于完成通用的操作. 登录验证(类似淘宝要加入购物车必须先登录这样子). 统一编码处">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-22T15:41:31.739Z">
+<meta property="og:updated_time" content="2019-05-23T05:41:31.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Filter和Listener">
 <meta name="twitter:description" content="servlet+filter+listener被称为javaweb的三大组件 Filter(重要) Filter: 过滤器  生活中的过滤器: 如生活中的净水器,空气净化器等都是过滤器. web中的过滤器: 当浏览器通过请求访问服务器资源时,过滤器可以将请求拦截下来,来完成一些特殊的功能.   过滤器的作用  一般用于完成通用的操作. 登录验证(类似淘宝要加入购物车必须先登录这样子). 统一编码处">
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="Created: 2019-05-22 09:22:30 / Modified: 23:41:31" itemprop="dateCreated datePublished" datetime="2019-05-22T09:22:30+08:00">2019-05-22</time>
+              <time title="Created: 2019-05-22 09:22:30" itemprop="dateCreated datePublished" datetime="2019-05-22T09:22:30+08:00">2019-05-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-23 13:41:31" itemprop="dateModified" datetime="2019-05-23T13:41:31+08:00">2019-05-23</time>
               
             
           </span>
@@ -622,10 +634,94 @@
 </li>
 </ul>
 </li>
-<li><a href>结合登录验证完整代码</a>.<h1 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h1></li>
 </ul>
 </li>
-<li>Listener: 监听器</li>
+<li>案例2_敏感词汇过滤<ul>
+<li>需求<ul>
+<li>对用户增删查改案例录入的数据进行敏感词汇过滤</li>
+<li>敏感词汇比如<code>坏蛋`</code>菜鸟`等.</li>
+<li>如果是敏感词汇，替换为 ***.</li>
+</ul>
+</li>
+<li>分析:<ul>
+<li>对request对象进行增强,增强获取参数的方法,获取敏感词汇变成<strong><em>以后要将</em></strong>再放回到request中,而request没有addParameter方法.</li>
+<li>增强后,放行,传递代理对象.</li>
+</ul>
+</li>
+<li>增强对象的功能:<ul>
+<li>设计模式: 一些通用的解决固定问题的方式.<ul>
+<li>装饰模式.</li>
+<li>代理模式(我们用这个).<ul>
+<li>概念: 可以理解为代理商,代购<ul>
+<li>真实对象: 即被代理的对象,比如说我们要买国外的东西,找了代购,国外的东西就是真实对象.</li>
+<li>代理对象: 即代理的对象,比如说我们要买东西的找的代购,就是代理对象,但是代理对象还是要去国外买真实对象,然后赚取差价.</li>
+<li>代理模式: 代理对象代理真实对象,达到增强真实对象的目的.</li>
+<li>可以这么理解,代理商并没有卖电脑的功能,它只是增强总部卖电脑的动能,它要卖电脑,它就要去总部,也就是真实对象那里获取它卖电脑的功能.</li>
+</ul>
+</li>
+<li>实现方式<ul>
+<li>静态代理: 代理对象的生成方式—&gt;有一个java的类文件描述代理模式.</li>
+<li>动态代理: 代理对象的生成方式—&gt;在内存中动态形式代理类,我们这里用动态代理.</li>
+</ul>
+</li>
+<li>实现步骤:<ul>
+<li>代理对象和真实对象实现相同的接口.</li>
+<li>在使用代理对象的方法中,通过语句:<code>代理对象=Proxy.newProxyInstance()</code>创建代理对象.</li>
+<li>使用代理对象去调用对应方法.</li>
+<li>增强方法.</li>
+</ul>
+</li>
+<li>增强方式:<ul>
+<li>增强参数列表.</li>
+<li>增强返回值类型.</li>
+<li>增强方法体执行逻辑</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><a href>动态代理案例代码</a>.</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><a href="https://github.com/fanfan999/WebCodes/tree/master/filter_listener/src/proxy" target="_blank" rel="noopener">实现上述功能后完整代码</a>.</strong></li>
+</ol>
+<h1 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h1><ol>
+<li>Listener: 监听器,web的三大组件之一,不过用的比较少,我就没怎么管嘿嘿嘿.</li>
+<li><p>事件监听机制</p>
+<ol>
+<li>事件: 一件事情.</li>
+<li>事件源: 时间发生的地方.</li>
+<li>监听器: 一段代码或一个对象.</li>
+<li>注册监听: 将事件,事件源,监听器绑定在一起,当事件源发生时间后,执行监听器代码.</li>
+</ol>
+</li>
+<li><p>servletContextListener(接口,自己写实现类作为监听器对象): 表示监听servletContext对象的创建和销毁.</p>
+<ol>
+<li>void contextInitialized(ServletContextEvent sce): servletContext对象创建后会调用该方法.</li>
+<li>void contextDestroyed(ServletContextEvent sce): servletContext对象销毁前会调用此方法.</li>
+</ol>
+</li>
+<li><p>步骤:</p>
+<ol>
+<li>定义一个类实现servletContextListener接口.</li>
+<li>重写方法.</li>
+<li>配置<ol>
+<li>web.xml配置.<ul>
+<li>xml配置只需要配置一个<listener-class>就可以了,注意这里的路径是全路径,就是src下从包名开始.包名.类名.</listener-class></li>
+</ul>
+</li>
+<li>注解配置.<ul>
+<li>直接写一个<code>@WebListener</code>就完事了.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><strong><a href="https://github.com/fanfan999/WebCodes/blob/master/filter_listener/src/listener/ServletContextListener.java" target="_blank" rel="noopener">案例代码</a>.</strong></li>
+</ol>
+</li>
 </ol>
 
       
@@ -672,6 +768,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/05/23/算法-初级3/" rel="prev" title="算法_初级3">
+                算法_初级3 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -740,7 +840,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -840,7 +940,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
