@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="Java基础知识 面向对象的特征表现在哪些方面?  封装: 最常见的就是把属性私有化封装在一个类里面,提供公共的方法去访问. 继承: 子类继承父类,从而继承父类的方法和属性. 但是有一点要注意: 那就是子类不能继承并使用父类的私有属性和方法,但是如果子类中公有的方法用到了父类的私有属性,那么子类调用该方法是不会报错的.    抽象: 比如一个抽象类,抽象出一个共同的属性,放在一个类中,使得开发过程">
+  <meta name="description" content="Java基础知识面向对象的特征表现在哪些方面?* 封装: 最常见的就是把属性私有化封装在一个类里面,提供公共的方法去访问. * 继承: 子类继承父类,从而继承父类的方法和属性.     * 但是有一点要注意: 那就是子类不能继承并使用父类的私有属性和方法,但是如果子类中公有的方法用到了父类的私有属性,那么子类调用该方法是不会报错的.  * 抽象: 比如一个抽象类,抽象出一个共同的属性,放在一个类中">
 <meta name="keywords" content="面试题之java基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试题之java基础知识">
 <meta property="og:url" content="https://fanfan999.github.io/2019/05/20/面试题之java基础知识/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="Java基础知识 面向对象的特征表现在哪些方面?  封装: 最常见的就是把属性私有化封装在一个类里面,提供公共的方法去访问. 继承: 子类继承父类,从而继承父类的方法和属性. 但是有一点要注意: 那就是子类不能继承并使用父类的私有属性和方法,但是如果子类中公有的方法用到了父类的私有属性,那么子类调用该方法是不会报错的.    抽象: 比如一个抽象类,抽象出一个共同的属性,放在一个类中,使得开发过程">
+<meta property="og:description" content="Java基础知识面向对象的特征表现在哪些方面?* 封装: 最常见的就是把属性私有化封装在一个类里面,提供公共的方法去访问. * 继承: 子类继承父类,从而继承父类的方法和属性.     * 但是有一点要注意: 那就是子类不能继承并使用父类的私有属性和方法,但是如果子类中公有的方法用到了父类的私有属性,那么子类调用该方法是不会报错的.  * 抽象: 比如一个抽象类,抽象出一个共同的属性,放在一个类中">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-20T15:33:43.445Z">
+<meta property="og:updated_time" content="2019-06-04T15:35:53.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题之java基础知识">
-<meta name="twitter:description" content="Java基础知识 面向对象的特征表现在哪些方面?  封装: 最常见的就是把属性私有化封装在一个类里面,提供公共的方法去访问. 继承: 子类继承父类,从而继承父类的方法和属性. 但是有一点要注意: 那就是子类不能继承并使用父类的私有属性和方法,但是如果子类中公有的方法用到了父类的私有属性,那么子类调用该方法是不会报错的.    抽象: 比如一个抽象类,抽象出一个共同的属性,放在一个类中,使得开发过程">
+<meta name="twitter:description" content="Java基础知识面向对象的特征表现在哪些方面?* 封装: 最常见的就是把属性私有化封装在一个类里面,提供公共的方法去访问. * 继承: 子类继承父类,从而继承父类的方法和属性.     * 但是有一点要注意: 那就是子类不能继承并使用父类的私有属性和方法,但是如果子类中公有的方法用到了父类的私有属性,那么子类调用该方法是不会报错的.  * 抽象: 比如一个抽象类,抽象出一个共同的属性,放在一个类中">
 
 
 
@@ -420,12 +420,24 @@
                 
               
 
-              <time title="Created: 2019-05-20 23:14:00 / Modified: 23:33:43" itemprop="dateCreated datePublished" datetime="2019-05-20T23:14:00+08:00">2019-05-20</time>
+              <time title="Created: 2019-05-20 23:14:00" itemprop="dateCreated datePublished" datetime="2019-05-20T23:14:00+08:00">2019-05-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-04 23:35:53" itemprop="dateModified" datetime="2019-06-04T23:35:53+08:00">2019-06-04</time>
               
             
           </span>
@@ -477,46 +489,76 @@
       
 
       
-        <h1 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h1><ol>
-<li><p>面向对象的特征表现在哪些方面?</p>
-<ol>
-<li>封装: 最常见的就是把属性私有化封装在一个类里面,提供公共的方法去访问.</li>
-<li>继承: 子类继承父类,从而继承父类的方法和属性.<ul>
-<li>但是有一点要注意: 那就是子类不能继承并使用父类的私有属性和方法,但是如果子类中公有的方法用到了父类的私有属性,那么子类调用该方法是不会报错的. </li>
-</ul>
-</li>
-<li>抽象: 比如一个抽象类,抽象出一个共同的属性,放在一个类中,使得开发过程更易理解.</li>
-<li>多态: 多态包括操作符的多态和类的多态.<ul>
-<li>类的多态的三个必要条件: <ul>
-<li>父类引用指向子类对象.</li>
-<li>有继承.</li>
-<li>有重写.</li>
-</ul>
-</li>
-<li>操作符多态: <ul>
-<li><code>1 + 2</code>的值就是<code>3</code>,这就是简单的算术运算.</li>
-<li><code>&quot;1&quot; + 2</code>的值却是<code>12</code>,这是字符串相加.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>String是基本数据类型吗?</p>
-<ul>
-<li>不是!!!String是类类型,它是一个类</li>
-<li>基本数据类型有八种<ul>
-<li>整型(4种): byte(1个字节,占8位), short(2个字节), int(4个字节) ,long(8个字节).</li>
-<li>字符型(1种): char(2个字节).</li>
-<li>浮点型(2种): float(41个字节), double(8个字节).</li>
-<li>布尔型(1种): boolean.</li>
-</ul>
-</li>
-<li>转换顺序:<br>  byte,short,char —&gt; int</li>
-</ul>
-</li>
-</ol>
+        <h1 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h1><h5 id="面向对象的特征表现在哪些方面"><a href="#面向对象的特征表现在哪些方面" class="headerlink" title="面向对象的特征表现在哪些方面?"></a>面向对象的特征表现在哪些方面?</h5><pre><code>* 封装: 最常见的就是把属性私有化封装在一个类里面,提供公共的方法去访问.
+* 继承: 子类继承父类,从而继承父类的方法和属性.
+    * 但是有一点要注意: 那就是子类不能继承并使用父类的私有属性和方法,但是如果子类中公有的方法用到了父类的私有属性,那么子类调用该方法是不会报错的. 
+* 抽象: 比如一个抽象类,抽象出一个共同的属性,放在一个类中,使得开发过程更易理解.
+* 多态: 多态包括操作符的多态和类的多态.
+    * 类的多态的三个必要条件: 
+        * 父类引用指向子类对象.
+        * 有继承.
+        * 有重写.
+    * 操作符多态: 
+        * `1 + 2`的值就是`3`,这就是简单的算术运算.
+        * `&quot;1&quot; + 2`的值却是`12`,这是字符串相加.
+</code></pre><h5 id="java的基本类型有哪些"><a href="#java的基本类型有哪些" class="headerlink" title="java的基本类型有哪些?"></a>java的基本类型有哪些?</h5><pre><code>java有8中基本数据类型: byte,short,int,long,float,double,char,boolean
+byte,short,int,long 属于整数类型
+float, double 属于浮点数类型
+char 为字符型
+boolean 为布尔类型
+</code></pre><h5 id="String是基本数据类型吗"><a href="#String是基本数据类型吗" class="headerlink" title="String是基本数据类型吗?"></a>String是基本数据类型吗?</h5><pre><code>* 不是!!!String是类类型,它是一个类
+* 基本数据类型有八种
+    * 整型(4种): byte(1个字节,占8位), short(2个字节), int(4个字节) ,long(8个字节).
+    * 字符型(1种): char(2个字节).
+    * 浮点型(2种): float(41个字节), double(8个字节).
+    * 布尔型(1种): boolean.
+* 转换顺序: 
+    byte,short,char ---&gt; int
+</code></pre><h5 id="一个java源文件中是否可以有多个类-不是内部类-有什么限制"><a href="#一个java源文件中是否可以有多个类-不是内部类-有什么限制" class="headerlink" title="一个java源文件中是否可以有多个类(不是内部类)?有什么限制?"></a>一个java源文件中是否可以有多个类(不是内部类)?有什么限制?</h5><pre><code>可以有多个类
+但是只能有一个public的类,而且public的类必须和文件名一致
+</code></pre><h5 id="java中有没有goto"><a href="#java中有没有goto" class="headerlink" title="java中有没有goto?"></a>java中有没有goto?</h5><pre><code>goto是保留字,现在没有在java中使用
+</code></pre><h5 id="amp-和-amp-amp-的区别"><a href="#amp-和-amp-amp-的区别" class="headerlink" title="&amp;和&amp;&amp;的区别"></a>&amp;和&amp;&amp;的区别</h5><pre><code>二者都可以作为逻辑与运算
+只要有false,表达式的结果就为false,只有两边的结果都为true的时候才为true
+但是二者也有区别:以如下代码为例
+int a = 3, b = 3;
+int c = 3, d = 3;
+boolean flag1 = (++a == 3 &amp;&amp; ++b == 4);//值为false
+System.out.println(a + &quot;--&quot; + b);//输出4--3
+boolean flag2 = (++c == 3 &amp; ++d == 4);//值为false
+System.out.println(c + &quot;--&quot; + d);//输出4--4
+&amp;符号做运算时,不管前一个表达式的正确与否,第二个表达式都会被运算,所以上面d的返回值为4而不是3
+&amp;&amp;做运算时，它具有短路功能，即当前面一个表达式为false后,第二个表达式就不会被运算了,所以b的返回值是3而不是4
+</code></pre><h5 id="switch语句的参数可以为哪些类型"><a href="#switch语句的参数可以为哪些类型" class="headerlink" title="switch语句的参数可以为哪些类型?"></a>switch语句的参数可以为哪些类型?</h5><pre><code>switch参数在jdk7以前(不包括jdk7)只能用int类型和枚举类型,在jdk7及以后可以用string作为参数.
+而byte,short,char可以自动转换为int类型,所以也可以作为switch的参数
+</code></pre><h5 id="ArrayList和LinkedList的异同"><a href="#ArrayList和LinkedList的异同" class="headerlink" title="ArrayList和LinkedList的异同:"></a>ArrayList和LinkedList的异同:</h5><pre><code>* arraylist和linkedlist都不保证线程安全.
+* arraylist底层使用的是object数组,linkedlist底层使用的是双向链表结构.
+* 插入和删除是否受到元素位置影响?
+    * arraylist采用数组存储,所以插入和删除元素受元素位置影响,数组默认添加元素到末尾(时间复杂度为O(1)),向长度为n的arraylist中插入和删除的位置为i时,其时间复杂度为(O(n-i));而linkedlist采用链表存储,所以插入删除元素都不受元素位置影响.
+* 是否支持快速随机访问?
+    * linkedlist不支持快速随机访问,而araylist支持,其中快速随机访问指的是根据下标快速获取元素对象(通过get(int inde))方法.
+* 内存空间占用.
+    * arraylist的空间浪费主要体现在需要随时在末尾预留一些空间,而linkedlist的空间浪费主要体现在它的每个元素都需要消耗比arraylist更多的空间,因为要拿一些空间出来存前后节点.
+* 补充一点: **RandomAccess接口**
 
+        public interface RandomAccess{
+        }
+    * 这个接口什么都没有实现,所以我觉得RandomAccess接口就只是一个标识,标识着实现这个接口的类具有随机访问功能,所以我们可以猜到,arraylist实现了这个接口但是linkedlist没有实现这个接口,因为数组可以随机访问但是链表不可以,不过这里要区分开RandomAccess接口只是标识了这个功能,不是因为实现了这个接口才有这个功能!
+
+* 总结一个list的遍历方式:
+    * 实现了RandomAccess接口的list: 优先选择普通for,然后foreach.
+    * 没有实现RandomAccess接口的list: 优先选择iterator遍历(foreach其实也是迭代器),当size比较大的时候,千万不要用普通for,巨慢.
+</code></pre><h5 id="ArrayList和Vector的区别"><a href="#ArrayList和Vector的区别" class="headerlink" title="ArrayList和Vector的区别:"></a>ArrayList和Vector的区别:</h5><pre><code>* Vector的所有方法都是同步的,也就是线程安全的,多线程的时候可以保证安全,但是单线程很慢,而且现在这个也不用了!!!!
+* arraylist不是同步的,在不需要保证线程安全的时候建议使用.
+</code></pre><h5 id="HashMap和HashTable的区别"><a href="#HashMap和HashTable的区别" class="headerlink" title="HashMap和HashTable的区别"></a>HashMap和HashTable的区别</h5><pre><code>* 线程是否安全: hashmap线程不安全,hashtable线程安全,因为其中的方法基本都被synchronized修饰(如果要保证线程安全的话就用concurrenthashmap).
+* 效率: 由于hashtable是线程安全的,所以效率肯定比hashmap要低一些,然后的话,hashtable他们说基本不怎么用了.
+* 对空键,空值的支持: hashtable的键值不可以为null,而hashmap都可以为null,但是hashmap和hashtable的键都唯一!!!
+</code></pre><h5 id="hashset和hashmap的区别"><a href="#hashset和hashmap的区别" class="headerlink" title="hashset和hashmap的区别"></a>hashset和hashmap的区别</h5><pre><code>* hashset底层就是基于hashmap实现的.
+* hashset实现了set接口,而hashmap实现的是map接口.
+* hashset存储的是对象,hashmap存储的是键值对.
+* hashset使用add()方法添加元素,而hashmap使用put()方法添加元素.
+* hashset元素不重复,hashmap中键不重复.
+* hashset的速度比hashmap慢,因为hashmap是唯一的键获取对象
+</code></pre>
       
     </div>
 
@@ -633,7 +675,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -737,7 +779,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -801,7 +845,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java基础知识"><span class="nav-number">1.</span> <span class="nav-text">Java基础知识</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java基础知识"><span class="nav-number">1.</span> <span class="nav-text">Java基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#面向对象的特征表现在哪些方面"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">面向对象的特征表现在哪些方面?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#java的基本类型有哪些"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">java的基本类型有哪些?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#String是基本数据类型吗"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">String是基本数据类型吗?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一个java源文件中是否可以有多个类-不是内部类-有什么限制"><span class="nav-number">1.0.0.0.4.</span> <span class="nav-text">一个java源文件中是否可以有多个类(不是内部类)?有什么限制?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#java中有没有goto"><span class="nav-number">1.0.0.0.5.</span> <span class="nav-text">java中有没有goto?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#amp-和-amp-amp-的区别"><span class="nav-number">1.0.0.0.6.</span> <span class="nav-text">&amp;和&amp;&amp;的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#switch语句的参数可以为哪些类型"><span class="nav-number">1.0.0.0.7.</span> <span class="nav-text">switch语句的参数可以为哪些类型?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayList和LinkedList的异同"><span class="nav-number">1.0.0.0.8.</span> <span class="nav-text">ArrayList和LinkedList的异同:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayList和Vector的区别"><span class="nav-number">1.0.0.0.9.</span> <span class="nav-text">ArrayList和Vector的区别:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap和HashTable的区别"><span class="nav-number">1.0.0.0.10.</span> <span class="nav-text">HashMap和HashTable的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hashset和hashmap的区别"><span class="nav-number">1.0.0.0.11.</span> <span class="nav-text">hashset和hashmap的区别</span></a></li></ol></li></ol></div>
             
 
           </div>
