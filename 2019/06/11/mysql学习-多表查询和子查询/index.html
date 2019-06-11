@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="#多表查询  其查询所有集合的结果集又被称为笛卡尔积.  笛卡尔积是指有两个集合,我们取这两个集合的所有组成情况,集合1有两行数据,集合2有三行数据,则笛卡尔积一共有2*3=6条数据. 要完成多表查询,我们就需要消除无用的数据.  查询语法:  select 列名列表 from 表名列表 where……  创建员工表和部门表  – 创建部门表  CREATE TABLE department( i">
+<meta name="keywords" content="mysql学习-多表查询和子查询">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql学习-多表查询和子查询">
+<meta property="og:url" content="https://fanfan999.github.io/2019/06/11/mysql学习-多表查询和子查询/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="#多表查询  其查询所有集合的结果集又被称为笛卡尔积.  笛卡尔积是指有两个集合,我们取这两个集合的所有组成情况,集合1有两行数据,集合2有三行数据,则笛卡尔积一共有2*3=6条数据. 要完成多表查询,我们就需要消除无用的数据.  查询语法:  select 列名列表 from 表名列表 where……  创建员工表和部门表  – 创建部门表  CREATE TABLE department( i">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-11T08:20:49.011Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql学习-多表查询和子查询">
+<meta name="twitter:description" content="#多表查询  其查询所有集合的结果集又被称为笛卡尔积.  笛卡尔积是指有两个集合,我们取这两个集合的所有组成情况,集合1有两行数据,集合2有三行数据,则笛卡尔积一共有2*3=6条数据. 要完成多表查询,我们就需要消除无用的数据.  查询语法:  select 列名列表 from 表名列表 where……  创建员工表和部门表  – 创建部门表  CREATE TABLE department( i">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/06/11/mysql学习-多表查询和子查询/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>mysql学习-多表查询和子查询 | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/11/mysql学习-多表查询和子查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql学习-多表查询和子查询
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-11 10:06:24 / Modified: 16:20:49" itemprop="dateCreated datePublished" datetime="2019-06-11T10:06:24+08:00">2019-06-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#多表查询</p>
+<ul>
+<li><p>其查询所有集合的结果集又被称为<strong>笛卡尔积</strong>.</p>
+<ul>
+<li>笛卡尔积是指有两个集合,我们取这两个集合的所有组成情况,集合1有两行数据,集合2有三行数据,则笛卡尔积一共有2*3=6条数据.</li>
+<li><p>要完成多表查询,我们就需要消除无用的数据.</p>
+<blockquote>
+<p>查询语法:</p>
+</blockquote>
+<p>select 列名列表 from 表名列表 where……</p>
+<blockquote>
+<p>创建员工表和部门表</p>
+</blockquote>
+<p>– 创建部门表<br>  CREATE TABLE department(</p>
+<pre><code>id INT PRIMARY KEY AUTO_INCREMENT,
+dep_name VARCHAR(20),-- 部门名称
+dep_location VARCHAR(20)
+</code></pre><p>  );<br>– 创建员工表<br>  CREATE TABLE employee(</p>
+<pre><code>id INT PRIMARY KEY AUTO_INCREMENT,
+NAME VARCHAR(30) NOT NULL,
+age INT NOT NULL,
+dep_id INT,-- 对应部门表的主键id
+constraint emp_dep foreign key(dep_id) reference department(id)-- 将部门表的id作为员工表dep_id的外键约束
+</code></pre><p>  );</p>
+<blockquote>
+<p>多表查询的分类:</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>内连接查询:</p>
+<blockquote>
+<p>隐式内连接查询:使用<code>where</code>条件来消除无用数据</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>例如: 查询所有员工信息及其对应的部门信息
+SELECT * FROM employee, department WHERE dep_id = department.id;
+例如: 查询员工表的id,姓名,年龄,部门表的id,姓名,位置(注意这里要区分id是哪个表的id,不然会报错)
+SELECT employee.id,NAME,age,department.id,dep_name,dep_location FROM employee,department 
+WHERE dep_id = department.id;
+给表起别名(最正规的写法)
+SELECT     t1.id,t1.name,t1.age,t2.id,t2.dep_name,t2.dep_location 
+FROM
+    employee t1,department t2 
+WHERE
+    t1.dep_id = t2.id;
+</code></pre><blockquote>
+<blockquote>
+<blockquote>
+<p>显式内连接查询:</p>
+<blockquote>
+<p>语法:</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>select 字段列表 from 表名1(只写一张表) [inner] join 表名2 on 条件.
+其中inner可以省略.
+
+例如: 查询所有员工信息及其对应的部门信息
+SELECT * FROM employee INNER JOIN department ON dep_id = department.id;
+例如: 查询查询员工表的id,姓名,年龄,部门表姓名,位置
+SELECT
+    t1.id,
+    t1.NAME,
+    t1.age,
+    t2.dep_name,
+    t2.dep_location 
+FROM
+    employee t1 
+JOIN
+    department t2 
+ON
+    t1.dep_id = t2.id;
+</code></pre><blockquote>
+<blockquote>
+<p>内连接查询注意事项:</p>
+</blockquote>
+</blockquote>
+<pre><code>1. 要确定从哪些表中查询数据.
+2. 确定查询条件.
+3. 确定好查询的字段,一般都不用`*`.
+</code></pre><blockquote>
+<blockquote>
+<p>外连接查询:</p>
+<blockquote>
+<p>左外连接查询</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>查询的是左表所有数据以及其与右表交集部门,内连接查询的就只有两者交集部分</li>
+</ul>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>语法</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>select 字段列表 from 表1 left [outer] join 表2 on 条件;
+其中outer也可省略
+
+例如:查询所有员工信息,有部门则显示部门信息,没有部门则显示null
+因为如果用内连接查询,没有部门的信息不会显示出来的.
+SELECT 
+    * 
+FROM 
+    employee t1 
+LEFT JOIN 
+    department t2
+ON
+    t1.dep_id = t2.id;
+</code></pre><blockquote>
+<blockquote>
+<blockquote>
+<p>右外连接查询</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>查询的是右表的所有记录和与左表的交集部分.</li>
+</ul>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>语法</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>select 字段列表 from 表1 right [outer] join 表2 on 条件;
+其中outer也可省略
+例子: 查询所有部门信息,有员工则显示员工信息,没有员工则显示null
+因为如果用内连接查询,没有员工的信息不会显示出来的.
+SELECT
+    *
+FROM
+    employee t1
+RIGHT JOIN
+    department t2
+ON
+    t1.dep_id = t2.id; 
+</code></pre><blockquote>
+<blockquote>
+<p>子查询:</p>
+<blockquote>
+<p>概念: 即查询中嵌套查询,称<strong>嵌套的查询为子查询</strong>,比如下面第一个例子中的<code>SELECT MAX(age) FROM employee;</code>.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>子查询的不同情况</p>
+<blockquote>
+<p>子查询的结果是单行单列的: 子查询可以作为条件,使用运算符(&gt;,&lt;,=,&gt;=,&lt;=等)去判断</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>例子: 查询年龄最大的员工信息
+-- 1. 查询年龄的最大值
+SELECT MAX(age) FROM employee;
+-- 2. 查询员工信息,并且年龄等于21的
+SELECT MAX(age) FROM employee;
+-- 3. 一条sql完成,**子查询为括号中的查询语句**
+SELECT
+    *
+FROM
+    employee t1
+WHERE
+    t1.age = (SELECT MAX(age) FROM employee);
+
+例子: 查询年龄小于平均年龄的人
+SELECT 
+    * 
+FROM 
+    employee 
+WHERE 
+    age &lt; (SELECT AVG(age) FROM employee);
+</code></pre><blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>子查询的结果是多行单列的: 子查询也可以作为条件,使用运算符<code>in</code>来判断</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>例子: 查询`研发部`和`运营部`的所有员工信息
+-- 1. 查询研发部和运营部的id
+SELECT id FROM department WHERE dep_name = &apos;研发部&apos; OR dep_name = &apos;运营部&apos;;
+-- 2. 查询dep_id为1的员工信息
+SELECT * FROM employee WHERE dep_id = 1 OR dep_id = 2;
+-- 3. 一条sql,子查询
+SELECT 
+    *
+FROM 
+    employee 
+WHERE 
+    dep_id 
+IN 
+    (SELECT id FROM department WHERE dep_name = &apos;研发部&apos; OR dep_name = &apos;运营部&apos;);
+精简过后是这样:
+SELECT 
+    *
+FROM 
+    employee 
+WHERE 
+    dep_id 
+IN 
+    (SELECT id FROM department WHERE dep_name in (&apos;研发部&apos;,&apos;运营部&apos;));
+</code></pre><blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>子查询的结果是多行多列的: 子查询可以作为一张虚拟表加以运用.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>例子: 查询年龄为18的员工的所有信息,包括部门信息
+SELECT
+    *
+FROM
+    department t1,
+    (SELECT * FROM employee WHERE age = 18) t2 -- 查询年龄为18的员工信息
+WHERE
+    t1.id = t2.dep_id;
+
+用普通内连接查询就这样写
+SELECT
+    *
+FROM
+    employee t1, department t2
+WHERE
+    t1.age = 18 AND t2.id = t1.dep_id;
+</code></pre><p>#练习</p>
+<pre><code>-- 部门表
+CREATE TABLE dept (
+  id INT PRIMARY KEY PRIMARY KEY, -- 部门id
+  dname VARCHAR(50), -- 部门名称
+  loc VARCHAR(50) -- 部门所在地
+);
+
+-- 添加4个部门
+INSERT INTO dept(id,dname,loc) VALUES 
+(10,&apos;教研部&apos;,&apos;北京&apos;),
+(20,&apos;学工部&apos;,&apos;上海&apos;),
+(30,&apos;销售部&apos;,&apos;广州&apos;),
+(40,&apos;财务部&apos;,&apos;深圳&apos;);
+
+
+
+-- 职务表，职务名称，职务描述
+CREATE TABLE job (
+  id INT PRIMARY KEY,
+  jname VARCHAR(20),
+  description VARCHAR(50)
+);
+
+-- 添加4个职务
+INSERT INTO job (id, jname, description) VALUES
+(1, &apos;董事长&apos;, &apos;管理整个公司，接单&apos;),
+(2, &apos;经理&apos;, &apos;管理部门员工&apos;),
+(3, &apos;销售员&apos;, &apos;向客人推销产品&apos;),
+(4, &apos;文员&apos;, &apos;使用办公软件&apos;);
+
+
+
+-- 员工表
+CREATE TABLE emp (
+  id INT PRIMARY KEY, -- 员工id
+  ename VARCHAR(50), -- 员工姓名
+  job_id INT, -- 职务id
+  mgr INT , -- 上级领导
+  joindate DATE, -- 入职日期
+  salary DECIMAL(7,2), -- 工资
+  bonus DECIMAL(7,2), -- 奖金
+  dept_id INT, -- 所在部门编号
+  CONSTRAINT emp_jobid_ref_job_id_fk FOREIGN KEY (job_id) REFERENCES job (id),
+  CONSTRAINT emp_deptid_ref_dept_id_fk FOREIGN KEY (dept_id) REFERENCES dept (id)
+);
+
+-- 添加员工
+INSERT INTO emp(id,ename,job_id,mgr,joindate,salary,bonus,dept_id) VALUES 
+(1001,&apos;孙悟空&apos;,4,1004,&apos;2000-12-17&apos;,&apos;8000.00&apos;,NULL,20),
+(1002,&apos;卢俊义&apos;,3,1006,&apos;2001-02-20&apos;,&apos;16000.00&apos;,&apos;3000.00&apos;,30),
+(1003,&apos;林冲&apos;,3,1006,&apos;2001-02-22&apos;,&apos;12500.00&apos;,&apos;5000.00&apos;,30),
+(1004,&apos;唐僧&apos;,2,1009,&apos;2001-04-02&apos;,&apos;29750.00&apos;,NULL,20),
+(1005,&apos;李逵&apos;,4,1006,&apos;2001-09-28&apos;,&apos;12500.00&apos;,&apos;14000.00&apos;,30),
+(1006,&apos;宋江&apos;,2,1009,&apos;2001-05-01&apos;,&apos;28500.00&apos;,NULL,30),
+(1007,&apos;刘备&apos;,2,1009,&apos;2001-09-01&apos;,&apos;24500.00&apos;,NULL,10),
+(1008,&apos;猪八戒&apos;,4,1004,&apos;2007-04-19&apos;,&apos;30000.00&apos;,NULL,20),
+(1009,&apos;罗贯中&apos;,1,NULL,&apos;2001-11-17&apos;,&apos;50000.00&apos;,NULL,10),
+(1010,&apos;吴用&apos;,3,1006,&apos;2001-09-08&apos;,&apos;15000.00&apos;,&apos;0.00&apos;,30),
+(1011,&apos;沙僧&apos;,4,1004,&apos;2007-05-23&apos;,&apos;11000.00&apos;,NULL,20),
+(1012,&apos;李逵&apos;,4,1006,&apos;2001-12-03&apos;,&apos;9500.00&apos;,NULL,30),
+(1013,&apos;小白龙&apos;,4,1004,&apos;2001-12-03&apos;,&apos;30000.00&apos;,NULL,20),
+(1014,&apos;关羽&apos;,4,1007,&apos;2002-01-23&apos;,&apos;13000.00&apos;,NULL,10);
+
+
+
+-- 工资等级表
+CREATE TABLE salarygrade (
+  grade INT PRIMARY KEY,   -- 级别
+  losalary INT,  -- 最低工资
+  hisalary INT -- 最高工资
+);
+
+-- 添加5个工资等级
+INSERT INTO salarygrade(grade,losalary,hisalary) VALUES 
+(1,7000,12000),
+(2,12010,14000),
+(3,14010,20000),
+(4,20010,30000),
+(5,30010,99990);
+
+-- 需求：
+
+-- 1.查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述
+SELECT
+    t1.id,
+    t1.ename,
+    t1.salary,
+    t2.jname,
+    t2.description
+FROM
+    emp t1,
+    job t2
+WHERE
+    t1.job_id = t2.id;
+
+-- 2.查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置
+SELECT
+    t1.id,
+    t1.ename,
+    t1.salary,
+    t2.jname,
+    t2.description,
+    t3.dname,
+    t3.loc
+FROM
+    emp t1,
+    job t2,
+    dept t3
+WHERE
+    t1.job_id = t2.id 
+AND 
+    t1.dept_id = t3.id;
+
+-- 3.查询员工姓名，工资，工资等级
+SELECT
+    t1.ename,
+    t1.salary,
+    t2.grade
+FROM
+    emp t1,
+    salarygrade t2
+WHERE
+    t1.salary &gt;= t2.losalary 
+AND
+    t1.salary &lt;= t2.hisalary;
+
+也可以写成这样
+SELECT
+    t1.ename,
+    t1.salary,
+    t2.grade
+FROM
+    emp t1,
+    salarygrade t2
+WHERE
+    t1.salary
+BETWEEN
+    t2.losalary 
+AND
+    t2.hisalary;
+
+-- 4.查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级
+SELECT
+    t1.ename,
+    t1.salary,
+    t2.jname,
+    t2.description,
+    t3.dname,
+    t3.loc,
+    t4.grade
+FROM
+    emp t1,
+    job t2,
+    dept t3,
+    salarygrade t4
+WHERE
+    t1.job_id = t2.id
+AND
+    t1.dept_id = t3.id
+AND
+    t1.salary
+BETWEEN
+    t4.losalary 
+AND
+    t4.hisalary;
+
+-- 5.查询出部门编号、部门名称、部门位置、部门人数
+SELECT
+     t1.id,
+     t1.dname,
+     t1.loc,
+     (SELECT COUNT(*) FROM emp WHERE emp.dept_id = t1.id) num
+ FROM
+     dept t1;
+
+也可以这样写
+-- 使用分组查询和子查询
+SELECT 
+    t1.id,
+    t1.dname,
+    t1.loc,
+    t2.num
+FROM
+    dept t1,
+    (SELECT
+        dept_id,
+        COUNT(id) num
+    FROM
+        emp
+    GROUP BY
+        dept_id) t2
+WHERE
+    t1.id = t2.dept_id;
+-- 6.查询所有员工的姓名及其直接上级的姓名,没有领导的员工也需要查询
+SELECT
+    t1.id,
+    t1.ename,
+    t1.mgr,
+    t2.ename
+FROM
+    emp t1,
+LEFT JOIN
+    emp t2
+ON
+    t1.mgr = t2.id;
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/mysql学习-多表查询和子查询/" rel="tag"># mysql学习-多表查询和子查询</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/06/11/mysql学习-多表操作和三大范式/" rel="next" title="mysql学习-多表操作和三大范式">
+                <i class="fa fa-chevron-left"></i> mysql学习-多表操作和三大范式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
