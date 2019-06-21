@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="大家有问题可以给我留言,我看到了会第一时间回复大家  数据库的备份和还原 命令行方式(cmd黑窗口下):   备份语法: mysqldump -u用户名 -p密码 数据库名称&amp;gt; 保存的路径(要包括保存的数据库名称). 例子: mysqldump -uroot -proot db1 &amp;gt; D:\MySQL\mysqldata\db1.sql  还原语法(cmd黑窗口下,数据也在): 登录">
+<meta name="keywords" content="mysql学习-事务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql学习-事务">
+<meta property="og:url" content="https://fanfan999.github.io/2019/06/12/mysql学习-事务/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="大家有问题可以给我留言,我看到了会第一时间回复大家  数据库的备份和还原 命令行方式(cmd黑窗口下):   备份语法: mysqldump -u用户名 -p密码 数据库名称&amp;gt; 保存的路径(要包括保存的数据库名称). 例子: mysqldump -uroot -proot db1 &amp;gt; D:\MySQL\mysqldata\db1.sql  还原语法(cmd黑窗口下,数据也在): 登录">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-12T04:39:14.485Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql学习-事务">
+<meta name="twitter:description" content="大家有问题可以给我留言,我看到了会第一时间回复大家  数据库的备份和还原 命令行方式(cmd黑窗口下):   备份语法: mysqldump -u用户名 -p密码 数据库名称&amp;gt; 保存的路径(要包括保存的数据库名称). 例子: mysqldump -uroot -proot db1 &amp;gt; D:\MySQL\mysqldata\db1.sql  还原语法(cmd黑窗口下,数据也在): 登录">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/06/12/mysql学习-事务/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>mysql学习-事务 | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/12/mysql学习-事务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql学习-事务
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-12 08:00:26 / Modified: 12:39:14" itemprop="dateCreated datePublished" datetime="2019-06-12T08:00:26+08:00">2019-06-12</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>大家有问题可以给我留言,我看到了会第一时间回复大家</li>
+</ul>
+<h1 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="数据库的备份和还原"></a>数据库的备份和还原</h1><blockquote>
+<p>命令行方式(cmd黑窗口下):</p>
+</blockquote>
+<ul>
+<li><p>备份语法: mysqldump -u用户名 -p密码 数据库名称&gt; 保存的路径(要包括保存的数据库名称).</p>
+<pre><code>例子: mysqldump -uroot -proot db1 &gt; D:\MySQL\mysqldata\db1.sql
+</code></pre></li>
+<li>还原语法(cmd黑窗口下,数据也在):<ol>
+<li>登录数据库: mysql -uroot -proot</li>
+<li>创建一个空数据库: create database db1;</li>
+<li>使用数据库: use db1;</li>
+<li>执行文件: source 文件路径: source D:\MySQL\mysqldata\db1.sql</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>图形化界面都有直接导入导出的按钮.</p>
+</blockquote>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><blockquote>
+<p>事务的基本介绍</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>概念: 如果一个包含多个步骤的业务操作,被事务管理,那么这些操作要么同时成功,要么同时失败.</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>操作</p>
+<blockquote>
+<p>开启事务: start transaction.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>回滚: rollback.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>提交: commit.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>例子(转账):
+张三和李四初始账户金额都为1000元.
+张三给李四转账500元.
+步骤:
+    1. 张三账户金额 -500.
+    2. 李四账户金额 +500.
+但是如果张三金额减少之后出错了,李四账户就不会增加500元
+那么这500就不翼而飞了,这是我们不希望看到的.
+
+-- 张三给李四转账500
+-- 开启事务
+START TRANSACTION;
+-- 张三账户金额-500
+UPDATE account SET balance = balance - 500 WHERE NAME = &apos;张三&apos;;
+-- 李四账户金额+500
+-- 出错了...
+UPDATE account SET balance = balance + 500 WHERE NAME = &apos;李四&apos;;
+-- 出现了问题我们就回滚事务
+ROLLBACK;
+
+这两部分要分开运行.
+因为不是在java代码,它只会顺序执行,所以只能分开运行展示效果.
+还要注意当我们写了start trancation,表示手动提交事务后
+在事务没有运行到提交语句或回滚语句前,事务就一直处于开启状态
+所以在当前图形化界面下他的金额还是会减少
+这是一个临时数据,为了更直观
+我们可以新开一个图形化界面专门用来查询该表数据
+因为临时数据就不会再另一个图形化界面去
+
+-- 开启事务
+START TRANSACTION;
+-- 张三账户金额-500
+UPDATE account SET balance = balance - 500 WHERE NAME = &apos;张三&apos;;
+-- 李四账户金额+500
+-- 出错了...
+UPDATE account SET balance = balance + 500 WHERE NAME = &apos;李四&apos;;
+-- 没有问题我们就提交事务
+COMMIT;
+</code></pre><blockquote>
+<blockquote>
+<blockquote>
+<p>事务提交方式:</p>
+<blockquote>
+<ol>
+<li>自动提交(直接执行DML语句): mysql数据库中事务默认自动提交(在没有执行<code>开启事务语句</code>时),即一条DML语句会自动提交一次事务,将数据持久化存储.</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<ol start="2">
+<li>手动提交(oracle就是默认手动提交的): 执行了<code>start transaction</code>后,就表明事务时手动提交的了,没有执行回滚或提交语句时,它会默认回滚,数据不会持久化存储.</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>修改事务默认提交方式:</p>
+<blockquote>
+<ol>
+<li>查看事务默认提交方式(在mysql图形化界面中中执行语句): select @@autocommit—1代表自动提交,0代表手动提交;</li>
+<li>修改默认事务提交方式为手动: set @@autocommit = 0;</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>事务的四大特征</p>
+<blockquote>
+<ol>
+<li>原子性: 即不可分割的最小操作单位,要么同时成功,要么同时失败.</li>
+<li>持久性: 事务一旦提交或者回滚,它就会持久更新数据库表中的数据.</li>
+<li>隔离性: 多个事物之间,相互独立,但其实实际使用过程中,有可能会存在关系的,所以我们需要了解隔离级别嘛.</li>
+<li>一致性: 事务操作前后数据总量不变(例如张三和李四都有1000,张三给李四转了500,他俩加起来还是2000).</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>事务的隔离级别(了解)</p>
+<blockquote>
+<p>概念: 多个事务之间是隔离的,即相互独立的,但是<strong>如果多个事务操作同一批数据,则会引发一些问题,设置不同的隔离级别就可以解决这些问题.</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>存在的问题:</p>
+<blockquote>
+<ol>
+<li>脏读: 一个事务读取到另一个事务中没有提交的数据.</li>
+<li>不可重复读(虚读): 在同一个事务中,两次读取到的数据不一样.</li>
+<li>幻读: 一个事务操作(DML)数据表中所有数据,另一个事务添加了一条数据,但第一个事务查询不到自己的修改(这个在mysql里面演示不出来,因为mysql执行了DML语句后,本事务中会按照dml语句产生临时数据,也就是说本事务会临时修改数据,其它事务中数据没有提交前不会改变,提交之后就会改变)</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>隔离级别:</p>
+<blockquote>
+<p>1.read uncommitted: 读未提交,即表示当前事务或其他事务能读取到未提交的数据.</p>
+<blockquote>
+<p>会产生的问题: 脏读, 不可重复读, 幻读.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>2.read committed: 读已提交,即表示当前事务或其他事务只能读取到已提交的数据.(oracle默认)</p>
+<blockquote>
+<p>会产生的问题: 不可重复读, 幻读.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>3.repeatable read: 可重复读.(mysql默认)</p>
+<blockquote>
+<p>会产生的问题: 幻读.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>4.serializable: 串行化.</p>
+<blockquote>
+<p>可以解决上述产生的全部问题,也就是说这个隔离级别不会产生任何问题</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>注意: 隔离级别从小到大安全性越来越高,但是效率越来越低.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>数据库查询隔离级别: <strong>select @@tx_isolation;</strong></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>数据库设置隔离级别: <strong>set global transaction isolation level 级别字符串</strong>, 如: set global transaction isolation level serializable.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="DCL语句-了解"><a href="#DCL语句-了解" class="headerlink" title="DCL语句(了解)"></a>DCL语句(了解)</h1><blockquote>
+<p>概念: 数据控制语句,管理用户并对用户进行授权等相关操作.</p>
+</blockquote>
+<blockquote>
+<p>管理用户</p>
+</blockquote>
+<ul>
+<li>安装好数据库之后,都会有一个默认的数据库<code>mysql</code>,里面有一个表<code>user</code>,用户的信息都在里面.</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>1.添加用户</p>
+<blockquote>
+<p>语法: <strong>CREATE USER ‘用户名‘@’主机名’ IDENTIFIED BY ‘密码’</strong></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>-- 创建用户只在本地访问
+CREATE USER &apos;fan&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;123&apos;;
+-- 创建用户可以在任意主机访问
+CREATE USER &apos;fan&apos;@&apos;%&apos; IDENTIFIED BY &apos;123&apos;;
+</code></pre><blockquote>
+<blockquote>
+<p>2.删除用户</p>
+<blockquote>
+<p>语法: <strong>DROP USER ‘用户名‘@’主机名’</strong>.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>-- 删除用户
+DROP USER &apos;fan&apos;@&apos;localhost&apos;;
+</code></pre><blockquote>
+<blockquote>
+<p>3.修改用户密码</p>
+<blockquote>
+<p>语法: </p>
+<blockquote>
+<ol>
+<li><strong>UPDATE USER SET PASSWORD = PASSWORD(‘新密码’) WHERE USER = ‘用户名’;</strong></li>
+<li><strong>SET PASSWORD FOR ‘用户名‘@’主机名’ = PASSWORD(‘新密码’);</strong></li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>在mysql中,忘记了root用户的密码怎么办?</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>1. 以管理员身份运行cmd,然后在cmd黑窗口下敲: `net stop mysql`停止mysql服务.
+2. 使用无验证方式启动mysql服务: `mysqld -- skip-grant-tables`.
+3. 然后这个管理员方式运行的cmd就会停在那里闪光标不动,我们不关闭它,新打开一个cmd黑窗口(不用以管理员身份运行),直接输入`mysql`,不需要账号密码,敲回车就可以进去mysql服务了.
+4. 然后在新打开的cmd窗口中改密码就可以了,改完之后关闭全部窗口.
+5. 然后打开任务管理器,手动关闭mysqld.exe进程.
+6. 最后以管理员身份重新开一个cmd黑窗口,先输入`mysql -start mysql`启动mysql服务, 然后用刚才修改后的密码登录mysql即可.
+</code></pre><blockquote>
+<blockquote>
+<p>4.查询用户</p>
+</blockquote>
+</blockquote>
+<pre><code>-- 切换到mysql数据库
+USE mysql;
+-- 查询user表,有两条记录
+SELECT * FROM USER;
+-- 第一条记录表示当前主机可以登录,第二条记录表示可以远程访问当前数据库
+-- %是通配符,表示可以在任意主机使用用户登录数据库(包含了当前主机)
+</code></pre><blockquote>
+<p>授权管理</p>
+<blockquote>
+<p>1.查询权限</p>
+<blockquote>
+<p>语法: <code>SHOW GRANTS FOR &#39;用户名&#39;@&#39;主机名&#39;;</code></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>-- 查询权限
+SHOW GRANTS FOR &apos;fan&apos;@&apos;localhost&apos;;
+查询结果为: `grant usage...`,这个usage表示只能用于登录
+SHOW GRANTS FOR &apos;root&apos;@&apos;localhost&apos;;
+查询结果为: `grant all privileges...`,这个all privileges表示拥有所有权限
+</code></pre><blockquote>
+<blockquote>
+<p>2.授予权限</p>
+<blockquote>
+<p>语法: <code>grant 权限列表 on 数据库名.表名 to &#39;用户名&#39;@&#39;主机名&#39;</code></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>-- 除了已有的权限外,授予fan查询和删除db1数据库的emp表的权限
+GRANT SELECT,DELETE ON db1.emp TO &apos;fan&apos;@&apos;localhost&apos;;
+此时在cmd黑窗口,用fan登录后,敲`use db1`就不会报错了
+但是当你敲`show tables`的时候,你只能看到emp这一张表
+而且,fan这个用户只能查询和删除db1的emp表,不能增删改.
+因为给予的是select和delete权限.
+
+-- 给fan授予所有权限,在任意数据库任意表上
+GRANT ALL ON *.* TO &apos;fan&apos;@&apos;localhost&apos;;
+</code></pre><blockquote>
+<blockquote>
+<p>3.撤销权限</p>
+<blockquote>
+<p>语法: <code>REVOKE 权限列表 ON 数据库名.表名 FROM &#39;用户名&#39;@&#39;主机名&#39;;</code></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>-- 撤销fan的登录权限
+REVOKE USAGE ON db2.emp FROM &apos;fan&apos;@&apos;localhost&apos;
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/mysql学习-事务/" rel="tag"># mysql学习-事务</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/06/11/mysql学习-多表查询和子查询/" rel="next" title="mysql学习-多表查询和子查询">
+                <i class="fa fa-chevron-left"></i> mysql学习-多表查询和子查询
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/06/12/链表/" rel="prev" title="链表">
+                链表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库的备份和还原"><span class="nav-number">1.</span> <span class="nav-text">数据库的备份和还原</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务"><span class="nav-number">2.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DCL语句-了解"><span class="nav-number">3.</span> <span class="nav-text">DCL语句(了解)</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

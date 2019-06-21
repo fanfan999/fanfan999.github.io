@@ -103,28 +103,30 @@
 
 
 
-  <meta name="description" content="猫狗队列问题 题目描述如图: . 猫狗队列代码.  转圈打印矩阵(matrix) 题目: 给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:  如下: 1   2  3  4 5   6  7  8 9  10 11 12 13 14 15 16         打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10.   这类似的题目不能去想如何由第一个下">
+  <meta name="description" content="猫狗队列问题.  猫狗队列代码.  转圈打印矩阵(matrix)给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:   如下: 1   2  3  4 5   6  7  8 9  10 11 12 13 14 15 16         打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10.   这类似的题目不能去想如何由第一个下标变成第二个下标,然后第">
 <meta name="keywords" content="算法_初级4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法_初级4">
 <meta property="og:url" content="https://fanfan999.github.io/2019/05/25/算法-初级4/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="猫狗队列问题 题目描述如图: . 猫狗队列代码.  转圈打印矩阵(matrix) 题目: 给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:  如下: 1   2  3  4 5   6  7  8 9  10 11 12 13 14 15 16         打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10.   这类似的题目不能去想如何由第一个下">
+<meta property="og:description" content="猫狗队列问题.  猫狗队列代码.  转圈打印矩阵(matrix)给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:   如下: 1   2  3  4 5   6  7  8 9  10 11 12 13 14 15 16         打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10.   这类似的题目不能去想如何由第一个下标变成第二个下标,然后第">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E7%8C%AB%E7%8B%97%E9%98%9F%E5%88%97.png">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E8%BD%AC%E5%9C%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E8%BD%AC%E5%9C%88%E6%89%93%E5%8D%B0%E6%80%9D%E8%B7%AF%E5%9B%BE.jpg">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E4%BE%8B%E5%AD%90.jpg">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E6%80%9D%E8%B7%AF.jpg">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%9D%E8%B7%AF.jpg">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.png">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%9C%A8%E8%A1%8C%E8%B7%9F%E5%88%97%E9%83%BD%E6%8E%92%E5%A5%BD%E5%BA%8F%E7%9A%84%E7%9F%A9%E9%98%B5%E4%B8%AD%E6%89%BE%E6%95%B0%E9%A2%98%E7%9B%AE.png">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/blob/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%BB%99%E5%AE%9A%E5%80%BC%E6%8E%92%E5%BA%8F.png">
-<meta property="og:updated_time" content="2019-06-04T13:28:06.864Z">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%BB%99%E5%AE%9A%E5%80%BC%E6%8E%92%E5%BA%8F.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%A4%8D%E5%88%B6%E5%90%AB%E6%9C%89%E9%9A%8F%E6%9C%BA%E6%8C%87%E9%92%88%E8%8A%82%E7%82%B9%E7%9A%84%E9%93%BE%E8%A1%A8.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B8%A4%E4%B8%AA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4%E7%9A%84%E4%B8%80%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98.png">
+<meta property="og:updated_time" content="2019-06-12T07:28:15.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法_初级4">
-<meta name="twitter:description" content="猫狗队列问题 题目描述如图: . 猫狗队列代码.  转圈打印矩阵(matrix) 题目: 给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:  如下: 1   2  3  4 5   6  7  8 9  10 11 12 13 14 15 16         打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10.   这类似的题目不能去想如何由第一个下">
+<meta name="twitter:description" content="猫狗队列问题.  猫狗队列代码.  转圈打印矩阵(matrix)给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:   如下: 1   2  3  4 5   6  7  8 9  10 11 12 13 14 15 16         打印结果应该为:1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10.   这类似的题目不能去想如何由第一个下标变成第二个下标,然后第">
 <meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E7%8C%AB%E7%8B%97%E9%98%9F%E5%88%97.png">
 
 
@@ -448,7 +450,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-04 21:28:06" itemprop="dateModified" datetime="2019-06-04T21:28:06+08:00">2019-06-04</time>
+                <time title="Modified: 2019-06-12 15:28:15" itemprop="dateModified" datetime="2019-06-12T15:28:15+08:00">2019-06-12</time>
               
             
           </span>
@@ -500,12 +502,13 @@
       
 
       
-        <h1 id="猫狗队列问题"><a href="#猫狗队列问题" class="headerlink" title="猫狗队列问题"></a>猫狗队列问题</h1><ol>
-<li>题目描述如图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E7%8C%AB%E7%8B%97%E9%98%9F%E5%88%97.png" alt="猫狗队列题目">.</li>
+        <h1 id="猫狗队列问题"><a href="#猫狗队列问题" class="headerlink" title="猫狗队列问题"></a>猫狗队列问题</h1><p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E7%8C%AB%E7%8B%97%E9%98%9F%E5%88%97.png" alt="猫狗队列题目">.</p>
+<ol>
 <li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/DogCatQueue.java" target="_blank" rel="noopener">猫狗队列代码</a>.</strong></li>
 </ol>
-<h1 id="转圈打印矩阵-matrix"><a href="#转圈打印矩阵-matrix" class="headerlink" title="转圈打印矩阵(matrix)"></a>转圈打印矩阵(matrix)</h1><ol>
-<li>题目: 给定一个矩阵,请你按照顺时针转圈的方式打印它,如图: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E8%BD%AC%E5%9C%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png" alt="转圈打印题目"></li>
+<h1 id="转圈打印矩阵-matrix"><a href="#转圈打印矩阵-matrix" class="headerlink" title="转圈打印矩阵(matrix)"></a>转圈打印矩阵(matrix)</h1><p>给定一个矩阵,请你按照顺时针转圈的方式打印它,如图:</p>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E8%BD%AC%E5%9C%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png" alt="转圈打印题目"></p>
+<ol>
 <li><p>如下:</p>
 <pre><code>1   2  3  4
 5   6  7  8
@@ -533,22 +536,26 @@
 <li>思路:和上面一样,用一种宏观的思路,给定左上角和右下角的坐标位置,先转外面一圈,然后转里面一圈,直到左上角元素坐标大于右下角坐标为止,不过这种题就有点扣边界,反正我做这种题就很难受,可能因为我逻辑思维太差了吧.</li>
 <li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/RotateArray.java" target="_blank" rel="noopener">旋转二维数组代码</a>.</strong></li>
 </ol>
-<h1 id="之字形打印矩阵"><a href="#之字形打印矩阵" class="headerlink" title="之字形打印矩阵"></a>之字形打印矩阵</h1><ol>
-<li>题目: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png" alt="之字形打印矩阵">.</li>
-<li>示例: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E4%BE%8B%E5%AD%90.jpg" alt="之字形打印矩阵示例">.</li>
-<li>思路: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E6%80%9D%E8%B7%AF.jpg" alt="之字形打印矩阵思路">.</li>
-<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/ZhiPrintMatrix.java" target="_blank" rel="noopener">之字形打印矩阵代码</a>.</strong></li>
-<li>注意: 暂时不变的放在前面,免得暂时变化的会影响,比如这题中的左上角的行要放在列的后面!!!!不然会搞死人的.</li>
-</ol>
+<h1 id="之字形打印矩阵"><a href="#之字形打印矩阵" class="headerlink" title="之字形打印矩阵"></a>之字形打印矩阵</h1><p>1.题目: </p>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5.png" alt="之字形打印矩阵">.</p>
+<p>2.示例: </p>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E4%BE%8B%E5%AD%90.jpg" alt="之字形打印矩阵示例">.</p>
+<p>3.思路: </p>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B9%8B%E5%AD%97%E5%BD%A2%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%9D%E8%B7%AF.jpg" alt="之字形打印矩阵思路">.</p>
+<p>4.<strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/ZhiPrintMatrix.java" target="_blank" rel="noopener">之字形打印矩阵代码</a>.</strong><br>5.注意: 暂时不变的放在前面,免得暂时变化的会影响,比如这题中的左上角的行要放在列的后面!!!!不然会搞死人的.</p>
 <h1 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a>反转链表</h1><p><strong><strong>这个博客的图画的巨好,巨容易懂,也算是夏天的一丝清凉,真的是要热死了: <a href="https://www.cnblogs.com/keeya/p/9218352.html" target="_blank" rel="noopener">理解反转链表</a></strong></strong></p>
 <ol>
-<li><p>题目: 输入一个链表，反转链表后，输出新链表的表头, <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.png" alt="链表倒序题目"></p>
-</li>
-<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/ReverseList.java" target="_blank" rel="noopener">反转链表代码</a>.</strong></p>
-</li>
+<li>题目: 输入一个链表，反转链表后，输出新链表的表头</li>
+</ol>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.png" alt="链表倒序题目"></p>
+<ol start="2">
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/ReverseList.java" target="_blank" rel="noopener">反转链表代码</a>.</strong></li>
 </ol>
 <h1 id="在行列都排好序的矩阵中找数"><a href="#在行列都排好序的矩阵中找数" class="headerlink" title="在行列都排好序的矩阵中找数"></a>在行列都排好序的矩阵中找数</h1><ol>
-<li>题目: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%9C%A8%E8%A1%8C%E8%B7%9F%E5%88%97%E9%83%BD%E6%8E%92%E5%A5%BD%E5%BA%8F%E7%9A%84%E7%9F%A9%E9%98%B5%E4%B8%AD%E6%89%BE%E6%95%B0%E9%A2%98%E7%9B%AE.png" alt="在行列都排好序的矩阵中找数">.</li>
+<li>题目: </li>
+</ol>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%9C%A8%E8%A1%8C%E8%B7%9F%E5%88%97%E9%83%BD%E6%8E%92%E5%A5%BD%E5%BA%8F%E7%9A%84%E7%9F%A9%E9%98%B5%E4%B8%AD%E6%89%BE%E6%95%B0%E9%A2%98%E7%9B%AE.png" alt="在行列都排好序的矩阵中找数">.</p>
+<ol start="2">
 <li>思路:<ol>
 <li>注意这里的行和列都是从小到大有序的. </li>
 <li>先确定右上角<code>A</code>的坐标(左下角也行,其实四个角都行,看你自己,这里以右上角为例),然后判断和要找的元素的大小.<ol>
@@ -566,25 +573,39 @@
 <li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/PalindromeSequence.java" target="_blank" rel="noopener">打印有序链表公共部分代码</a>.</strong></li>
 </ol>
 <h1 id="判断一个链表是否为回文结构"><a href="#判断一个链表是否为回文结构" class="headerlink" title="判断一个链表是否为回文结构"></a>判断一个链表是否为回文结构</h1><ol>
-<li>题目: <img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84.png" alt="判断一个链表是否为回文结构代码">.</li>
+<li>题目: </li>
+</ol>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84.png" alt="判断一个链表是否为回文结构代码">.</p>
+<ol start="2">
 <li>最难理解的就是两个逆序的过程,多想想画一画,我反正这个题搞了我一上午.</li>
 <li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/PalindromeSequence.java" target="_blank" rel="noopener">判断一个链表是否为回文结构代码</a>.</strong></li>
 </ol>
-<h1 id="将单向链表按某值划分成左边小-中间相等-右边大的形式"><a href="#将单向链表按某值划分成左边小-中间相等-右边大的形式" class="headerlink" title="将单向链表按某值划分成左边小, 中间相等, 右边大的形式"></a>将单向链表按某值划分成左边小, 中间相等, 右边大的形式</h1><p><img src="https://github.com/fanfan999/MyPostImage/blob/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%BB%99%E5%AE%9A%E5%80%BC%E6%8E%92%E5%BA%8F.png" alt="单向链表给定值排序">.</p>
+<h1 id="将单向链表按某值划分成左边小-中间相等-右边大的形式"><a href="#将单向链表按某值划分成左边小-中间相等-右边大的形式" class="headerlink" title="将单向链表按某值划分成左边小, 中间相等, 右边大的形式"></a>将单向链表按某值划分成左边小, 中间相等, 右边大的形式</h1><p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%BB%99%E5%AE%9A%E5%80%BC%E6%8E%92%E5%BA%8F.png" alt="单向链表给定值排序">.</p>
 <ol>
 <li><p>第一问:</p>
 <ol>
 <li>思路: 类似荷兰国旗,因为第一问不要求稳定性,所以我们可以把单向链表放在一个数组中,然后在数组中排好序以后,再转化为链表形式.</li>
-<li><a href>将链表存放在数组中代码</a>.</li>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/ComparesWithPivot.java" target="_blank" rel="noopener">将链表存放在数组中代码</a>.</strong></li>
 <li>此时时间复杂度和额外空间复杂度都为<code>O(N)</code>.</li>
 </ol>
 </li>
-<li><p>第二问:</p>
-<ol>
-<li>思路: </li>
+<li><p>第二问(被这个链表搞的有点烦,这个第二问就没搞):<strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/day04/Code_12_SmallerEqualBigger.java" target="_blank" rel="noopener">别人的第一问和第二问的代码</a>.
+</strong></p>
+<h1 id="复制含有随机指针节点的链表-这个题我没做"><a href="#复制含有随机指针节点的链表-这个题我没做" class="headerlink" title="复制含有随机指针节点的链表(这个题我没做)"></a>复制含有随机指针节点的链表(这个题我没做)</h1></li>
 </ol>
-</li>
-</ol>
+<ul>
+<li>哈希表的增删查时间复杂度都是O(1)</li>
+</ul>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E5%A4%8D%E5%88%B6%E5%90%AB%E6%9C%89%E9%9A%8F%E6%9C%BA%E6%8C%87%E9%92%88%E8%8A%82%E7%82%B9%E7%9A%84%E9%93%BE%E8%A1%A8.png" alt="复制含有随机指针节点的链表题目"></p>
+<ul>
+<li><strong><a href>代码</a>.</strong></li>
+<li>有哈希表的时候额外空间复杂度为O(N),时间复杂度为O(N),不用哈希表的时候额外空间复杂度为O(1),时间复杂度为O(N)</li>
+</ul>
+<h1 id="两个单链表相交的一系列问题-这个题我没做"><a href="#两个单链表相交的一系列问题-这个题我没做" class="headerlink" title="两个单链表相交的一系列问题(这个题我没做)"></a>两个单链表相交的一系列问题(这个题我没做)</h1><p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E7%AE%97%E6%B3%95-%E5%88%9D%E7%BA%A74/%E4%B8%A4%E4%B8%AA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4%E7%9A%84%E4%B8%80%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98.png" alt="两个单链表相交的一系列问题">.</p>
+<ul>
+<li>对于单链表,一个链表有环,一个链表无环,不可能相交</li>
+<li><strong><a href>代码</a>.</strong></li>
+</ul>
 
       
     </div>
@@ -702,7 +723,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -741,7 +762,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -820,7 +847,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">31</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -884,7 +921,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#猫狗队列问题"><span class="nav-number">1.</span> <span class="nav-text">猫狗队列问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转圈打印矩阵-matrix"><span class="nav-number">2.</span> <span class="nav-text">转圈打印矩阵(matrix)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将二维数组旋转90°然后输出"><span class="nav-number">3.</span> <span class="nav-text">将二维数组旋转90°然后输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#之字形打印矩阵"><span class="nav-number">4.</span> <span class="nav-text">之字形打印矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反转链表"><span class="nav-number">5.</span> <span class="nav-text">反转链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在行列都排好序的矩阵中找数"><span class="nav-number">6.</span> <span class="nav-text">在行列都排好序的矩阵中找数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印两个有序链表的公共部分"><span class="nav-number">7.</span> <span class="nav-text">打印两个有序链表的公共部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断一个链表是否为回文结构"><span class="nav-number">8.</span> <span class="nav-text">判断一个链表是否为回文结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将单向链表按某值划分成左边小-中间相等-右边大的形式"><span class="nav-number">9.</span> <span class="nav-text">将单向链表按某值划分成左边小, 中间相等, 右边大的形式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#猫狗队列问题"><span class="nav-number">1.</span> <span class="nav-text">猫狗队列问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转圈打印矩阵-matrix"><span class="nav-number">2.</span> <span class="nav-text">转圈打印矩阵(matrix)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将二维数组旋转90°然后输出"><span class="nav-number">3.</span> <span class="nav-text">将二维数组旋转90°然后输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#之字形打印矩阵"><span class="nav-number">4.</span> <span class="nav-text">之字形打印矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反转链表"><span class="nav-number">5.</span> <span class="nav-text">反转链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在行列都排好序的矩阵中找数"><span class="nav-number">6.</span> <span class="nav-text">在行列都排好序的矩阵中找数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印两个有序链表的公共部分"><span class="nav-number">7.</span> <span class="nav-text">打印两个有序链表的公共部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断一个链表是否为回文结构"><span class="nav-number">8.</span> <span class="nav-text">判断一个链表是否为回文结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将单向链表按某值划分成左边小-中间相等-右边大的形式"><span class="nav-number">9.</span> <span class="nav-text">将单向链表按某值划分成左边小, 中间相等, 右边大的形式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复制含有随机指针节点的链表-这个题我没做"><span class="nav-number">10.</span> <span class="nav-text">复制含有随机指针节点的链表(这个题我没做)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#两个单链表相交的一系列问题-这个题我没做"><span class="nav-number">11.</span> <span class="nav-text">两个单链表相交的一系列问题(这个题我没做)</span></a></li></ol></div>
             
 
           </div>
