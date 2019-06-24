@@ -103,18 +103,21 @@
 
 
 
-  <meta name="description" content="链表和数组都是一种数据结构  数组是一段连续的存储空间链表空间不一定保证连续,只能通过上一个节点的指针找到下一个节点    链表的分类  按照连接方向  单链表: 只有一个数值域和一个指针,而且只能通过next指针指向下一个节点,所以两条单链表是不可能形成X形结构的.       双链表: 有两个指针和一个数值域,pre指针指向上一个节点,next指针指向下一个节点      按照有环无环分类">
+  <meta name="description" content="链表和数组都是一种数据结构   数组是一段连续的存储空间 链表空间不一定保证连续,只能通过上一个节点的指针找到下一个节点   链表的分类   按照连接方向  单链表: 只有一个数值域和一个指针,而且只能通过next指针指向下一个节点,所以两条单链表是不可能形成X形结构的.       双链表: 有两个指针和一个数值域,pre指针指向上一个节点,next指针指向下一个节点    按照有环无环分类">
 <meta name="keywords" content="链表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="链表">
 <meta property="og:url" content="https://fanfan999.github.io/2019/06/12/链表/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="链表和数组都是一种数据结构  数组是一段连续的存储空间链表空间不一定保证连续,只能通过上一个节点的指针找到下一个节点    链表的分类  按照连接方向  单链表: 只有一个数值域和一个指针,而且只能通过next指针指向下一个节点,所以两条单链表是不可能形成X形结构的.       双链表: 有两个指针和一个数值域,pre指针指向上一个节点,next指针指向下一个节点      按照有环无环分类">
+<meta property="og:description" content="链表和数组都是一种数据结构   数组是一段连续的存储空间 链表空间不一定保证连续,只能通过上一个节点的指针找到下一个节点   链表的分类   按照连接方向  单链表: 只有一个数值域和一个指针,而且只能通过next指针指向下一个节点,所以两条单链表是不可能形成X形结构的.       双链表: 有两个指针和一个数值域,pre指针指向上一个节点,next指针指向下一个节点    按照有环无环分类">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-21T07:43:30.031Z">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E9%93%BE%E8%A1%A8/%E5%A5%87%E6%95%B0%E4%B8%AA%E7%9A%84%E5%9B%9E%E6%96%87%E5%BA%8F%E5%88%97%E5%88%A4%E6%96%AD.png">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E9%93%BE%E8%A1%A8/%E5%81%B6%E6%95%B0%E4%B8%AA%E7%9A%84%E5%9B%9E%E6%96%87%E5%BA%8F%E5%88%97%E5%88%A4%E6%96%AD.png">
+<meta property="og:updated_time" content="2019-06-24T03:00:05.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="链表">
-<meta name="twitter:description" content="链表和数组都是一种数据结构  数组是一段连续的存储空间链表空间不一定保证连续,只能通过上一个节点的指针找到下一个节点    链表的分类  按照连接方向  单链表: 只有一个数值域和一个指针,而且只能通过next指针指向下一个节点,所以两条单链表是不可能形成X形结构的.       双链表: 有两个指针和一个数值域,pre指针指向上一个节点,next指针指向下一个节点      按照有环无环分类">
+<meta name="twitter:description" content="链表和数组都是一种数据结构   数组是一段连续的存储空间 链表空间不一定保证连续,只能通过上一个节点的指针找到下一个节点   链表的分类   按照连接方向  单链表: 只有一个数值域和一个指针,而且只能通过next指针指向下一个节点,所以两条单链表是不可能形成X形结构的.       双链表: 有两个指针和一个数值域,pre指针指向上一个节点,next指针指向下一个节点    按照有环无环分类">
+<meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E9%93%BE%E8%A1%A8/%E5%A5%87%E6%95%B0%E4%B8%AA%E7%9A%84%E5%9B%9E%E6%96%87%E5%BA%8F%E5%88%97%E5%88%A4%E6%96%AD.png">
 
 
 
@@ -437,7 +440,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-21 15:43:30" itemprop="dateModified" datetime="2019-06-21T15:43:30+08:00">2019-06-21</time>
+                <time title="Modified: 2019-06-24 11:00:05" itemprop="dateModified" datetime="2019-06-24T11:00:05+08:00">2019-06-24</time>
               
             
           </span>
@@ -492,163 +495,202 @@
         <blockquote>
 <p><strong>链表和数组都是一种数据结构</strong></p>
 <blockquote>
-<p>数组是一段连续的存储空间<br>链表空间不一定保证连续,只能通过上一个节点的指针找到下一个节点</p>
+<ul>
+<li>数组是一段连续的存储空间</li>
+<li>链表空间不一定保证连续,只能通过上一个节点的指针找到下一个节点</li>
+</ul>
 </blockquote>
-</blockquote>
-<blockquote>
 <p><strong>链表的分类</strong></p>
 <blockquote>
-<p>按照连接方向</p>
+<ul>
+<li>按照连接方向<blockquote>
+<ul>
+<li>单链表: 只有一个数值域和一个指针,而且只能通过next指针指向下一个节点,所以两条单链表是不可能形成<code>X</code>形结构的.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
 <blockquote>
-<p>单链表: 只有一个数值域和一个指针,而且只能通过next指针指向下一个节点,所以两条单链表是不可能形成<code>X</code>形结构的.</p>
+<ul>
+<li>双链表: 有两个指针和一个数值域,pre指针指向上一个节点,next指针指向下一个节点</li>
+</ul>
 </blockquote>
-</blockquote>
-</blockquote>
+<ul>
+<li>按照有环无环分类<blockquote>
+<ul>
+<li><p>普通链表: </p>
 <blockquote>
+<ul>
+<li>就是一条线,可以想象为贪吃蛇.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>循环链表: </p>
 <blockquote>
+<ul>
+<li>对于单链表来说,首尾相接,最后一个节点的next指针指向头节点.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
 <blockquote>
-<p>双链表: 有两个指针和一个数值域,pre指针指向上一个节点,next指针指向下一个节点</p>
+<ul>
+<li>对于双链表而言,最后一个节点的next指针指向头结点,而头节点的pre指针指向最后一个节点.</li>
+</ul>
 </blockquote>
 </blockquote>
+</li>
+</ul>
 </blockquote>
-<blockquote>
-<blockquote>
-<p>按照有环无环分类</p>
-<blockquote>
-<p>普通链表: </p>
-<blockquote>
-<p>就是一条线,可以想象为贪吃蛇.</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>循环链表: </p>
-<blockquote>
-<p>对于单链表来说,首尾相接,最后一个节点的next指针指向头节点.</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>对于双链表而言,最后一个节点的next指针指向头结点,而头节点的pre指针指向最后一个节点.</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
 <p><strong>单链表插入和删除的注意事项</strong></p>
 <blockquote>
-<p>特殊处理: 链表为空和链表长度为1的情况.</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>注意插入操作的调整过程.</p>
-<blockquote>
-<p>在中间位置插入节点前要找到插入节点的前一个节点和后一个节点,然后让前一个节点的指针指向要插入的节点,让插入的节点的指针指向后一个节点.</p>
-</blockquote>
-</blockquote>
+<ul>
+<li>特殊处理: 链表为空和链表长度为1的情况.</li>
+</ul>
 </blockquote>
 <blockquote>
+<ul>
+<li><p>注意插入操作的调整过程.</p>
 <blockquote>
-<p>注意删除操作的调整过程</p>
+<ul>
+<li>在中间位置插入节点前要找到插入节点的前一个节点和后一个节点,然后让前一个节点的指针指向要插入的节点,让插入的节点的指针指向后一个节点.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>注意删除操作的调整过程</p>
 <blockquote>
-<p>在中间位置删除时,要找到删除节点前一个位置的节点,然后将前一个位置的节点指向删除节点的下一个节点就可以了</p>
+<ul>
+<li>在中间位置删除时,要找到删除节点前一个位置的节点,然后将前一个位置的节点指向删除节点的下一个节点就可以了</li>
+</ul>
 </blockquote>
+</li>
+<li><p>注意考虑头尾节点的插入和空节点的情况</p>
+</li>
+</ul>
 </blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>注意考虑头尾节点的插入和空节点的情况</p>
-</blockquote>
-</blockquote>
-<blockquote>
 <p><strong>单链表的翻转操作</strong></p>
-</blockquote>
 <blockquote>
-<blockquote>
-<p>当链表为空或者链表长度为1时,特殊处理</p>
+<ul>
+<li><p>当链表为空或者链表长度为1时,特殊处理</p>
+</li>
+<li><p>思路就是定义一个两个节点,一个前节点<code>pre</code>,一个后节点<code>next</code>,next不断指向头结点下一个节点,头结点指向pre节点实现逆序,然后pre,head,next依次向后移</p>
+</li>
+<li><p>废话不多说,上代码: <strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/ReverseLinkedList.java" target="_blank" rel="noopener">单链表反转代码</a></strong></p>
+</li>
+</ul>
 </blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>思路就是定义一个两个节点,一个前节点<code>pre</code>,一个后节点<code>next</code>,next不断指向头结点下一个节点,头结点指向pre节点实现逆序,然后pre,head,next依次向后移</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>废话不多说,上代码: <strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/ReverseLinkedList.java" target="_blank" rel="noopener">单链表反转代码</a></strong></p>
-</blockquote>
-</blockquote>
-<blockquote>
 <p><strong>给定一个整数num,如何在节点值有序的环形链表中插入一个节点值为num的节点,并且保证这个环形单链表依然有序,要求时间复杂度为O(N),额外空间复杂度为O(1)</strong></p>
 <blockquote>
-<p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/InsertIntoList.java" target="_blank" rel="noopener">插入指定数到环形链表代码</a></strong></p>
+<ul>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/InsertIntoList.java" target="_blank" rel="noopener">插入指定数到环形链表代码</a></strong></li>
+</ul>
 </blockquote>
-</blockquote>
-<blockquote>
 <p><strong>给定一个头结点head,再给定一个数num,请把链表调整成节点值小于num的节点都放在链表的左边,等于num的节点都放在链表的中间,大于num的都放在链表的右边</strong></p>
 <blockquote>
-<p><strong>思路1</strong>: 我们可以借助辅助空间,将链表放在数组中,然后按照荷兰国旗的思路去做</p>
-<blockquote>
-<p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/InsertIntoList1.java" target="_blank" rel="noopener">借助数组在链表中插入值代码</a>.</strong></p>
+<ul>
+<li><strong>思路1</strong>: 我们可以借助辅助空间,将链表放在数组中,然后按照荷兰国旗的思路去做<blockquote>
+<ul>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/InsertIntoList1.java" target="_blank" rel="noopener">借助数组在链表中插入值代码</a>.</strong></li>
+</ul>
 </blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p><strong>思路2</strong>:可以不借助数组,就把整个链表分成三个小链表,分别是小于num的,等于num的,大于num的,最后把三个链表穿起来就可以了</p>
-<blockquote>
-<p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/InsertIntoList2.java" target="_blank" rel="noopener">不借助辅助空间在链表中插入值代码</a>.</strong></p>
-</blockquote>
-</blockquote>
+</li>
+</ul>
 </blockquote>
 <blockquote>
+<ul>
+<li><strong>思路2</strong>:可以不借助数组,就把整个链表分成三个小链表,分别是小于num的,等于num的,大于num的,最后把三个链表穿起来就可以了<blockquote>
+<ul>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/InsertIntoList2.java" target="_blank" rel="noopener">不借助辅助空间在链表中插入值代码</a>.</strong></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
 <p><strong>给定两个有序链表的头结点head1和head2,打印两个有序链表的公共部分</strong></p>
-</blockquote>
 <blockquote>
-<blockquote>
-<p>1.首先我们要判断两个链表任何一个为空,直接返回即可</p>
+<ol>
+<li><p>首先我们要判断两个链表任何一个为空,直接返回即可</p>
+</li>
+<li><p>就类似于归并排序的归并过程,两个链表依次比较,同时移动,相同的话就打印这个数,然后两个都移动,任何一个为空就停止.</p>
+</li>
+</ol>
+<ul>
+<li><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/PrintCommonPart.java" target="_blank" rel="noopener">打印链表公共部分代码</a></strong></li>
+</ul>
 </blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>2.就类似于归并排序的归并过程,两个链表依次比较,同时移动,相同的话就打印这个数,然后两个都移动,任何一个为空就停止.</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/PrintCommonPart.java" target="_blank" rel="noopener">打印链表公共部分代码</a></strong></p>
-</blockquote>
-</blockquote>
-<blockquote>
 <p><strong>给定一个单链表的头结点,实现一个调整单链表的函数,使得每K个节点之间逆序,如果最后不够K个节点,则不调整最后几个点</strong></p>
 <blockquote>
 <p>例:1-&gt;2-&gt;3-&gt;4-&gt;null, k = 3</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
 <p>调整后为: 3-&gt;2-&gt;1-&gt;4-&gt;null</p>
 </blockquote>
+<blockquote>
+<ul>
+<li><p>思路1: 借助栈来实现,不断压栈,栈的大小达到k的时候就弹栈,再连接上就好了,不过这个有很多细节,差点搞死我,不懂的话看着代码举个例子一步一步来,或者给我留言吧</p>
+</li>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/ReverseInRange.java" target="_blank" rel="noopener">思路1代码</a>.</strong></p>
+</li>
+</ul>
 </blockquote>
 <blockquote>
+<ul>
+<li><p>思路2: 通过一个变量来计数,当这个变量为3的倍数的时候就逆序,时间复杂度为O(N),额外空间复杂度为O(1),不过这个很绕,第一种方法没懂的话,这个就很难写</p>
+</li>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/ReverseInRange_another.java" target="_blank" rel="noopener">思路2代码</a>.</strong></p>
+</li>
+</ul>
+</blockquote>
+<p><strong>给定一个链表的头结点head,节点中值是整数,给定一个整数val,把节点值等于val的节点都删掉</strong></p>
 <blockquote>
-<p>思路1: 借助栈来实现,不断压栈,栈的大小达到k的时候就弹栈,再连接上就好了,不过这个有很多细节,差点搞死我,不懂的话看着代码举个例子一步一步来,或者给我留言吧</p>
+<ul>
+<li><p>这个就很简单了,注意如果删除头节点的话,他的前一个节点是null就可以了</p>
+</li>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/DeleteSpecificNode.java" target="_blank" rel="noopener">删除指定值节点代码</a></strong></p>
+</li>
+</ul>
 </blockquote>
-</blockquote>
+<p><strong>判断一个单链表是否是回文序列</strong></p>
 <blockquote>
+<ul>
+<li><p>例: 1-&gt;2-&gt;2-&gt;1为回文序列</p>
+</li>
+<li><p>方法1: 时间复杂度为O(N),额外空间复杂度为O(N)</p>
 <blockquote>
-<p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/ReverseInRange.java" target="_blank" rel="noopener">思路1代码</a>.</strong></p>
+<ul>
+<li><p>思路: 把链表都放入栈中,然后弹栈和原来的链表依次比较,如果一直到栈内元素全部弹出都一样,说明是回文结构</p>
+</li>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/IsPalindrome.java" target="_blank" rel="noopener">判断是否为回文结构方法1代码</a>.</strong></p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>方法2: 时间复杂度为O(N),额外空间复杂度为O(N/2)</p>
+<blockquote>
+<ul>
+<li><p>思路: <strong>画个图对比着看</strong>,也是申请一个栈结构,然后用一个快指针和一个慢指针去遍历链表,快指针一次走两步,慢指针一次走一步,当快指针的next以及next.next都为null时,说明慢指针到中间了(偶数到中间的前一个,奇数个刚好是中间),然后弹栈去和慢指针比较,都一样就返回true</p>
+</li>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/IsPalindrome2.java" target="_blank" rel="noopener">判断是否为回文结构方法2代码</a>.</strong></p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>方法3: 时间复杂度为O(N),额外空间复杂度为O(1)</p>
+<blockquote>
+<ul>
+<li><p>思路: 同样也是申请快慢指针,只是这次不借助辅助空间栈了,我们让慢指针直接走到下半部分的第一个,然后把下半部分逆序,然后让上半部分和逆序后的下半部分比较就完事了</p>
+</li>
+<li><p><strong><a href="https://github.com/fanfan999/AlgorithmsCodes/blob/master/basic/basic/IsPalindrome3.java" target="_blank" rel="noopener">判断是否为回文结构方法3代码</a>.</strong></p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>两张图给你们看看理解一下,实在不懂再问我吧</p>
 </blockquote>
 </blockquote>
-<p>#更新中…</p>
+</blockquote>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E9%93%BE%E8%A1%A8/%E5%A5%87%E6%95%B0%E4%B8%AA%E7%9A%84%E5%9B%9E%E6%96%87%E5%BA%8F%E5%88%97%E5%88%A4%E6%96%AD.png" alt="奇数个回文序列"></p>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E9%93%BE%E8%A1%A8/%E5%81%B6%E6%95%B0%E4%B8%AA%E7%9A%84%E5%9B%9E%E6%96%87%E5%BA%8F%E5%88%97%E5%88%A4%E6%96%AD.png" alt="偶数个回文序列"></p>
 
       
     </div>
@@ -757,7 +799,7 @@
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -802,7 +844,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -891,7 +941,19 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

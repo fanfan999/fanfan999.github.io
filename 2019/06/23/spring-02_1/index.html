@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="创建spring容器的三种方式创建spring容器的案例代码(只有测试类部分)  /**  * 创建spring容器的三种方式  */ public class TestUser {     public static void main(String[] args) {         test();         test2();         test3();     }      /">
+<meta name="keywords" content="spring-02_1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-02_1">
+<meta property="og:url" content="https://fanfan999.github.io/2019/06/23/spring-02_1/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="创建spring容器的三种方式创建spring容器的案例代码(只有测试类部分)  /**  * 创建spring容器的三种方式  */ public class TestUser {     public static void main(String[] args) {         test();         test2();         test3();     }      /">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-24T09:02:21.161Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring-02_1">
+<meta name="twitter:description" content="创建spring容器的三种方式创建spring容器的案例代码(只有测试类部分)  /**  * 创建spring容器的三种方式  */ public class TestUser {     public static void main(String[] args) {         test();         test2();         test3();     }      /">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/06/23/spring-02_1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>spring-02_1 | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/23/spring-02_1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spring-02_1
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-23 13:23:16" itemprop="dateCreated datePublished" datetime="2019-06-23T13:23:16+08:00">2019-06-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-24 17:02:21" itemprop="dateModified" datetime="2019-06-24T17:02:21+08:00">2019-06-24</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<h2 id="创建spring容器的三种方式"><a href="#创建spring容器的三种方式" class="headerlink" title="创建spring容器的三种方式"></a>创建spring容器的三种方式</h2><p><strong>创建spring容器的案例代码(只有测试类部分)</strong></p>
+</blockquote>
+<pre><code>/**
+ * 创建spring容器的三种方式
+ */
+public class TestUser {
+    public static void main(String[] args) {
+        test();
+        test2();
+        test3();
+    }
+
+    /**
+     * 第一种: 通过类路径加载
+     */
+    private static void test() {
+        /**
+         * 1.加载配置文件创建spring容器,生成user(配置文件中id声明的名字为user)对象
+         * 其中参数为类路径(class路径),就是src下的路径,可以理解为相对src的相对路径,idea选中xml文件右键会有复制相对路径,那个就是对的
+         */
+
+        System.out.println(&quot;test()&quot;);
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+        //2.获取context容器中的user对象
+        System.out.println(&quot;----------&quot;);
+        UserImpl user = (UserImpl) context.getBean(&quot;user&quot;);
+        //3.1调用方法,也可以通过property设置属性
+        user.add();
+        System.out.println(user.getName());
+
+
+    }
+
+    /**
+     * 第二种: 通过文件系统路径加载配置文件,就是绝对路径
+     * 选中beans.xml右键单击复制路径就是的
+     */
+    private static void test2() {
+        System.out.println(&quot;test2()&quot;);
+
+        ApplicationContext context = new FileSystemXmlApplicationContext(&quot;D:\\IDEA_Codes\\spring\\day02\\src\\beans.xml&quot;);
+
+        UserImpl user = (UserImpl) context.getBean(&quot;user&quot;);
+        user.add();
+        System.out.println(user.getName());
+    }
+
+    /**
+     * 第三种: 使用BeanFactory
+     */
+    private static void test3() {
+        System.out.println(&quot;test3()&quot;);
+        //这种方法加载配置文件是即时加载,对比ApplicationContext源码就知道了
+        BeanFactory factory = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+        System.out.println(&quot;----------&quot;);
+        UserImpl user = (UserImpl) factory.getBean(&quot;user&quot;);
+        user.add();
+        System.out.println(user.getName());
+
+        /**
+         * 当BeanFactory使用下面这种方法时才是延时加载
+         * BeanFactory context = new XmlBeanFactory(new FileSystemResource(&quot;D:\\IDEA_Codes\\spring\\day02\\src\\beans.xml&quot;));
+         */
+    }
+}
+</code></pre><blockquote>
+<ul>
+<li>第一种(最常用): 利用<code>ApplicationContext接口</code>通过类路径加载配置文件生成spring容器同时在容器中生成以bean中的id属性值为名的对象<blockquote>
+<p>例:</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<pre><code>1. 下面就是创建spring容器加载配置文件的方式,就是下面这一行代码
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+
+2. 下面的就是beans.xml配置文件中加载spring容器第一种方式的对UserImpl类的配置内容
+    &lt;bean id=&quot;user&quot; class=&quot;service.impls.UserImpl&quot;&gt;
+       &lt;property name=&quot;name&quot; value=&quot;licunli&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+    1. 过程: 加载配置文件生成spring容器并生成-[service.impls]-包下-[UserImpl类]-的对象-[user],同时给user对象的[name]属性赋值为[&quot;licunli&quot;]
+
+    2. 不过要注意的是:
+        1. name属性在UserImpl类中已经声明好了
+        2. name属性必须要有set方法,不然赋值不会成功,会报错.
+</code></pre><blockquote>
+<ul>
+<li><p>第二种: 通过文件系统路径创建spring容器,并加载配置文件,其中系统路径也就是绝对路径</p>
+</li>
+<li><p>第三种: 使用BeanFactory,跟第一种差不多,不过用BeanFactory的时候只能用相对路径,用绝对路径会报错</p>
+</li>
+<li><p>BeanFactory和ApplicationContext对比(这两个都是spring容器,用于去加载配置文件)</p>
+<blockquote>
+<ul>
+<li>BeanFactory采用延迟加载(已过时,现在也不延时加载了),第一次getBean时才会初始化Bean(也就是通过构造初始化对象)</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>ApplicationContext是即时加载,是对BeanFactory的扩展,在它的基础上提供了更多的功能,包括以下几个方面:</p>
+<blockquote>
+<ul>
+<li><p>国际化处理</p>
+</li>
+<li><p>事件传递</p>
+</li>
+<li><p>Bean自动装配</p>
+</li>
+<li><p>各种不同应用层的Context实现</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>关于BeanFactory和ApplicationContext两个容器加载配置文件时机的说明,如下:</strong></p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>1. 下面这种方法是即时记载无可非议,也就是一装载配置文件就初始化对象,跟单例模式里的饿汉式差不多
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+
+2. 对于BeanFactory,它现在也是即时加载,延时加载的方法过时了
+    1. 下面这样加载配置文件是延时加载,但是XmlBeanFactory()这个构造方法过时了已经
+        BeanFactory context = new XmlBeanFactory(new FileSystemResource(&quot;D:\\IDEA_Codes\\spring\\day02\\src\\beans.xml&quot;));
+    2. 而这一种方法是即时加载,没过时,同时只能使用相对路径
+        BeanFactory factory = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+</code></pre><blockquote>
+<p>那么,spring内部创建对象的原理是什么呢?</p>
+<blockquote>
+<ul>
+<li>原理其实就是反射(这东西很多地方用,我要去补习一下),过程如下:<blockquote>
+<ul>
+<li><p>解析xml文件,获取类名,id,属性等</p>
+</li>
+<li><p>通过反射,用类名创建对象</p>
+</li>
+<li><p>给创建的对象赋值</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="装配bean的三种方式"><a href="#装配bean的三种方式" class="headerlink" title="装配bean的三种方式"></a>装配bean的三种方式</h2><blockquote>
+<ul>
+<li>装配bean可以理解为把bean对象放在spring容器中,和创建spring容器连起来看就知道了,反正那一句话既创建了spring容器,还装配了bean对象</li>
+<li>下面就表示装配了一个bean:</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>&lt;bean id=&quot;user&quot; class=&quot;service.impls.UserImpl&quot;&gt;
+       &lt;property name=&quot;name&quot; value=&quot;licunli&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><blockquote>
+<ul>
+<li>第一种: 就和上面的例子一样直接写就完事了,就相当于new了一个实现类,在java文件中加载配置文件创建了spring容器对象后直接通过getBean()方法获取这个对象就可以使用了<blockquote>
+<ul>
+<li>例子:</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<pre><code>1. 装配bean对象
+    &lt;bean id=&quot;user&quot; class=&quot;service.impls.UserImpl&quot;&gt;&lt;/bean&gt;
+2. 获取bean对象并使用
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+    UserImpl user = (UserImpl)context.getBean(&quot;user&quot;);
+    user.add();
+</code></pre><blockquote>
+<ul>
+<li>第二种: 通过静态工厂方法,就是把生成对象的代码放在静态工厂类中<blockquote>
+<ul>
+<li>例子:</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<pre><code>1. 静态工厂类
+public class UserFactory1 {
+    public static UserImpl createUserImpl() {
+        return new UserImpl();
+    }
+}
+2. xml文件中装配bean对象
+    &lt;bean id=&quot;user1&quot; class=&quot;service.UserFactory1&quot; factory-method=&quot;createUserImpl&quot;&gt;
+    &lt;/bean&gt;
+3. 获取bean对象并使用
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+
+    UserImpl user = (UserImpl) context.getBean(&quot;user1&quot;);
+user.add();
+</code></pre><blockquote>
+<ul>
+<li>第三种: 通过实例工厂方法: 就是上面的静态工厂方法去掉了static<blockquote>
+<ul>
+<li>例子:</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<pre><code>1. 实例工厂类
+    public class UserFactory2 {
+        public UserImpl createUserImpl() {
+            return new UserImpl();
+        }
+    }
+2. xml中配置
+    &lt;!--创建实例工厂类对象--&gt;
+    &lt;bean id=&quot;user2&quot; class=&quot;service.UserFactory2&quot; &gt;&lt;/bean&gt;
+    &lt;!--创建bean对象--&gt;
+    &lt;bean id=&quot;user3&quot; factory-bean=&quot;user2&quot; factory-method=&quot;createUserImpl&quot;&gt;&lt;/bean&gt;
+3. 获取bean对象并调用
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+
+    UserImpl user3 = (UserImpl) context.getBean(&quot;user3&quot;);
+    user3.add();
+</code></pre><blockquote>
+<h2 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h2><ul>
+<li>singleton(单例,默认,只有一个对象)<blockquote>
+<ul>
+<li>例子:</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<pre><code>1. beans.xml配置文件
+    &lt;bean id=&quot;user1&quot; class=&quot;service.impls.UserImpl&quot; scope=&quot;singleton&quot;&gt;&lt;/bean&gt;
+2. 测试类
+    private static void test() {
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans1.xml&quot;);
+
+        UserImpl user = (UserImpl) context.getBean(&quot;user1&quot;);
+        user.add();
+
+        UserImpl user1 = (UserImpl) context.getBean(&quot;user1&quot;);
+        user.add();
+
+        System.out.println(user == user1);//true
+    }
+</code></pre><blockquote>
+<ul>
+<li>prototype(中文翻译是原型,可以理解为多例,多次调用getBean生成不同的对象,跟普通new差不多)</li>
+</ul>
+</blockquote>
+<pre><code>1. beans.xml配置文件
+    &lt;bean id=&quot;user2&quot; class=&quot;service.impls.UserImpl&quot; scope=&quot;prototype&quot;&gt;&lt;/bean&gt;
+2. 测试类
+    private static void test2() {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans1.xml&quot;);
+
+        UserImpl user = (UserImpl) context.getBean(&quot;user2&quot;);
+        user.add();
+
+        UserImpl user1 = (UserImpl) context.getBean(&quot;user2&quot;);
+        user.add();
+
+        System.out.println(user == user1);//false
+    }
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/spring-02-1/" rel="tag"># spring-02_1</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/06/21/properties集合/" rel="next" title="properties集合">
+                <i class="fa fa-chevron-left"></i> properties集合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/06/23/策略模式和单例模式/" rel="prev" title="策略模式和单例模式">
+                策略模式和单例模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建spring容器的三种方式"><span class="nav-number">1.</span> <span class="nav-text">创建spring容器的三种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装配bean的三种方式"><span class="nav-number">2.</span> <span class="nav-text">装配bean的三种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">3.</span> <span class="nav-text">Bean的作用域</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="序列化流 序列化  java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,实现对对象的持久存储,通俗来说,就是把对象以流的方式写入到文件中叫序列化.       构造方法: public ObjectOutputStream(OutputStream out), 其中,参数为字节输出流.     序列化流特有的成员方法: void writeObject">
+<meta name="keywords" content="序列化和反序列化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="序列化和反序列化">
+<meta property="og:url" content="https://fanfan999.github.io/2019/06/24/序列化和反序列化/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="序列化流 序列化  java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,实现对对象的持久存储,通俗来说,就是把对象以流的方式写入到文件中叫序列化.       构造方法: public ObjectOutputStream(OutputStream out), 其中,参数为字节输出流.     序列化流特有的成员方法: void writeObject">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81/%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81%E7%A8%8B.png">
+<meta property="og:updated_time" content="2019-06-24T13:27:05.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="序列化和反序列化">
+<meta name="twitter:description" content="序列化流 序列化  java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,实现对对象的持久存储,通俗来说,就是把对象以流的方式写入到文件中叫序列化.       构造方法: public ObjectOutputStream(OutputStream out), 其中,参数为字节输出流.     序列化流特有的成员方法: void writeObject">
+<meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81/%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81%E7%A8%8B.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/06/24/序列化和反序列化/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>序列化和反序列化 | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/24/序列化和反序列化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">序列化和反序列化
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-24 18:49:33 / Modified: 21:27:05" itemprop="dateCreated datePublished" datetime="2019-06-24T18:49:33+08:00">2019-06-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/javase/" itemprop="url" rel="index"><span itemprop="name">javase</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<h2 id="序列化流"><a href="#序列化流" class="headerlink" title="序列化流"></a>序列化流</h2><ul>
+<li><strong>序列化</strong><blockquote>
+<ul>
+<li>java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,实现对对象的持久存储,通俗来说,就是<strong>把对象以流的方式写入到文件中叫序列化.</strong></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>构造方法: <code>public ObjectOutputStream(OutputStream out)</code>, 其中,参数为字节输出流.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>序列化流特有的成员方法: <code>void writeObject(Object obj)</code>: 将指定的对象写入到流中</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>使用步骤:<blockquote>
+<ol>
+<li>创建一个ObjectOutputStream对象,在构造方法中传递字节输出流.</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ol start="2">
+<li>创建要写入到文件的对象,但是,<strong>注意这个对象所在的类一定要实现<code>Serializable</code>序列化接口,不然会报错<code>没有序列化异常</code></strong>.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>用ObjectOutputStream对象中的writeObject方法把对象写入到文件中.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>释放资源</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>案例(将person对象存放到项目目录下的指定文件中):</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>public class ObjectOutputStreamDemo1{
+    public static void main(String[] args) throws IOException {
+        //这里构造函数中的true是为了多次运行能把对象数据依次添加到上一条数据的后面而不是覆盖之前的数据
+        ObjectOutputStream  outputStream = new ObjectOutputStream(new FileOutputStream(&quot;person序列化文件.txt&quot;, true));
+
+        Person person = new Person(&quot;fanlei&quot;, 18);
+
+        outputStream.writeObject(person);
+
+        outputStream.close();
+    }
+}
+//程序运行后,person就会写入到文件&quot;person序列化文件.txt&quot;中,不过我们打开是乱码,因为我们是二进制字节存储的,我们看不懂的,所以要想知道是啥,就得反序列化回去
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li><strong>注意</strong>: Serializable接口也叫标记性接口,它没有任何实现,只是一个空接口,但是要进行序列化或反序列化的类必须实现该接口,实现这个接口后它就会给类添加一个标记,当我们进行序列化和反序列化的时候,系统会检测<strong>这个即将被保存到文件中的对象所在的类</strong>是否有这个接口标记,有就正常序列化和反序列化,没有就报错–没有序列化异常.<blockquote>
+<ul>
+<li><strong>你可以理解为去菜场买肉,肉上一般都有一个蓝色的章,写在检测合格,盖了章就说明能吃,没盖章的我反正不敢吃哈哈</strong></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="反序列化流"><a href="#反序列化流" class="headerlink" title="反序列化流"></a>反序列化流</h2><ul>
+<li><strong>反序列化</strong><blockquote>
+<ul>
+<li>java.io.ObjectInputStream类,将之前使用ObjectOutputStream类序列化的原始数据恢复为对象,通俗来说,就是<strong>把原来存放到文件的对象数据以流的方式读取出来,并转换为对象</strong>.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>构造方法: <code>public ObjectInputStream(InputStream in)</code>, 其中,参数为字节输入流.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>反序列化流特有的成员方法: <code>Object readObject()</code>: 从ObjectInputStream中读取对象</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>使用步骤:<blockquote>
+<ol>
+<li>创建一个ObjectInputStream对象,在构造方法中传递字节输入流.</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ol start="2">
+<li>使用ObjectInputStream对象中的readObject方法读取保存对象的文件.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>释放资源.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>使用读取出来的对象.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>案例(还是要注意person类要实现serializable接口):</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>public class ObjectInputStreamDemo1 {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+        FileInputStream fileInputStream = new FileInputStream(&quot;person序列化文件.txt&quot;);
+        ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);
+
+        Person person = (Person) inputStream.readObject();
+
+        inputStream.close();
+
+        System.out.println(person);
+    }
+}
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li><strong>注意:</strong><blockquote>
+<ul>
+<li><strong>readObject()</strong>这个方法声明了两个异常:<code>IOException(io异常)</code>和<code>ClassNotFoundException(class文件找不到异常)</code>,当不存在对象的class文件时,比如person对象对应的Person类不存在,就会抛出<code>ClassNotFoundException</code>.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>所以反序列化的前提有两个:<blockquote>
+<ol>
+<li>类必须要实现Serializable序列化标记接口</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ol start="2">
+<li>必须存在对象对应的class文件</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="transient-瞬态-关键字"><a href="#transient-瞬态-关键字" class="headerlink" title="transient(瞬态)关键字"></a>transient(瞬态)关键字</h2><ul>
+<li><p>static关键字–静态关键字: 静态随着类加载,被类的成员共享,优先于非静态加载到内存中(静态优先于对象进入到内存中)</p>
+</li>
+<li><p><strong>注意</strong>: 被static修饰的成员变量不能被序列化,因为序列化的都是对象,静态成员不属于对象.</p>
+<blockquote>
+<ul>
+<li><strong>但是这个是不会报错的</strong>,如果你序列化的时候有静态成员变量,那么你反序列化之后,你会发现那个被静态修饰的成员变量为默认值,比如int类型就为0,不是你设置的值.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>transient关键字: 又叫瞬态关键字, 它就是拿来让成员变量不被序列化的,即被它修饰的成员变量不能被序列化,效果跟static一样,不会报错,但是也不会按照你的想法被赋值,它只会是初值,int就是0,string就是null.</p>
+</li>
+</ul>
+<h2 id="InvalidClassException"><a href="#InvalidClassException" class="headerlink" title="InvalidClassException"></a>InvalidClassException</h2><ul>
+<li><p>当序列化对象之后,该对象对应的class文件进行了修改,比如添加了一个属性啊之类的,然后我们再反序列化对象就会失败,同时报错<code>InvalidClassException(无效类异常,也叫序列号冲突异常)</code></p>
+</li>
+<li><p>产生该异常的原因: 当我们修改类之后,该类的序列化版本号系统会自动更新,然后与从流中读取的版本号不匹配,导致反序列化失败.</p>
+</li>
+<li><p>解决办法: 手动生成一个固定的序列号,不让系统自动更新就好了,具体的看下面的图吧.</p>
+</li>
+<li><p>idea可以自动生成序列号,我网上找了个博客,反正就那么几步,很简单的: <a href="https://blog.csdn.net/woshilovetg/article/details/82015630" target="_blank" rel="noopener">idea自动生成序列号</a>.</p>
+</li>
+<li><p>序列化和反序列化的过程<br><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81/%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81%E7%A8%8B.png" alt="序列号异常原因"></p>
+</li>
+</ul>
+<h2 id="一个小练习"><a href="#一个小练习" class="headerlink" title="一个小练习"></a>一个小练习</h2></blockquote>
+<pre><code>/**
+ * 序列化练习: 序列化集合
+ *  当我们想在文件中保存多个对象的时候,
+ *  我们就可以把多个对象存储到一个集合中,
+ *  对集合进行序列化和反序列化
+ */
+public class SerializableTest {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        output();
+        input();
+    }
+
+    /**
+     * 序列化方法
+     */
+    private static void output() throws IOException {
+        List&lt;Person&gt; list = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 5; i++) {
+            list.add(new Person(&quot;fanlei&quot; + i, i));
+        }
+
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(&quot;list.txt&quot;));
+
+        outputStream.writeObject(list);
+        System.out.println(&quot;序列化完成!&quot;);
+        System.out.println(&quot;---------------&quot;);
+    }
+
+    /**
+     * 反序列化方法
+     */
+    private static void input() throws IOException, ClassNotFoundException {
+
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(&quot;list.txt&quot;));
+
+        List&lt;Person&gt; list = (List&lt;Person&gt;) inputStream.readObject();
+
+        for (Person p : list) {
+            System.out.println(p);
+        }
+    }
+}
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/序列化和反序列化/" rel="tag"># 序列化和反序列化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/06/24/spring-02-2/" rel="next" title="spring-02_2">
+                <i class="fa fa-chevron-left"></i> spring-02_2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化流"><span class="nav-number">1.</span> <span class="nav-text">序列化流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反序列化流"><span class="nav-number">2.</span> <span class="nav-text">反序列化流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transient-瞬态-关键字"><span class="nav-number">3.</span> <span class="nav-text">transient(瞬态)关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InvalidClassException"><span class="nav-number">4.</span> <span class="nav-text">InvalidClassException</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个小练习"><span class="nav-number">5.</span> <span class="nav-text">一个小练习</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
