@@ -103,18 +103,20 @@
 
 
 
-  <meta name="description" content="依赖注入Bean属性(xml) 说白了其实就是给对象的属性赋值     手动装配,使用xml配置  通过构造方法赋值  例1(通过参数名赋值):         1. 学生类部分代码:     private String name;     private int age;     private String address;      public Student() {     }">
-<meta name="keywords" content="spring-02_2">
+  <meta name="description" content="类的加载概述和加载时机类的加载概述   类的加载是指: 当程序要使用某个类时,如果该类还未被加载到内存中,则系统会通过加载,连接,初始化三步来实现对这个类的初始化.  加载: 指的是将Javac创建的class文件读入内存,并为之创建一个Class对象,任何类被使用时系统都会建立一个Class对象           连接: 包括三个步骤:  验证 是否有正确的内部结构,并和其它类协调一致.">
+<meta name="keywords" content="反射">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring-02_2">
-<meta property="og:url" content="https://fanfan999.github.io/2019/06/24/spring-02-2/index.html">
+<meta property="og:title" content="反射">
+<meta property="og:url" content="https://fanfan999.github.io/2019/06/25/反射/index.html">
 <meta property="og:site_name" content="A Kid">
-<meta property="og:description" content="依赖注入Bean属性(xml) 说白了其实就是给对象的属性赋值     手动装配,使用xml配置  通过构造方法赋值  例1(通过参数名赋值):         1. 学生类部分代码:     private String name;     private int age;     private String address;      public Student() {     }">
+<meta property="og:description" content="类的加载概述和加载时机类的加载概述   类的加载是指: 当程序要使用某个类时,如果该类还未被加载到内存中,则系统会通过加载,连接,初始化三步来实现对这个类的初始化.  加载: 指的是将Javac创建的class文件读入内存,并为之创建一个Class对象,任何类被使用时系统都会建立一个Class对象           连接: 包括三个步骤:  验证 是否有正确的内部结构,并和其它类协调一致.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-24T09:04:27.301Z">
+<meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%8F%8D%E5%B0%84/%E7%94%9F%E6%88%90class%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F.png">
+<meta property="og:updated_time" content="2019-06-25T15:41:06.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring-02_2">
-<meta name="twitter:description" content="依赖注入Bean属性(xml) 说白了其实就是给对象的属性赋值     手动装配,使用xml配置  通过构造方法赋值  例1(通过参数名赋值):         1. 学生类部分代码:     private String name;     private int age;     private String address;      public Student() {     }">
+<meta name="twitter:title" content="反射">
+<meta name="twitter:description" content="类的加载概述和加载时机类的加载概述   类的加载是指: 当程序要使用某个类时,如果该类还未被加载到内存中,则系统会通过加载,连接,初始化三步来实现对这个类的初始化.  加载: 指的是将Javac创建的class文件读入内存,并为之创建一个Class对象,任何类被使用时系统都会建立一个Class对象           连接: 包括三个步骤:  验证 是否有正确的内部结构,并和其它类协调一致.">
+<meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%8F%8D%E5%B0%84/%E7%94%9F%E6%88%90class%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F.png">
 
 
 
@@ -122,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="https://fanfan999.github.io/2019/06/24/spring-02-2/">
+  <link rel="canonical" href="https://fanfan999.github.io/2019/06/25/反射/">
 
 
 
@@ -132,7 +134,7 @@
   };
 </script>
 
-  <title>spring-02_2 | A Kid</title>
+  <title>反射 | A Kid</title>
   
 
 
@@ -377,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/24/spring-02-2/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/25/反射/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -394,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring-02_2
+          <h1 class="post-title" itemprop="name headline">反射
 
               
             
@@ -420,7 +422,7 @@
                 
               
 
-              <time title="Created: 2019-06-24 14:19:57 / Modified: 17:04:27" itemprop="dateCreated datePublished" datetime="2019-06-24T14:19:57+08:00">2019-06-24</time>
+              <time title="Created: 2019-06-25 19:46:05 / Modified: 23:41:06" itemprop="dateCreated datePublished" datetime="2019-06-25T19:46:05+08:00">2019-06-25</time>
             
 
             
@@ -442,7 +444,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/javase/" itemprop="url" rel="index"><span itemprop="name">javase</span></a></span>
 
                 
                 
@@ -478,258 +480,323 @@
 
       
         <blockquote>
-<h2 id="依赖注入Bean属性-xml"><a href="#依赖注入Bean属性-xml" class="headerlink" title="依赖注入Bean属性(xml)"></a>依赖注入Bean属性(xml)</h2><ul>
-<li>说白了其实就是给对象的属性赋值</li>
-</ul>
-</blockquote>
+<h2 id="类的加载概述和加载时机"><a href="#类的加载概述和加载时机" class="headerlink" title="类的加载概述和加载时机"></a>类的加载概述和加载时机</h2><p><strong>类的加载概述</strong></p>
 <blockquote>
 <ul>
-<li><strong>手动装配,使用xml配置</strong><blockquote>
+<li>类的加载是指: 当程序要使用某个类时,如果该类还未被加载到内存中,则系统会通过<strong>加载</strong>,<strong>连接</strong>,<strong>初始化</strong>三步来实现对这个类的初始化.<blockquote>
 <ul>
-<li><strong>通过构造方法赋值</strong><blockquote>
-<ul>
-<li>例1(<strong>通过参数名赋值</strong>):</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-<pre><code>1. 学生类部分代码:
-    private String name;
-    private int age;
-    private String address;
-
-    public Student() {
-    }
-
-    public Student(String name, int age, String address) {
-        this.name = name;
-        this.age = age;
-        this.address = address;
-    }
-2. xml配置文件(对属性的设置相当于调用了其传三个参的构造方法)
-    &lt;bean id=&quot;student1&quot; class=&quot;service.models.Student&quot;&gt;
-    &lt;!--name是指构造方法中参数的名字--&gt;
-    &lt;constructor-arg name=&quot;name&quot; value=&quot;zhangsan&quot;&gt;&lt;/constructor-arg&gt;
-    &lt;constructor-arg name=&quot;address&quot; value=&quot;wuhan&quot;&gt;&lt;/constructor-arg&gt;
-    &lt;constructor-arg name=&quot;age&quot; value=&quot;16&quot;&gt;&lt;/constructor-arg&gt;
-    &lt;/bean&gt;
-3. 测试类
-    private static void test() {
-    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans2.xml&quot;);
-
-    Student student = (Student) context.getBean(&quot;student1&quot;);
-    System.out.println(student);
-
-    }
-</code></pre><blockquote>
-<blockquote>
-<blockquote>
-<ul>
-<li>例2,其实跟上面一样,只是在xml配置文件注入依赖对象的时候通过<strong>索引注入</strong>:</li>
-</ul>
-</blockquote>
-</blockquote>
-</blockquote>
-<pre><code>xml配置
-    &lt;constructor-arg index=&quot;0&quot; value=&quot;zhangsan&quot; type=&quot;java.lang.String&quot;&gt;&lt;/constructor-arg&gt;
-    &lt;constructor-arg index=&quot;2&quot; value=&quot;wuhan&quot; type=&quot;java.lang.String&quot;&gt;&lt;/constructor-arg&gt;
-    &lt;constructor-arg index=&quot;1&quot; value=&quot;16&quot;&gt;&lt;/constructor-arg&gt;
-    &lt;/bean&gt;
-</code></pre><blockquote>
-<blockquote>
-<ul>
-<li><strong>通过setter方式赋值</strong><blockquote>
-<ul>
-<li>例1(和上面的只有xml中的不同):</li>
+<li><strong>加载:</strong> 指的是将<strong>Javac</strong>创建的<strong>class</strong>文件读入内存,并为之创建一个<strong>Class对象</strong>,任何类被使用时系统都会建立一个Class对象</li>
 </ul>
 </blockquote>
 </li>
 </ul>
 </blockquote>
 </blockquote>
-<pre><code>&lt;bean id=&quot;student2&quot; class=&quot;service.models.Student&quot;&gt;
-&lt;property name=&quot;name&quot; value=&quot;fanlei&quot;&gt;&lt;/property&gt;
-&lt;property name=&quot;address&quot; value=&quot;lichuan&quot;&gt;&lt;/property&gt;
-&lt;property name=&quot;age&quot; value=&quot;18&quot;&gt;&lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><blockquote>
+<blockquote>
+<blockquote>
 <blockquote>
 <ul>
-<li><strong>通过P 命名空间赋值(赋值的属性必须要有set方法)</strong><blockquote>
+<li><strong>连接:</strong> 包括三个步骤:<blockquote>
+<ol>
+<li>验证 是否有正确的内部结构,并和其它类协调一致.</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<ol start="2">
+<li>准备 负责为类的静态成员分配内存,并设置默认初始化值.</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<ol start="3">
+<li>解析 将类的二进制数据中的符号引用替换为直接引用,比如把常量的引用直接变成值.</li>
+</ol>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
 <ul>
-<li>例(xmlns xml namespace 即xml命名空间):</li>
+<li><strong>初始化:</strong> 就是给成员变量赋值: 先默认值(比如int默认值为0)—-&gt;然后显式赋值(比如public inta = 10,这个<strong>=</strong>就是显式初始化)—-&gt;最后构造方法初始化(带参构造会给成员变量赋值这个都知道哈).</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>类的加载时机</strong></p>
+<blockquote>
+<ul>
+<li>创建类的实例时,例: Preson p = new Person().</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>访问类的静态变量,或者为静态变量赋值时</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>调用类的静态方法</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>使用反射方式来强制创建某个类或接口对应的java.lang.Class对象.</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>初始化某个类的子类</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>直接使用java.exe命令来运行某个主类</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<h2 id="类加载器的概述和分类"><a href="#类加载器的概述和分类" class="headerlink" title="类加载器的概述和分类"></a>类加载器的概述和分类</h2><p><strong>类加载器的概述</strong></p>
+<blockquote>
+<ul>
+<li>负责将.class文件加载到内存中,并为之生成对应的Class对象.</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>类加载器的分类</strong></p>
+<blockquote>
+<ol>
+<li>Bootstrap ClassLoader: 根类加载器</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="2">
+<li>Extension ClassLoader: 扩展类加载器</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="3">
+<li>System ClassLoader: 系统类加载器</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>类加载器的作用</strong></p>
+<blockquote>
+<ul>
+<li>根类加载器负责java核心类的加载,比如System,String等,在jre的lib目录下的rt.jar文件中.</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>扩展类加载器负责jre扩展目录中jar包的加载,在jre的lib目录下的ext目录下.</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>系统类加载器负责jvm启动时加载来自java命令的class文件<code>比如自定义类</code>,以及classpath环境变量所指定的jar包和类路径</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<h2 id="类初始化顺序"><a href="#类初始化顺序" class="headerlink" title="类初始化顺序"></a>类初始化顺序</h2><ul>
+<li>只有一个类的话,他的初始化顺序是这样子的<blockquote>
+<ol>
+<li>静态成员变量</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="2">
+<li>静态代码块,例如: static{System.out.println(“静态代码块”)}</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="3">
+<li>普通成员变量</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="4">
+<li>普通代码块(就是静态代码块没有static关键字,直接就是<code>{内容}</code>)</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ol start="5">
+<li>main方法</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="6">
+<li>构造方法</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p><strong>反射概述</strong></p>
+<blockquote>
+<ul>
+<li>java反射机制是指<strong>在运行状态中,对于任意一个类,都能够知道这个类的任意属性和方法,对于任意一个对象,都能够调用它的属性和方法</strong></li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>这种<strong>动态获取信息以及动态调用对象的方法和属性的功能</strong>称为java的反射机制</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>要想解剖一个类,必须先要获取到<strong>该类的字节码文件(字节码文件就是.class文件)对象</strong>,而解剖类使用的就是Class类中的方法,所以先要获取到每一个字节码文件对应的Class类型的对象</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>获取Class文件对象的三种方式</strong></p>
+<blockquote>
+<ul>
+<li>Object类的getClass()方法,用于判断两个对象是否是同一个字节码文件,重写equals()方法时就有这么一个判断条件.</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>静态属性.class,即Person.class,用于当作静态方法的锁对象<blockquote>
+<ul>
+<li>注意: 用.class创建Class对象时,不会自动初始化该Class对象(即不会加载静态代码块这些东西),Class的初始化在调用方法或者属性时候才会被执行</li>
 </ul>
 </blockquote>
 </li>
 </ul>
 </blockquote>
 </blockquote>
-<pre><code>1. 在beans.xml最上面(就是在beans标签的开始)导入p标签的命名空间
-xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
-2. 然后在bean标签内部写上**p:属性=值**就好了
-&lt;bean id=&quot;student2_1&quot; class=&quot;service.models.Student&quot; p:name=&quot;lisi&quot; p:address=&quot;sichuan&quot; p:age=&quot;20&quot;&gt;&lt;/bean&gt;
-</code></pre><blockquote>
+<blockquote>
+<blockquote>
 <ul>
-<li><strong>SpEL表达式,即spring的el表达式</strong><blockquote>
+<li>Class类中静态方法forName(“全类名即包名.类名”),<strong>用于读取配置文件</strong>,例如我们读取jdbc的配置文件的时候.<blockquote>
 <ul>
-<li>对<property>进行统一编程,所有的内容都是用value.</property></li>
-<li>格式:</li>
+<li><strong>注意:</strong> 用这种方法创建成功Class对象后,就会立即对该对象进行初始化,即会马上执行静态代码块这些东西.</li>
 </ul>
 </blockquote>
 </li>
 </ul>
 </blockquote>
-<pre><code>模板: &lt;property name = &quot;&quot; value = #{表达式}&gt;
-#{123}, #{&apos;abc&apos;}---数字,字符串
-#{beanid}---另一个bean的引用
-#{beanid.propName}---操作对象的某个属性的值
-#{beanid.toString()}---执行方法
-#{T(类).字段|方法}---静态方法或字段
-</code></pre><blockquote>
+</blockquote>
+<blockquote>
 <blockquote>
 <ul>
-<li>例(用student类为例):</li>
-</ul>
-</blockquote>
-</blockquote>
-<pre><code>1. Student类中的属性(都有get和set方法)
-    private String name;
-    private int age;
-    private String address;
-    private Color color;
-2. Color类
-    public class Color {
-    private String color;
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    @Override
-    public String toString() {
-        return color;
-    }
-    }
-3. xml配置文件
-    &lt;!--声明一个color类的对象--&gt;
-    &lt;bean id=&quot;colorObject&quot; class=&quot;service.models.Color&quot; p:color=&quot;黄色&quot;&gt;
-    &lt;/bean&gt;
-    &lt;!--SpEL表达式--&gt;
-    &lt;bean id=&quot;student&quot; class=&quot;service.models.Student&quot;&gt;
-
-        &lt;!--&lt;property name=&quot;name&quot; value=&quot;#{&apos;fanlei&apos;}&quot;&gt;&lt;/property&gt;--&gt;
-        &lt;!--在这里字符串就是一个对象,可以调用方法,快速更改内容赋值--&gt;
-        &lt;property name=&quot;name&quot; value=&quot;#{&apos;fanlei&apos;.toUpperCase()}&quot;&gt;&lt;/property&gt;
-
-        &lt;!--调用静态方法/字段给属性赋值--&gt;
-        &lt;property name=&quot;age&quot; value=&quot;#{T(Math).PI}&quot;&gt;&lt;/property&gt;
-
-        &lt;!--调用另一个bean的引用,本例是在student类中调用color类的属性color并将其赋值给student类中的color, ref就是引用的意思--&gt;
-        &lt;!--该行代码表示将colorObject这个对象赋值给student的color属性--&gt;
-        &lt;!--&lt;property name=&quot;color&quot; ref=&quot;colorObject&quot;&gt;&lt;/property&gt;--&gt;
-        &lt;!--上面的代码等于下面这一句代码--&gt;
-        &lt;property name=&quot;color&quot; value=&quot;#{colorObject}&quot;&gt;&lt;/property&gt;
-
-        &lt;!--修改对象student的address属性为颜色类的属性color--&gt;
-        &lt;property name=&quot;address&quot; value=&quot;#{colorObject.color}&quot;&gt;&lt;/property&gt;
-    &lt;/bean&gt;
-4. 测试类
-    private static void test() {
-        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans3.xml&quot;);
-
-        Student student = (Student) context.getBean(&quot;student&quot;);
-        System.out.println(student);
-    }
-</code></pre><blockquote>
+<li>注意:<blockquote>
 <ul>
-<li><strong>集合注入</strong><blockquote>
-<ul>
-<li>因为我们对象里的属性有可能是集合类型的,所以我们需要知道集合怎么注入的,集合的注入都是给<property>添加子标签</property></li>
+<li>如果一个字段被<strong>static final</strong>修饰,,我们称为’编译时常量’,在编译期就把它的值放到常量池里了,那么如果通过<code>.class</code>创建<code>Class对象</code>的话,由于没有立即对Class对象进行初始化,然后该对象去调用常量也是不会对Class对象进行初始化的,也就是说不会调用<strong>static静态代码块这些东西</strong>.</li>
 </ul>
 </blockquote>
 </li>
 </ul>
 </blockquote>
-<pre><code>数组: &lt;array&gt;
-List: &lt;list&gt;
-Set: &lt;set&gt;
-Map: &lt;map&gt;, map存放k/v键值对,使用&lt;entry描述&gt;
-Properties: &lt;props&gt; &lt;prop key = &quot;&quot;&gt;&lt;/prop&gt;
-</code></pre><blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
 <blockquote>
 <ul>
-<li>例1–List(数组,set类似的):</li>
+<li>三种创建Class对象的方式,如果是针对同一个字节码文件的话,三个对象是相等的,因为一个字节码文件在内存中只会存在一个Class对象</li>
 </ul>
 </blockquote>
 </blockquote>
-<pre><code>1. student类(都有get和set方法)
-private String name;
-    private int age;
-    private String address;
-    private Color color;
-    private List&lt;String&gt; books;
-2. xml配置文件
-    &lt;bean id=&quot;student&quot; class=&quot;service.models.Student&quot;&gt;
-        &lt;property name=&quot;name&quot; value=&quot;#{&apos;樊磊&apos;}&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;books&quot;&gt;
-            &lt;list&gt;
-                &lt;value&gt;语文&lt;/value&gt;
-                &lt;value&gt;数学&lt;/value&gt;
-                &lt;value&gt;英语&lt;/value&gt;
-            &lt;/list&gt;
-        &lt;/property&gt;
-    &lt;/bean&gt;
-3. 测试类
-    private static void test() {
-        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans4.xml&quot;);
+</blockquote>
+<blockquote>
+<p><strong>我们写代码经历的不同的阶段以及在不同的阶段获取Class对象的方法如图:</strong></p>
+</blockquote>
+<p><img src="https://github.com/fanfan999/MyPostImage/raw/master/%E5%8F%8D%E5%B0%84/%E7%94%9F%E6%88%90class%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F.png" alt="三种方式">.</p>
+<blockquote>
+<p><strong>案例演示获取Class对象的三种方式以及初始化顺序</strong></p>
+</blockquote>
+<pre><code>public class Test4 {
+    public static final int a =10;
 
-        Student student = (Student) context.getBean(&quot;student&quot;);
-        System.out.println(student);
-        输出: Student{name=&apos;樊磊&apos;, age=0, address=&apos;null&apos;, color=null, books=[语文, 数学, 英语]}
+    static int b = 20;
+
+    public static void main(String[] args) {
+        System.out.println(&quot;main函数加载了&quot;);
+        Test4 t = new Test4();
     }
-</code></pre><blockquote>
-<blockquote>
-<ul>
-<li>例2–Map(前面的和上面差不多,我就只给配置文件的了)</li>
-</ul>
-</blockquote>
-</blockquote>
-<pre><code>配置文件
-    &lt;bean id=&quot;student&quot; class=&quot;service.models.Student&quot;&gt;
-        &lt;property name=&quot;name&quot; value=&quot;#{&apos;樊磊&apos;}&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;books&quot;&gt;
-            &lt;map&gt;
-                &lt;entry key=&quot;语文&quot; value=&quot;必修&quot;&gt;&lt;/entry&gt;
-                &lt;entry key=&quot;数学&quot; value=&quot;必修&quot;&gt;&lt;/entry&gt;
-                &lt;entry key=&quot;英语&quot; value=&quot;必修&quot;&gt;&lt;/entry&gt;
-            &lt;/map&gt;
-        &lt;/property&gt;
-    &lt;/bean&gt;
-</code></pre><blockquote>
-<blockquote>
-<ul>
-<li>例3–Properties(也只写配置文件)</li>
-</ul>
-</blockquote>
-</blockquote>
-<pre><code>&lt;bean id=&quot;student&quot; class=&quot;service.models.Student&quot;&gt;
-    &lt;property name=&quot;name&quot; value=&quot;#{&apos;樊磊&apos;}&quot;&gt;&lt;/property&gt;
-    &lt;property name=&quot;books&quot;&gt;
-        &lt;props&gt;
-            &lt;prop key=&quot;语文&quot;&gt;最容易&lt;/prop&gt;
-            &lt;prop key=&quot;数学&quot;&gt;最难&lt;/prop&gt;
-            &lt;prop key=&quot;英语&quot;&gt;还可以&lt;/prop&gt;
-        &lt;/props&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
+
+    public static void get() {
+        System.out.println(&quot;这是静态方法&quot;);
+    }
+    static {
+        System.out.println(&quot;静态代码块被加载了&quot;);
+    }
+
+    public Test4() {
+        System.out.println(&quot;构造方法被加载了&quot;);
+    }
+    public int c = 30;
+
+    {
+        System.out.println(&quot;代码块加载了!&quot;);
+    }
+
+}
+
+class Test{
+    public static void main(String[] args) throws ClassNotFoundException {
+        Class c = Test4.class;
+        Test4 t = new Test4();
+        Class c1 = t.getClass();
+
+        Class c2 = Class.forName(&quot;Test4&quot;);
+        System.out.println(&quot;--------- &quot;);
+        System.out.println(c == c2);//true
+        System.out.println(c1 == c);//true
+        System.out.println(c1 == c2);//true
+
+    }
+}
 </code></pre>
       
     </div>
@@ -753,7 +820,7 @@ private String name;
       
         <div class="post-tags">
           
-            <a href="/fanfan999.github.io/tags/spring-02-2/" rel="tag"># spring-02_2</a>
+            <a href="/fanfan999.github.io/tags/反射/" rel="tag"># 反射</a>
           
         </div>
       
@@ -766,8 +833,8 @@ private String name;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/fanfan999.github.io/2019/06/23/策略模式和单例模式/" rel="next" title="策略模式和单例模式">
-                <i class="fa fa-chevron-left"></i> 策略模式和单例模式
+              <a href="/fanfan999.github.io/2019/06/25/spring-02-3/" rel="next" title="spring-02_3">
+                <i class="fa fa-chevron-left"></i> spring-02_3
               </a>
             
           </div>
@@ -776,8 +843,8 @@ private String name;
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/fanfan999.github.io/2019/06/24/序列化和反序列化/" rel="prev" title="序列化和反序列化">
-                序列化和反序列化 <i class="fa fa-chevron-right"></i>
+              <a href="/fanfan999.github.io/2019/06/26/二叉树/" rel="prev" title="二叉树">
+                二叉树 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -847,7 +914,7 @@ private String name;
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1001,7 +1068,15 @@ private String name;
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1065,7 +1140,7 @@ private String name;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖注入Bean属性-xml"><span class="nav-number">1.</span> <span class="nav-text">依赖注入Bean属性(xml)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类的加载概述和加载时机"><span class="nav-number">1.</span> <span class="nav-text">类的加载概述和加载时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载器的概述和分类"><span class="nav-number">2.</span> <span class="nav-text">类加载器的概述和分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类初始化顺序"><span class="nav-number">3.</span> <span class="nav-text">类初始化顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射"><span class="nav-number">4.</span> <span class="nav-text">反射</span></a></li></ol></div>
             
 
           </div>
