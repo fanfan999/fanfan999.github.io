@@ -104,17 +104,17 @@
 
 
   <meta name="description" content="类的加载概述和加载时机类的加载概述   类的加载是指: 当程序要使用某个类时,如果该类还未被加载到内存中,则系统会通过加载,连接,初始化三步来实现对这个类的初始化.  加载: 指的是将Javac创建的class文件读入内存,并为之创建一个Class对象,任何类被使用时系统都会建立一个Class对象           连接: 包括三个步骤:  验证 是否有正确的内部结构,并和其它类协调一致.">
-<meta name="keywords" content="反射">
+<meta name="keywords" content="反射概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="反射">
+<meta property="og:title" content="反射概念">
 <meta property="og:url" content="https://fanfan999.github.io/2019/06/25/反射/index.html">
 <meta property="og:site_name" content="A Kid">
 <meta property="og:description" content="类的加载概述和加载时机类的加载概述   类的加载是指: 当程序要使用某个类时,如果该类还未被加载到内存中,则系统会通过加载,连接,初始化三步来实现对这个类的初始化.  加载: 指的是将Javac创建的class文件读入内存,并为之创建一个Class对象,任何类被使用时系统都会建立一个Class对象           连接: 包括三个步骤:  验证 是否有正确的内部结构,并和其它类协调一致.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%8F%8D%E5%B0%84/%E7%94%9F%E6%88%90class%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F.png">
-<meta property="og:updated_time" content="2019-06-25T15:41:06.006Z">
+<meta property="og:updated_time" content="2019-07-03T10:44:01.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="反射">
+<meta name="twitter:title" content="反射概念">
 <meta name="twitter:description" content="类的加载概述和加载时机类的加载概述   类的加载是指: 当程序要使用某个类时,如果该类还未被加载到内存中,则系统会通过加载,连接,初始化三步来实现对这个类的初始化.  加载: 指的是将Javac创建的class文件读入内存,并为之创建一个Class对象,任何类被使用时系统都会建立一个Class对象           连接: 包括三个步骤:  验证 是否有正确的内部结构,并和其它类协调一致.">
 <meta name="twitter:image" content="https://github.com/fanfan999/MyPostImage/raw/master/%E5%8F%8D%E5%B0%84/%E7%94%9F%E6%88%90class%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F.png">
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>反射 | A Kid</title>
+  <title>反射概念 | A Kid</title>
   
 
 
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">反射
+          <h1 class="post-title" itemprop="name headline">反射概念
 
               
             
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2019-06-25 19:46:05 / Modified: 23:41:06" itemprop="dateCreated datePublished" datetime="2019-06-25T19:46:05+08:00">2019-06-25</time>
+              <time title="Created: 2019-06-25 19:46:05" itemprop="dateCreated datePublished" datetime="2019-06-25T19:46:05+08:00">2019-06-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-03 18:44:01" itemprop="dateModified" datetime="2019-07-03T18:44:01+08:00">2019-07-03</time>
               
             
           </span>
@@ -699,14 +711,14 @@
 <p><strong>获取Class文件对象的三种方式</strong></p>
 <blockquote>
 <ul>
-<li>Object类的getClass()方法,用于判断两个对象是否是同一个字节码文件,重写equals()方法时就有这么一个判断条件.</li>
+<li>Object类的getClass()方法,用于判断两个对象是否是同一个字节码文件,重写equals()方法时就有这么一个判断条件,<strong>调用格式: 对象名.getClass()</strong>.</li>
 </ul>
 </blockquote>
 </blockquote>
 <blockquote>
 <blockquote>
 <ul>
-<li>静态属性.class,即Person.class,用于当作静态方法的锁对象<blockquote>
+<li>静态属性.class,即Person.class,用于当作静态方法的锁对象,<strong>调用格式: 类名.class</strong><blockquote>
 <ul>
 <li>注意: 用.class创建Class对象时,不会自动初始化该Class对象(即不会加载静态代码块这些东西),Class的初始化在调用方法或者属性时候才会被执行</li>
 </ul>
@@ -718,7 +730,7 @@
 <blockquote>
 <blockquote>
 <ul>
-<li>Class类中静态方法forName(“全类名即包名.类名”),<strong>用于读取配置文件</strong>,例如我们读取jdbc的配置文件的时候.<blockquote>
+<li>Class类中静态方法forName(“全类名即包名.类名”),<strong>用于读取配置文件</strong>,例如我们读取jdbc的配置文件的时候,<strong>调用格式: 全类名.forName()</strong><blockquote>
 <ul>
 <li><strong>注意:</strong> 用这种方法创建成功Class对象后,就会立即对该对象进行初始化,即会马上执行静态代码块这些东西.</li>
 </ul>
@@ -820,7 +832,7 @@ class Test{
       
         <div class="post-tags">
           
-            <a href="/fanfan999.github.io/tags/反射/" rel="tag"># 反射</a>
+            <a href="/fanfan999.github.io/tags/反射概念/" rel="tag"># 反射概念</a>
           
         </div>
       
@@ -843,8 +855,8 @@ class Test{
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/fanfan999.github.io/2019/06/26/二叉树/" rel="prev" title="二叉树">
-                二叉树 <i class="fa fa-chevron-right"></i>
+              <a href="/fanfan999.github.io/2019/06/26/二叉树基础/" rel="prev" title="二叉树基础">
+                二叉树基础 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -914,7 +926,7 @@ class Test{
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1076,7 +1088,21 @@ class Test{
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

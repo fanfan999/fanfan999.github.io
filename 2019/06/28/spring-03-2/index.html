@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="有问题可以问我,spring前面的几篇文章不清不楚,我整体过一遍再重新写 AOP联盟通知类型advice   回忆一下什么是advice?  要是不记得的话可以看看我spring-03-1里面例子的那个图片,说白了,advice里面就是指向的增强功能的代码内容      AOP联盟为通知Advice定义了org.aopalliance.aop.Advice这个类,且Spring按照通知Advice">
+<meta name="keywords" content="spring-03-2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-03-2">
+<meta property="og:url" content="https://fanfan999.github.io/2019/06/28/spring-03-2/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="有问题可以问我,spring前面的几篇文章不清不楚,我整体过一遍再重新写 AOP联盟通知类型advice   回忆一下什么是advice?  要是不记得的话可以看看我spring-03-1里面例子的那个图片,说白了,advice里面就是指向的增强功能的代码内容      AOP联盟为通知Advice定义了org.aopalliance.aop.Advice这个类,且Spring按照通知Advice">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-29T14:15:28.922Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring-03-2">
+<meta name="twitter:description" content="有问题可以问我,spring前面的几篇文章不清不楚,我整体过一遍再重新写 AOP联盟通知类型advice   回忆一下什么是advice?  要是不记得的话可以看看我spring-03-1里面例子的那个图片,说白了,advice里面就是指向的增强功能的代码内容      AOP联盟为通知Advice定义了org.aopalliance.aop.Advice这个类,且Spring按照通知Advice">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/06/28/spring-03-2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>spring-03-2 | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/28/spring-03-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spring-03-2
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-28 15:02:14" itemprop="dateCreated datePublished" datetime="2019-06-28T15:02:14+08:00">2019-06-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-29 22:15:28" itemprop="dateModified" datetime="2019-06-29T22:15:28+08:00">2019-06-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="有问题可以问我-spring前面的几篇文章不清不楚-我整体过一遍再重新写"><a href="#有问题可以问我-spring前面的几篇文章不清不楚-我整体过一遍再重新写" class="headerlink" title="有问题可以问我,spring前面的几篇文章不清不楚,我整体过一遍再重新写"></a>有问题可以问我,spring前面的几篇文章不清不楚,我整体过一遍再重新写</h2><blockquote>
+<h2 id="AOP联盟通知类型"><a href="#AOP联盟通知类型" class="headerlink" title="AOP联盟通知类型"></a>AOP联盟通知类型</h2><p><strong>advice</strong></p>
+<blockquote>
+<ul>
+<li>回忆一下什么是advice?<blockquote>
+<ul>
+<li>要是不记得的话可以看看我<code>spring-03-1</code>里面例子的那个图片,说白了,advice里面就是指向的增强功能的代码内容</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><strong>AOP联盟为通知Advice定义了org.aopalliance.aop.Advice这个类,且Spring按照通知Advice在目标类方法的连接点位置,可以分为5类:</strong></p>
+<blockquote>
+<ul>
+<li><p><strong>前置通知 org.springframework.aop.MethodBeforeAdvice</strong></p>
+<blockquote>
+<ul>
+<li>在目标方法执行前实施增强</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>后置通知 org.springframework.aop.AfterReturningAdvice</strong></p>
+<blockquote>
+<ul>
+<li>在目标方法执行后实施增强</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>环绕通知 org.springframework.aop.MethodIntercepter</strong></p>
+<blockquote>
+<ul>
+<li>在目标方法执行前后实施增强</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>异常抛出通知 org.springframework.aop.ThrowsAdvice</strong></p>
+<blockquote>
+<ul>
+<li>在方法抛出异常后实施增强</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>引介通知 org.springframework.aop.IntroductionInterceptor</strong></p>
+<blockquote>
+<ul>
+<li>在目标类中添加一些新的方法和属性</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="spring-AOP采用半自动代理"><a href="#spring-AOP采用半自动代理" class="headerlink" title="spring AOP采用半自动代理"></a>spring AOP采用半自动代理</h2><p><strong>什么是代理半自动呢?</strong></p>
+<blockquote>
+<ul>
+<li>代理半自动是指,我们不用手动去创建代理对象,我们直接在xml中配置代理对象,然后从容器中获取就好了</li>
+</ul>
+</blockquote>
+<p><strong>配置代理的注意事项:</strong></p>
+<blockquote>
+<ul>
+<li><p>必须有两个属性,一个切面类对象,一个目标类对象,接口有就写没有就不写.</p>
+</li>
+<li><p>半自动代理默认使用的是jdk的动态代理方式,有接口一定是jdk的动态代理,没有接口就使用cglib的代理方式.</p>
+</li>
+<li><p>可以通过在配置文件中<strong>强制使用cglib增强代理</strong>,在<strong>spring配置的bean中</strong>添加这样一行: <strong><property name="optimize" value="true"></property></strong>,这样,就会只使用cglib增强代理了</p>
+</li>
+<li><p>当你想使用jdk的动态代理的时候,那就写上接口,并且不要强制使用cglib增强代理,在源码中,<strong>接口和切面类(准确的说是增强代码所在的类的对象)那个属性的定义其实是一个list集合</strong>,但是只有一个的时候我们可以直接写的value,多个接口的时候就要写成集合<list>了<br><strong>案例:</strong></list></p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>第一步: 导入jar包(idea创建spring项目都会自动导入不用管):
+    四个核心包(beans,context,core,expression)
+    一个日志包(logging)
+    AOP联盟包(定义了规范,里面都是接口,com.springsource.org.aopalliance.jar)
+    spring-aop包(aop联盟的实现,spring-aop-3.2.0.RELEASE.jar)
+
+第二步: 创建目标类
+public class UserService {
+    public void addUser() {
+        System.out.println(&quot;添加了一个用户!&quot;);
+    }
+}
+
+第三步: 创建切面类
+public class MyAspect implements MethodInterceptor {
+    @Override
+    public Object invoke(MethodInvocation methodInvocation) throws Throwable {
+        //拦截方法
+
+        System.out.println(&quot;开启事务&quot;);
+        //放行
+        Object obj = methodInvocation.proceed();
+        System.out.println(&quot;结束事务&quot;);
+        System.out.println(&quot;已成功拦截,切入点前开启事务,切入点后提交事务&quot;);
+
+        return obj;
+    }
+}
+
+第四步: spring配置
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+    &lt;!--配置userservice--&gt;
+    &lt;bean id=&quot;userService&quot; class=&quot;UserService&quot;&gt;
+        &lt;property name=&quot;name&quot; value=&quot;樊磊&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置一个切面类对象--&gt;
+    &lt;bean id=&quot;myAspect&quot; class=&quot;MyAspect&quot;&gt;
+
+    &lt;/bean&gt;
+    &lt;!--配置代理,有接口就采用jdk动态代理,没有就采用cglib代理,默认使用jdk动态代理--&gt;
+    &lt;bean id=&quot;serviceProxy&quot; class=&quot;org.springframework.aop.framework.ProxyFactoryBean&quot;&gt;
+        &lt;!--接口--&gt;
+        &lt;!--&lt;property name=&quot;interfaces&quot; value=&quot;接口全路径&quot;&gt;&lt;/property&gt;--&gt;
+
+        &lt;!--目标对象--&gt;
+        &lt;property name=&quot;target&quot; ref=&quot;userService&quot;&gt;&lt;/property&gt;
+
+        &lt;!--切面类对象 注意这里是value,不是ref,和目标对象区分一下子--&gt;
+        &lt;property name=&quot;interceptorNames&quot; value=&quot;myAspect&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+
+第五步: 测试类
+public class Test {
+    public static void main(String[] args) {
+        //获取spring容器中的代理对象
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+
+        UserService userService = (UserService) context.getBean(&quot;serviceProxy&quot;);
+
+        //调用方法
+        //此处的userService为代理对象
+        userService.addUser();
+    }
+}
+</code></pre><blockquote>
+<h2 id="spring-AOP采用全自动代理"><a href="#spring-AOP采用全自动代理" class="headerlink" title="spring AOP采用全自动代理"></a>spring AOP采用全自动代理</h2><p>这个就是说,我们本来是需要通过代理实现目标类获取功能增强,但是现在直接让增强的功能和目标类相连接,直接跳过代理这个东西,但是切面类这些的还是要自己整哈.</p>
+<p><strong>什么是全自动织入</strong></p>
+<blockquote>
+<ul>
+<li><p>结合我<code>spring-03-1</code>那篇博客里的图,织入(weaving)就是将advice通过代理类添加到目标类中的过程.</p>
+</li>
+<li><p>全自动织入,emm,可以理解为我们相对于半自动代理来说不需要配置代理类,直接让切面里的通知送到切入点进行结合.</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>结合案例说明xml配置中expression表达式的写法</strong></p>
+<blockquote>
+<ol>
+<li><p><strong>&lt;aop:config proxy-target-class=”true”&gt;</strong>这表示使用的是cglib代理,值为false或者不写表示使用的是jdk的代理(基于接口的时候使用).</p>
+</li>
+<li><p>execution中参数的意义:以<code>execution(*   example1.service.*.*(..))</code>为例.</p>
+<blockquote>
+<ul>
+<li><p>括号里<code>第一个*</code>,表示<strong>任意返回值</strong>,即不管方法的返回值是int还是String或者其它类型都会被过滤,也可以指定为int或者其他类型.</p>
+</li>
+<li><p>括号中的<code>example1.service</code>表示包名,表示切入点在这个包下,同时注意这里的<strong>包名是src下面的报名</strong>,即如果是<code>src.package1.package2.targetClass</code>的话,就写成<code>package1.package2</code>.</p>
+</li>
+<li><p>括号里的<code>第二个*</code>,也就是<code>example1.service.*</code>的这个*号表示该包下面的所有类都会被过滤,被当作切入点,也可以指定类名,例如:</p>
+<blockquote>
+<ul>
+<li><p><code>example1.service.fan</code>,这就表示只有该包下的<code>fan</code>的这个类会被过滤和增强.</p>
+</li>
+<li><p><code>example1.service..fan</code>,就只是多了一个<code>.</code>,这表示service这个包及其子包下的fan这个类都会被过滤</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>括号里的<code>第三个*</code>,也就是<code>example1.service.*.*</code>中的第二个*,它表示类下面的所有方法都会被过滤,被当作切入点,也可以指定某个方法或者以某个单词开头的方法作为切入点,例如:</p>
+<blockquote>
+<ul>
+<li><p><code>example1.service.fan.test</code>表示只有fan这个类下面的test()方法会被过滤.</p>
+</li>
+<li><p><code>example1.service.fan.user*</code>表示fan这个类下面所有以user开头的方法都会被过滤</p>
+</li>
+<li><p><code>example1.service..fan.user*</code>表示service及其子包下面的fan这个类下面的user开头的方法都会被过滤</p>
+</li>
+<li><p><code>example1.service..fan.*user</code>表示service及其子包下面的fan这个类下面的user结尾的方法都会被过滤</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>括号中的<code>(..)</code>,表示方法的参数为任意个数,任意类型参数都会被过滤,也可以自己指定,例如:</p>
+<blockquote>
+<ul>
+<li><p><code>()</code>什么都不写表示只过滤空参的方法.</p>
+</li>
+<li><p><code>(*)</code>表示只过滤一个参数的方法,参数可以为任意类型</p>
+</li>
+<li><p><code>(*,*)</code>表示只过滤两个参数的方法,多个参数用<code>,</code>隔开即可</p>
+</li>
+<li><p><code>(*,int)</code>表示只过滤两个参数且第二个参数为int类型的方法,多个参数用<code>,</code>隔开即可</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<p><strong>案例:</strong></p>
+</blockquote>
+<pre><code>第一步:
+    导入jar包: aspectjweaverjar.版本尽量高一点吧
+
+第二步:
+    切面类: 注意此时一定要继承接口而且我们这里继承的是aop联盟的接口不是cglib的接口
+    import org.aopalliance.intercept.MethodInterceptor;
+    import org.aopalliance.intercept.MethodInvocation;
+
+    public class MyAspect implements MethodInterceptor {
+
+        @Override
+        public Object invoke(MethodInvocation methodInvocation) throws Throwable {
+            System.out.println(&quot;开启事务&quot;);
+
+            //放行
+            Object obj = methodInvocation.proceed();
+            System.out.println(&quot;结束事务&quot;);
+
+            return obj;
+        }
+    }
+
+第三步:
+    目标类
+    public class UserService {
+                public void addUser() {
+                    System.out.println(&quot;添加了一个用户!&quot;);
+                }
+            }
+
+第四步:
+    beans.xml配置:
+    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+    &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;
+
+    &lt;!--配置目标类对象--&gt;
+    &lt;bean id=&quot;user&quot; class=&quot;example1.service.User&quot;&gt;&lt;/bean&gt;
+
+    &lt;!--配置切面类对象--&gt;
+    &lt;bean id=&quot;myAspect&quot; class=&quot;example1.MyAspect&quot;&gt;&lt;/bean&gt;
+
+    &lt;!--配置aop
+        1. 在bean中配置aop约束
+        2. 配置aop:config,把切入点和通知相结合--&gt;
+    &lt;aop:config proxy-target-class=&quot;true&quot;&gt;
+        &lt;!--切入点
+            expression-表达式
+            要求每个service的方法前后分别开启事务和关闭事务--&gt;
+        &lt;aop:pointcut id=&quot;myPointCut&quot; expression=&quot;execution(* example1.service.*.*(..))&quot;&gt;&lt;/aop:pointcut&gt;
+
+        &lt;!--通知 要关联切入点--&gt;
+        &lt;aop:advisor advice-ref=&quot;myAspect&quot; pointcut-ref=&quot;myPointCut&quot;&gt;&lt;/aop:advisor&gt;
+
+    &lt;/aop:config&gt;
+    &lt;/beans&gt;
+
+第五步:
+    测试类:
+    public class UnitClass {
+
+    @Test
+    public void test() {
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+
+        User user = (User) context.getBean(&quot;user&quot;);
+
+        user.addUser();
+    }
+}
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/spring-03-2/" rel="tag"># spring-03-2</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/06/26/spring-03-1/" rel="next" title="spring-03">
+                <i class="fa fa-chevron-left"></i> spring-03
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/06/29/spring-03-3/" rel="prev" title="spring03-3">
+                spring03-3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有问题可以问我-spring前面的几篇文章不清不楚-我整体过一遍再重新写"><span class="nav-number">1.</span> <span class="nav-text">有问题可以问我,spring前面的几篇文章不清不楚,我整体过一遍再重新写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP联盟通知类型"><span class="nav-number">2.</span> <span class="nav-text">AOP联盟通知类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-AOP采用半自动代理"><span class="nav-number">3.</span> <span class="nav-text">spring AOP采用半自动代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-AOP采用全自动代理"><span class="nav-number">4.</span> <span class="nav-text">spring AOP采用全自动代理</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
