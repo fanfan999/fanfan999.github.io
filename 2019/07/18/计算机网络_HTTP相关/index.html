@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="HTTP简介   它是位于应用层的协议. 是基于请求-响应模型的无状态的协议. 中文名为超文本传输协议. 基于TCP协议. HTTP协议定义了web客户端如何从web服务器请求web页面以及服务器如何把web页面传送给客户端.  HTTP协议的主要特点:   支持客户端/服务器模式(客户端向服务器发送请求,服务器根据请求向客户端发送响应信息). 简单快速: 客户端发出请求的时候只需要传送请求方">
+<meta name="keywords" content="计算机网络-HTTP相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络-HTTP相关">
+<meta property="og:url" content="https://fanfan999.github.io/2019/07/18/计算机网络_HTTP相关/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="HTTP简介   它是位于应用层的协议. 是基于请求-响应模型的无状态的协议. 中文名为超文本传输协议. 基于TCP协议. HTTP协议定义了web客户端如何从web服务器请求web页面以及服务器如何把web页面传送给客户端.  HTTP协议的主要特点:   支持客户端/服务器模式(客户端向服务器发送请求,服务器根据请求向客户端发送响应信息). 简单快速: 客户端发出请求的时候只需要传送请求方">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019071820290820.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190718205309414.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190718235430182.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190719082814289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-07-19T01:06:23.244Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络-HTTP相关">
+<meta name="twitter:description" content="HTTP简介   它是位于应用层的协议. 是基于请求-响应模型的无状态的协议. 中文名为超文本传输协议. 基于TCP协议. HTTP协议定义了web客户端如何从web服务器请求web页面以及服务器如何把web页面传送给客户端.  HTTP协议的主要特点:   支持客户端/服务器模式(客户端向服务器发送请求,服务器根据请求向客户端发送响应信息). 简单快速: 客户端发出请求的时候只需要传送请求方">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019071820290820.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/07/18/计算机网络_HTTP相关/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>计算机网络-HTTP相关 | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/18/计算机网络_HTTP相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络-HTTP相关
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-18 19:25:31" itemprop="dateCreated datePublished" datetime="2019-07-18T19:25:31+08:00">2019-07-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-19 09:06:23" itemprop="dateModified" datetime="2019-07-19T09:06:23+08:00">2019-07-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <font color="red"></font><br><font color="orange"></font>
+
+<font color="orange">HTTP简介</font>
+
+<ol>
+<li>它是位于应用层的协议.</li>
+<li>是基于请求-响应模型的无状态的协议.</li>
+<li>中文名为超文本传输协议.</li>
+<li>基于TCP协议.</li>
+<li>HTTP协议定义了web客户端如何从web服务器请求web页面以及服务器如何把web页面传送给客户端.</li>
+</ol>
+<font color="orange">HTTP协议的主要特点:</font>
+
+<ol>
+<li>支持客户端/服务器模式(客户端向服务器发送<code>请求</code>,服务器根据请求向客户端发送<code>响应信息</code>).</li>
+<li>简单快速: 客户端发出请求的时候只需要传送<code>请求方法(get/post等)</code>和<code>路径</code>即可.</li>
+<li>灵活: HTTP允许传输任意类型的数据对象,传输类型由<code>contentype</code>加以标记.</li>
+<li>无连接,也就是说,<strong>每次连接只处理一个请求,服务端完成客户端的请求并受到客户端的确认后就会断开连接(HTTP1.1之后就换成了长连接,即连接一段时间才会断开连接).</strong></li>
+<li>无状态,即<code>协议对于事务处理没有记忆能力</code>,同时也意味着<em>如果后续处理需要前面的处理信息就只能被重传</em>.</li>
+</ol>
+<font color="orange">HTTP请求报文结构(包括请求行,请求头和请求体三部分):</font><br><img src="https://img-blog.csdnimg.cn/2019071820290820.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><br> 1. 请求行: 包括<code>请求方法+空格+URL+空格+协议版本,</code>例如<strong>GET /index.html HTTP/1.1</strong>.<br> 2. 请求头: 由若干个<code>头部字段名 + : + 值</code>组成.用于通知服务器有关于客户端请求的信息,常见的头部字段名如下.<br>     1. User-Agent：产生请求的浏览器类型,例如<strong>User-Agent: Chrome/74.0.3729.169 Safari/537.36</strong>.<br>     2. Accept：客户端可识别的内容类型列表,例如<strong>Accept: text/html</strong>.<br>     3. Host：请求的主机名,例如<strong>Host: <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></strong>.<br>3.  请求体不在GET方法中使用，而是在POST方法中使用.<br><br><font color="orange">HTTP响应报文结构(包括状态行,响应头和响应体三部分):</font><br><img src="https://img-blog.csdnimg.cn/20190718205309414.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><br> 1. 状态行: 包括<code>协议版本+空格+状态码+空格+状态码描述</code>,例如<strong>HTTP/1.1 200 OK.</strong><br> 2. 响应头: 和请求头一样,用于告知客户端服务端的信息,由多个<code>头部字段名+空格+值组成</code>,例如<strong>Content-Type: text/html;charset=utf-8.</strong><br> 3. 响应体: 返回的就是客户端请求的数据.<br><br><font color="orange">HTTP协议中请求和响应的步骤:</font>
+
+<ol>
+<li>客户端连接到web服务器</li>
+<li>发送HTTP请求(文本请求)</li>
+<li>服务器接收到请求并返回HTTP响应消息</li>
+<li>释放TCP连接</li>
+<li>客户端浏览器解析HTML内容</li>
+</ol>
+<font color="orange">在浏览器地址栏输入URL,按下回车后经历的流程</font>
+
+<ol>
+<li>DNS(域名系统)解析:<strong><em>即将主机名(如<a href="http://www.sina.com或者mail.163.com)转换为对应的ip地址" target="_blank" rel="noopener">www.sina.com或者mail.163.com)转换为对应的ip地址</a>.</em></strong></li>
+<li>根据<code>IP地址和端口</code>(端口用于确认是哪个进程,默认是80)和<code>服务器建立TCP连接</code>(三次握手).</li>
+<li>向服务器发送HTTP请求.</li>
+<li>服务器处理请求并返回HTTP响应报文.</li>
+<li>浏览器解析响应报文并渲染页面.</li>
+<li>浏览器释放TCP连接(四次挥手).</li>
+</ol>
+<font color="orange">HTTP状态码(五种)</font>
+
+<ol>
+<li>1xx: 指示信息—表示请求已接收,继续处理.</li>
+<li>2xx: 成功—表示请求已被成功接收,理解,接收.例如<code>200表示请求已成功，请求所希望的响应头或数据体将随此响应返回</code>.</li>
+<li>3xx: 重定向—表示客户端要完成请求必须进行更进一步的操作.</li>
+<li>4xx: 客户端错误—表示请求有语法错误或请求无法实现(比如请求参数有误).</li>
+<li>5xx: 服务端错误—服务器端未能实现合法的请求.</li>
+</ol>
+<font color="orange">常见状态码</font>
+
+<ol>
+<li>200 OK: 正常返回信息.</li>
+<li>400 Bad Request: 客户端请求有语法错误,不能被服务器所理解.</li>
+<li>401 Unauthorized: 请求未经授权,这个状态码必须和WWW-Authenticate一起使用.</li>
+<li>403 Forbidden: 服务器收到请求,但是拒绝提供服务.</li>
+<li>404 Not Found: 请求资源不存在,例如输入了错误的URL.</li>
+<li>500 Internal Server Error: 服务器发生了不可预知的错误.</li>
+<li>503 Server Unavailable:  服务器当前不能处理客户端的请求,可能会在一段时间后恢复正常.</li>
+</ol>
+<font color="orange">GET请求和POST请求的区别</font>
+
+<ol>
+<li>从HTTP报文层面: GET将请求信息放在URL中,POST将请求信息放在请求体中.因此<strong>浏览器在GET请求中会对数据长度进行一定限制</strong>,而对POST请求没有限制,<code>注意:HTTP是不安全的,不管是什么方式,通过抓包都是可以抓到数据这点可以体现</code>.</li>
+<li>从数据库层面: GET请求(<code>主要做查询操作</code>)符合幂等性(<code>对数据库的一次操作和多次操作的结果是一致的</code>)和安全性(<code>对数据库的操作不改变数据库中的数据</code>),POST不符合(<code>因为它主要用于修改,会向服务器提交数据,比如我们的登录就是用的post</code>).</li>
+<li>从其他层面: GET请求可以被缓存(<code>例如参数会保存在浏览器的浏览记录中,这也是get请求被广泛应用的根本</code>),被存储(<code>例如get请求的url可以被保存为书签</code>),但是POST请求都不可以.</li>
+</ol>
+<font color="red">因为http是无状态的,那么我们每次请求的时候都需要输入账号密码,但是实际上我们并没有这样子,那么因为有某种操作记住了我们的状态,其中就有cookie和session</font>
+
+<font color="red">Cookie简介</font>
+
+<p>Cookie: 作用在客户端,即服务器发送给客户端的特殊信息,以文本形式存放在客户端,<strong>客户端每次给服务器端发送请求的时候,都会带上这些特殊的信息</strong>.</p>
+<p><strong><em>例如:</em></strong></p>
+<ul>
+<li>当我们用浏览器访问一个支持Cookie的网站的时候,如果我们提交了账号密码等信息至服务器,服务器在处理完我们发送的请求并回传响应文本的同时,<code>也会带上这些我们提交的个人信息</code>,<strong><em>但是这些信息不存放在响应体,而是存放在响应头中</em></strong>,当浏览器接收到服务器的响应消息后,浏览器会将这些信息存放在一个<font color="red">统一的位置</font>.</li>
+<li>有了上面的一系列操作之后,<strong><em>当客户端再次向服务端发起请求的时候,会把相应的Cookie<code>存放在HTTP请求头中</code>发回给服务器.</em></strong></li>
+<li>当服务器再次收到请求后,会解析Cookie中的信息,并生成与客户端相对应的内容(<code>例如记住密码之类的提醒,选中之后,下次就不用再重新登录了</code>).</li>
+</ul>
+<font color="red">Cookie设置及发送过程</font><br><img src="https://img-blog.csdnimg.cn/20190718235430182.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><br> 1. 客户端发送http请求给服务器.<br> 2. 服务器处理请求并返回响应消息给客户端,<font color="red">其中响应消息的<strong>响应头</strong>中包含了Set-Cookie这个字段值的信息,例如 <strong>Set-Cookie: rememberMe=deleteMe; Path=/xg;</strong> </font>.<br> 3. 客户端再次发送http请求到服务器,<font color="red">其中请求报文的<strong>请求头</strong>中包含了<strong>Cookie字段值</strong> 的信息,例如 <strong>Cookie: JSESSIONID=GQnkdx</strong></font>.<br> 4. 服务器给客户端发出一个HTTP响应,比如问是否记住密码之类的,点击记住密码后,客户端再次登录就不需要输入密码了.<br> 5. <strong>其实有的是会第一次登录就提醒你是否记住密码,但是流程都差不多.</strong><br><br><font color="red">Session简介</font>
+
+<ol>
+<li>服务器端的机制,在服务器上保存的信息.</li>
+<li>当服务器需要为某个客户端的请求创建一个session的时候,它会先检查客户端的<code>请求</code>里是否已包含了<code>jsessionid这个字段</code>,如果有,则说明以前为此客户端创建过session,它就会解析<code>jsessionid</code>这个字段值,检索其对应的session并使用.</li>
+<li>如果请求中没有<strong>jsessionid这个字段</strong>或者检索不到传来的<strong>jsessionid</strong>对应的session,那么服务器就会为此客户端新创建一个session,同时生成一个与之相关的jsessionid(<code>不会重复,也不容易破解的字符串</code>),这个id会随着响应信息发送给客户端进行保存.</li>
+</ol>
+<font color="red">Session的实现方式</font>
+
+<ol>
+<li>使用Cookie来实现<br><img src="https://img-blog.csdnimg.cn/20190719082814289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>服务器给每个session分配一个唯一的<code>jsessionid</code>,并通过cookie发送给客户端(<code>放在响应头中的set-cookie字段中</code>),当客户端发起新的请求的时候,将在<code>cookie字段</code>中携带这个<code>jsessionid</code>,这样服务器就能找到客户端对应的session.</li>
+</ol>
+<ol start="2">
+<li>使用URL回写来实现</li>
+</ol>
+<p>URL回写是指<font color="red">服务器在发送给浏览器页面的所有链接中,都会携带<strong>jsessionid</strong>这个<strong>参数及其值</strong>,这样客户端点击任何一个链接都会把<code>jsessionid</code>带回到服务器中.</font></p>
+<p>如果<strong>直接在浏览器地址栏输入服务器资源对应的URL来请求资源</strong>,那么存放在服务器中的session是匹配不到的,因为没有<strong>jsessionid字段及其值.</strong></p>
+<p>tomcat对session的实现: <font color="red">一开始同时使用回写url和cookie</font>,如果<strong>发现客户端支持cookie,就继续使用cookie而停止使用url回写</strong>,如果<strong>不支持cookie或者cookie被禁用,就只使用url回写.</strong></p>
+<font color="orange">Cookie请求和Session的区别</font>
+
+<ol>
+<li>Cookie存放在客户端浏览器上,而Session存放在服务器端.</li>
+<li>Session相对于Cookie更安全(Cookie存放在本地,可以自己伪造).</li>
+<li>Session由于保存在服务器上,当访问增多会占用服务器的性能,考虑到减轻服务器负担,应当使用Cookie.</li>
+<li>Cookie只能保存字符串类型对象,而Session中可以保存任意类型的对象.</li>
+<li>单个Cookie的容量大小一般为4KB,Session没有容量限制.</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/计算机网络-HTTP相关/" rel="tag"># 计算机网络-HTTP相关</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/07/18/springboot简介及核心/" rel="next" title="springboot简介及核心">
+                <i class="fa fa-chevron-left"></i> springboot简介及核心
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/07/18/计算机网络-TCP的滑窗/" rel="prev" title="计算机网络-TCP的滑窗">
+                计算机网络-TCP的滑窗 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

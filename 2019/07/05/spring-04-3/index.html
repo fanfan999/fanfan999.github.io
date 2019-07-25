@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="大家不懂可以留言我,虽然我也很菜 事务的基本知识,我专门有一篇博客写了: 事务基础 spring事务管理spring为我们提供给了事务管理,我们就不需要手动去开启事务,关闭事务了,我们只需要配置一下就可以了,它就会帮我们把事务放在service层去. spring提供了事务jar包: spring-tx-5.0.2-RELEASE.jar,里面大部分都是接口,其中有几个接口我们需要注意一下子.">
+<meta name="keywords" content="spring-04-3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-04-3">
+<meta property="og:url" content="https://fanfan999.github.io/2019/07/05/spring-04-3/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="大家不懂可以留言我,虽然我也很菜 事务的基本知识,我专门有一篇博客写了: 事务基础 spring事务管理spring为我们提供给了事务管理,我们就不需要手动去开启事务,关闭事务了,我们只需要配置一下就可以了,它就会帮我们把事务放在service层去. spring提供了事务jar包: spring-tx-5.0.2-RELEASE.jar,里面大部分都是接口,其中有几个接口我们需要注意一下子.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-05T13:25:56.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring-04-3">
+<meta name="twitter:description" content="大家不懂可以留言我,虽然我也很菜 事务的基本知识,我专门有一篇博客写了: 事务基础 spring事务管理spring为我们提供给了事务管理,我们就不需要手动去开启事务,关闭事务了,我们只需要配置一下就可以了,它就会帮我们把事务放在service层去. spring提供了事务jar包: spring-tx-5.0.2-RELEASE.jar,里面大部分都是接口,其中有几个接口我们需要注意一下子.">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/07/05/spring-04-3/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>spring-04-3 | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/05/spring-04-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spring-04-3
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-05 14:10:50 / Modified: 21:25:56" itemprop="dateCreated datePublished" datetime="2019-07-05T14:10:50+08:00">2019-07-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="大家不懂可以留言我-虽然我也很菜"><a href="#大家不懂可以留言我-虽然我也很菜" class="headerlink" title="大家不懂可以留言我,虽然我也很菜"></a>大家不懂可以留言我,虽然我也很菜</h2><blockquote>
+<p><strong>事务的基本知识,我专门有一篇博客写了: <a href="https://blog.csdn.net/qq_41223155/article/details/91496876" target="_blank" rel="noopener">事务基础</a></strong></p>
+<h2 id="spring事务管理"><a href="#spring事务管理" class="headerlink" title="spring事务管理"></a>spring事务管理</h2><p><strong>spring为我们提供给了事务管理,我们就不需要手动去开启事务,关闭事务了,我们只需要配置一下就可以了,它就会帮我们把事务放在service层去.</strong></p>
+<p><strong>spring提供了事务jar包: <code>spring-tx-5.0.2-RELEASE.jar</code>,</strong>里面大部分都是接口,其中有几个<strong>接口</strong>我们需要注意一下子.</p>
+<blockquote>
+<ul>
+<li><p><strong>SavepointManager:</strong> 保存点管理器,比如说,我这个事务里面包括四个操作,前两个如果对了就一定要提交,后两个无所谓,那么我们就可以在前两个操作后设置一个<strong>保存点savepoint对象</strong>,然后当第三个操作出错了之后,回滚到保存点对象的位置,前面的提交,这样就可以保证前两个操作一定提交了.</p>
+</li>
+<li><p><strong>PlatformTransactionManager:</strong>平台事务管理器, spring要管理事务,必须使用事务管理器,进行事务配置时,<strong>必须配置事务管理器</strong>.</p>
+</li>
+<li><p><strong>TransactionStatus:</strong>事务状态,spring用于记录当前事务运行状态,例如: 是否有保存点,事务是否完成等,spring根据状态进行相应操作.</p>
+</li>
+<li><p><strong>TransactionDefinition:</strong>事务详情(包括事务定义,事务属性等),spring用于确定事务具体详情,例如: 隔离级别,是否只读,超时时间等,进行事务配置时,<strong>必须配置详情,</strong>spring会将配置项封装到对象实例中.</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>jdbc管理数据库通过spring管理事务</strong></p>
+<blockquote>
+<ul>
+<li><p>导入包: jdbc开发数据库的话,要导入jdbc对应的包(包里面放的是spring事务中接口的实现类): <code>spring-jdbc-5.0.2.RELEASE.jar,</code>以及spring事务管理的jar包.</p>
+</li>
+<li><p>通过spring-jdbc包下面的PlatformTransactionManager接口的实现类DataSourceTransactionManager作为事务管理器来实现事务管理</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>TransactionDefinition接口中的成员变量,隔离的变量在开头链接的博客里面有,这里只看传播行为的几个变量</strong></p>
+<blockquote>
+<ul>
+<li><p>传播行为用于解决在两个业务中如何共享事务.</p>
+</li>
+<li><p><strong>PROPAGATION_REQUIRED(默认值)</strong>,required表示必须,即支持当前事务,A如果有事务,B将使用该事务,如果A没有事务,B将创建一个新的事务.</p>
+</li>
+<li><p><strong>PROPAGATION_SUPPORTS</strong>,support表示支持,即支持当前事务,A如果有事务,B将使用该事务,如果A没有事务,B将以非事务执行.</p>
+</li>
+<li><p><strong>PROPAGATION_MANDATORY</strong>,mandatory表示强制,即支持当前事务,A如果有事务,B将使用该事务,如果A没有事务,B将抛出异常.</p>
+</li>
+<li><p><strong>PROPAGATION_REQUIRES_NEW</strong>,requires_new表示必须新的,A如果有事务,将A的事务挂起,B创建一个新的事务执行,如果A没有事务,B创建一个新的事务执行.</p>
+</li>
+<li><p><strong>PROPAGATION_NOT_SUPPORTED</strong>,not_supported表示不支持,A如果有事务,将A的事务挂起,B以非事务执行,如果A没有事务,B以非事务执行.</p>
+</li>
+<li><p><strong>PROPAGATION_NEVER</strong>,never表示从不,A如果有事务,B将抛出异常,A如果没有事务,B将以非事务执行.</p>
+</li>
+<li><p><strong>PROPAGATION_NESTED</strong>,nested表示嵌套,A和B底层采用保存点机制,形成嵌套事务.</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="转账案例-手动管理事务-了解就可以了"><a href="#转账案例-手动管理事务-了解就可以了" class="headerlink" title="转账案例_手动管理事务(了解就可以了 )"></a>转账案例_手动管理事务(了解就可以了 )</h2><p><strong>实现过程</strong></p>
+<blockquote>
+<ul>
+<li>创建数据库表并插入两条数据</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>CREATE TABLE account(
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ username VARCHAR(15),
+ money INT
+);
+
+INSERT INTO account(username, money) VALUES(&quot;user1&quot;, 1000);
+INSERT INTO acCOUNT(username, money) VALUES(&quot;user2&quot;, 1000);
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li><p>导入jar包:创建的spring项目的话,大部分jar包它都有,我们只需要导入c3p0连接池的jar包和数据库驱动的jar包就可以了,链接如下: <strong><a href="https://github.com/fanfan999/WebCodes/tree/master/spring-04-2/jar%E5%8C%85" target="_blank" rel="noopener">jar包</a></strong></p>
+</li>
+<li><p>Dao层</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>public class AccountDao extends JdbcDaoSupport {
+    //进账
+    public void in(int money, String inner) {
+        String sql = &quot;update account set money = money + ? where username = ?&quot;;
+
+        super.getJdbcTemplate().update(sql,money, inner);
+
+        System.out.println(&quot;已成功向&quot;+ inner + &quot;存钱&quot; + money + &quot;元&quot;);
+    }
+
+    //出账
+    public void out(int money, String outer) {
+        String sql = &quot;update account set money = money - ? where username = ?&quot;;
+
+        super.getJdbcTemplate().update(sql,money, outer);
+
+        System.out.println(&quot;已成功从&quot;+ outer + &quot;取钱&quot; + money + &quot;元&quot;);
+    }
+}
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li>service层</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>    public class AccountService {
+    //生成dao层对象,方便等会调用方法
+    private AccountDao accountDao;
+
+    //提供set方法,等会通过spring注入AccountDao对象
+    public void setAccountDao(AccountDao accountDao) {
+        this.accountDao = accountDao;
+    }
+
+    //spring配置事务模板
+    private TransactionTemplate transactionTemplate;
+
+    //提供set方法,由spring注入
+    public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
+        this.transactionTemplate = transactionTemplate;
+    }
+
+    //转账方法
+    public void transfer(String inner, String outer, int money) {
+        //执行事务,出错之后就会自动回滚
+        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                //进账
+                accountDao.in(money, inner);
+
+                int i = 10 / 0;
+
+                //出账
+                accountDao.out(money, outer);
+            }
+        });
+    }
+}
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li>测试类</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>public class UnitClass {
+
+    @Test
+    public void test() {
+        //获取容器对象
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans1.xml&quot;);
+
+        //获取service层对象
+        AccountService service = (AccountService) context.getBean(&quot;accountService&quot;);
+
+        //调用方法
+        service.transfer(&quot;user1&quot;, &quot;user2&quot;, 500);
+    }
+}
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li>xml配置文件</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd 
+                            http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+     &lt;!--让spring去读我们的连接数据库的配置文件--&gt;
+    &lt;context:property-placeholder location=&quot;db.properties&quot;&gt;&lt;/context:property-placeholder&gt;
+    &lt;!--配置数据源对象,因为jdbctemplate必须要用到数据源--&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+        &lt;property name=&quot;driverClass&quot; value=&quot;${driverClass}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;jdbcUrl&quot; value=&quot;${jdbcUrl}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;user&quot; value=&quot;${user}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${password}&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置事务管理器--&gt;
+    &lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+        &lt;!--通过看源码知道,它需要注入一个数据源属性--&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置一个事务模板对象--&gt;
+    &lt;bean id=&quot;template&quot; class=&quot;org.springframework.transaction.support.TransactionTemplate&quot;&gt;
+        &lt;!--通过看源码知道,我们还需要配置一个事务管理器--&gt;
+        &lt;property name=&quot;transactionManager&quot; ref=&quot;txManager&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--创建dao层对象,同时给其注入数据源,因为jdbctemplate的创建需要数据源--&gt;
+    &lt;bean id=&quot;dao&quot; class=&quot;transaction_example1.dao.AccountDao&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--给service层注入dao层对象--&gt;
+    &lt;bean id=&quot;accountService&quot; class=&quot;transaction_example1.service.AccountService&quot;&gt;
+        &lt;property name=&quot;accountDao&quot; ref=&quot;dao&quot;&gt;&lt;/property&gt;
+        &lt;!--配置事务管理模板--&gt;
+        &lt;property name=&quot;transactionTemplate&quot; ref=&quot;template&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li>properties配置文件</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>driverClass=com.mysql.jdbc.Driver
+jdbcUrl=jdbc:mysql://localhost:3306/spring_day04
+user=root
+password=root
+</code></pre><blockquote>
+<h2 id="转账案例-spring用工厂bean生成代理半自动管理事务-了解"><a href="#转账案例-spring用工厂bean生成代理半自动管理事务-了解" class="headerlink" title="转账案例_spring用工厂bean生成代理半自动管理事务(了解)"></a>转账案例_spring用工厂bean生成代理半自动管理事务(了解)</h2><p><strong>注意:</strong></p>
+<blockquote>
+<ul>
+<li><p>这里的动态代理就是JDK自带的那种,必须针对接口,关于动态代理,参考这篇博客: <strong><a href="https://blog.csdn.net/qq_41223155/article/details/94668167" target="_blank" rel="noopener">动态代理</a></strong>.</p>
+</li>
+<li><p>xml中属性详情必须配,不能少</p>
+</li>
+<li><p>一个很恼火的错误:<strong>com.sun.proxy.$Proxy0 cannot be cast to </strong>,这就是你在容器中获取service代理对象或者自己创建代理对象的时候,生成的对象不是接口类型,而是对象类型导致的,例子如下:</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>有一个接口User,它的实现类是UserImpl,现在要生成代理对象
+1. UserImpl u1 = (UserImpl)Proxy.newProxyInstance(参数省略...);
+    这个就会报错--`com.sun.proxy.$Proxy0 cannot be cast to`
+2. User u2 = (User)Proxy.newProxyInstance(参数省略...);
+    这个写法才是正确的,因为jdk的动态代理是针对接口的,记住记住!!!!
+</code></pre><blockquote>
+<p>spring提供了管理事务的代理工厂bean,叫<code>TransactionProxyFactoryBean</code>,我们通过代理工厂的话就不用配置事务模板了,代码相对于纯手动管理要简单一些哈哈哈</p>
+<p><strong>实现过程</strong></p>
+<blockquote>
+<ul>
+<li>service类</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>/**
+ * 在service层中调用dao层的方法
+ */
+public class AccountService implements Account{
+
+    //生成dao层对象,方便等会调用方法
+    private AccountDao accountDao;
+
+    //提供set方法,等会通过spring注入AccountDao对象
+    public void setAccountDao(AccountDao accountDao) {
+
+        this.accountDao = accountDao;
+    }
+
+
+    //转账方法
+    public void transfer(String inner, String outer, int money) {
+        //进账
+        accountDao.in(money, inner);
+
+        int i = 10 / 0;
+
+        //出账
+        accountDao.out(money, outer);
+    }
+}
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li>测试类</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>public class UnitClass {
+
+    @Test
+    public void test() {
+        //获取容器对象
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans2.xml&quot;);
+
+        //获取service层的代理对象,注意这里的Account必须是接口啊,不能是其实现类
+        Account service = (Account) context.getBean(&quot;proxyService&quot;);
+
+        //调用方法
+        service.transfer(&quot;user1&quot;, &quot;user2&quot;, 500);
+    }
+}
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li>xml文件</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd 
+                            http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+    &lt;!--让spring去读我们的连接数据库的配置文件--&gt;
+    &lt;context:property-placeholder location=&quot;db.properties&quot;&gt;&lt;/context:property-placeholder&gt;
+    &lt;!--配置数据源对象,因为jdbctemplate必须要用到数据源--&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+        &lt;property name=&quot;driverClass&quot; value=&quot;${driverClass}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;jdbcUrl&quot; value=&quot;${jdbcUrl}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;user&quot; value=&quot;${user}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${password}&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置事务管理器--&gt;
+    &lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+        &lt;!--通过看源码知道,它需要注入一个数据源属性--&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--创建dao层对象,同时给其注入数据源,因为jdbctemplate的创建需要数据源--&gt;
+    &lt;bean id=&quot;dao&quot; class=&quot;transaction_example2.dao.AccountDao&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置service,给service层注入dao层对象--&gt;
+    &lt;bean id=&quot;accountService&quot; class=&quot;transaction_example2.service.AccountService&quot;&gt;
+        &lt;property name=&quot;accountDao&quot; ref=&quot;dao&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置一个工厂代理--&gt;
+    &lt;bean id=&quot;proxyService&quot; class=&quot;org.springframework.transaction.interceptor.TransactionProxyFactoryBean&quot;&gt;
+        &lt;!--配置接口--&gt;
+        &lt;property name=&quot;proxyInterfaces&quot; value=&quot;transaction_example2.service.Account&quot;&gt;&lt;/property&gt;
+
+        &lt;!--目标对象--&gt;
+        &lt;property name=&quot;target&quot; ref=&quot;accountService&quot;&gt;&lt;/property&gt;
+
+        &lt;!--切面对象不用写,spring帮我们做了--&gt;
+        &lt;!--配置事务管理器--&gt;
+        &lt;property name=&quot;transactionManager&quot; ref=&quot;txManager&quot;&gt;&lt;/property&gt;
+
+        &lt;!--配置事务属性,也就是事务详情
+            key:哪些方法需要使用事务,写方法名
+            value: 写事务的详情控制
+            格式: propagation(传播行为),isolation(隔离级别),readonly(是否只读)
+                   -Exception(异常回滚),+Exception(异常提交)
+                   前两个必须写,后面的可以不写
+                   当设置了只读之后,就说明这个代理对象只能读,不能写,所以对数据库的修改会失败.
+                 设置了+Exception之后,表示就算有异常,异常前面的语句照样提交,类似于保存点的功能
+            --&gt;
+        &lt;property name=&quot;transactionAttributes&quot;&gt;
+            &lt;props&gt;
+                &lt;!--有多个方法就写多个prop标签就好了--&gt;
+                &lt;prop key=&quot;transfer&quot;&gt;PROPAGATION_REQUIRED,ISOLATION_DEFAULT,+Exception&lt;/prop&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre><blockquote>
+<h2 id="spring基于AOP的事务管理-这个要掌握"><a href="#spring基于AOP的事务管理-这个要掌握" class="headerlink" title="spring基于AOP的事务管理(这个要掌握)"></a>spring基于AOP的事务管理(这个要掌握)</h2><p>手动管理事务我们每次有新的业务方法都还要加到事务中去,还要自己手动生成对象调用,这就很麻烦,而半自动代理,还是要配置什么隔离级别一堆,还是麻烦,所以我们决定用AOP切面改进.</p>
+<p><strong>注意</strong></p>
+<blockquote>
+<ol>
+<li><p>如果<strong>我们service层中的类实现了接口</strong>,比如上面的<code>AccountService</code>,那么在容器内<strong>获取该对象的时候,就必须是接口类型的</strong>,因为这个就是通过代理对象完成的,只是不需要我们配置代理对象而已.</p>
+</li>
+<li><p><strong>如果service层中的类没有实现接口</strong>,那么在在容器内获取该对象的时候,就<strong>直接写类类型就可以</strong>,不需要是接口类型,我的例子里实现了接口,所以只能是接口类型.</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>使用案例及步骤(相对于上面一个半自动管理来说,这里只修改xml文件):</strong></p>
+<blockquote>
+<ul>
+<li>xml文件</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop.xsd
+                            http://www.springframework.org/schema/tx
+                        http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;
+
+    &lt;!--让spring去读我们的连接数据库的配置文件--&gt;
+    &lt;context:property-placeholder location=&quot;db.properties&quot;&gt;&lt;/context:property-placeholder&gt;
+    &lt;!--配置数据源对象,因为jdbctemplate必须要用到数据源--&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+        &lt;property name=&quot;driverClass&quot; value=&quot;${driverClass}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;jdbcUrl&quot; value=&quot;${jdbcUrl}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;user&quot; value=&quot;${user}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${password}&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置事务管理器--&gt;
+    &lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+        &lt;!--通过看源码知道,它需要注入一个数据源属性--&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--创建dao层对象,同时给其注入数据源,因为jdbctemplate的创建需要数据源--&gt;
+    &lt;bean id=&quot;dao&quot; class=&quot;transaction_example3.dao.AccountDao&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置service,给service层注入dao层对象--&gt;
+    &lt;bean id=&quot;accountService&quot; class=&quot;transaction_example3.service.AccountService&quot;&gt;
+        &lt;property name=&quot;accountDao&quot; ref=&quot;dao&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--1. 配置作为通知使用的事务管理器,使用前要在头部加上标签的引用,就是xmlns那些--&gt;
+    &lt;tx:advice transaction-manager=&quot;txManager&quot; id=&quot;myAdvice&quot;&gt;
+        &lt;!--配置事务详情:传播行为,隔离级别等,使用aop配置时都可以省略,自动使用默认值--&gt;
+        &lt;tx:attributes&gt;
+            &lt;!--方法就是我们要被事务控制的方法,我们这里是转账方法--&gt;
+            &lt;tx:method name=&quot;transfer&quot;/&gt;
+        &lt;/tx:attributes&gt;
+    &lt;/tx:advice&gt;
+
+    &lt;!--2. 使用spring的aop标签来配置切面
+        这里切面中的通知就是事务,是由spring的事务管理器管理的
+        切入点就还是转账方法
+        在这里区分一下切入点和连接点,一个类中的所有方法都是连接点
+            但是只有要被通知进行功能增强的方法才叫切入点--&gt;
+    &lt;aop:config&gt;
+        &lt;!--配置一个切入点--&gt;
+        &lt;aop:pointcut id=&quot;myPoint&quot; expression=&quot;execution(* transaction_example3.service.*.transfer(..))&quot;&gt;&lt;/aop:pointcut&gt;
+
+        &lt;!--3. 将事务与切入点关联--&gt;
+        &lt;aop:advisor advice-ref=&quot;myAdvice&quot; pointcut-ref=&quot;myPoint&quot;&gt;&lt;/aop:advisor&gt;
+    &lt;/aop:config&gt;
+&lt;/beans&gt;
+</code></pre><blockquote>
+<h2 id="spring基于注解的事务管理-这个也要掌握"><a href="#spring基于注解的事务管理-这个也要掌握" class="headerlink" title="spring基于注解的事务管理(这个也要掌握)"></a>spring基于注解的事务管理(这个也要掌握)</h2><p>不过事务管理的话一般还是写在xml里比较好,因为要是service很多的话,也懒得写,在xml里还一目了然些,不过没关系啦,看自己习惯,咋都行.</p>
+<p>在xml中配置使用注解进行事务管理的时候这里有个大坑:</p>
+<blockquote>
+<ul>
+<li>配置如下,其中特别注意<strong>配置事务管理器的id</strong>，这个id只能写<strong>transactionManager</strong>,不能写其他的,不能写其他的,写其他的就会报错: <strong>NoSuchBeanDefinitionException: No bean named ‘transactionManager’ available</strong></li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>&lt;!--1. 配置事务管理器--&gt;
+&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+    &lt;!--通过看源码知道,它需要注入一个数据源属性--&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;!--2. 配置事务的注解驱动,告诉虚拟机由注解来完成事务操作--&gt;
+&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
+</code></pre><blockquote>
+<p><strong>实现步骤(没写的就说明和上面的一致,这里只有service和xml变化了)</strong></p>
+<blockquote>
+<ul>
+<li>service代码</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>/**
+ * 在service层中调用dao层的方法
+ *      注解写在类名上,表示该类所有方法都会被事务控制
+ *      如果想事务控制只对某一个方法生效,将注解写在对应方法名上就行
+ */
+public class AccountService{
+
+    //生成dao层对象,方便等会调用方法
+    private AccountDao accountDao;
+
+    //提供set方法,等会通过spring注入AccountDao对象
+    public void setAccountDao(AccountDao accountDao) {
+
+        this.accountDao = accountDao;
+    }
+
+
+    //转账方法,注解也可以写成@Transactional
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
+    public void transfer(String inner, String outer, int money) {
+        //进账
+        accountDao.in(money, inner);
+
+        //int i = 10 / 0;
+
+        //出账
+        accountDao.out(money, outer);
+    }
+}
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li>xml配置</li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop.xsd
+                            http://www.springframework.org/schema/tx
+                        http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;
+
+    &lt;!--让spring去读我们的连接数据库的配置文件--&gt;
+    &lt;context:property-placeholder location=&quot;db.properties&quot;&gt;&lt;/context:property-placeholder&gt;
+    &lt;!--配置数据源对象,因为jdbctemplate必须要用到数据源--&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+        &lt;property name=&quot;driverClass&quot; value=&quot;${driverClass}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;jdbcUrl&quot; value=&quot;${jdbcUrl}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;user&quot; value=&quot;${user}&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${password}&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;tx:annotation-driven&gt;&lt;/tx:annotation-driven&gt;
+    &lt;!--创建dao层对象,同时给其注入数据源,因为jdbctemplate的创建需要数据源--&gt;
+    &lt;bean id=&quot;dao&quot; class=&quot;transaction_example4.dao.AccountDao&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置service,给service层注入dao层对象--&gt;
+    &lt;bean id=&quot;accountService&quot; class=&quot;transaction_example4.service.AccountService&quot;&gt;
+        &lt;property name=&quot;accountDao&quot; ref=&quot;dao&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--1. 配置事务管理器--&gt;
+    &lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+        &lt;!--通过看源码知道,它需要注入一个数据源属性--&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!--2. 配置事务的注解驱动,告诉虚拟机由注解来完成事务操作--&gt;
+    &lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot;/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/spring-04-3/" rel="tag"># spring-04-3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/07/04/动态代理/" rel="next" title="动态代理">
+                <i class="fa fa-chevron-left"></i> 动态代理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/07/06/spring整合servlet/" rel="prev" title="spring整合servlet">
+                spring整合servlet <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#大家不懂可以留言我-虽然我也很菜"><span class="nav-number">1.</span> <span class="nav-text">大家不懂可以留言我,虽然我也很菜</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring事务管理"><span class="nav-number">2.</span> <span class="nav-text">spring事务管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转账案例-手动管理事务-了解就可以了"><span class="nav-number">3.</span> <span class="nav-text">转账案例_手动管理事务(了解就可以了 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转账案例-spring用工厂bean生成代理半自动管理事务-了解"><span class="nav-number">4.</span> <span class="nav-text">转账案例_spring用工厂bean生成代理半自动管理事务(了解)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring基于AOP的事务管理-这个要掌握"><span class="nav-number">5.</span> <span class="nav-text">spring基于AOP的事务管理(这个要掌握)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring基于注解的事务管理-这个也要掌握"><span class="nav-number">6.</span> <span class="nav-text">spring基于注解的事务管理(这个也要掌握)</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

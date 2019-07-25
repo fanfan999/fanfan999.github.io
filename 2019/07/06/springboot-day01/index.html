@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="有不懂的可以留言我,我尽力帮你哈哈哈 springboot的特点轻松创建spring应用程序. 内嵌tomcat,jetty等web容器,不需要部署war文件(我们之前的项目都是要将文件打包成war包然后放到tomcat中再运行的). 简化了第三方jar包的引用,通过提供的一系列的”starter(启动器)”来简化Maven的配置,不需要添加很多依赖包. 开箱即用,尽可能自动配置spring. s">
+<meta name="keywords" content="springboot_day01">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot_day01">
+<meta property="og:url" content="https://fanfan999.github.io/2019/07/06/springboot-day01/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="有不懂的可以留言我,我尽力帮你哈哈哈 springboot的特点轻松创建spring应用程序. 内嵌tomcat,jetty等web容器,不需要部署war文件(我们之前的项目都是要将文件打包成war包然后放到tomcat中再运行的). 简化了第三方jar包的引用,通过提供的一系列的”starter(启动器)”来简化Maven的配置,不需要添加很多依赖包. 开箱即用,尽可能自动配置spring. s">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-07T05:59:52.403Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springboot_day01">
+<meta name="twitter:description" content="有不懂的可以留言我,我尽力帮你哈哈哈 springboot的特点轻松创建spring应用程序. 内嵌tomcat,jetty等web容器,不需要部署war文件(我们之前的项目都是要将文件打包成war包然后放到tomcat中再运行的). 简化了第三方jar包的引用,通过提供的一系列的”starter(启动器)”来简化Maven的配置,不需要添加很多依赖包. 开箱即用,尽可能自动配置spring. s">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/07/06/springboot-day01/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>springboot_day01 | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/06/springboot-day01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">springboot_day01
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-06 16:45:16" itemprop="dateCreated datePublished" datetime="2019-07-06T16:45:16+08:00">2019-07-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-07 13:59:52" itemprop="dateModified" datetime="2019-07-07T13:59:52+08:00">2019-07-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="有不懂的可以留言我-我尽力帮你哈哈哈"><a href="#有不懂的可以留言我-我尽力帮你哈哈哈" class="headerlink" title="有不懂的可以留言我,我尽力帮你哈哈哈"></a>有不懂的可以留言我,我尽力帮你哈哈哈</h3><blockquote>
+<h2 id="springboot的特点"><a href="#springboot的特点" class="headerlink" title="springboot的特点"></a>springboot的特点</h2><p>轻松创建spring应用程序.</p>
+<p>内嵌tomcat,jetty等web容器,不需要部署war文件(我们之前的项目都是要将文件打包成war包然后放到tomcat中再运行的).</p>
+<p>简化了第三方jar包的引用,通过提供的一系列的”starter(启动器)”来简化Maven的配置,不需要添加很多依赖包.</p>
+<p>开箱即用,尽可能自动配置spring.</p>
+<h2 id="springboot入门案例"><a href="#springboot入门案例" class="headerlink" title="springboot入门案例"></a>springboot入门案例</h2><p>这里创建的是<strong>maven项目</strong>,关于如何创建maven项目的话,大家看我写的这篇博客: <strong><a href="https://fanfan999.github.io/fanfan999.github.io/2019/06/03/maven%E5%AD%A6%E4%B9%A0/">关于maven</a></strong></p>
+<p><strong>我们创建两个项目</strong></p>
+<blockquote>
+<ul>
+<li><p>一个<strong>war结构的maven项目(就是创建maven项目的时候使用了maven骨架中的maven-web-app那个),war结构的maven项目的使用看这篇博客: <code>[war包maven项目使用]()</code>.</strong></p>
+<blockquote>
+<ul>
+<li>war包: 是指web archive,web归档文件,以.war结尾,war包代表一个web应用程序,打包放在tomcat这样的容器的webapp目录下,启动容器就可以在上面跑的.</li>
+</ul>
+</blockquote>
+</li>
+<li><p>一个<strong>jar包的maven项目(就是创建maven项目的时候使用maven骨架中的maven-quickstart那个),这篇博客都是jar包的maven项目.</strong></p>
+<blockquote>
+<ul>
+<li>jar包: 是指java archive,java归档文件,以.jar结尾,就是我们平时导入的那些jar包,里面放的都是编译生成的class文件.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="先以jar包的maven项目为例"><a href="#先以jar包的maven项目为例" class="headerlink" title="先以jar包的maven项目为例"></a>先以jar包的maven项目为例</h2><p><strong>在pom.xml中添加spring-boot-starter-web依赖和它的父依赖,如下:</strong></p>
+</blockquote>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.1.6.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+&lt;!--添加了web启动器依赖以后,他会自动导入web-mvc需要的依赖以及自动配置依赖等-&gt;
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre><blockquote>
+<blockquote>
+<ul>
+<li><p><strong>spring-boot-parent父依赖的作用:</strong></p>
+<blockquote>
+<ul>
+<li>在pom.xml中引入<code>spring-boot-parent</code>,它用来提供相关的默认dependency management,即相关的Maven默认依赖管理,引入以后再申明其他常用的dependency依赖的时候就不需要声明version了,<strong>上面配置文件中的<code>spring-boot-starter-web</code>就没有放版本,因为它默认使用父依赖中的版本,如果没有设置父依赖,就必须设置版本属性</strong></li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>spring-boot-starter-web的作用:</strong></p>
+<blockquote>
+<ul>
+<li>这是springweb的核心组件,支持全栈式Web开发，包括Tomcat和spring-webmvc.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><strong>写一个控制器,然后写一个main方法,把程序跑起来,如下:</strong></p>
+</blockquote>
+<pre><code>/**
+ * 声明一个控制器
+ * RestController注解，相当于@Controller+@ResponseBody两个注解的结合，
+ * 返回json数据不需要在方法前面加@ResponseBody注解了,
+ * 但使用@RestController这个注解，和@Controller一样不能返回jsp,html页面，视图解析器无法解析jsp,html页面,只能直接返回return的数据
+ *
+ * 声明自动配置:相当于写了spring的配置文件
+ */
+@RestController
+@EnableAutoConfiguration
+public class HelloController {
+
+    /**
+     * 因为要通过浏览器地址栏访问,所以映射路径肯定是要有的,也就是资源路径
+     * @RequestMapping(path = &quot;/hello&quot;) = @RequestMapping(&quot;hello&quot;)
+     *  有参数的话,我们把参数放在路径后面,然后写在方法中获取,如下所示
+     * @return
+     */
+    @RequestMapping(path = &quot;/hello/{name}&quot;)
+    @ResponseBody //把返回值转换为json,声明为@RestController,这里就可以不写了
+    public String hello(@PathVariable(&quot;name&quot;) String name) {
+        return &quot;Hello Spring Boot!&quot; + name;
+    }
+
+    //启动springboot的项目
+    public static void main(String[] args) {
+        SpringApplication.run(HelloController.class, args);
+    }
+}
+
+  当访问`http://localhost:8080/hello/张三`的时候
+界面就会输出`&quot;Hello Spring Boot!&quot;张三`
+</code></pre><blockquote>
+<h2 id="springboot启动的两种方式-都是以jar方式为例"><a href="#springboot启动的两种方式-都是以jar方式为例" class="headerlink" title="springboot启动的两种方式_都是以jar方式为例"></a>springboot启动的两种方式_都是以jar方式为例</h2><p><strong>这种方式的项目不用部署到tomcat中,打包后启动main方法就相当于所有的控制器都跑起来了,就可以运行了哈哈哈.</strong></p>
+<p><strong>第一种: 如下面的例子,在每个控制器中都配置<code>EnableAutoConfiguration</code>,并使用<code>SpringApplication</code>启动程序.</strong></p>
+<blockquote>
+<p>*这种方法不推荐,因为只能启动一个控制器,也就是每个类中都要写main方法,因为一个类就是一个控制器嘛.</p>
+<ul>
+<li><strong>例如下面的这个控制器</strong></li>
+</ul>
+</blockquote>
+</blockquote>
+<pre><code>@RestController
+@EnableAutoConfiguration
+@RequestMapping(&quot;user&quot;)
+public class UserController {
+
+    //这样配置要和上面的连起来看,相当于@RequestMapping(&quot;/user/{id}&quot;)
+    @RequestMapping(&quot;{id}&quot;)
+    /**
+     * 通过id查询用户的信息
+     *
+     * 启动后在地址栏输入:http://localhost:8080/user/10
+     * 在页面上显示:{&quot;id&quot;:10,&quot;username&quot;:&quot;user&quot;,&quot;password&quot;:&quot;123&quot;}
+     */
+    public User findUserInfo(@PathVariable() int id) {
+        //User类中有id,姓名,密码三个字段,
+        User user = new User(id, &quot;user&quot;, &quot;123&quot;);
+
+        //会将user对象转换为json对象输出,就算我User类中没有toString()方法也一样
+        return user;
+    }
+
+    public static void main(String[] args) {
+            //启动springboot项目
+            SpringApplication.run(App.class, args);
+    }
+
+}
+
+启动之后,当访问`http://localhost:8080/user/10`的时候
+界面就会输出: {&quot;id&quot;:18,&quot;username&quot;:&quot;user&quot;,&quot;password&quot;:&quot;123&quot;}
+</code></pre><blockquote>
+<p><strong>第二种: 自己创建一个类,假设为<code>App类</code>,在该类里面配置两个东西(推荐使用),如下:</strong></p>
+</blockquote>
+<pre><code>/**
+ * @ComponentScan()中的参数
+ *      basePackages={&quot;包1&quot;,&quot;包2&quot;,...},它的参数是一个数组,
+ *          表示这个包下面的类的控制器都会被扫描
+ *          而且包路径是相对路径,相对于以java为名的这个包,如果为java.springboot.controller只需要写springboot.controller就可以了
+ */
+@EnableAutoConfiguration
+@ComponentScan(basePackages = {&quot;springboot.controller&quot;,&quot;springboot.model&quot;})
+public class App {
+    public static void main(String[] args) {
+        //启动springboot项目
+        SpringApplication.run(App.class, args);
+    }
+}
+
+此时上面两个控制器的main方法还有@EnableAutoConfiguration都可以删掉了
+App类的main方法启动之后,就相当于HelloController和UserController两个控制器都运行了
+    输入对应的网址都可以访问到两个控制器对应的方法,得到相应的输出
+    与各自运行main方法效果完全一致
+</code></pre><blockquote>
+<h2 id="springboot的依赖介绍"><a href="#springboot的依赖介绍" class="headerlink" title="springboot的依赖介绍"></a>springboot的<code>依赖</code>介绍</h2><p>maven项目的核心就是pom.xml文件,POM( Project Object Model，项目对象模型)定义了项目的基本信息，用于描述项目如何构建，声明项目依赖等。</p>
+<p><strong>EnableAutoConfiguration</strong></p>
+<blockquote>
+<ul>
+<li><p>这个注解的作用在于让springboot根据应用所声明的依赖来对spring框架进行自动配置,减少开发人员的工作量,就相当于<strong>applicationPageContext</strong>的功能.</p>
+</li>
+<li><p>springboot推荐采用基于java注解的配置方式而不是传统的xml,只需要在主配置java类上添加<code>@EnableAutoConfiguration</code>注解就可以启动自动配置.</p>
+</li>
+</ul>
+<p><strong>* @RestController(设置该类为控制器)</strong>和<strong>@RequestMapping(配置映射路径)</strong>由springmvc提供,用来创建rest服务,本身和springboot冒的关系.</p>
+</blockquote>
+<p><strong>spring-boot-starter</strong>: 核心pom,包含自动配置支持,日志库以及对YAML配置文件的支持.</p>
+<p><strong>spring-boot-starter-web:</strong> 这是springweb的核心组件,支持全栈Web开发，包括Tomcat和spring-webmvc.</p>
+<p><strong>spring-boot-starter-amqp:</strong> 通过 spring-rabbit 支持 AMQP</p>
+<p><strong>spring-boot-starter-aop:</strong> 包含 spring-aop 和 AspectJ 来支持面向切面编程（AOP）.</p>
+<p><strong>spring-boot-starter-batch:</strong> 支持 Spring Batch，包含 HSQLDB。</p>
+<p><strong>spring-boot-starter-data-jpa:</strong> 包含 spring-data-jpa、spring-orm 和 Hibernate 来支持 JPA。</p>
+<p><strong>spring-boot-starter-data-mongodb:</strong> 包含 spring-data-mongodb 来支持 MongoDB。</p>
+<p><strong>spring-boot-starter-data-rest:</strong> 通过 spring-&gt;data-rest-webmvc 支持以 REST 方式暴露 Spring Data 仓库。</p>
+<p><strong>spring-boot-starter-jdbc:</strong> 支持使用 JDBC 访问数据库.</p>
+<p><strong>spring-boot-starter-security:</strong> 包含 spring-security。</p>
+<p><strong>spring-boot-starter-test:</strong> 包含常用的测试所需的依赖，如 JUnit、Hamcrest、Mockito 和 spring-test 等。</p>
+<p><strong>spring-boot-starter-velocity:</strong> 支持使用 Velocity 作为模板引擎。</p>
+<p><strong>spring-boot-starter-websocket:</strong> 支持使用 Tomcat 开发 WebSocket 应用。</p>
+<p><strong>spring-boot-starter-ws:</strong> 支持Spring Web Services</p>
+<p><strong>spring-boot-starter-actuator:</strong> 添加适用于生产环境的功能，如性能指标和监测等功能。</p>
+<p><strong>spring-boot-starter-remote-shell:</strong> 添加远程 SSH 支持</p>
+<p><strong>spring-boot-starter-jetty:</strong> 使用 Jetty 而不是默认的 Tomcat 作为应用服务器。</p>
+<p><strong>spring-boot-starter-log4j:</strong> 添加 Log4j 的支持</p>
+<p><strong>spring-boot-starter-logging:</strong> 使用 Spring Boot 默认的日志框架 Logback</p>
+<p><strong>spring-boot-starter-tomcat:</strong> 使用 Spring Boot 默认的 Tomcat 作为应用服务器。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/springboot-day01/" rel="tag"># springboot_day01</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/07/06/spring整合servlet/" rel="next" title="spring整合servlet">
+                <i class="fa fa-chevron-left"></i> spring整合servlet
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/07/07/springboot-day01_2/" rel="prev" title="springboot-day01_2">
+                springboot-day01_2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#有不懂的可以留言我-我尽力帮你哈哈哈"><span class="nav-number">1.</span> <span class="nav-text">有不懂的可以留言我,我尽力帮你哈哈哈</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot的特点"><span class="nav-number"></span> <span class="nav-text">springboot的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot入门案例"><span class="nav-number"></span> <span class="nav-text">springboot入门案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先以jar包的maven项目为例"><span class="nav-number"></span> <span class="nav-text">先以jar包的maven项目为例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot启动的两种方式-都是以jar方式为例"><span class="nav-number"></span> <span class="nav-text">springboot启动的两种方式_都是以jar方式为例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot的依赖介绍"><span class="nav-number"></span> <span class="nav-text">springboot的依赖介绍</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
