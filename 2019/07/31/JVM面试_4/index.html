@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/fanfan999.github.io/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/fanfan999.github.io/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fanfan999.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/fanfan999.github.io/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/fanfan999.github.io/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/fanfan999.github.io/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/fanfan999.github.io/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/fanfan999.github.io/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/fanfan999.github.io/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="关于java内存模型我还没怎么整明白,我先写着,大家先看看jvm内存模型的面试题先 java内存模型简介  内存简介:  计算机所有程序都是在内存中运行的.在程序执行的过程中,需要不断地将内存的逻辑地址和物理地址进行映射,找到相关的指令和数据去执行.32位处理器: 2^32的可寻址范围,即4G.64位处理器: 2^64的可寻址范围.内存中地址空间的划分   内核空间 用户空间(java程序使用的就">
+<meta name="keywords" content="JVM面试_4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM面试_4">
+<meta property="og:url" content="https://fanfan999.github.io/2019/07/31/JVM面试_4/index.html">
+<meta property="og:site_name" content="A Kid">
+<meta property="og:description" content="关于java内存模型我还没怎么整明白,我先写着,大家先看看jvm内存模型的面试题先 java内存模型简介  内存简介:  计算机所有程序都是在内存中运行的.在程序执行的过程中,需要不断地将内存的逻辑地址和物理地址进行映射,找到相关的指令和数据去执行.32位处理器: 2^32的可寻址范围,即4G.64位处理器: 2^64的可寻址范围.内存中地址空间的划分   内核空间 用户空间(java程序使用的就">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019073113200779.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731132501492.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731133048850.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731134743843.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731141620370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731151906379.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731152501738.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731154301709.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731154941250.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731155108288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731155313123.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731164820930.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731184658849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019073116495896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190731165020567.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-07-31T12:50:04.563Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM面试_4">
+<meta name="twitter:description" content="关于java内存模型我还没怎么整明白,我先写着,大家先看看jvm内存模型的面试题先 java内存模型简介  内存简介:  计算机所有程序都是在内存中运行的.在程序执行的过程中,需要不断地将内存的逻辑地址和物理地址进行映射,找到相关的指令和数据去执行.32位处理器: 2^32的可寻址范围,即4G.64位处理器: 2^64的可寻址范围.内存中地址空间的划分   内核空间 用户空间(java程序使用的就">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019073113200779.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://fanfan999.github.io/2019/07/31/JVM面试_4/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JVM面试_4 | A Kid</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/fanfan999.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">A Kid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/fanfan999.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/31/JVM面试_4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM面试_4
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-31 13:16:07 / Modified: 20:50:04" itemprop="dateCreated datePublished" datetime="2019-07-31T13:16:07+08:00">2019-07-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>关于java内存模型我还没怎么整明白,我先写着,大家先看看jvm内存模型的面试题先</strong></p>
+<font color="orange">java内存模型简介</font>
+
+<font color="red">内存简介: </font> 计算机所有程序都是在内存中运行的.<br><br>在程序执行的过程中,需要<strong>不断地将内存的逻辑地址和物理地址进行映射,找到相关的指令和数据去执行.</strong><br><img src="https://img-blog.csdnimg.cn/2019073113200779.png" alt="在这里插入图片描述"><br>32位处理器: 2^32的可寻址范围,即4G.<br>64位处理器: 2^64的可寻址范围.<br><br><font color="orange">内存中地址空间的划分</font>
+
+<ol>
+<li>内核空间</li>
+<li>用户空间(java程序使用的就是这个)<br><img src="https://img-blog.csdnimg.cn/20190731132501492.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>emm,我在这里先粗暴的认为<strong>java内存模型</strong>包括<code>用户空间</code>和<code>内核空间</code>,而<strong>用户空间就包括运行时数据区(jvm内存模型)</strong></li>
+</ol>
+<font color="orange"><strong>JVM</strong>内存模型–JDK8下</font>
+
+<p>java程序<strong>运行在虚拟机之上</strong>,运行时需要<code>内存空间</code>,<strong>虚拟机执行java程序的过程中,会把它管理的内存划分为不同的数据区域</strong>.</p>
+<font color="red">从线程角度看:</font>
+
+<p><img src="https://img-blog.csdnimg.cn/20190731133048850.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>线程私有:</strong> 程序计数器,虚拟机栈,本地方法栈.<br><strong>线程共享:</strong> MetaSpace(元空间,可以就理解为方法区,<code>方法区是一种规范,而元空间是一种实现</code>), java堆.</p>
+<hr>
+<font color="orange">java内存模型之线程独占部分</font>
+
+<font color="orange">程序计数器</font>
+
+<ul>
+<li>它是一块较小的内存空间,它的作用: <strong>可以看作是当前线程执行的字节码文件的行号指示器</strong>,它是一个<code>逻辑计数器</code>,不是物理计数器.</li>
+<li>字节码解释器工作时,就是<strong>通过改变计数器的值来选取下一条需要执行的字节码指令</strong>.</li>
+<li><strong>为了保证线程切换后能恢复到正确的执行位置</strong>,计数器和线程是一对一的关系,即<strong>“线程私有”</strong>.</li>
+<li>如果当前线程执行的是<strong>java方法</strong>,这个计数器记录的就是<strong>正在执行的虚拟机字节码指令的地址</strong>;而如果是<strong>Native方法那这个计数器则为Undefined</strong>.</li>
+<li>不会发生内存泄漏.</li>
+</ul>
+<hr>
+<font color="orange">java虚拟机栈</font>
+
+<ul>
+<li>可以认为是<strong>java方法执行时的内存模型</strong>.</li>
+<li>每个方法被执行时都会创建一个栈帧(<code>栈帧中包含的数据如图所示</code>),每个方法的执行,对应栈帧的入栈虚拟机到出虚拟机栈(<code>所以栈不需要GC,它会自动滚蛋</code>)的过程,<strong>虚拟机栈中包含多个栈帧</strong>.</li>
+<li>会出现<code>java.lang.StackOverflowError异常</code>以及<code>java.lang.OutOfMemoryError异常</code>.</li>
+<li>栈帧所包含的内容如图所示:<br><img src="https://img-blog.csdnimg.cn/20190731134743843.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>局部变量表:</strong> 一般都是一个数组,包含方法执行过程中的所有变量(<strong>this啊,布尔啊,对象引用啊各种类型的都包括</strong>).</li>
+</ul>
+<p><strong>操作数栈(在执行字节码指令过程中使用,即它代表着执行代码的操作):</strong> 主要包括<code>入栈,出栈,复制,交换,产生消费变量</code>几个步骤.</p>
+<p><code>局部变量表主要是为操作数栈进行数据支持.</code></p>
+<p><strong>举例:</strong><br><img src="https://img-blog.csdnimg.cn/20190731141620370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>如图所示: <code>每个长方形代表一个栈帧(随时都只有一个哈,只是为了表示执行步骤才这么画的)</code>,操作数栈的深度为2,<code>局部变量表的深度为3</code>,store表示出操作数栈,<code>load表示入操作数栈.</code></p>
+<hr>
+<font color="brown">递归为什么会引发java.lang.StackOverflowError异常</font>
+
+<p>当<strong>线程执行一个方法时,就会随之创建一个栈帧</strong>,同时会将栈帧压入到虚拟机栈中,当<code>方法执行完毕后,就会将栈帧出栈</code>,由此我们可以知道,<em>线程当前执行的方法所对应的栈帧一定是在java虚拟机栈顶</em>.</p>
+<p>而递归函数不断去调用自身,每次方法调用会涉及下面几个步骤:<br>-. 每次<strong>方法调用都会生成一个栈帧</strong>.<br>-. 同时它<code>会保存当前方法的栈帧状态</code>,将其置于虚拟机栈中.<br>-. 栈帧上下文切换的时候,会切换到最新的方法栈帧当中.<br><code>由于我们每个虚拟机的虚拟机栈的深度是固定的,每次递归调用会导致栈深度的增加,当我们递归次数太多了之后,压入的栈帧数会超过虚拟机栈深度,就报错了</code>.</p>
+<hr>
+<font color="brown">虚拟机栈为什么会引发java.lang.OutOfMemoruError异常</font>
+
+<p>当虚拟机栈可以动态扩展时,如果无法申请足够多的内存,就会抛出这个异常.</p>
+<hr>
+<font color="brown">本地方法栈</font>
+
+<ul>
+<li>本地方法栈与虚拟机栈类似,其<strong>主要作用于标注为native的方法</strong>. </li>
+</ul>
+<hr>
+<font color="orange">java内存模型之线程共享部分</font><br><font color="brown">元空间与永久代的区别</font>
+
+<p>在JDK8及以后,开始<strong>将类的元数据放到本地堆内存中</strong>,这一块区域就叫做<strong>元空间(但是习惯上我们还是将其当做方法区看待,也就是说还是当做在堆外面)</strong>,该区域在JDK7及以前都是属于永久代的.<br>元空间和永久代都是用来存储<code>class的相关信息</code>,包括<strong>class对象的方法和字段</strong>等.<br>同时我们要注意:<code>元空间和永久代均是方法区的实现,只是实现有所不同.</code><br>方法区只是jvm的一种规范,在jdk7之后,原先位于方法区里的<code>字符串常量池</code>被移到了<code>java堆</code>中,并且在<strong>JDK8及其之后,使用元空间替代了永久代</strong>.</p>
+<ul>
+<li>元空间使用本地内存,而永久代使用的是jvm的内存.</li>
+<li>元空间没有字符串常量池(这也就说明,我们还是可以把元空间看成一个独立的部分的).</li>
+</ul>
+<hr>
+<font color="brown">MetaSpace相对于PermGen的优势</font><br> - 字符串常量池存在于永久代中,容易出现性能问题和内存溢出.<br> - 类和方法的信息大小难以确定,给永久代的大小指定带来困难.<br> - 永久代会为GC带来不必要的复杂性.<br> - 方便HotSpot和其他jvm(没有永久代)和Jrockit的集成.<br><br>—<br><font color="brown">java堆</font><br> - 它是<code>对象实例的分配区域</code>,是java虚拟机管理的最大的一块,<strong>被所有线程共享</strong>,在<code>虚拟机启动时创建</code>.<br> - java堆可以处于<strong>物理上不连续的内存空间</strong>中,只要<strong>逻辑上是连续的</strong>即可,当前主流的虚拟机都是按照可扩展实现的,通过<code>-Xmx设置最大值和-Xms设置最小值</code>,如果<strong>在堆中没有内存完成实例分配并且堆也无法再扩展</strong>时,将会抛出<code>OutOfMemory异常</code>.<br> - java对是GC的主要区域,可以分为以下几个部分:<br><img src="https://img-blog.csdnimg.cn/20190731151906379.png" alt="在这里插入图片描述"><br><font color="orange">JVM三大性能调优参数:-Xms, -Xmx, -Xss的含义</font><br><img src="https://img-blog.csdnimg.cn/20190731152501738.png" alt="在这里插入图片描述"><br><br> - <strong>-Xss:</strong> 规定了<code>每个线程虚拟机栈(即堆栈)的大小,默认情况是256k</code>,此配置将会影响此<strong>进程中并发线程数的大小</strong>.<br> - <strong>-Xms:</strong> 堆的初始值,即<code>该进程刚创建出来的时候,其专属java堆的大小</code>,一旦<strong>对象容量超过了java初始堆的容量,java堆就会自动扩容至-Xmx大小</strong>.<br> - <strong>-Xmx:</strong> 堆能达到的最大值,通常情况下,我们都将<code>-Xms</code>和<code>-Xmx</code>设置为一样的.<br><br><font color="orange">Java内存模型中的内存分配策略</font><br>内存分配策略有三种,分别为:<br><br> 1. <strong>静态存储:</strong> <strong>编译时</strong>确定<strong>每个数据目标在运行时的存储空间需求</strong>,因而在编译时就能给他们分配固定的内存空间,<code>这就要求代码里不能有可变数据结构或者嵌套递归等的出现</code>.<br> 2. <strong>栈式存储:</strong> 该分配可称为<strong>动态的存储分配</strong>,是由一个类似于堆栈的运行栈来实现的,和静态存储的分配方式相反,<strong>数据区需求在编译期未知,运行时才能知道,但是在进入一个程序模块的时候<code>必须</code>要知道数据区所需大小,以此为其分配内存</strong>.<br> 3. <strong>堆式存储:</strong> 编译时或运行时进入程序模块时都无法确定数据区大小,<strong>动态分配</strong>,比如<code>对象实例和可变长度串</code>.<br><br><font color="orange">Java内存模型中堆和栈的联系</font>
+
+<p>创建<code>对象</code>,<code>数组</code>时,栈中可以定义变量(<code>被称为对象和数组的引用变量</code>)用于保存该对象在<code>堆中的首地址</code>.<br><img src="https://img-blog.csdnimg.cn/20190731154301709.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<font color="orange">Java内存模型中堆和栈的区别</font>
+
+<ol>
+<li><strong>管理方式:</strong> 栈自动释放,堆需要GC.</li>
+<li><strong>空间大小:</strong> 栈比堆小.</li>
+<li><strong>碎片数量:</strong> 栈产生的碎片远小于堆.</li>
+<li><strong>内存分配方式:</strong> 栈支持静态和动态分配,而堆仅支持动态分配.</li>
+<li><strong>效率:</strong> 栈的效率比堆高.</li>
+</ol>
+<font color="orange">元空间,堆,线程独占部分间的联系</font>
+
+<p><strong>例子如图:</strong><br><img src="https://img-blog.csdnimg.cn/20190731154941250.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<font color="red"> 从内存角度看上面的代码</font><br><img src="https://img-blog.csdnimg.cn/20190731155108288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><br><font color="orange">不同JDK版本之间的intern()的区别–JDK6 VS JDK6+</font>
+
+<p><strong>intern()方法的用法:</strong><br><img src="https://img-blog.csdnimg.cn/20190731155313123.png" alt="在这里插入图片描述"><br><code>JDK6:</code> 当<strong>调用intern()方法</strong>时,如果<code>字符串常量池先前已有该字符串对象值</code>,则返回池中<strong>该字符串的地址</strong>,否则,<strong>将此字符串对象添加到字符串常量池中</strong>,并且返回该字符串的地址.</p>
+<p><code>JDK6+:</code> 当<strong>调用intern()方法</strong>时,如果<code>字符串常量池先前已经有该字符串对象值</code>,则返回<strong>池中该字符串常量池的地址</strong>.,如果<strong>该字符串对象已经存在于java堆中但还没有将值加载到字符串常量池中</strong>,则将堆中<code>此对象的引用添加到字符串常量池</code>中,并且<strong>返回该引用</strong>;如果<strong>堆中不存在,则在池中创建该字符串,同时在堆中创建String对象,并返回String对象的引用(注意不是值在字符串常量池中的地址哈).</strong></p>
+<p>JDK6之前,<code>字符串常量池中仅会添加字符串对象或者堆中字符串对象的副本,虽然也是字符串对象</code>,而JDK6以后,字符串常量池中不仅可以添加字符串对象,<strong>还可以添加字符串对象在堆中的引用</strong>.</p>
+<hr>
+<p><strong>JDK1.8</strong></p>
+<font color="brown">运行结果:</font><br><img src="https://img-blog.csdnimg.cn/20190731164820930.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><font color="brown">运行过程分析:</font><br><img src="https://img-blog.csdnimg.cn/20190731184658849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>对于<strong>jdk7及其以上版本而言,由于运行时常量池中可以放引用了,所以两个地址有可能一样</strong><br><br> 1. <strong>string s = new string(“a”);</strong> 它会先在<code>字符串常量池中创建一个a</code>,然后在<code>堆中创建一个对象</code>,同时使得<strong>对象引用s指向堆中的对象</strong>.<br> 2. <strong>s.intern();</strong> 首先会去字符串常量池中看有没有<code>a</code>这个值,如果有,直接<strong>返回其在字符串常量池中的地址</strong>,如果没有,他就会将对象的引用放到字符串常量池中.<br> 3. <strong>String s2 = “a”;</strong> 此时它会去字符串常量池中去找看有没有<code>a</code>的存在,<strong>有就直接返回其在字符串常量池中的地址</strong>,没有就会在字符串常量池中创建一个<code>a</code>.<br> 4. <strong>System.out.println(s == s2);</strong> 此时我们通过上面的分析可以知道,<strong>s指向的是堆中的地址,而s2指向的时常量池中a的地址</strong>,所以<code>肯定不相等</code>啦!<br> 5. <strong>String s3 = new String(“a”) + new String(“a”);</strong> 它<code>首先会在堆中创建两个值为a的对象</code>,由于<strong>此时a在字符串常量池中有了</strong>,所以<strong>不会在字符串常量池中创建</strong>,然后<code>创建一个</code>aa<code>的对象</code>,但是<font color="red">注意此时不会在常量池中创建<code>ab</code>这个值.</font>然后使s3指向<code>堆中值为ab的对象</code>.<br> 6. <strong>s3.intern();</strong> 它去字符串常量池中去找有没有<code>aa</code>这个值,<code>发现没有哈哈哈^^</code>,然后它就会把<code>值为aa的对象的引用放到字符串常量池中去(也就是其地址)</code>.<br> 7. <strong>String s4 = “aa”;</strong> 它去字符串常量池中找,发现字符串常量池中有<code>aa</code>这个值,直接返回其地址<strong>(该地址也是堆中值为aa对象的地址)</strong>.<br> 8. <strong>System.out.println(s3 == s4);</strong> 两个指向的都是<code>堆中值为aa的对象地址</code>,你说相等不相等嘿嘿嘿.<br><br><font color="brown">所以说,当直接创建字符串的时候,会自动在字符串常量池中创建对应的值,但是通过+连接两个字符串对象的时候就不会去字符串常量池创建对应的值</font>
+
+<hr>
+<p><strong>JDK1.6</strong></p>
+<p><font color="brown">运行结果:</font><br><img src="https://img-blog.csdnimg.cn/2019073116495896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><font color="brown">运行过程分析:</font><br><img src="https://img-blog.csdnimg.cn/20190731165020567.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMjIzMTU1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>JDK6及以前,都是放副本进去,所以说肯定不可能一样</strong>.</p>
+<ol>
+<li><strong>string s = new string(“a”);</strong> 它会先在<code>字符串常量池中创建一个a</code>,然后在<code>堆中创建一个对象</code>,同时使得<strong>对象引用s指向堆中的对象</strong>.<ol start="2">
+<li><strong>s.intern();</strong> 首先会去字符串常量池中看有没有<code>a</code>这个值,如果有,直接<strong>返回其在字符串常量池中的地址</strong>,如果没有,他就会将对象的引用放到字符串常量池中.</li>
+<li><strong>String s2 = “a”;</strong> 此时它会去字符串常量池中去找看有没有<code>a</code>的存在,<strong>有就直接返回其在字符串常量池中的地址</strong>,没有就会在字符串常量池中创建一个<code>a</code>.</li>
+<li><strong>System.out.println(s == s2);</strong> 此时我们通过上面的分析可以知道,<strong>s指向的是堆中的地址,而s2指向的时常量池中a的地址</strong>,所以<code>肯定不相等</code>啦!</li>
+<li><strong>String s3 = new String(“a”) + new String(“a”);</strong> 它<code>首先会在堆中创建两个值为a的对象</code>,由于<strong>此时a在字符串常量池中有了</strong>,所以<strong>不会在字符串常量池中创建</strong>,然后<code>创建一个</code>aa<code>的对象</code>,但是<font color="red">注意此时不会在常量池中创建<code>ab</code>这个值.</font>然后使s3指向<code>堆中值为ab的对象</code>.</li>
+<li><strong>s3.intern();</strong> 它去字符串常量池中去找有没有<code>aa</code>这个值,<code>发现没有哈哈哈^^</code>,然后它就会把<code>值为aa的对象的副本(注意是副本)放到字符串常量池中去(也就是值为</code>aa<code>的字符串)</code>.</li>
+<li><strong>String s4 = “aa”;</strong> 它去字符串常量池中找,发现字符串常量池中有<code>aa</code>这个值,直接返回其地址<strong>(该地址是字符串常量池中aa字符串的的地址)</strong>.</li>
+<li><strong>System.out.println(s3 == s4);</strong> <strong>s3指向的是堆中值为<code>aa</code>的对象地址</strong>,而s<strong>4指向的是字符串常量池中<code>aa</code>字符串的地址</strong>,当然不相等啦嘿嘿嘿.</li>
+</ol>
+</li>
+</ol>
+<p><font color="orange">一个小小的时间线:</font></p>
+<ol>
+<li>jdk7运行时常量池被放到了堆中,同时intern()方法有了些许改变</li>
+<li>jdk8以后用元空间取代了永久代</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/fanfan999.github.io/tags/JVM面试-4/" rel="tag"># JVM面试_4</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/07/30/JVM面试_3/" rel="next" title="JVM面试_3">
+                <i class="fa fa-chevron-left"></i> JVM面试_3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/fanfan999.github.io/2019/08/01/mybatis_5/" rel="prev" title="mybatis_5">
+                mybatis_5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Fanfan999</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/fanfan999.github.io/archives/">
+                
+                    <span class="site-state-item-count">126</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/fanfan999.github.io/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/fanfan999.github.io/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">121</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanfan999" title="GitHub &rarr; https://github.com/fanfan999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/qq_41223155" title="CSDN &rarr; https://blog.csdn.net/qq_41223155" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fanfan999</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/fanfan999.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/fanfan999.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/utils.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/fanfan999.github.io/js/affix.js?v=7.1.0"></script>
+
+  <script src="/fanfan999.github.io/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/fanfan999.github.io/js/scrollspy.js?v=7.1.0"></script>
+<script src="/fanfan999.github.io/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/fanfan999.github.io/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/fanfan999.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/25/链表部分经典题目/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/25/数据库考点_4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -393,7 +393,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/06/25/链表部分经典题目/" class="post-title-link" itemprop="url">链表部分经典题目</a>
+                <a href="/fanfan999.github.io/2019/07/25/数据库考点_4/" class="post-title-link" itemprop="url">数据库考点_4</a>
               
             
           </h1>
@@ -418,7 +418,7 @@
                 
               
 
-              <time title="Created: 2019-06-25 08:16:35 / Modified: 13:18:45" itemprop="dateCreated datePublished" datetime="2019-06-25T08:16:35+08:00">2019-06-25</time>
+              <time title="Created: 2019-07-25 10:24:10 / Modified: 12:35:45" itemprop="dateCreated datePublished" datetime="2019-07-25T10:24:10+08:00">2019-07-25</time>
             
 
             
@@ -440,7 +440,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/链表/" itemprop="url" rel="index"><span itemprop="name">链表</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
 
                 
                 
@@ -478,17 +478,26 @@
         
           
             <p>
-              不懂的话就给我留言吧,虽然我也菜
-题目一: 如何判断一个单链表是否有环?有环的话返回进入环的第一个节点,无环的话返回空
-要求: 如果链表长度为N,请做到时间复杂度为O(N),额外空间复杂度为O(1),注意这个题目的隐含条件是没有重复元素
+              
 
-思路1: 如果没有额外空间复杂度的限制的话,我们可以用哈希表
+如何定位并优化慢查询sql(慢查询语句只会是DML,数据操作语言)
+
+这个问题属于开放性的题目,具体场景需要具体分析,这里给个大致思路
+
+
+根据慢日志定位慢查询sql.
+使用explain等工具分析sql.
+修改sql或者尽量让sql走索引.
+
+1. 根据慢日志定位慢查询sql
+
+慢日志的作用就
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/25/链表部分经典题目/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/25/数据库考点_4/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -548,7 +557,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/24/序列化和反序列化/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/25/数据库考点_3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -568,7 +577,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/06/24/序列化和反序列化/" class="post-title-link" itemprop="url">序列化和反序列化</a>
+                <a href="/fanfan999.github.io/2019/07/25/数据库考点_3/" class="post-title-link" itemprop="url">Untitled</a>
               
             
           </h1>
@@ -593,7 +602,7 @@
                 
               
 
-              <time title="Created: 2019-06-24 18:49:33 / Modified: 21:27:05" itemprop="dateCreated datePublished" datetime="2019-06-24T18:49:33+08:00">2019-06-24</time>
+              <time title="Created: 2019-07-25 00:08:30 / Modified: 10:28:22" itemprop="dateCreated datePublished" datetime="2019-07-25T00:08:30+08:00">2019-07-25</time>
             
 
             
@@ -603,24 +612,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/javase/" itemprop="url" rel="index"><span itemprop="name">javase</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -653,24 +644,15 @@
         
           
             <p>
-              
-序列化流
-序列化
+              这篇文章加了很多我的理解哈,反正网上的千篇一律,一股脑的写上我感觉也没怎么自己思考,要是有大佬看到哪里有错多谢大佬指正!!!!
 
-java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,实现对对象的持久存储,通俗来说,就是把对象以流的方式写入到文件中叫序列化.
-
-
-
-
-
-
-构造方法: public ObjectOutputStream(OutputStream ou
+写在前面我自己理解的点: - 我的理解是:密集索引和稀疏索引和下面写的聚簇索引和非聚簇索引一样,只是索引的一种具体存储方式(怎么说呢,就是理解为B+Tree怎么具体存储的
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/24/序列化和反序列化/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/25/数据库考点_3/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -730,7 +712,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/24/spring-02_2/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/24/数据库考点_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -750,7 +732,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/06/24/spring-02_2/" class="post-title-link" itemprop="url">spring-02_2</a>
+                <a href="/fanfan999.github.io/2019/07/24/数据库考点_1/" class="post-title-link" itemprop="url">数据库考点_1</a>
               
             
           </h1>
@@ -775,7 +757,893 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
                 
               
 
-              <time title="Created: 2019-06-24 14:19:57" itemprop="dateCreated datePublished" datetime="2019-06-24T14:19:57+08:00">2019-06-24</time>
+              <time title="Created: 2019-07-24 13:56:12 / Modified: 15:09:39" itemprop="dateCreated datePublished" datetime="2019-07-24T13:56:12+08:00">2019-07-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+                
+
+
+关系型数据库和非关系型数据库的区别 
+
+简单来说:1.关系型数据库通过 外键关联 来建立表与表之间的关系2.非关系型数据库通常指 数据以对象的形式存储在数据库中，而对象之间的关系通过每个对象自身的属性来决定
+ 比如 有一个学生的数据：
+
+       姓名：张三，性别：男，学号：12345
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/fanfan999.github.io/2019/07/24/数据库考点_1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/24/数据库考点_2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/fanfan999.github.io/2019/07/24/数据库考点_2/" class="post-title-link" itemprop="url">数据库考点_2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-24 13:56:12 / Modified: 16:44:14" itemprop="dateCreated datePublished" datetime="2019-07-24T13:56:12+08:00">2019-07-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              二叉查找树作为索引
+
+优点:
+
+因为二叉查找树是有序的,左孩子都比父节点小,右孩子都比父节点大,所以其查找效率很高,类似于二分查找可以达到O(logN).
+缺点:
+
+当二叉查找树的结构变成了下图右边这种结构之后,时间复杂度就会变成O(N).
+B-Tree作为索引
+
+B-Tree就是平衡多路查找树,如
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/fanfan999.github.io/2019/07/24/数据库考点_2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/24/mybatis_4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/fanfan999.github.io/2019/07/24/mybatis_4/" class="post-title-link" itemprop="url">mybatis_4</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-24 11:08:27 / Modified: 11:07:48" itemprop="dateCreated datePublished" datetime="2019-07-24T11:08:27+08:00">2019-07-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              mybatis动态代理
+
+我们之前写StudentDao的实现类的时候,很多实现方法都是大同小异的,所以就导致代码重复度很高,所以我们可以偷懒不写哈哈哈,让mybatis自动去给我们生成这个类,我们只需要写一个接口就可以了
+关于动态代理,大家可以移步我这篇博客: 动态代理
+
+在mybatis里,动态
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/fanfan999.github.io/2019/07/24/mybatis_4/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/23/计算机网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/fanfan999.github.io/2019/07/23/计算机网络/" class="post-title-link" itemprop="url">计算机网络_HTTP与HTTPS的区别</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-23 13:50:36 / Modified: 16:53:09" itemprop="dateCreated datePublished" datetime="2019-07-23T13:50:36+08:00">2019-07-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              
+
+HTTPS简介
+
+HTTPS(Hypertext Transfer Protocol Secure),即超文本传输安全协议, 它是一种以计算机网络安全通信为目的的传输协议.
+它相对于HTTP来说,多了一个SSL(TLS)层,从而具有了保护数据安全以及完整性,并且提供了对网站服务器进行认证的功能,
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/fanfan999.github.io/2019/07/23/计算机网络/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/23/mybatis-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/fanfan999.github.io/2019/07/23/mybatis-3/" class="post-title-link" itemprop="url">mybatis_3</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-23 11:08:27 / Modified: 20:56:14" itemprop="dateCreated datePublished" datetime="2019-07-23T11:08:27+08:00">2019-07-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              原生态mybatis实现增删查改操作
+
+我把整个项目都放这里,大家可以去下载下来自己看一眼,改一下数据库的配置信息就可以了,以及记得去下载lombok插件,不然会因为没有get/set方法报错,或者自己手动生成一下get/set方法也可以,然后emm,有不懂的再问我吧呢.
+mybatis实现增删查改
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/fanfan999.github.io/2019/07/23/mybatis-3/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/20/mybatis-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Fanfan999">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Kid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/fanfan999.github.io/2019/07/20/mybatis-2/" class="post-title-link" itemprop="url">mybatis_2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-20 11:08:27" itemprop="dateCreated datePublished" datetime="2019-07-20T11:08:27+08:00">2019-07-20</time>
             
 
             
@@ -792,7 +1660,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-25 14:53:22" itemprop="dateModified" datetime="2019-06-25T14:53:22+08:00">2019-06-25</time>
+                <time title="Modified: 2019-07-21 10:34:46" itemprop="dateModified" datetime="2019-07-21T10:34:46+08:00">2019-07-21</time>
               
             
           </span>
@@ -809,7 +1677,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
 
                 
                 
@@ -847,36 +1715,21 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
         
           
             <p>
-              
-有问题可以留言我,虽然我也很菜
-依赖注入Bean属性(xml)
+              Mybatis主配置文件详解
 
-说白了其实就是给对象的属性赋值
+配置文件的作用
 
 
-
-手动装配,使用xml配置
-
-通过构造方法赋值
-
-例1(通过参数名赋值):
-
-
-
-
-
-
-
-
-1. 学生类部分代码:
-    private String name;
-    private int
+mybatis一共有两个配置文件(都是.xml文件):一个是映射文件mapper,一个是主配置文件文件mapper.
+主配置文件中可以注册db.properties属性文件(也就是配置数据源的文件),方便使用.
+注册实体类的全限定类名的别名
+配置M
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/24/spring-02_2/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/20/mybatis-2/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -936,7 +1789,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/23/策略模式和单例模式/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/18/计算机网络-TCP的滑窗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -956,7 +1809,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/06/23/策略模式和单例模式/" class="post-title-link" itemprop="url">策略模式和单例模式</a>
+                <a href="/fanfan999.github.io/2019/07/18/计算机网络-TCP的滑窗/" class="post-title-link" itemprop="url">计算机网络-TCP的滑窗</a>
               
             
           </h1>
@@ -981,7 +1834,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
                 
               
 
-              <time title="Created: 2019-06-23 19:36:45 / Modified: 23:23:23" itemprop="dateCreated datePublished" datetime="2019-06-23T19:36:45+08:00">2019-06-23</time>
+              <time title="Created: 2019-07-18 19:25:31 / Modified: 20:06:09" itemprop="dateCreated datePublished" datetime="2019-07-18T19:25:31+08:00">2019-07-18</time>
             
 
             
@@ -1003,7 +1856,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
 
                 
                 
@@ -1042,17 +1895,14 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
           
             <p>
               
-策略模式
-策略模式即将可变的部分(例如支付的时候选择不同的支付银行)从程序中抽离出来分离成算法接口,在该接口下分别封装一系列算法实现这个这个,这个我看了下慕课的,视频链接我放这里吧: 策略模式视频讲解
 
-
-组合: 在类中增加一个私有域,引用另一个已有的类的实例,通过调用引用实例的方法从而获得新功能
+RTTRTT(Round Trip Time): 发送一个数据包到收到对应的ACK,所花费的时间,简单来说,就是我发送一个数据包,对方给我会有一个ACK包这个过程所花费的时间.font color=orange&gt;RTORTO(Retransmission Time Out): 重传超时时间
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/23/策略模式和单例模式/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/18/计算机网络-TCP的滑窗/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1112,7 +1962,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/23/spring-02_1/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/18/计算机网络_HTTP相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1132,7 +1982,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/06/23/spring-02_1/" class="post-title-link" itemprop="url">spring-02_1</a>
+                <a href="/fanfan999.github.io/2019/07/18/计算机网络_HTTP相关/" class="post-title-link" itemprop="url">计算机网络-HTTP相关</a>
               
             
           </h1>
@@ -1157,7 +2007,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
                 
               
 
-              <time title="Created: 2019-06-23 13:23:16" itemprop="dateCreated datePublished" datetime="2019-06-23T13:23:16+08:00">2019-06-23</time>
+              <time title="Created: 2019-07-18 19:25:31" itemprop="dateCreated datePublished" datetime="2019-07-18T19:25:31+08:00">2019-07-18</time>
             
 
             
@@ -1174,7 +2024,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-24 17:02:21" itemprop="dateModified" datetime="2019-06-24T17:02:21+08:00">2019-06-24</time>
+                <time title="Modified: 2019-07-19 09:06:23" itemprop="dateModified" datetime="2019-07-19T09:06:23+08:00">2019-07-19</time>
               
             
           </span>
@@ -1191,7 +2041,7 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
 
                 
                 
@@ -1230,982 +2080,26 @@ java.io.ObjectOutputStream类,将java对象的原始数据类型写入到文件,
           
             <p>
               
-创建spring容器的三种方式创建spring容器的案例代码(只有测试类部分)
 
-/**
- * 创建spring容器的三种方式
- */
-public class TestUser {
-    public static void main(String[] args) {
-        test
+HTTP简介
+
+
+它是位于应用层的协议.
+是基于请求-响应模型的无状态的协议.
+中文名为超文本传输协议.
+基于TCP协议.
+HTTP协议定义了web客户端如何从web服务器请求web页面以及服务器如何把web页面传送给客户端.
+
+HTTP协议的主要特点:
+
+
+支持客户端/服务器模式(客户端向服务
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/23/spring-02_1/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/21/properties集合/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Fanfan999">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/fanfan999.github.io/2019/06/21/properties集合/" class="post-title-link" itemprop="url">properties集合</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-21 19:37:45 / Modified: 20:55:44" itemprop="dateCreated datePublished" datetime="2019-06-21T19:37:45+08:00">2019-06-21</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/javase/" itemprop="url" rel="index"><span itemprop="name">javase</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-Properties属性集
-它继承自hashtable类,所以也是键值对形式存储数据的双列集合,且键和值都是一个字符串,我们要注意哈,hashmap和hashtable也继承自map接口,但是hashmap是用来取代hashtable的,因为hashtabl线程不安全,键值对都不能为null之类的
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/21/properties集合/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/21/spring-01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Fanfan999">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/fanfan999.github.io/2019/06/21/spring-01/" class="post-title-link" itemprop="url">Spring-01</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-21 16:15:25" itemprop="dateCreated datePublished" datetime="2019-06-21T16:15:25+08:00">2019-06-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-24 16:57:35" itemprop="dateModified" datetime="2019-06-24T16:57:35+08:00">2019-06-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-Spring概述
-
-
-Spring是一个开源框架,肯定也是为了提高效率,简化开发啥啥的啦哈哈哈,简单来说,Spring就是一个轻量级的控制反转(IOC–Inversion of Control)和面向切面(AOP–Aspect Oriented Programming,区别于redies中持久化的
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/21/spring-01/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/20/jedis-java客户端操作redis工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Fanfan999">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/fanfan999.github.io/2019/06/20/jedis-java客户端操作redis工具/" class="post-title-link" itemprop="url">jedis_java客户端操作redis工具</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-20 16:39:51" itemprop="dateCreated datePublished" datetime="2019-06-20T16:39:51+08:00">2019-06-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-21 14:40:44" itemprop="dateModified" datetime="2019-06-21T14:40:44+08:00">2019-06-21</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-1. Jedis
-
-
-概念: 一款java操作redis数据库的工具
-使用步骤:
-
-下载jedis相关jar包: jedis的jar包.
-
-
-
-
-
-
-
-
-
-
-快速入门使用:
-
-创建一个java项目,导入jar包(maven项目就写好配置文件)
-
-
-
-
-
-
-
-
-
-
-在启动redis服务器的前提下输入
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/20/jedis-java客户端操作redis工具/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/20/Redis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Fanfan999">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/fanfan999.github.io/2019/06/20/Redis/" class="post-title-link" itemprop="url">Redis</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-20 13:14:45 / Modified: 16:39:00" itemprop="dateCreated datePublished" datetime="2019-06-20T13:14:45+08:00">2019-06-20</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-概念
-
-redis: 它是一款高性能的NOSQL(Not Only SQL)系列的非关系型数据库
-
-注意: 
-
-1.Mysql是关系型数据库,Redis是非关系型数据库
-
-
-
-
-
-
-2.对于关系型数据库,数据之间有关联关系,而且数据存储在表中(也就是硬盘的文件中)
-
-
-
-
-
-
-3.对于非关系型数据
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/20/Redis/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/06/13/随便写的但是我不太清楚的知识点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Fanfan999">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/fanfan999.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Kid">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/fanfan999.github.io/2019/06/13/随便写的但是我不太清楚的知识点/" class="post-title-link" itemprop="url">随便写的但是我不太清楚的知识点1</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-13 08:36:14" itemprop="dateCreated datePublished" datetime="2019-06-13T08:36:14+08:00">2019-06-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-20 21:26:50" itemprop="dateModified" datetime="2019-06-20T21:26:50+08:00">2019-06-20</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              位运算
-科普一个位运算符的点:
-
-&lt;&lt;读作左移,丢弃最高位,右边补0,就相当于乘以2^n
-
-
-
-
-&gt;&gt;读作右移,最高位是0,左边补齐0,最高位是1,左边补齐1,相当于除以2^n,当除不尽的时候就要自己算了
-
-
-
-
-&gt;&gt;&gt;读作无符号右移,无论最高位是0还是1,
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/06/13/随便写的但是我不太清楚的知识点/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/18/计算机网络_HTTP相关/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2254,7 +2148,7 @@ redis: 它是一款高性能的NOSQL(Not Only SQL)系列的非关系型数据库
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/fanfan999.github.io/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/fanfan999.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/fanfan999.github.io/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/fanfan999.github.io/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/fanfan999.github.io/page/9/">9</a><a class="extend next" rel="next" href="/fanfan999.github.io/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/fanfan999.github.io/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/fanfan999.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/fanfan999.github.io/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/fanfan999.github.io/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/fanfan999.github.io/page/13/">13</a><a class="extend next" rel="next" href="/fanfan999.github.io/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2296,7 +2190,7 @@ redis: 它是一款高性能的NOSQL(Not Only SQL)系列的非关系型数据库
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">126</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2355,7 +2249,9 @@ redis: 它是一款高性能的NOSQL(Not Only SQL)系列的非关系型数据库
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2534,7 +2430,87 @@ redis: 它是一款高性能的NOSQL(Not Only SQL)系列的非关系型数据库
                     
                       
                     
-                    <span class="site-state-item-count">81</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">121</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/12/哈希/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/01/JVM面试_8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -393,7 +393,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/12/哈希/" class="post-title-link" itemprop="url">哈希</a>
+                <a href="/fanfan999.github.io/2019/08/01/JVM面试_8/" class="post-title-link" itemprop="url">JVM面试_8</a>
               
             
           </h1>
@@ -418,7 +418,7 @@
                 
               
 
-              <time title="Created: 2019-07-12 16:20:31 / Modified: 20:22:47" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:31+08:00">2019-07-12</time>
+              <time title="Created: 2019-08-01 18:18:26 / Modified: 19:11:58" itemprop="dateCreated datePublished" datetime="2019-08-01T18:18:26+08:00">2019-08-01</time>
             
 
             
@@ -428,24 +428,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -478,15 +460,25 @@
         
           
             <p>
-              哈希函数和哈希表1. 什么是哈希函数
-它是一种映射关系，它可以把任意长度的输入映射到任意一个固定长度的整数值，也称为散列函数,其值是十六进制的数。
-说白了,哈希函数就是用来将key-value结构中关键字值转换为数组的下标的函数(一般都是通过取模,而且这样子在数据量很大的情况下一般是均匀分布的),然
+              
+
+老年代常见的垃圾收集器
+
+Serial Old收集器
+
+
+通过命令UseSerialOldGC可以使老年代使用该收集器回收垃圾,它使用的是标记-整理算法.
+单线程收集,进行垃圾收集时,必须暂停所有的工作线程.
+简单高效,Client模式下默认的老年代收集器
+
+
+Parallel Old收集器 1
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/12/哈希/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/01/JVM面试_8/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -546,7 +538,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/09/JVM-2/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/01/JVM面试_7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -566,7 +558,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/09/JVM-2/" class="post-title-link" itemprop="url">JVM_2</a>
+                <a href="/fanfan999.github.io/2019/08/01/JVM面试_7/" class="post-title-link" itemprop="url">JVM面试_7</a>
               
             
           </h1>
@@ -591,46 +583,16 @@
                 
               
 
-              <time title="Created: 2019-07-09 13:12:55" itemprop="dateCreated datePublished" datetime="2019-07-09T13:12:55+08:00">2019-07-09</time>
+              <time title="Created: 2019-08-01 16:13:47 / Modified: 18:18:21" itemprop="dateCreated datePublished" datetime="2019-08-01T16:13:47+08:00">2019-08-01</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-11 21:19:24" itemprop="dateModified" datetime="2019-07-11T21:19:24+08:00">2019-07-11</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -664,14 +626,20 @@
           
             <p>
               
-程序计数器,虚拟机栈,本地方法栈随线程而生,随线程而灭,他们的回收就不用过多考虑,但是方法区和堆的内存分配和回收都是动态的,GC关注的就是这部分内存.
-jvm的基本概念堆被分成新生代和老年代,新生代被分成一个Eden区和两个Survivor区(From Survivor区和 To Survivor
+
+Stop-the-World
+
+这个单词就是说,JVM由于要执行GC而停止了应用程序的执行,即除了GC的线程执行外,所有线程都处于等待状态,并且这种情况在任何一种GC算法中都会发生.多数GC优化就是通过减少Stop-the-World发生的时间来提高程序性能.
+
+Safepoint安全点
+
+形象
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/09/JVM-2/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/01/JVM面试_7/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -731,7 +699,7 @@ jvm的基本概念堆被分成新生代和老年代,新生代被分成一个Eden
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/08/JVM-1/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/01/JVM面试_6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -751,7 +719,7 @@ jvm的基本概念堆被分成新生代和老年代,新生代被分成一个Eden
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/08/JVM-1/" class="post-title-link" itemprop="url">JVM_1</a>
+                <a href="/fanfan999.github.io/2019/08/01/JVM面试_6/" class="post-title-link" itemprop="url">JVM面试_6</a>
               
             
           </h1>
@@ -776,46 +744,16 @@ jvm的基本概念堆被分成新生代和老年代,新生代被分成一个Eden
                 
               
 
-              <time title="Created: 2019-07-08 12:46:39" itemprop="dateCreated datePublished" datetime="2019-07-08T12:46:39+08:00">2019-07-08</time>
+              <time title="Created: 2019-08-01 14:32:20 / Modified: 16:13:23" itemprop="dateCreated datePublished" datetime="2019-08-01T14:32:20+08:00">2019-08-01</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-11 20:31:48" itemprop="dateModified" datetime="2019-07-11T20:31:48+08:00">2019-07-11</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -848,16 +786,29 @@ jvm的基本概念堆被分成新生代和老年代,新生代被分成一个Eden
         
           
             <p>
-              这里面加了很多我自己的看法,有啥错误的阔以给我留言一手,多谢您!
-JAVA虚拟机在执行java程序的时候会把它所管理的内存划分为若干个不同的数据区域,这些区域都有各自不同的用途,以及创建和销毁时间.
-java虚拟机所管理的内存包括以下几个运行时数据区域Method Area方法区(线程共享)
-VM 
+              
+
+垃圾回收算法分类:
+
+
+标记-清除算法
+复制算法
+标记-整理算法
+
+
+标记清除算法
+
+顾名思义,该算法进行垃圾回收共分为两个阶段:
+
+标记: 从根集合出发,进行扫描,通过可达性算法对需要回收的对象进行标记.
+
+这里有的地方说的是对存活的对象进行标记,其实也有道理,不过书上说的是对需要回收的对象,
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/08/JVM-1/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/01/JVM面试_6/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -917,7 +868,7 @@ VM
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/08/计算机网络面试/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/01/JVM面试_5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -937,7 +888,7 @@ VM
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/08/计算机网络面试/" class="post-title-link" itemprop="url">计算机网络面试</a>
+                <a href="/fanfan999.github.io/2019/08/01/JVM面试_5/" class="post-title-link" itemprop="url">JVM面试_5</a>
               
             
           </h1>
@@ -962,7 +913,7 @@ VM
                 
               
 
-              <time title="Created: 2019-07-08 09:00:29 / Modified: 10:18:56" itemprop="dateCreated datePublished" datetime="2019-07-08T09:00:29+08:00">2019-07-08</time>
+              <time title="Created: 2019-08-01 13:56:53 / Modified: 14:32:16" itemprop="dateCreated datePublished" datetime="2019-08-01T13:56:53+08:00">2019-08-01</time>
             
 
             
@@ -972,24 +923,6 @@ VM
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1023,83 +956,27 @@ VM
           
             <p>
               
-OSI七层模型和TCP/IP五层模型OSI七层模型(从上到下)
+
+对象被判定为垃圾的标准
+
+没有被其他对象引用的对象应该被判定为垃圾.
+判断对象是否为垃圾的算法
 
 
-应用层
+引用计数算法
+可达性分析算法
+
+引用计数算法
 
 
-
-
-
-
-表示层
-
-
-
-
-
-
-会话层
-
-
-
-
-
-
-传输层
-
-
-
-
-
-
-网络层
-
-
-
-
-
-
-数据链路层
-
-
-
-
-
-
-物理层
-
-
-
-
-TCP/IP五层模型(从上到下)
-
-
-应用层
-
-
-
-
-
-
-传输层
-
-
-
-
-
-
-网络层
-
-
-
+通过判断对象的引用数量来决定对象是否可以被回收.
+在这种机制下,堆中的每个实例对象都有一个引用计数器,对象被引用则计数器+1,完成引用(引用失效)
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/08/计算机网络面试/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/01/JVM面试_5/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1159,7 +1036,7 @@ TCP/IP五层模型(从上到下)
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/07/springboot-day02/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/01/mybatis_5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1179,7 +1056,7 @@ TCP/IP五层模型(从上到下)
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/07/springboot-day02/" class="post-title-link" itemprop="url">springboot-day01_2</a>
+                <a href="/fanfan999.github.io/2019/08/01/mybatis_5/" class="post-title-link" itemprop="url">mybatis_5</a>
               
             
           </h1>
@@ -1204,24 +1081,12 @@ TCP/IP五层模型(从上到下)
                 
               
 
-              <time title="Created: 2019-07-07 14:02:49" itemprop="dateCreated datePublished" datetime="2019-07-07T14:02:49+08:00">2019-07-07</time>
+              <time title="Created: 2019-08-01 12:34:03 / Modified: 13:55:40" itemprop="dateCreated datePublished" datetime="2019-08-01T12:34:03+08:00">2019-08-01</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-15 14:22:04" itemprop="dateModified" datetime="2019-07-15T14:22:04+08:00">2019-07-15</time>
               
             
           </span>
@@ -1238,7 +1103,7 @@ TCP/IP五层模型(从上到下)
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
 
                 
                 
@@ -1276,17 +1141,17 @@ TCP/IP五层模型(从上到下)
         
           
             <p>
-              我博客里大家不懂的可以留言我嘿嘿嘿,以及这篇博客是用的war包下的maven项目,其实运行和jar包的maven项目冒的区别
-springboot整合springjdbc操作数据第一步:导入依赖:
+              
 
-&lt;parent&gt;
-    &lt;groupId&gt;org.springframew
+动态sql简介if标签使用步骤(创建jdbc连接这些我就省略了哈,我把全部代码都放后面):
+
+StudentDao接口@Mapperpublic interface StudentDao &#123;    List&lt;Student&gt; selectif(@Param(&quot;na
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/07/springboot-day02/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/01/mybatis_5/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1346,7 +1211,7 @@ springboot整合springjdbc操作数据第一步:导入依赖:
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/07/springboot-day01_2/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/31/JVM面试_4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1366,7 +1231,7 @@ springboot整合springjdbc操作数据第一步:导入依赖:
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/07/springboot-day01_2/" class="post-title-link" itemprop="url">springboot-day01_2</a>
+                <a href="/fanfan999.github.io/2019/07/31/JVM面试_4/" class="post-title-link" itemprop="url">JVM面试_4</a>
               
             
           </h1>
@@ -1391,7 +1256,7 @@ springboot整合springjdbc操作数据第一步:导入依赖:
                 
               
 
-              <time title="Created: 2019-07-07 14:02:49 / Modified: 19:54:45" itemprop="dateCreated datePublished" datetime="2019-07-07T14:02:49+08:00">2019-07-07</time>
+              <time title="Created: 2019-07-31 13:16:07 / Modified: 20:50:04" itemprop="dateCreated datePublished" datetime="2019-07-31T13:16:07+08:00">2019-07-31</time>
             
 
             
@@ -1401,24 +1266,6 @@ springboot整合springjdbc操作数据第一步:导入依赖:
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1451,14 +1298,16 @@ springboot整合springjdbc操作数据第一步:导入依赖:
         
           
             <p>
-              大家不懂得可以留言我,我尽力哈哈哈,这篇博客的所有代码都是延续的上一篇博客:springboot-day01,的代码,也都是继续jar包的maven项目继续开发的,war包的我后面再写.
-Web开发_静态资源的访问,这里使用springboot-day01中的代码静态资源就是指的是我们以前用serv
+              关于java内存模型我还没怎么整明白,我先写着,大家先看看jvm内存模型的面试题先
+java内存模型简介
+
+内存简介:  计算机所有程序都是在内存中运行的.在程序执行的过程中,需要不断地将内存的逻辑地址和物理地址进行映射,找到相关的指令和数据去执行.32位处理器: 2^32的可寻址范围,即4G.64
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/07/springboot-day01_2/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/31/JVM面试_4/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1518,7 +1367,7 @@ Web开发_静态资源的访问,这里使用springboot-day01中的代码静态�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/06/springboot-day01/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/30/JVM面试_3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1538,7 +1387,7 @@ Web开发_静态资源的访问,这里使用springboot-day01中的代码静态�
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/06/springboot-day01/" class="post-title-link" itemprop="url">springboot_day01</a>
+                <a href="/fanfan999.github.io/2019/07/30/JVM面试_3/" class="post-title-link" itemprop="url">JVM面试_3</a>
               
             
           </h1>
@@ -1563,46 +1412,16 @@ Web开发_静态资源的访问,这里使用springboot-day01中的代码静态�
                 
               
 
-              <time title="Created: 2019-07-06 16:45:16" itemprop="dateCreated datePublished" datetime="2019-07-06T16:45:16+08:00">2019-07-06</time>
+              <time title="Created: 2019-07-30 22:54:08 / Modified: 23:39:13" itemprop="dateCreated datePublished" datetime="2019-07-30T22:54:08+08:00">2019-07-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-07 13:59:52" itemprop="dateModified" datetime="2019-07-07T13:59:52+08:00">2019-07-07</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1635,16 +1454,19 @@ Web开发_静态资源的访问,这里使用springboot-day01中的代码静态�
         
           
             <p>
-              有不懂的可以留言我,我尽力帮你哈哈哈
-springboot的特点轻松创建spring应用程序.
-内嵌tomcat,jetty等web容器,不需要部署war文件(我们之前的项目都是要将文件打包成war包然后放到tomcat中再运行的).
-简化了第三方jar包的引用,通过提供的一系列的”starter(
+              
+
+类的加载方式
+
+
+隐式加载: new,程序在运行过程中,遇到通过new方式来生成对象时,隐式调用类加载器去加载对应的类到JVM中.
+显式加载: 通过loadClass(), forName(),等显式加载需要的类,对于显式加载来讲,当我们生成了对应的Class对象后,就需要用Class对象去调用
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/06/springboot-day01/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/30/JVM面试_3/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1704,7 +1526,7 @@ springboot的特点轻松创建spring应用程序.
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/06/spring整合servlet/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/30/JVM面试_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1724,7 +1546,7 @@ springboot的特点轻松创建spring应用程序.
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/06/spring整合servlet/" class="post-title-link" itemprop="url">spring整合servlet</a>
+                <a href="/fanfan999.github.io/2019/07/30/JVM面试_2/" class="post-title-link" itemprop="url">JVM面试_2</a>
               
             
           </h1>
@@ -1749,46 +1571,16 @@ springboot的特点轻松创建spring应用程序.
                 
               
 
-              <time title="Created: 2019-07-06 14:18:19" itemprop="dateCreated datePublished" datetime="2019-07-06T14:18:19+08:00">2019-07-06</time>
+              <time title="Created: 2019-07-30 13:08:52 / Modified: 22:54:32" itemprop="dateCreated datePublished" datetime="2019-07-30T13:08:52+08:00">2019-07-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-07 13:57:01" itemprop="dateModified" datetime="2019-07-07T13:57:01+08:00">2019-07-07</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1821,22 +1613,19 @@ springboot的特点轻松创建spring应用程序.
         
           
             <p>
-              不懂可以给我留言,虽然我也很菜
-web整合servlet+spring整合步骤:
+              什么是反射?
 
+概念: Java反射机制是指在运行状态下,对于任意一个类,都能够知道这个类的所有属性和方法;对于任意一个对象,都能够调用它的任意方法和属性;这种动态获取信息以及动态调用对象方法的功能称为java的反射机制.
+写一个反射的例子
 
-导包,除了导入spring需要的包以外,还要新导入一个: spring-web.
-
-
-我等会把包都放这里: 所有jar包,还有一个如何下载spring的jar包的博客也放在这里: 如何在官网下载jar包.
-
-这个是
+我之前专门写过一篇博客全是例子: 反射案例
+类从编译到执
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/06/spring整合servlet/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/30/JVM面试_2/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1896,7 +1685,7 @@ web整合servlet+spring整合步骤:
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/05/spring-04-3/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/30/JVM面试_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1916,7 +1705,7 @@ web整合servlet+spring整合步骤:
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/05/spring-04-3/" class="post-title-link" itemprop="url">spring-04-3</a>
+                <a href="/fanfan999.github.io/2019/07/30/JVM面试_1/" class="post-title-link" itemprop="url">JVM面试_1</a>
               
             
           </h1>
@@ -1941,7 +1730,7 @@ web整合servlet+spring整合步骤:
                 
               
 
-              <time title="Created: 2019-07-05 14:10:50 / Modified: 21:25:56" itemprop="dateCreated datePublished" datetime="2019-07-05T14:10:50+08:00">2019-07-05</time>
+              <time title="Created: 2019-07-30 08:23:01 / Modified: 13:08:45" itemprop="dateCreated datePublished" datetime="2019-07-30T08:23:01+08:00">2019-07-30</time>
             
 
             
@@ -1951,24 +1740,6 @@ web整合servlet+spring整合步骤:
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -2001,16 +1772,21 @@ web整合servlet+spring整合步骤:
         
           
             <p>
-              大家不懂可以留言我,虽然我也很菜
-事务的基本知识,我专门有一篇博客写了: 事务基础
-spring事务管理spring为我们提供给了事务管理,我们就不需要手动去开启事务,关闭事务了,我们只需要配置一下就可以了,它就会帮我们把事务放在service层去.
-spring提供了事务jar包: spring-
+              
+
+谈谈你对java的理解
+
+
+java具有平台无关性: 即可以一次编译,到处运行.
+jvm具有自动GC功能: 正因为有了GC,我们就不用像C++那样去手动释放内存了.
+java有自己的语言特性:如泛型,反射,lamda表达式
+java是面向对象的(OOP): 即将现实的事物和关系抽象出来变成类,不
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/05/spring-04-3/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/30/JVM面试_1/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2070,7 +1846,7 @@ spring提供了事务jar包: spring-
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/04/动态代理/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/29/Linux面试_3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -2090,7 +1866,7 @@ spring提供了事务jar包: spring-
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/04/动态代理/" class="post-title-link" itemprop="url">动态代理</a>
+                <a href="/fanfan999.github.io/2019/07/29/Linux面试_3/" class="post-title-link" itemprop="url">Linux面试_3</a>
               
             
           </h1>
@@ -2115,46 +1891,16 @@ spring提供了事务jar包: spring-
                 
               
 
-              <time title="Created: 2019-07-04 20:39:15" itemprop="dateCreated datePublished" datetime="2019-07-04T20:39:15+08:00">2019-07-04</time>
+              <time title="Created: 2019-07-29 20:56:31 / Modified: 23:47:40" itemprop="dateCreated datePublished" datetime="2019-07-29T20:56:31+08:00">2019-07-29</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-05 08:22:42" itemprop="dateModified" datetime="2019-07-05T08:22:42+08:00">2019-07-05</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/javase/" itemprop="url" rel="index"><span itemprop="name">javase</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -2187,21 +1933,24 @@ spring提供了事务jar包: spring-
         
           
             <p>
-              有不懂的可以留言我,虽然我也很菜
-动态代理概述及实现动态代理概述
+              
 
+如何对文件内容做统计
 
-代理: 本来应该自己做的事情,请了别人来做,被请来做事的人叫做代理对象.
+通过awk指令
 
-举例: 春节回家买不到车票请人代买,找房子懒得自己跑就通过中介找.
+语法: awk [options] ‘cmd’ file.
+工作原理: 
 
-动态代理: 在程序运行过程中产生的这个代理对象,而程序运行过程中产生对象其实就是反射
+一次读取一行文本,按输入分隔符进行切片,切成多个组成部分.
+将切片直接保存在内建的变量中,$1,$2…($0表示行的全部).
+支持对单个切片判断,支持循环判断,默认分隔符为空格.
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/04/动态代理/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/07/29/Linux面试_3/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2250,7 +1999,7 @@ spring提供了事务jar包: spring-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/fanfan999.github.io/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/fanfan999.github.io/">1</a><a class="page-number" href="/fanfan999.github.io/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/fanfan999.github.io/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/fanfan999.github.io/page/9/">9</a><a class="extend next" rel="next" href="/fanfan999.github.io/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/fanfan999.github.io/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/fanfan999.github.io/">1</a><a class="page-number" href="/fanfan999.github.io/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/fanfan999.github.io/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/fanfan999.github.io/page/13/">13</a><a class="extend next" rel="next" href="/fanfan999.github.io/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2292,7 +2041,7 @@ spring提供了事务jar包: spring-
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">126</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2351,7 +2100,9 @@ spring提供了事务jar包: spring-
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2530,7 +2281,87 @@ spring提供了事务jar包: spring-
                     
                       
                     
-                    <span class="site-state-item-count">81</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">121</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

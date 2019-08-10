@@ -373,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/17/计算机网络-TCP与UDP的区别/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/04/多线程面试_9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -393,7 +393,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/17/计算机网络-TCP与UDP的区别/" class="post-title-link" itemprop="url">计算机网络-TCP与UDP的区别</a>
+                <a href="/fanfan999.github.io/2019/08/04/多线程面试_9/" class="post-title-link" itemprop="url">多线程面试_9</a>
               
             
           </h1>
@@ -418,7 +418,7 @@
                 
               
 
-              <time title="Created: 2019-07-17 21:05:12 / Modified: 23:26:57" itemprop="dateCreated datePublished" datetime="2019-07-17T21:05:12+08:00">2019-07-17</time>
+              <time title="Created: 2019-08-04 15:03:33 / Modified: 15:30:49" itemprop="dateCreated datePublished" datetime="2019-08-04T15:03:33+08:00">2019-08-04</time>
             
 
             
@@ -428,24 +428,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -478,18 +460,19 @@
         
           
             <p>
-              UDP简介UDP: 即User Datagram Protocol, 用户数据报协议
+              
 
-UDP报文结构如图:UDP特点
+synchronized同步锁的四种状态1. 无锁: 就是没有加入锁嘛,这个就很好理解了,也就是说此时的目标共享数据没有被任何一个线程占用.2. 偏向锁3. 轻量级锁4. 重量级锁锁膨胀方向: 无锁–&gt;偏向锁–&gt;轻量级锁–&gt;重量级锁偏向锁
 
 
-面向非连接,和TCP必须要建立连接才能传输数据不一样,它只管发,不管你收没收到,它传送数据直接抓取来自应用程序的数据,并尽可能快得把它扔到网络上,所以在发送端UDP传送的速度仅
+
+大多数情况下,锁不存在多线程竞争
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/17/计算机网络-TCP与UDP的区别/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/04/多线程面试_9/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -549,7 +532,7 @@ UDP报文结构如图:UDP特点
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/17/计算机网络-TCP的四次挥手/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/04/多线程面试_8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -569,7 +552,7 @@ UDP报文结构如图:UDP特点
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/17/计算机网络-TCP的四次挥手/" class="post-title-link" itemprop="url">计算机网络_TCP的四次挥手</a>
+                <a href="/fanfan999.github.io/2019/08/04/多线程面试_8/" class="post-title-link" itemprop="url">多线程面试_8</a>
               
             
           </h1>
@@ -594,7 +577,7 @@ UDP报文结构如图:UDP特点
                 
               
 
-              <time title="Created: 2019-07-17 19:14:24 / Modified: 20:53:11" itemprop="dateCreated datePublished" datetime="2019-07-17T19:14:24+08:00">2019-07-17</time>
+              <time title="Created: 2019-08-04 12:42:08 / Modified: 15:04:02" itemprop="dateCreated datePublished" datetime="2019-08-04T12:42:08+08:00">2019-08-04</time>
             
 
             
@@ -604,24 +587,6 @@ UDP报文结构如图:UDP特点
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -654,15 +619,33 @@ UDP报文结构如图:UDP特点
         
           
             <p>
-              挥手是为了终止TCP连接,四次挥手是指总共要发出四个包来确认连接的断开,这一过程由客户端或者服务器端任意一方执行CLOSE来触发本文假设客户端主动触发CLOSE
+              synchronized的底层实现原理
 
-TCP的四次挥手的流程图如下 1. 刚开始客户端和服务端都处于ESTABLIS的状态,我们这里假设客户端主动关闭,服务器被动关闭. 2.
+实现synchronoized的基础
+
+
+java对象头
+Monitor
+
+hotspot环境下对象在内存中的布局
+
+主要分为三块区域:
+
+对象头
+实例数据
+对齐填充
+
+
+对象头
+
+synchronized使用的锁对象都是存储在对象头里的.
+对象头的结构由图
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/17/计算机网络-TCP的四次挥手/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/04/多线程面试_8/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -722,7 +705,7 @@ TCP的四次挥手的流程图如下 1. 刚开始客户端和服务端都处于E
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/17/mybatis-1/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/03/多线程面试_7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -742,7 +725,7 @@ TCP的四次挥手的流程图如下 1. 刚开始客户端和服务端都处于E
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/17/mybatis-1/" class="post-title-link" itemprop="url">mybatis_1</a>
+                <a href="/fanfan999.github.io/2019/08/03/多线程面试_7/" class="post-title-link" itemprop="url">多线程面试_7</a>
               
             
           </h1>
@@ -767,46 +750,16 @@ TCP的四次挥手的流程图如下 1. 刚开始客户端和服务端都处于E
                 
               
 
-              <time title="Created: 2019-07-17 15:00:49" itemprop="dateCreated datePublished" datetime="2019-07-17T15:00:49+08:00">2019-07-17</time>
+              <time title="Created: 2019-08-03 15:44:37 / Modified: 20:07:52" itemprop="dateCreated datePublished" datetime="2019-08-03T15:44:37+08:00">2019-08-03</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-20 17:14:56" itemprop="dateModified" datetime="2019-07-20T17:14:56+08:00">2019-07-20</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -839,18 +792,27 @@ TCP的四次挥手的流程图如下 1. 刚开始客户端和服务端都处于E
         
           
             <p>
-              mybatis简介
+              
 
+线程状态及状态之间的转换如图:—线程安全问题
 
-mybatis是一个持久层框架,主要作用就是在java中操作数据库,其实就是在jdbc的基础上进行了封装.
-使用mybatis之后,开发者不用再费精力去比如说注册驱动,创建connection,配置statement等繁琐的过程.
-mybatis不需要web容器也可以使用,反
+主要诱因:
+
+存在共享数据(也叫临界资源).
+存在多条线程共同操作这些共享数据.
+
+解决办法:
+同一时刻有且仅有一个线程在操作共享数据,其他线程必须等到该线程处理完数据后再对共享数据进行操作.此时便有了互斥锁.
+
+互斥锁
+
+该锁能达到互斥访问的目的
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/17/mybatis-1/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/03/多线程面试_7/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -910,7 +872,7 @@ mybatis不需要web容器也可以使用,反
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/16/计算机网络_TCP的三次握手/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/03/多线程面试_6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -930,7 +892,7 @@ mybatis不需要web容器也可以使用,反
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/16/计算机网络_TCP的三次握手/" class="post-title-link" itemprop="url">计算机网络_TCP的三次握手</a>
+                <a href="/fanfan999.github.io/2019/08/03/多线程面试_6/" class="post-title-link" itemprop="url">多线程面试_6</a>
               
             
           </h1>
@@ -955,46 +917,16 @@ mybatis不需要web容器也可以使用,反
                 
               
 
-              <time title="Created: 2019-07-16 16:31:57" itemprop="dateCreated datePublished" datetime="2019-07-16T16:31:57+08:00">2019-07-16</time>
+              <time title="Created: 2019-08-03 14:20:06 / Modified: 15:44:33" itemprop="dateCreated datePublished" datetime="2019-08-03T14:20:06+08:00">2019-08-03</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-17 14:56:31" itemprop="dateModified" datetime="2019-07-17T14:56:31+08:00">2019-07-17</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1029,16 +961,16 @@ mybatis不需要web容器也可以使用,反
             <p>
               
 
-IP协议
+Object的notify和notifyAll方法
 
-IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负责寻址和路由选择,即将网络地址翻译为物理地址然后确定如何将数据从发送方路由到接收方.
-它不会占用两台正在通信的计算机之间的通信线路, 这样IP协议就降低了对网络线路的需求,每条线可以同时满足许多不同计算机之间的通信需要.
+我们除了给线程设置等待时间让系统自动唤醒线程外,我们还可以通过notify或者notifyAll手动唤醒线程.
+案例演示:public class WaitSleepTest &#123;    public static void main
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/16/计算机网络_TCP的三次握手/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/03/多线程面试_6/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1098,7 +1030,7 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/16/springboot-day02-3/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/03/多线程面试_5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1118,7 +1050,7 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/16/springboot-day02-3/" class="post-title-link" itemprop="url">springboot-day02-3</a>
+                <a href="/fanfan999.github.io/2019/08/03/多线程面试_5/" class="post-title-link" itemprop="url">多线程面试_5</a>
               
             
           </h1>
@@ -1143,7 +1075,7 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
                 
               
 
-              <time title="Created: 2019-07-16 14:10:32 / Modified: 16:30:31" itemprop="dateCreated datePublished" datetime="2019-07-16T14:10:32+08:00">2019-07-16</time>
+              <time title="Created: 2019-08-03 13:43:51 / Modified: 14:20:02" itemprop="dateCreated datePublished" datetime="2019-08-03T13:43:51+08:00">2019-08-03</time>
             
 
             
@@ -1153,24 +1085,6 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1203,15 +1117,20 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
         
           
             <p>
-              springboot导出jar包
+              
 
-1. 在pom.xml中的build标签下添加插件依赖以及配置文件依赖(不配置的话导出就没配置文件,跑不起来)如下:&lt;plugins&gt;            &lt;plugin&gt;                &lt;groupId&gt;or
+sleep和wait的区别
+
+
+sleep()是Thread类的方法,而wait是Object类中定义的方法.
+sleep()方法在任何地方都可以使用,而wait方法只能在synchronized(用于加锁)方法或者synchronized块中使用.
+Thread.sleep()只会让出cpu,
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/16/springboot-day02-3/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/03/多线程面试_5/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1271,7 +1190,7 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/15/计算法网络_基础分层/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/03/多线程面试_4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1291,7 +1210,7 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/15/计算法网络_基础分层/" class="post-title-link" itemprop="url">计算法网络_基础分层</a>
+                <a href="/fanfan999.github.io/2019/08/03/多线程面试_4/" class="post-title-link" itemprop="url">多线程面试_4</a>
               
             
           </h1>
@@ -1316,46 +1235,16 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
                 
               
 
-              <time title="Created: 2019-07-15 20:09:09" itemprop="dateCreated datePublished" datetime="2019-07-15T20:09:09+08:00">2019-07-15</time>
+              <time title="Created: 2019-08-03 13:04:04 / Modified: 13:43:48" itemprop="dateCreated datePublished" datetime="2019-08-03T13:04:04+08:00">2019-08-03</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-17 14:57:18" itemprop="dateModified" datetime="2019-07-17T14:57:18+08:00">2019-07-17</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1388,31 +1277,20 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
         
           
             <p>
-              计算机网络
+              
 
-1. OSI参考模型
+线程的状态
 
+从Thread的源码里我们可以看到线程的状态一共有如下六种:
 
-物理层
-数据链路层
-网络层
-传输层
-会话层
-表示层
-应用层
-
-1-1. 物理层
-
-
-用于解决两台物理机之间的通信需求.
-具体来说,就是机器A往机器B发送比特流,然后物理层保证机器B能收到这些比特流
-物理层主要定义了物理设备的标准:比如网线的类型,光纤的接口类型
+新建(New): 线程创建后尚未启动的线程的状态,即new了一个线程对象但是还没有调用start()方法时处于的状态.
+运行Runnable: 即线程对象调用了start()方法后的线程所处的状态,包含Running和
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/15/计算法网络_基础分层/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/03/多线程面试_4/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1472,7 +1350,7 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/15/springboot-day02-2/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/02/多线程面试_3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1492,7 +1370,7 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/15/springboot-day02-2/" class="post-title-link" itemprop="url">springboot-day02_2</a>
+                <a href="/fanfan999.github.io/2019/08/02/多线程面试_3/" class="post-title-link" itemprop="url">多线程面试_3</a>
               
             
           </h1>
@@ -1517,7 +1395,7 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
                 
               
 
-              <time title="Created: 2019-07-15 14:22:54 / Modified: 17:25:45" itemprop="dateCreated datePublished" datetime="2019-07-15T14:22:54+08:00">2019-07-15</time>
+              <time title="Created: 2019-08-02 15:55:38 / Modified: 18:54:47" itemprop="dateCreated datePublished" datetime="2019-08-02T15:55:38+08:00">2019-08-02</time>
             
 
             
@@ -1527,24 +1405,6 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1577,15 +1437,20 @@ IP协议是 无连接 的通信协议, 作用在网络层 *主要作用是:负�
         
           
             <p>
-              springboot通过注解配置mapper整合mybatis1. 新建一个jar包的maven项目,然后添加依赖
+              
 
-xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;groupId&gt;org.springframework.boot&
+如何给run()方法传参
+
+我们都知道,跟线程相关的业务逻辑都是要放在run()方法里去执行的,而run()方法是没有参数也没有返回值的,那么应该如何给run()方法传参呢?
+
+构造函数传参: 这就是我上一篇博客里利用Runnable接口实现多线程的例子.
+成员变量传参: 这个就比如我在run(
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/15/springboot-day02-2/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/02/多线程面试_3/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1645,7 +1510,7 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/13/递归和动态规划/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/02/多线程面试_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1665,7 +1530,7 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/13/递归和动态规划/" class="post-title-link" itemprop="url">递归和动态规划</a>
+                <a href="/fanfan999.github.io/2019/08/02/多线程面试_2/" class="post-title-link" itemprop="url">多线程面试_2</a>
               
             
           </h1>
@@ -1690,46 +1555,16 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
                 
               
 
-              <time title="Created: 2019-07-13 19:51:06" itemprop="dateCreated datePublished" datetime="2019-07-13T19:51:06+08:00">2019-07-13</time>
+              <time title="Created: 2019-08-02 14:06:39 / Modified: 15:55:07" itemprop="dateCreated datePublished" datetime="2019-08-02T14:06:39+08:00">2019-08-02</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-14 18:33:44" itemprop="dateModified" datetime="2019-07-14T18:33:44+08:00">2019-07-14</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1762,26 +1597,17 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
         
           
             <p>
-              1. 介绍递归和动态规划
+              
 
-暴力递归:
+Thread中start和run方法的区别1. 调用start()方法会创建一个新的子线程并启动.2. run()方法只是Thread的一个普通方法的调用,还是在主线程内执行.例子:
 
-
-把问题转化为规模缩小了的同类问题的子问题.
-有明确的的不需要继续进行递归的条件(base case也就是递归的出口,例如当节点为空之类的).
-有当得到了子问题结果之后的决策过程.
-不记录每一个子问题的解.
-
-动态规划(就是为了优化暴力递归):
-
-
-从暴力递
+通过start()方法启动线程时通过查看start()方法的源码我们知道,它是通过一个native方法star
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/13/递归和动态规划/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/02/多线程面试_2/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1841,7 +1667,7 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/12/哈希题目/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/02/多线程面试_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -1861,7 +1687,7 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/12/哈希题目/" class="post-title-link" itemprop="url">哈希题目</a>
+                <a href="/fanfan999.github.io/2019/08/02/多线程面试_1/" class="post-title-link" itemprop="url">多线程面试_1</a>
               
             
           </h1>
@@ -1886,46 +1712,16 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
                 
               
 
-              <time title="Created: 2019-07-12 20:23:52" itemprop="dateCreated datePublished" datetime="2019-07-12T20:23:52+08:00">2019-07-12</time>
+              <time title="Created: 2019-08-02 13:14:20 / Modified: 14:06:34" itemprop="dateCreated datePublished" datetime="2019-08-02T13:14:20+08:00">2019-08-02</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-13 19:49:05" itemprop="dateModified" datetime="2019-07-13T19:49:05+08:00">2019-07-13</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1958,17 +1754,17 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
         
           
             <p>
-              注意: 一般哈希表的增删改查的时间复杂度默认为O(1).
-题目1题目如图:
-思路: 这个思路很简单,就是通过两个哈希表实现.
+              
 
-这两个哈希表分别为map1和map2,map1中的key,value分别作为map2中的value,key,也就是map1和map2中的数据是反的,map1中的key是ma
+进程和线程的区别
+
+进程:指的是 一个用户程序在同一数据集合上的一次执行过程,它是资源分配的基本单位,可以理解为它就是运行中的一个程序.线程:线程是进程上的一个实体,也是真正的执行体,它是系统调度的基本单位.进程和线程的由来:—进程和线程的区别:1. 正如上面所说:进程是资源分配的最小单位,线程
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/12/哈希题目/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/02/多线程面试_1/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2028,7 +1824,7 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/07/12/哈希函数和哈希表概念/">
+    <link itemprop="mainEntityOfPage" href="https://fanfan999.github.io/fanfan999.github.io/2019/08/01/JVM面试_9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Fanfan999">
@@ -2048,7 +1844,7 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/fanfan999.github.io/2019/07/12/哈希函数和哈希表概念/" class="post-title-link" itemprop="url">哈希函数和哈希表概念</a>
+                <a href="/fanfan999.github.io/2019/08/01/JVM面试_9/" class="post-title-link" itemprop="url">JVM面试_9</a>
               
             
           </h1>
@@ -2073,7 +1869,7 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
                 
               
 
-              <time title="Created: 2019-07-12 16:20:31 / Modified: 20:23:24" itemprop="dateCreated datePublished" datetime="2019-07-12T16:20:31+08:00">2019-07-12</time>
+              <time title="Created: 2019-08-01 19:12:04 / Modified: 20:24:18" itemprop="dateCreated datePublished" datetime="2019-08-01T19:12:04+08:00">2019-08-01</time>
             
 
             
@@ -2083,24 +1879,6 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/fanfan999.github.io/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -2133,15 +1911,15 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
         
           
             <p>
-              哈希函数和哈希表1. 什么是哈希函数
-它是一种映射关系，它可以把任意长度的输入映射到任意一个固定长度的整数值，也称为散列函数,其值是十六进制的数。
-说白了,哈希函数就是用来将key-value结构中关键字值转换为数组的下标的函数(一般都是通过取模,而且这样子在数据量很大的情况下一般是均匀分布的),然
+              
+
+Object中的finalize()方法的作用是否与C++的析构函数作用相同1. 它与C++的析构函数不同,析构函数调用时机是确定的,即对象离开作用域后就会被delete掉,而finalize()方法调用时机是不确定的.2. 当垃圾回收器要宣告一个对象死亡时,要经过至少两次标记过程,如果对象在经
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/fanfan999.github.io/2019/07/12/哈希函数和哈希表概念/#more" rel="contents">
+              <a class="btn" href="/fanfan999.github.io/2019/08/01/JVM面试_9/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2190,7 +1968,7 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/fanfan999.github.io/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/fanfan999.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/fanfan999.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/fanfan999.github.io/page/9/">9</a><a class="extend next" rel="next" href="/fanfan999.github.io/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/fanfan999.github.io/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/fanfan999.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/fanfan999.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/fanfan999.github.io/page/13/">13</a><a class="extend next" rel="next" href="/fanfan999.github.io/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2232,7 +2010,7 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
                 
                   <a href="/fanfan999.github.io/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">126</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2291,7 +2069,9 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2470,7 +2250,87 @@ xml中添加依赖如下:&lt;!--添加父依赖--&gt;  &lt;parent&gt;      &lt;g
                     
                       
                     
-                    <span class="site-state-item-count">81</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">121</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
